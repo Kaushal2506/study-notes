@@ -1,1 +1,1549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0f2942" />
+<title>GME Pre-Sea Preparation – Study Notes Library</title>
+<style>
+/* ============ RESET / BASE ============ */
+*,*::before,*::after{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  font-size:16px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+:root{
+  --navy:#0f2942;
+  --navy-2:#16395c;
+  --ink:#1e2c3a;
+  --muted:#5b6b7c;
+  --line:#e3e9f0;
+  --bg:#eef2f7;
+  --card:#ffffff;
+  --accent:#d97706;
+  --accent-soft:#fff8ed;
+  --teal:#0e7490;
+  --teal-soft:#effbff;
+  --violet:#7c3aed;
+  --green:#15803d;
+  --red:#b91c1c;
+  --radius:16px;
+  --shadow:0 1px 2px rgba(15,41,66,.07),0 12px 28px -20px rgba(15,41,66,.6);
+}
+h1,h2,h3,h4,p,ul,ol{margin:0 0 .7em;}
+ul,ol{padding-left:1.15em;}
+b,strong{font-weight:700;}
 
+/* ============ HERO ============ */
+.hero{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(155deg,#0f2942 0%,#17456e 55%,#0e7490 100%);
+  color:#e9f2fa;
+  padding:28px 18px 32px;
+}
+.hero::after{
+  content:"";
+  position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 88% 12%, rgba(255,255,255,.14), transparent 42%),
+    radial-gradient(circle at 12% 92%, rgba(217,119,6,.30), transparent 46%);
+  pointer-events:none;
+}
+.hero-inner{position:relative;max-width:960px;margin:0 auto;z-index:1;}
+.badge{
+  display:inline-block;
+  font-size:.7rem;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  font-weight:700;
+  background:rgba(255,255,255,.13);
+  border:1px solid rgba(255,255,255,.22);
+  color:#cfe4f5;
+  padding:.32em .8em;
+  border-radius:999px;
+  margin-bottom:.85em;
+}
+.hero h1{
+  font-size:1.38rem;
+  line-height:1.28;
+  letter-spacing:-.01em;
+  margin:0 0 .35em;
+  color:#fff;
+}
+.hero .sub{
+  font-size:.94rem;
+  color:#a9cbe4;
+  margin:0 0 1em;
+  font-weight:600;
+  letter-spacing:.02em;
+}
+.meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.45em .6em;
+  margin-bottom:1em;
+}
+.meta span{
+  font-size:.74rem;
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:8px;
+  padding:.35em .65em;
+  color:#d7e8f6;
+}
+.meta b{color:#fff;font-weight:700;}
+.intro{
+  font-size:.88rem;
+  line-height:1.65;
+  color:#c6dcee;
+  border-left:3px solid var(--accent);
+  padding-left:.85em;
+  margin:0;
+}
+
+/* ============ LAYOUT ============ */
+main{
+  max-width:960px;
+  margin:0 auto;
+  padding:16px 12px 40px;
+}
+
+/* ============ SEARCH ============ */
+.search-wrap{
+  position:sticky;
+  top:0;
+  z-index:45;
+  margin:-8px -12px 12px;
+  padding:8px 12px 10px;
+  background:var(--bg);
+  box-shadow:0 10px 16px -16px rgba(15,41,66,.85);
+}
+.search-box{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:#fff;
+  border:1px solid #d6dfea;
+  border-radius:14px;
+  padding:.5em .7em;
+  box-shadow:0 1px 2px rgba(15,41,66,.05);
+  transition:border-color .18s,box-shadow .18s;
+}
+.search-box:focus-within{
+  border-color:#8fb8d8;
+  box-shadow:0 0 0 3px rgba(14,116,144,.14);
+}
+.search-icon{width:18px;height:18px;flex:0 0 auto;color:#8ba0b4;}
+#searchInput{
+  flex:1 1 auto;
+  min-width:0;
+  border:0;
+  outline:0;
+  background:transparent;
+  font:inherit;
+  font-size:.9rem;
+  color:var(--ink);
+  padding:0;
+  -webkit-appearance:none;
+  appearance:none;
+}
+#searchInput::placeholder{color:#95a7b8;}
+#searchInput::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;}
+.search-clear{
+  flex:0 0 auto;
+  width:24px;height:24px;
+  border-radius:50%;
+  border:0;
+  background:#eef2f7;
+  color:#5b6b7c;
+  font-size:1rem;
+  line-height:1;
+  display:grid;place-items:center;
+  cursor:pointer;
+  padding:0;
+  transition:background .16s,color .16s;
+}
+.search-clear:hover{background:#e0e8f1;color:#33465c;}
+
+.search-results{
+  display:none;
+  margin-top:8px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:var(--shadow);
+  max-height:54vh;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+}
+.search-results.show{display:block;}
+.sr-head{
+  position:sticky;
+  top:0;
+  background:#f7fafd;
+  border-bottom:1px solid #e9eff6;
+  font-size:.7rem;
+  font-weight:800;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  color:#5b6b7c;
+  padding:.6em .85em;
+}
+.sr-item{
+  display:block;
+  width:100%;
+  text-align:left;
+  text-decoration:none;
+  border-bottom:1px solid #eef2f7;
+  padding:.62em .85em;
+  transition:background .14s;
+}
+.sr-item:last-child{border-bottom:0;}
+.sr-item:hover,.sr-item:focus-visible{background:#f4f9fd;outline:0;}
+.sr-topic{
+  display:block;
+  font-size:.68rem;
+  font-weight:800;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  color:#0e7490;
+  margin-bottom:.18em;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.sr-text{
+  display:block;
+  font-size:.85rem;
+  line-height:1.45;
+  color:#2c3e50;
+  word-break:break-word;
+}
+.sr-empty{padding:.9em .85em 1.1em;font-size:.83rem;color:#6b7c8d;}
+mark{background:#fde68a;color:#5b3a00;border-radius:3px;padding:0 .1em;}
+
+/* ============ PATH NOTE ============ */
+.path-note{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  background:var(--accent-soft);
+  border:1px dashed #f0c184;
+  border-radius:12px;
+  padding:11px 13px;
+  margin-bottom:14px;
+  font-size:.8rem;
+  color:#7c4a03;
+  line-height:1.55;
+}
+.path-note .pn-ico{font-size:1rem;line-height:1.2;flex:0 0 auto;}
+.path-note code{
+  background:rgba(180,83,9,.11);
+  padding:.08em .35em;
+  border-radius:5px;
+  font-size:.92em;
+  word-break:break-all;
+}
+.path-note b{color:#b45309;}
+
+/* ============ TOOLBAR ============ */
+.toolbar{
+  display:flex;
+  gap:8px;
+  margin-bottom:14px;
+  flex-wrap:wrap;
+}
+.toolbar button{
+  flex:1 1 120px;
+  font:inherit;
+  font-size:.8rem;
+  font-weight:700;
+  letter-spacing:.02em;
+  padding:.62em .8em;
+  border-radius:11px;
+  border:1px solid #d6dfea;
+  background:#fff;
+  color:#33465c;
+  cursor:pointer;
+  box-shadow:0 1px 2px rgba(15,41,66,.05);
+  transition:background .18s,border-color .18s,transform .12s;
+}
+.toolbar button:active{transform:scale(.97);}
+.toolbar button:hover{background:#f4f8fd;border-color:#bccddf;}
+
+.progress-strip{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:.62em .85em;
+  margin-bottom:14px;
+  box-shadow:0 1px 2px rgba(15,41,66,.05);
+}
+.progress-strip .ps-label{
+  font-size:.74rem;
+  font-weight:800;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  color:#5b6b7c;
+  white-space:nowrap;
+}
+.progress-track{
+  flex:1 1 auto;
+  height:8px;
+  border-radius:99px;
+  background:#e6edf4;
+  overflow:hidden;
+}
+.progress-fill{
+  height:100%;
+  width:0%;
+  border-radius:99px;
+  background:linear-gradient(90deg,#0e7490,#1d5b8c);
+  transition:width .4s ease;
+}
+.progress-strip .ps-val{
+  font-size:.78rem;
+  font-weight:800;
+  color:#12263a;
+  font-variant-numeric:tabular-nums;
+  white-space:nowrap;
+}
+
+/* ============ PART CARD ============ */
+.part{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  margin-bottom:13px;
+  overflow:hidden;
+  scroll-margin-top:80px;
+}
+.part-head{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:14px;
+  background:transparent;
+  border:0;
+  font:inherit;
+  color:inherit;
+  text-align:left;
+  cursor:pointer;
+  transition:background .18s;
+}
+.part-head:hover{background:#f7fafd;}
+.part-head:focus-visible{outline:3px solid #9ec8e6;outline-offset:-3px;}
+.part-badge{
+  flex:0 0 auto;
+  width:40px;height:40px;
+  border-radius:12px;
+  display:grid;place-items:center;
+  font-weight:800;
+  font-size:1.02rem;
+  color:#fff;
+  background:linear-gradient(150deg,var(--navy),#1d5b8c);
+  box-shadow:0 3px 8px -4px rgba(15,41,66,.9);
+}
+.part[data-part="B"] .part-badge{background:linear-gradient(150deg,#0e7490,#0891b2);}
+.part[data-part="C"] .part-badge{background:linear-gradient(150deg,#7c3aed,#6366f1);}
+.part-titles{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  min-width:0;
+}
+.part-titles b{
+  font-size:.96rem;
+  line-height:1.3;
+  color:#152a3f;
+  letter-spacing:-.005em;
+}
+.part-titles small{font-size:.735rem;color:var(--muted);line-height:1.35;}
+
+.chev{
+  margin-left:auto;
+  flex:0 0 auto;
+  width:26px;height:26px;
+  position:relative;
+  border-radius:50%;
+  background:#f1f5fa;
+  transition:background .2s;
+}
+.chev::before{
+  content:"";
+  position:absolute;
+  top:50%;left:50%;
+  width:8px;height:8px;
+  border-right:2px solid #4a5f76;
+  border-bottom:2px solid #4a5f76;
+  transform:translate(-50%,-70%) rotate(45deg);
+  transition:transform .3s ease;
+}
+.part.open > .part-head .chev{background:#e3edf7;}
+.part.open > .part-head .chev::before{transform:translate(-50%,-30%) rotate(-135deg);}
+
+.part-body{
+  display:grid;
+  grid-template-rows:0fr;
+  transition:grid-template-rows .35s ease;
+}
+.part.open > .part-body{grid-template-rows:1fr;}
+.part-inner{overflow:hidden;}
+.part-content{padding:2px 12px 14px;}
+
+/* ============ SECTION ============ */
+.section{
+  border:1px solid #eaf0f6;
+  border-radius:12px;
+  margin-bottom:8px;
+  background:#fcfdff;
+  overflow:hidden;
+  transition:border-color .18s,background .18s;
+}
+.section:hover{border-color:#dbe6f0;}
+.section.open{background:#fff;border-color:#d5e3ef;}
+
+.section-head{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:11px 12px;
+  background:transparent;
+  border:0;
+  font:inherit;
+  color:inherit;
+  text-align:left;
+  cursor:pointer;
+  text-decoration:none;
+  transition:background .16s;
+}
+.section-head:hover{background:#f4f9fd;}
+.section-head:focus-visible{outline:3px solid #9ec8e6;outline-offset:-3px;}
+
+.sec-code{
+  flex:0 0 auto;
+  font-size:.7rem;
+  font-weight:800;
+  letter-spacing:.04em;
+  color:#fff;
+  background:#1d5b8c;
+  padding:.3em .55em;
+  border-radius:7px;
+  min-width:34px;
+  text-align:center;
+  font-variant-numeric:tabular-nums;
+}
+.part[data-part="B"] .sec-code{background:#0e7490;}
+.part[data-part="C"] .sec-code{background:#7c3aed;}
+
+.sec-title{
+  flex:1 1 auto;
+  min-width:0;
+  font-size:.88rem;
+  font-weight:700;
+  color:#1d3348;
+  line-height:1.35;
+  word-break:break-word;
+}
+.sec-count{
+  flex:0 0 auto;
+  font-size:.68rem;
+  font-weight:800;
+  color:#5b6b7c;
+  background:#eef3f9;
+  border-radius:99px;
+  padding:.22em .6em;
+  font-variant-numeric:tabular-nums;
+}
+.sec-go{
+  flex:0 0 auto;
+  font-size:.7rem;
+  font-weight:800;
+  letter-spacing:.03em;
+  color:var(--accent);
+  white-space:nowrap;
+}
+.chev.sm{width:22px;height:22px;background:#eef3f9;}
+.chev.sm::before{width:7px;height:7px;border-width:0 2px 2px 0;}
+.section.open > .section-head .chev.sm::before{transform:translate(-50%,-30%) rotate(-135deg);}
+
+.section-body{
+  display:grid;
+  grid-template-rows:0fr;
+  transition:grid-template-rows .3s ease;
+}
+.section.open > .section-body{grid-template-rows:1fr;}
+.section-inner{overflow:hidden;}
+
+.topics{
+  list-style:none;
+  margin:0;
+  padding:2px 8px 10px;
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+.topic{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:.58em .7em;
+  border-radius:9px;
+  border:1px solid #e9eff6;
+  background:#fff;
+  text-decoration:none;
+  color:#2c3e50;
+  transition:border-color .16s,background .16s,transform .12s,box-shadow .16s;
+}
+.topic:hover{
+  border-color:#9ec8e6;
+  background:#f6fbff;
+  box-shadow:0 3px 10px -8px rgba(15,41,66,.7);
+}
+.topic:active{transform:scale(.994);}
+.topic:focus-visible{outline:3px solid #9ec8e6;outline-offset:1px;}
+
+.t-num{
+  flex:0 0 auto;
+  width:22px;height:22px;
+  border-radius:6px;
+  display:grid;place-items:center;
+  font-size:.7rem;
+  font-weight:800;
+  background:#eef3f9;
+  color:#5b6b7c;
+  font-variant-numeric:tabular-nums;
+  transition:background .16s,color .16s;
+}
+.topic:hover .t-num{background:#dcebf7;color:#1d5b8c;}
+.topic.visited .t-num{background:#dcfce7;color:#15803d;}
+.t-title{
+  flex:1 1 auto;
+  min-width:0;
+  font-size:.855rem;
+  line-height:1.4;
+  word-break:break-word;
+}
+.t-go{
+  flex:0 0 auto;
+  font-size:.9rem;
+  font-weight:800;
+  color:#b9c9d8;
+  transition:color .16s,transform .16s;
+}
+.topic:hover .t-go{color:var(--accent);transform:translate(1px,-1px);}
+
+.section.leaf .section-head{border-radius:12px;}
+.section.leaf .sec-title{font-weight:700;}
+
+/* ============ BACK TO TOP ============ */
+.back-to-top{
+  position:fixed;
+  right:16px;
+  bottom:18px;
+  z-index:60;
+  width:50px;height:50px;
+  border:0;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(150deg,#0f2942,#1d5b8c);
+  color:#fff;
+  cursor:pointer;
+  box-shadow:0 10px 24px -10px rgba(15,41,66,.95),0 2px 6px rgba(15,41,66,.25);
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(14px) scale(.9);
+  transition:opacity .26s ease,transform .26s ease,visibility .26s;
+}
+.back-to-top.show{opacity:1;visibility:visible;transform:none;}
+.back-to-top:active{transform:scale(.93);}
+.back-to-top svg{width:22px;height:22px;display:block;}
+
+/* ============ FOOTER ============ */
+footer{
+  max-width:960px;
+  margin:0 auto;
+  padding:0 14px 34px;
+  text-align:center;
+  font-size:.76rem;
+  color:#8496a8;
+  line-height:1.6;
+}
+footer b{color:#5b6b7c;}
+
+/* ============ DESKTOP ============ */
+@media (min-width:720px){
+  .hero{padding:40px 24px 44px;}
+  .hero h1{font-size:1.95rem;}
+  .hero .sub{font-size:1.02rem;}
+  .intro{font-size:.94rem;max-width:72ch;}
+  main{padding:24px 24px 48px;}
+  .search-wrap{margin:-14px -24px 16px;padding:12px 24px 14px;}
+  #searchInput{font-size:.95rem;}
+  .sr-text{font-size:.87rem;}
+  .back-to-top{right:28px;bottom:28px;width:54px;height:54px;}
+  .back-to-top svg{width:24px;height:24px;}
+  .part-head{padding:16px 18px;gap:14px;}
+  .part-titles b{font-size:1.04rem;}
+  .part-content{padding:2px 16px 16px;}
+  .section-head{padding:12px 14px;}
+  .sec-title{font-size:.92rem;}
+  .t-title{font-size:.89rem;}
+  .path-note{font-size:.83rem;}
+}
+@media (min-width:1000px){
+  .hero h1{font-size:2.1rem;}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition-duration:.01ms !important;animation-duration:.01ms !important;}
+  html{scroll-behavior:auto;}
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== HERO ==================== -->
+<header class="hero">
+  <div class="hero-inner">
+    <span class="badge">GME Pre-Sea Preparation</span>
+    <h1>Study Notes Library</h1>
+    <p class="sub">Mechanical Engineering Fundamentals · Marine Engineering · Maritime Professional Knowledge</p>
+    <div class="meta">
+      <span><b>Parts:</b> 3</span>
+      <span><b>Sections:</b> <span id="metaSections">—</span></span>
+      <span><b>Topics:</b> <span id="metaTopics">—</span></span>
+      <span><b>Format:</b> One HTML file per topic</span>
+    </div>
+    <p class="intro">
+      Browse the syllabus folder by folder. Open a part, then a section, then click any topic —
+      each topic opens its own revision-notes page in a new browser tab.
+    </p>
+  </div>
+</header>
+
+<main>
+
+  <!-- ==================== SEARCH ==================== -->
+  <div class="search-wrap">
+    <div class="search-box">
+      <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="15.6" y1="15.6" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <input
+        id="searchInput"
+        type="search"
+        placeholder="Search parts, sections, topics…"
+        autocomplete="off"
+        spellcheck="false"
+        aria-label="Search parts, sections and topics"
+      />
+      <button type="button" id="searchClear" class="search-clear" aria-label="Clear search" hidden>&times;</button>
+    </div>
+    <div id="searchResults" class="search-results" role="region" aria-live="polite" aria-label="Search results"></div>
+  </div>
+
+  <!-- ==================== PATH NOTE ==================== -->
+  <div class="path-note">
+    <span class="pn-ico">📁</span>
+    <div>
+      <b>How the links work.</b> Every topic opens in a new tab. By default the path is auto-generated,
+      e.g. <code>notes/part-a/A1/01-algebra-and-trigonometry.html</code>.
+      To use your own HTML file, open the <code>MANUAL_FILES</code> map near the top of the script and
+      paste your path next to the matching key (each entry is pre-labelled, e.g. <code>A1-1</code> or <code>B4</code>).
+    </div>
+  </div>
+
+  <!-- ==================== TOOLBAR ==================== -->
+  <div class="toolbar">
+    <button type="button" id="expandAll">Expand all</button>
+    <button type="button" id="collapseAll">Collapse all</button>
+  </div>
+
+  <div class="progress-strip">
+    <span class="ps-label">Opened</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="ps-val" id="progressVal">0 / 0</span>
+  </div>
+
+  <!-- ==================== FOLDERS (rendered by JS) ==================== -->
+  <div id="library"></div>
+
+</main>
+
+<button type="button" class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 19V5"/><path d="M5 12l7-7 7 7"/>
+  </svg>
+</button>
+
+<footer>
+  <p><b>GME Pre-Sea Preparation</b> — Study Notes Library</p>
+  <p>Part A · Mechanical Engineering Fundamentals &nbsp;|&nbsp; Part B · Marine Engineering &amp; Ship Machinery &nbsp;|&nbsp; Part C · Maritime Safety &amp; Professional Knowledge</p>
+</footer>
+
+<script>
+/* ==========================================================
+   1. SYLLABUS DATA
+   ----------------------------------------------------------
+   Each section may have `topics` (array of strings) OR no
+   topics at all (then the section itself is the clickable leaf).
+   ========================================================== */
+const PARTS = [
+  {
+    code: 'A',
+    title: 'Mechanical Engineering Fundamentals',
+    sections: [
+      { code:'A1', title:'Engineering Mathematics', topics:[
+        'Algebra and Trigonometry',
+        'Calculus',
+        'Linear Algebra and Numerical Methods',
+        'Applied Engineering Mathematics'
+      ]},
+      { code:'A2', title:'Engineering Mechanics', topics:[
+        'Statics','Dynamics','Applied Mechanics'
+      ]},
+      { code:'A3', title:'Strength of Materials', topics:[
+        'Stress and Strain','Loading and Structural Behaviour','Marine Applications'
+      ]},
+      { code:'A4', title:'Theory of Machines', topics:[
+        'Mechanisms','Power Transmission','Machine Dynamics'
+      ]},
+      { code:'A5', title:'Machine Design', topics:[
+        'Design Fundamentals','Machine Elements','Marine Machinery Design'
+      ]},
+      { code:'A6', title:'Engineering Materials & Metallurgy', topics:[
+        'Material Properties','Ferrous Materials','Non-Ferrous Materials','Metallurgy','Material Failures'
+      ]},
+      { code:'A7', title:'Manufacturing & Workshop Technology', topics:[
+        'Manufacturing Processes','Machining','Joining Processes','Fitting and Measurement','Workshop Safety'
+      ]},
+      { code:'A8', title:'Engineering Drawing & CAD' },
+      { code:'A9', title:'Engineering Thermodynamics', topics:[
+        'Fundamentals','First Law','Second Law','Thermodynamic Processes','Power Cycles',
+        'Steam and Gas Properties','Engineering Applications'
+      ]},
+      { code:'A10', title:'Heat Transfer', topics:[
+        'Conduction','Convection','Radiation','Heat Exchangers','Marine Applications'
+      ]},
+      { code:'A11', title:'Fluid Mechanics & Hydraulic Machines', topics:[
+        'Fluid Properties','Fluid Statics','Fluid Dynamics','Pipe Flow','Hydraulic Machinery','Pump Performance'
+      ]},
+      { code:'A12', title:'Internal Combustion Engines', topics:[
+        'Engine Fundamentals','Combustion','Engine Components','Engine Systems','Performance'
+      ]},
+      { code:'A13', title:'Refrigeration & Air Conditioning' },
+      { code:'A14', title:'Electrical Engineering Fundamentals', topics:[
+        'Electrical Fundamentals','AC Circuits','Electrical Machines','Electrical Protection'
+      ]},
+      { code:'A15', title:'Electronics, Instrumentation & Automation', topics:[
+        'Basic Electronics','Instrumentation','Control Systems'
+      ]},
+      { code:'A16', title:'Pumps, Compressors & Turbines', topics:[
+        'Pumps','Compressors','Turbines'
+      ]},
+      { code:'A17', title:'Maintenance, Tribology & Reliability' }
+    ]
+  },
+  {
+    code: 'B',
+    title: 'Marine Engineering & Ship Machinery',
+    sections: [
+      { code:'B1', title:'Introduction to Ships & Marine Engineering', topics:[
+        'Ship Fundamentals','Marine Engineering Department','Ship Machinery Overview','Marine Technical Documentation'
+      ]},
+      { code:'B2', title:'Marine Diesel Engines', topics:[
+        'Marine Diesel Engine Classification','Construction and Components','Two-Stroke Marine Engine Working',
+        'Four-Stroke Marine Engine Working','Fuel Injection System','Turbocharging and Scavenging',
+        'Lubrication System','Cooling System','Starting and Reversing','Engine Control and Safety',
+        'Engine Performance','Engine Faults and Troubleshooting','Engine Overhauling'
+      ]},
+      { code:'B3', title:'Marine Propulsion & Shafting', topics:[
+        'Propulsion Fundamentals','Propeller Types','Shafting Arrangement','Shafting Maintenance','Alternative Propulsion'
+      ]},
+      { code:'B4', title:'Marine Boilers & Steam Systems', topics:[
+        'Boiler Fundamentals','Types of Marine Boilers','Boiler Components',
+        'Boiler Operation','Boiler Water Treatment','Boiler Safety and Troubleshooting'
+      ]},
+      { code:'B5', title:'Marine Auxiliary Machinery', topics:[
+        'Marine Pumps','Air Compressors','Centrifugal Purifiers and Separators','Freshwater Generator',
+        'Steering Gear','Deck Machinery','Other Auxiliary Equipment'
+      ]},
+      { code:'B6', title:'Marine Piping & Valve Systems', topics:[
+        'Piping Fundamentals','Valve Types','Marine Piping Systems','Piping Maintenance'
+      ]},
+      { code:'B7', title:'Marine Fuel, Lubrication & Cooling Systems', topics:[
+        'Marine Fuels','Fuel Oil System','Lubricating Oil','Cooling Water'
+      ]},
+      { code:'B8', title:'Marine Electrical Power Systems', topics:[
+        'Shipboard Power Generation','Generator Synchronization','Main Switchboard',
+        'Electrical Motors','Emergency Electrical Systems','Electrical Troubleshooting'
+      ]},
+      { code:'B9', title:'Marine Automation & Control', topics:[
+        'Automation Fundamentals','Engine Automation','Auxiliary Automation',
+        'Engine Control Room Systems','PLC and Industrial Control'
+      ]},
+      { code:'B10', title:'Ship Construction & Naval Architecture', topics:[
+        'Ship Structure','Ship Dimensions and Measurements','Hull Construction','Naval Architecture Basics'
+      ]},
+      { code:'B11', title:'Ship Stability & Damage Control', topics:[
+        'Stability Fundamentals','Ship Loading','Advanced Stability Concepts','Damage Control'
+      ]},
+      { code:'B12', title:'Marine Refrigeration, HVAC & Fresh Water Systems', topics:[
+        'Marine Refrigeration','Marine Air Conditioning','Freshwater Systems'
+      ]},
+      { code:'B13', title:'Marine Pollution Prevention Systems', topics:[
+        'Oily Water Separator','Sewage Treatment','Garbage Management','Air Pollution','Ballast Water Management'
+      ]},
+      { code:'B14', title:'Engine Room Watchkeeping', topics:[
+        'Watchkeeping Fundamentals','Machinery Monitoring','Engine Room Operations',
+        'Emergency Watchkeeping','Unattended Machinery Spaces'
+      ]},
+      { code:'B15', title:'Marine Maintenance & Dry Docking', topics:[
+        'Planned Maintenance','Machinery Overhauling','Inspection and Measurement','Dry Docking','Maintenance Safety'
+      ]},
+      { code:'B16', title:'Marine Engineering Practical Skills', topics:[
+        'Workshop Practical','Engine Practical','Electrical Practical','Machinery Practical','Technical Reporting'
+      ]}
+    ]
+  },
+  {
+    code: 'C',
+    title: 'Merchant Navy, Maritime Safety & Professional Knowledge',
+    sections: [
+      { code:'C1', title:'STCW & Maritime Regulations', topics:[
+        'STCW Convention','Engineering Competency','Maritime Authorities','Seafarer Certification'
+      ]},
+      { code:'C2', title:'SOLAS, MARPOL & International Conventions', topics:[
+        'SOLAS','MARPOL','Other Important Conventions','Shipboard Documentation'
+      ]},
+      { code:'C3', title:'Fire Prevention & Firefighting', topics:[
+        'Fire Fundamentals','Fire Prevention','Fire Detection','Firefighting Equipment',
+        'Engine Room Fire','Firefighting Drills'
+      ]},
+      { code:'C4', title:'Personal Survival & Life-Saving Appliances', topics:[
+        'Personal Survival','Life-Saving Appliances','Lifeboat Systems','Emergency Equipment'
+      ]},
+      { code:'C5', title:'Marine Occupational Safety', topics:[
+        'Personal Safety','Permit-to-Work Systems','Risk Management','Occupational Health'
+      ]},
+      { code:'C6', title:'Emergency Response & Damage Control' },
+      { code:'C7', title:'Maritime Environmental Protection' },
+      { code:'C8', title:'Shipboard Communication & Maritime English', topics:[
+        'Maritime Terminology','Communication','Technical English','Professional Communication'
+      ]},
+      { code:'C9', title:'Seamanship & Shipboard Familiarization' },
+      { code:'C10', title:'Maritime Security & Human Factors', topics:[
+        'Security','Human Factors','Professional Behaviour'
+      ]},
+      { code:'C11', title:'Marine Engineering Oral & Written Exam Preparation', topics:[
+        'Technical Oral Questions','Troubleshooting Questions','Numerical Problems','Examination Skills'
+      ]},
+      { code:'C12', title:'Shipboard Career & Professional Development', topics:[
+        'Marine Engineering Career Path','Training Documentation','Professional Development','Modern Marine Engineering'
+      ]}
+    ]
+  }
+];
+
+/* ==========================================================
+   2. MANUAL FILE MAP  ◀── EDIT THIS SECTION
+   ----------------------------------------------------------
+   Assign your own HTML file to any topic or section here.
+
+   • Leave a value as '' (empty) to use the auto-generated path.
+   • Paste a relative path   →  'notes/part-a/A1/algebra.html'
+   • Paste a full URL        →  'https://example.com/notes/A1-1.html'
+
+   Key format
+   ----------
+     Topic   : 'SectionCode-Index'
+               e.g.  'A1-1'  = topic 1 of section A1
+                     'B2-13' = topic 13 of section B2
+                     'C11-4' = topic 4 of section C11
+
+     Section : 'SectionCode'    (only for leaf sections with no sub-topics)
+               e.g.  'A8'  ,  'A13' ,  'A17' ,  'C6' ,  'C7' ,  'C9'
+
+   The title after each // shows which topic/section that key controls,
+   so you can find the right line quickly.
+   ========================================================== */
+const MANUAL_FILES = {
+
+  /* ═══════════════════════════════════════════════════════════
+     PART A — Mechanical Engineering Fundamentals
+     ═══════════════════════════════════════════════════════════ */
+
+  /* A1 · Engineering Mathematics */
+  'A1-1': 'algebra-and-trigonometry.html', // Algebra and Trigonometry
+  'A1-2': '', // Calculus
+  'A1-3': '', // Linear Algebra and Numerical Methods
+  'A1-4': '', // Applied Engineering Mathematics
+
+  /* A2 · Engineering Mechanics */
+  'A2-1': '', // Statics
+  'A2-2': '', // Dynamics
+  'A2-3': '', // Applied Mechanics
+
+  /* A3 · Strength of Materials */
+  'A3-1': '', // Stress and Strain
+  'A3-2': '', // Loading and Structural Behaviour
+  'A3-3': '', // Marine Applications
+
+  /* A4 · Theory of Machines */
+  'A4-1': '', // Mechanisms
+  'A4-2': '', // Power Transmission
+  'A4-3': '', // Machine Dynamics
+
+  /* A5 · Machine Design */
+  'A5-1': '', // Design Fundamentals
+  'A5-2': '', // Machine Elements
+  'A5-3': '', // Marine Machinery Design
+
+  /* A6 · Engineering Materials & Metallurgy */
+  'A6-1': '', // Material Properties
+  'A6-2': '', // Ferrous Materials
+  'A6-3': '', // Non-Ferrous Materials
+  'A6-4': '', // Metallurgy
+  'A6-5': '', // Material Failures
+
+  /* A7 · Manufacturing & Workshop Technology */
+  'A7-1': '', // Manufacturing Processes
+  'A7-2': '', // Machining
+  'A7-3': '', // Joining Processes
+  'A7-4': '', // Fitting and Measurement
+  'A7-5': '', // Workshop Safety
+
+  /* A8 · Engineering Drawing & CAD  (no sub-topics) */
+  'A8': '',
+
+  /* A9 · Engineering Thermodynamics */
+  'A9-1': '', // Fundamentals
+  'A9-2': '', // First Law
+  'A9-3': '', // Second Law
+  'A9-4': '', // Thermodynamic Processes
+  'A9-5': '', // Power Cycles
+  'A9-6': '', // Steam and Gas Properties
+  'A9-7': '', // Engineering Applications
+
+  /* A10 · Heat Transfer */
+  'A10-1': '', // Conduction
+  'A10-2': '', // Convection
+  'A10-3': '', // Radiation
+  'A10-4': '', // Heat Exchangers
+  'A10-5': '', // Marine Applications
+
+  /* A11 · Fluid Mechanics & Hydraulic Machines */
+  'A11-1': '', // Fluid Properties
+  'A11-2': '', // Fluid Statics
+  'A11-3': '', // Fluid Dynamics
+  'A11-4': '', // Pipe Flow
+  'A11-5': '', // Hydraulic Machinery
+  'A11-6': '', // Pump Performance
+
+  /* A12 · Internal Combustion Engines */
+  'A12-1': '', // Engine Fundamentals
+  'A12-2': '', // Combustion
+  'A12-3': '', // Engine Components
+  'A12-4': '', // Engine Systems
+  'A12-5': '', // Performance
+
+  /* A13 · Refrigeration & Air Conditioning  (no sub-topics) */
+  'A13': '',
+
+  /* A14 · Electrical Engineering Fundamentals */
+  'A14-1': '', // Electrical Fundamentals
+  'A14-2': '', // AC Circuits
+  'A14-3': '', // Electrical Machines
+  'A14-4': '', // Electrical Protection
+
+  /* A15 · Electronics, Instrumentation & Automation */
+  'A15-1': '', // Basic Electronics
+  'A15-2': '', // Instrumentation
+  'A15-3': '', // Control Systems
+
+  /* A16 · Pumps, Compressors & Turbines */
+  'A16-1': '', // Pumps
+  'A16-2': '', // Compressors
+  'A16-3': '', // Turbines
+
+  /* A17 · Maintenance, Tribology & Reliability  (no sub-topics) */
+  'A17': '',
+
+  /* ═══════════════════════════════════════════════════════════
+     PART B — Marine Engineering & Ship Machinery
+     ═══════════════════════════════════════════════════════════ */
+
+  /* B1 · Introduction to Ships & Marine Engineering */
+  'B1-1': '', // Ship Fundamentals
+  'B1-2': '', // Marine Engineering Department
+  'B1-3': '', // Ship Machinery Overview
+  'B1-4': '', // Marine Technical Documentation
+
+  /* B2 · Marine Diesel Engines */
+  'B2-1': '',  // Marine Diesel Engine Classification
+  'B2-2': '',  // Construction and Components
+  'B2-3': '',  // Two-Stroke Marine Engine Working
+  'B2-4': '',  // Four-Stroke Marine Engine Working
+  'B2-5': '',  // Fuel Injection System
+  'B2-6': '',  // Turbocharging and Scavenging
+  'B2-7': '',  // Lubrication System
+  'B2-8': '',  // Cooling System
+  'B2-9': '',  // Starting and Reversing
+  'B2-10': '', // Engine Control and Safety
+  'B2-11': '', // Engine Performance
+  'B2-12': '', // Engine Faults and Troubleshooting
+  'B2-13': '', // Engine Overhauling
+
+  /* B3 · Marine Propulsion & Shafting */
+  'B3-1': '', // Propulsion Fundamentals
+  'B3-2': '', // Propeller Types
+  'B3-3': '', // Shafting Arrangement
+  'B3-4': '', // Shafting Maintenance
+  'B3-5': '', // Alternative Propulsion
+
+  /* B4 · Marine Boilers & Steam Systems */
+  'B4-1': '', // Boiler Fundamentals
+  'B4-2': '', // Types of Marine Boilers
+  'B4-3': '', // Boiler Components
+  'B4-4': '', // Boiler Operation
+  'B4-5': '', // Boiler Water Treatment
+  'B4-6': '', // Boiler Safety and Troubleshooting
+
+  /* B5 · Marine Auxiliary Machinery */
+  'B5-1': '', // Marine Pumps
+  'B5-2': '', // Air Compressors
+  'B5-3': '', // Centrifugal Purifiers and Separators
+  'B5-4': '', // Freshwater Generator
+  'B5-5': '', // Steering Gear
+  'B5-6': '', // Deck Machinery
+  'B5-7': '', // Other Auxiliary Equipment
+
+  /* B6 · Marine Piping & Valve Systems */
+  'B6-1': '', // Piping Fundamentals
+  'B6-2': '', // Valve Types
+  'B6-3': '', // Marine Piping Systems
+  'B6-4': '', // Piping Maintenance
+
+  /* B7 · Marine Fuel, Lubrication & Cooling Systems */
+  'B7-1': '', // Marine Fuels
+  'B7-2': '', // Fuel Oil System
+  'B7-3': '', // Lubricating Oil
+  'B7-4': '', // Cooling Water
+
+  /* B8 · Marine Electrical Power Systems */
+  'B8-1': '', // Shipboard Power Generation
+  'B8-2': '', // Generator Synchronization
+  'B8-3': '', // Main Switchboard
+  'B8-4': '', // Electrical Motors
+  'B8-5': '', // Emergency Electrical Systems
+  'B8-6': '', // Electrical Troubleshooting
+
+  /* B9 · Marine Automation & Control */
+  'B9-1': '', // Automation Fundamentals
+  'B9-2': '', // Engine Automation
+  'B9-3': '', // Auxiliary Automation
+  'B9-4': '', // Engine Control Room Systems
+  'B9-5': '', // PLC and Industrial Control
+
+  /* B10 · Ship Construction & Naval Architecture */
+  'B10-1': '', // Ship Structure
+  'B10-2': '', // Ship Dimensions and Measurements
+  'B10-3': '', // Hull Construction
+  'B10-4': '', // Naval Architecture Basics
+
+  /* B11 · Ship Stability & Damage Control */
+  'B11-1': '', // Stability Fundamentals
+  'B11-2': '', // Ship Loading
+  'B11-3': '', // Advanced Stability Concepts
+  'B11-4': '', // Damage Control
+
+  /* B12 · Marine Refrigeration, HVAC & Fresh Water Systems */
+  'B12-1': '', // Marine Refrigeration
+  'B12-2': '', // Marine Air Conditioning
+  'B12-3': '', // Freshwater Systems
+
+  /* B13 · Marine Pollution Prevention Systems */
+  'B13-1': '', // Oily Water Separator
+  'B13-2': '', // Sewage Treatment
+  'B13-3': '', // Garbage Management
+  'B13-4': '', // Air Pollution
+  'B13-5': '', // Ballast Water Management
+
+  /* B14 · Engine Room Watchkeeping */
+  'B14-1': '', // Watchkeeping Fundamentals
+  'B14-2': '', // Machinery Monitoring
+  'B14-3': '', // Engine Room Operations
+  'B14-4': '', // Emergency Watchkeeping
+  'B14-5': '', // Unattended Machinery Spaces
+
+  /* B15 · Marine Maintenance & Dry Docking */
+  'B15-1': '', // Planned Maintenance
+  'B15-2': '', // Machinery Overhauling
+  'B15-3': '', // Inspection and Measurement
+  'B15-4': '', // Dry Docking
+  'B15-5': '', // Maintenance Safety
+
+  /* B16 · Marine Engineering Practical Skills */
+  'B16-1': '', // Workshop Practical
+  'B16-2': '', // Engine Practical
+  'B16-3': '', // Electrical Practical
+  'B16-4': '', // Machinery Practical
+  'B16-5': '', // Technical Reporting
+
+  /* ═══════════════════════════════════════════════════════════
+     PART C — Merchant Navy, Maritime Safety & Professional Knowledge
+     ═══════════════════════════════════════════════════════════ */
+
+  /* C1 · STCW & Maritime Regulations */
+  'C1-1': '', // STCW Convention
+  'C1-2': '', // Engineering Competency
+  'C1-3': '', // Maritime Authorities
+  'C1-4': '', // Seafarer Certification
+
+  /* C2 · SOLAS, MARPOL & International Conventions */
+  'C2-1': '', // SOLAS
+  'C2-2': '', // MARPOL
+  'C2-3': '', // Other Important Conventions
+  'C2-4': '', // Shipboard Documentation
+
+  /* C3 · Fire Prevention & Firefighting */
+  'C3-1': '', // Fire Fundamentals
+  'C3-2': '', // Fire Prevention
+  'C3-3': '', // Fire Detection
+  'C3-4': '', // Firefighting Equipment
+  'C3-5': '', // Engine Room Fire
+  'C3-6': '', // Firefighting Drills
+
+  /* C4 · Personal Survival & Life-Saving Appliances */
+  'C4-1': '', // Personal Survival
+  'C4-2': '', // Life-Saving Appliances
+  'C4-3': '', // Lifeboat Systems
+  'C4-4': '', // Emergency Equipment
+
+  /* C5 · Marine Occupational Safety */
+  'C5-1': '', // Personal Safety
+  'C5-2': '', // Permit-to-Work Systems
+  'C5-3': '', // Risk Management
+  'C5-4': '', // Occupational Health
+
+  /* C6 · Emergency Response & Damage Control  (no sub-topics) */
+  'C6': '',
+
+  /* C7 · Maritime Environmental Protection  (no sub-topics) */
+  'C7': '',
+
+  /* C8 · Shipboard Communication & Maritime English */
+  'C8-1': '', // Maritime Terminology
+  'C8-2': '', // Communication
+  'C8-3': '', // Technical English
+  'C8-4': '', // Professional Communication
+
+  /* C9 · Seamanship & Shipboard Familiarization  (no sub-topics) */
+  'C9': '',
+
+  /* C10 · Maritime Security & Human Factors */
+  'C10-1': '', // Security
+  'C10-2': '', // Human Factors
+  'C10-3': '', // Professional Behaviour
+
+  /* C11 · Marine Engineering Oral & Written Exam Preparation */
+  'C11-1': '', // Technical Oral Questions
+  'C11-2': '', // Troubleshooting Questions
+  'C11-3': '', // Numerical Problems
+  'C11-4': '', // Examination Skills
+
+  /* C12 · Shipboard Career & Professional Development */
+  'C12-1': '', // Marine Engineering Career Path
+  'C12-2': '', // Training Documentation
+  'C12-3': '', // Professional Development
+  'C12-4': ''  // Modern Marine Engineering
+};
+
+/* ==========================================================
+   3. PATH HELPERS
+   ----------------------------------------------------------
+   Change BASE_FOLDER if your notes live somewhere else.
+   MANUAL_FILES entries always win over the auto-generated path.
+   ========================================================== */
+const BASE_FOLDER = 'notes';
+
+function slugify(str){
+  return String(str)
+    .toLowerCase()
+    .replace(/&/g, ' and ')
+    .replace(/[’'"]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+function pad2(n){ return String(n).padStart(2, '0'); }
+
+/* Topic file -> check MANUAL_FILES['SectionCode-N'] first, then auto-path */
+function topicPath(part, section, index, title){
+  const key = `${section.code}-${index + 1}`;
+  const manual = MANUAL_FILES[key];
+  if (typeof manual === 'string' && manual.trim()) return manual.trim();
+  return `${BASE_FOLDER}/part-${part.code.toLowerCase()}/${section.code}/${pad2(index + 1)}-${slugify(title)}.html`;
+}
+
+/* Section-only file -> check MANUAL_FILES['SectionCode'] first, then auto-path */
+function sectionPath(part, section){
+  const manual = MANUAL_FILES[section.code];
+  if (typeof manual === 'string' && manual.trim()) return manual.trim();
+  return `${BASE_FOLDER}/part-${part.code.toLowerCase()}/${section.code}/index.html`;
+}
+
+/* ==========================================================
+   4. RENDER THE LIBRARY
+   ========================================================== */
+const libraryEl = document.getElementById('library');
+
+function esc(s){
+  return String(s)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;');
+}
+
+function renderSection(part, section){
+  const hasTopics = Array.isArray(section.topics) && section.topics.length > 0;
+
+  /* ---- Leaf section: no sub-topics, the head itself is a link ---- */
+  if (!hasTopics){
+    const href = sectionPath(part, section);
+    return `
+      <div class="section leaf">
+        <a class="section-head" href="${href}" target="_blank" rel="noopener noreferrer"
+           title="${href}" data-link="1">
+          <span class="sec-code">${esc(section.code)}</span>
+          <span class="sec-title">${esc(section.title)}</span>
+          <span class="sec-go">open&nbsp;↗</span>
+        </a>
+      </div>`;
+  }
+
+  /* ---- Section with topics ---- */
+  const items = section.topics.map((topic, i) => {
+    const href = topicPath(part, section, i, topic);
+    return `
+      <li>
+        <a class="topic" href="${href}" target="_blank" rel="noopener noreferrer"
+           title="${href}" data-link="1" data-key="${esc(section.code)}-${i + 1}">
+          <span class="t-num">${i + 1}</span>
+          <span class="t-title">${esc(topic)}</span>
+          <span class="t-go" aria-hidden="true">↗</span>
+        </a>
+      </li>`;
+  }).join('');
+
+  return `
+    <div class="section">
+      <button class="section-head" type="button" aria-expanded="false"
+              aria-controls="sbody-${esc(section.code)}">
+        <span class="sec-code">${esc(section.code)}</span>
+        <span class="sec-title">${esc(section.title)}</span>
+        <span class="sec-count">${section.topics.length}</span>
+        <span class="chev sm" aria-hidden="true"></span>
+      </button>
+      <div class="section-body" id="sbody-${esc(section.code)}">
+        <div class="section-inner">
+          <ul class="topics">${items}</ul>
+        </div>
+      </div>
+    </div>`;
+}
+
+function renderPart(part){
+  const sectionsHTML = part.sections.map(sec => renderSection(part, sec)).join('');
+  const topicCount = part.sections.reduce(
+    (sum, sec) => sum + (sec.topics ? sec.topics.length : 1), 0
+  );
+  return `
+    <article class="part" data-part="${esc(part.code)}" id="part-${esc(part.code.toLowerCase())}">
+      <button class="part-head" type="button" aria-expanded="false"
+              aria-controls="pbody-${esc(part.code)}">
+        <span class="part-badge">${esc(part.code)}</span>
+        <span class="part-titles">
+          <b>Part ${esc(part.code)} — ${esc(part.title)}</b>
+          <small>${part.sections.length} sections · ${topicCount} topics</small>
+        </span>
+        <span class="chev" aria-hidden="true"></span>
+      </button>
+      <div class="part-body" id="pbody-${esc(part.code)}">
+        <div class="part-inner">
+          <div class="part-content">${sectionsHTML}</div>
+        </div>
+      </div>
+    </article>`;
+}
+
+libraryEl.innerHTML = PARTS.map(renderPart).join('');
+
+/* ==========================================================
+   5. COUNTERS IN THE HERO
+   ========================================================== */
+const TOTAL_SECTIONS = PARTS.reduce((a, p) => a + p.sections.length, 0);
+const TOTAL_TOPICS   = PARTS.reduce(
+  (a, p) => a + p.sections.reduce((b, s) => b + (s.topics ? s.topics.length : 1), 0), 0
+);
+document.getElementById('metaSections').textContent = TOTAL_SECTIONS;
+document.getElementById('metaTopics').textContent   = TOTAL_TOPICS;
+
+/* ==========================================================
+   6. ACCORDION BEHAVIOUR  (exclusive / one-at-a-time)
+   ----------------------------------------------------------
+   Opening a part closes every other part.
+   Opening a section closes every other section.
+   ========================================================== */
+function setPart(partEl, open){
+  partEl.classList.toggle('open', open);
+  const head = partEl.querySelector('.part-head');
+  if (head) head.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+
+function setSection(sectionEl, open){
+  sectionEl.classList.toggle('open', open);
+  const head = sectionEl.querySelector('button.section-head');
+  if (head) head.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+
+document.addEventListener('click', (e) => {
+  const partHead = e.target.closest('.part-head');
+  if (partHead){
+    const partEl = partHead.closest('.part');
+    const willOpen = !partEl.classList.contains('open');
+
+    /* Close every other part so only one stays open */
+    document.querySelectorAll('.part').forEach(other => {
+      if (other !== partEl) setPart(other, false);
+    });
+
+    setPart(partEl, willOpen);
+    return;
+  }
+
+  const secHead = e.target.closest('button.section-head');
+  if (secHead){
+    const sectionEl = secHead.closest('.section');
+    const willOpen = !sectionEl.classList.contains('open');
+
+    /* Close every other section so only one stays open */
+    document.querySelectorAll('.section').forEach(other => {
+      if (other !== sectionEl) setSection(other, false);
+    });
+
+    setSection(sectionEl, willOpen);
+    return;
+  }
+});
+
+document.getElementById('expandAll').addEventListener('click', () => {
+  document.querySelectorAll('.part').forEach(el => setPart(el, true));
+  document.querySelectorAll('.section').forEach(el => setSection(el, true));
+});
+
+document.getElementById('collapseAll').addEventListener('click', () => {
+  document.querySelectorAll('.part').forEach(el => setPart(el, false));
+  document.querySelectorAll('.section').forEach(el => setSection(el, false));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+/* ==========================================================
+   7. VISITED-TRACKING (localStorage)
+   ========================================================== */
+const VISITED_KEY = 'gme-notes-visited-v1';
+
+function loadVisited(){
+  try {
+    const raw = localStorage.getItem(VISITED_KEY);
+    return new Set(raw ? JSON.parse(raw) : []);
+  } catch (err){
+    return new Set();
+  }
+}
+
+function saveVisited(set){
+  try { localStorage.setItem(VISITED_KEY, JSON.stringify([...set])); }
+  catch (err){ /* storage may be blocked — ignore */ }
+}
+
+let visited = loadVisited();
+
+function refreshProgress(){
+  const total = document.querySelectorAll('a.topic').length;
+  const done  = document.querySelectorAll('a.topic.visited').length;
+  const pct   = total ? Math.round((done / total) * 100) : 0;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressVal').textContent = `${done} / ${total}`;
+}
+
+function applyVisited(){
+  document.querySelectorAll('a.topic').forEach(a => {
+    const key = a.dataset.key;
+    if (key && visited.has(key)) a.classList.add('visited');
+  });
+  refreshProgress();
+}
+
+/* Mark a topic as opened when it is clicked */
+document.addEventListener('click', (e) => {
+  const link = e.target.closest('a.topic');
+  if (!link) return;
+  const key = link.dataset.key;
+  if (!key) return;
+  visited.add(key);
+  saveVisited(visited);
+  link.classList.add('visited');
+  refreshProgress();
+});
+
+applyVisited();
+
+/* ==========================================================
+   8. SEARCH INDEX + SEARCH UI
+   ========================================================== */
+const INDEX = [];
+
+PARTS.forEach(part => {
+  part.sections.forEach(section => {
+    if (section.topics && section.topics.length){
+      section.topics.forEach((topic, i) => {
+        INDEX.push({
+          partCode: part.code,
+          partTitle: part.title,
+          secCode: section.code,
+          secTitle: section.title,
+          num: i + 1,
+          title: topic,
+          file: topicPath(part, section, i, topic),
+          hay: `${part.code} ${part.title} ${section.code} ${section.title} ${topic}`.toLowerCase()
+        });
+      });
+    } else {
+      INDEX.push({
+        partCode: part.code,
+        partTitle: part.title,
+        secCode: section.code,
+        secTitle: section.title,
+        num: null,
+        title: section.title,
+        file: sectionPath(part, section),
+        hay: `${part.code} ${part.title} ${section.code} ${section.title}`.toLowerCase()
+      });
+    }
+  });
+});
+
+const searchInput   = document.getElementById('searchInput');
+const searchClear   = document.getElementById('searchClear');
+const searchResults = document.getElementById('searchResults');
+const MAX_RESULTS   = 40;
+
+function escapeRegExp(str){
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function highlight(text, query){
+  if (!query) return esc(text);
+  const re = new RegExp(`(${escapeRegExp(query)})`, 'ig');
+  return esc(text).replace(re, '<mark>$1</mark>');
+}
+
+function renderSearch(query){
+  const q = query.trim().toLowerCase();
+
+  if (!q){
+    searchResults.classList.remove('show');
+    searchResults.innerHTML = '';
+    searchClear.hidden = true;
+    return;
+  }
+
+  searchClear.hidden = false;
+
+  const terms = q.split(/\s+/).filter(Boolean);
+  const matches = INDEX.filter(item => terms.every(t => item.hay.includes(t)));
+
+  if (!matches.length){
+    searchResults.innerHTML =
+      `<div class="sr-head">No matches</div>
+       <div class="sr-empty">Nothing found for “${esc(query)}”. Try a shorter term,
+       e.g. <b>boiler</b>, <b>stability</b>, <b>MARPOL</b> or <b>A9</b>.</div>`;
+    searchResults.classList.add('show');
+    return;
+  }
+
+  const shown = matches.slice(0, MAX_RESULTS);
+  const rows = shown.map(item => {
+    const crumb = item.num
+      ? `${esc(item.secCode)} · ${esc(item.secTitle)}`
+      : `${esc(item.secCode)} · ${esc(item.secTitle)}`;
+    const label = item.num ? `${item.num}. ${item.title}` : item.title;
+
+    return `
+      <a class="sr-item" href="${item.file}" target="_blank" rel="noopener noreferrer"
+         title="${item.file}" data-link="1">
+        <span class="sr-topic">Part ${esc(item.partCode)} › ${crumb}</span>
+        <span class="sr-text">${highlight(label, query.trim())}</span>
+      </a>`;
+  }).join('');
+
+  const more = matches.length > shown.length
+    ? ` <span style="font-weight:600;color:#8496a8;">(showing first ${shown.length})</span>`
+    : '';
+
+  searchResults.innerHTML =
+    `<div class="sr-head">${matches.length} result${matches.length === 1 ? '' : 's'}${more}</div>${rows}`;
+  searchResults.classList.add('show');
+}
+
+let searchTimer = null;
+searchInput.addEventListener('input', () => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => renderSearch(searchInput.value), 110);
+});
+
+searchInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape'){
+    searchInput.value = '';
+    renderSearch('');
+  }
+});
+
+searchClear.addEventListener('click', () => {
+  searchInput.value = '';
+  renderSearch('');
+  searchInput.focus();
+});
+
+/* ==========================================================
+   9. BACK TO TOP
+   ========================================================== */
+const backToTop = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+  backToTop.classList.toggle('show', window.scrollY > 400);
+}, { passive: true });
+
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+</script>
+</body>
+</html>
