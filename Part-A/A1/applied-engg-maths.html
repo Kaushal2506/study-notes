@@ -1,0 +1,2868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<meta name="theme-color" content="#0f2942" />
+<title>Applied Engineering Mathematics – Quick Study</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  font-size:16px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+body.exam-active{overflow:hidden;}
+:root{
+  --navy:#0f2942;
+  --navy-2:#16395c;
+  --ink:#1e2c3a;
+  --muted:#5b6b7c;
+  --line:#e3e9f0;
+  --bg:#eef2f7;
+  --card:#ffffff;
+  --accent:#d97706;
+  --accent-soft:#fff8ed;
+  --teal:#0e7490;
+  --teal-soft:#effbff;
+  --violet:#7c3aed;
+  --green:#15803d;
+  --red:#b91c1c;
+  --radius:16px;
+  --shadow:0 1px 2px rgba(15,41,66,.07),0 12px 28px -20px rgba(15,41,66,.6);
+}
+h1,h2,h3,h4,p,ul,ol{margin:0 0 .7em;}
+ul,ol{padding-left:1.15em;}
+li{margin:.25em 0;}
+sup{font-size:.68em;}
+b,strong{font-weight:700;}
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(155deg,#0f2942 0%,#17456e 55%,#0e7490 100%);
+  color:#e9f2fa;
+  padding:26px 18px 30px;
+}
+.hero::after{
+  content:"";
+  position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 88% 12%, rgba(255,255,255,.14), transparent 42%),
+    radial-gradient(circle at 12% 92%, rgba(217,119,6,.30), transparent 46%);
+  pointer-events:none;
+}
+.hero-inner{position:relative;max-width:920px;margin:0 auto;z-index:1;}
+.badge{
+  display:inline-block;
+  font-size:.7rem;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  font-weight:700;
+  background:rgba(255,255,255,.13);
+  border:1px solid rgba(255,255,255,.22);
+  color:#cfe4f5;
+  padding:.32em .8em;
+  border-radius:999px;
+  margin-bottom:.85em;
+}
+.hero h1{
+  font-size:1.42rem;
+  line-height:1.28;
+  letter-spacing:-.01em;
+  margin:0 0 .35em;
+  color:#fff;
+}
+.hero .sub{
+  font-size:.94rem;
+  color:#a9cbe4;
+  margin:0 0 1em;
+  font-weight:600;
+  letter-spacing:.02em;
+}
+.meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.45em .6em;
+  margin-bottom:1em;
+}
+.meta span{
+  font-size:.76rem;
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:8px;
+  padding:.35em .65em;
+  color:#d7e8f6;
+}
+.meta b{color:#fff;font-weight:700;}
+.intro{
+  font-size:.88rem;
+  line-height:1.65;
+  color:#c6dcee;
+  border-left:3px solid var(--accent);
+  padding-left:.85em;
+  margin:0;
+}
+
+main{
+  max-width:920px;
+  margin:0 auto;
+  padding:16px 12px 40px;
+}
+.toolbar{
+  display:flex;
+  gap:8px;
+  margin-bottom:14px;
+}
+.toolbar button{
+  flex:1;
+  font:inherit;
+  font-size:.8rem;
+  font-weight:700;
+  letter-spacing:.02em;
+  padding:.62em .8em;
+  border-radius:11px;
+  border:1px solid #d6dfea;
+  background:#fff;
+  color:#33465c;
+  cursor:pointer;
+  box-shadow:0 1px 2px rgba(15,41,66,.05);
+  transition:background .18s,border-color .18s,transform .12s;
+}
+.toolbar button:active{transform:scale(.97);}
+.toolbar button:hover{background:#f4f8fd;border-color:#bccddf;}
+
+.test-cta{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  background:linear-gradient(135deg,#0f2942,#0e7490);
+  color:#fff;
+  border-radius:16px;
+  padding:14px 16px;
+  margin-bottom:12px;
+  box-shadow:0 12px 24px -18px rgba(15,41,66,.95);
+  position:relative;
+  overflow:hidden;
+}
+.test-cta::before{
+  content:"";
+  position:absolute;
+  right:-30px;top:-40px;
+  width:140px;height:140px;
+  background:radial-gradient(circle,rgba(217,119,6,.35),transparent 65%);
+  border-radius:50%;
+}
+.test-cta-text{position:relative;z-index:1;flex:1;min-width:0;}
+.test-cta-text b{display:block;font-size:1rem;letter-spacing:-.005em;}
+.test-cta-text span{font-size:.76rem;color:#a9cbe4;}
+.test-cta-btn{
+  position:relative;z-index:1;
+  flex:0 0 auto;
+  font:inherit;
+  font-size:.82rem;
+  font-weight:800;
+  letter-spacing:.02em;
+  border:0;
+  padding:.72em 1.05em;
+  border-radius:11px;
+  background:var(--accent);
+  color:#fff;
+  cursor:pointer;
+  box-shadow:0 6px 14px -8px rgba(217,119,6,.9);
+  transition:transform .12s,background .18s;
+  white-space:nowrap;
+}
+.test-cta-btn:hover{background:#c26a05;}
+.test-cta-btn:active{transform:scale(.96);}
+
+.search-wrap{
+  position:sticky;
+  top:0;
+  z-index:45;
+  margin:-8px -12px 12px;
+  padding:8px 12px 10px;
+  background:var(--bg);
+  box-shadow:0 10px 16px -16px rgba(15,41,66,.85);
+}
+.search-box{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:#fff;
+  border:1px solid #d6dfea;
+  border-radius:14px;
+  padding:.5em .7em;
+  box-shadow:0 1px 2px rgba(15,41,66,.05);
+  transition:border-color .18s,box-shadow .18s;
+}
+.search-box:focus-within{
+  border-color:#8fb8d8;
+  box-shadow:0 0 0 3px rgba(14,116,144,.14);
+}
+.search-icon{
+  width:18px;height:18px;
+  flex:0 0 auto;
+  color:#8ba0b4;
+}
+#searchInput{
+  flex:1 1 auto;
+  min-width:0;
+  border:0;
+  outline:0;
+  background:transparent;
+  font:inherit;
+  font-size:.9rem;
+  color:var(--ink);
+  padding:0;
+  -webkit-appearance:none;
+  appearance:none;
+}
+#searchInput::placeholder{color:#95a7b8;}
+#searchInput::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;}
+.search-clear{
+  flex:0 0 auto;
+  width:24px;height:24px;
+  border-radius:50%;
+  border:0;
+  background:#eef2f7;
+  color:#5b6b7c;
+  font-size:1rem;
+  line-height:1;
+  display:grid;place-items:center;
+  cursor:pointer;
+  padding:0;
+  transition:background .16s,color .16s;
+}
+.search-clear:hover{background:#e0e8f1;color:#33465c;}
+
+.search-results{
+  display:none;
+  margin-top:8px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:var(--shadow);
+  max-height:52vh;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+}
+.search-results.show{display:block;}
+.sr-head{
+  position:sticky;
+  top:0;
+  background:#f7fafd;
+  border-bottom:1px solid #e9eff6;
+  font-size:.7rem;
+  font-weight:800;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  color:#5b6b7c;
+  padding:.6em .85em;
+}
+.sr-item{
+  display:block;
+  width:100%;
+  text-align:left;
+  font:inherit;
+  background:none;
+  border:0;
+  border-bottom:1px solid #eef2f7;
+  padding:.62em .85em;
+  cursor:pointer;
+  transition:background .14s;
+}
+.sr-item:last-child{border-bottom:0;}
+.sr-item:hover,.sr-item:focus-visible{background:#f4f9fd;outline:0;}
+.sr-topic{
+  display:block;
+  font-size:.68rem;
+  font-weight:800;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  color:#0e7490;
+  margin-bottom:.18em;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.sr-text{
+  display:block;
+  font-size:.83rem;
+  line-height:1.45;
+  color:#2c3e50;
+  word-break:break-word;
+}
+.sr-empty{
+  padding:.9em .85em 1.1em;
+  font-size:.83rem;
+  color:#6b7c8d;
+}
+mark{
+  background:#fde68a;
+  color:#5b3a00;
+  border-radius:3px;
+  padding:0 .1em;
+}
+
+.flash-hit{animation:flashHit 1.8s ease-out;}
+@keyframes flashHit{
+  0%{background:#fff2c9;box-shadow:0 0 0 6px #fff2c9;}
+  70%{background:#fff8e2;box-shadow:0 0 0 2px #fff8e2;}
+  100%{background:transparent;box-shadow:0 0 0 0 transparent;}
+}
+
+.back-to-top{
+  position:fixed;
+  right:16px;
+  bottom:18px;
+  z-index:60;
+  width:50px;height:50px;
+  border:0;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(150deg,#0f2942,#1d5b8c);
+  color:#fff;
+  cursor:pointer;
+  box-shadow:0 10px 24px -10px rgba(15,41,66,.95),0 2px 6px rgba(15,41,66,.25);
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(14px) scale(.9);
+  transition:opacity .26s ease,transform .26s ease,visibility .26s;
+}
+.back-to-top.show{opacity:1;visibility:visible;transform:none;}
+.back-to-top:active{transform:scale(.93);}
+.back-to-top svg{width:22px;height:22px;display:block;}
+
+.folder{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  margin-bottom:13px;
+  overflow:hidden;
+  scroll-margin-top:12px;
+}
+.folder-head{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:14px 14px;
+  background:transparent;
+  border:0;
+  font:inherit;
+  color:inherit;
+  text-align:left;
+  cursor:pointer;
+  transition:background .18s;
+}
+.folder-head:hover{background:#f7fafd;}
+.folder-head:focus-visible{outline:3px solid #9ec8e6;outline-offset:-3px;}
+.folder-num{
+  flex:0 0 auto;
+  width:38px;height:38px;
+  border-radius:11px;
+  display:grid;place-items:center;
+  font-weight:800;
+  font-size:.95rem;
+  color:#fff;
+  background:linear-gradient(150deg,var(--navy),#1d5b8c);
+  box-shadow:0 3px 8px -4px rgba(15,41,66,.9);
+}
+.folder:nth-of-type(2) .folder-num{background:linear-gradient(150deg,#0e7490,#0891b2);}
+.folder:nth-of-type(3) .folder-num{background:linear-gradient(150deg,#7c3aed,#6366f1);}
+.folder:nth-of-type(4) .folder-num{background:linear-gradient(150deg,#b45309,#d97706);}
+.folder:nth-of-type(5) .folder-num{background:linear-gradient(150deg,#166534,#15803d);}
+.folder:nth-of-type(6) .folder-num{background:linear-gradient(150deg,#9d174d,#be185d);}
+.folder:nth-of-type(7) .folder-num{background:linear-gradient(150deg,#0e7490,#0891b2);}
+.folder-title{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  min-width:0;
+}
+.folder-title b{
+  font-size:.98rem;
+  line-height:1.3;
+  color:#152a3f;
+  letter-spacing:-.005em;
+}
+.folder-title small{
+  font-size:.735rem;
+  color:var(--muted);
+  line-height:1.35;
+}
+.chev{
+  margin-left:auto;
+  flex:0 0 auto;
+  width:26px;height:26px;
+  position:relative;
+  border-radius:50%;
+  background:#f1f5fa;
+  transition:background .2s;
+}
+.chev::before{
+  content:"";
+  position:absolute;
+  top:50%;left:50%;
+  width:8px;height:8px;
+  border-right:2px solid #4a5f76;
+  border-bottom:2px solid #4a5f76;
+  transform:translate(-50%,-70%) rotate(45deg);
+  transition:transform .3s ease;
+}
+.folder.open .chev{background:#e3edf7;}
+.folder.open .chev::before{transform:translate(-50%,-30%) rotate(-135deg);}
+
+.folder-body{
+  display:grid;
+  grid-template-rows:0fr;
+  transition:grid-template-rows .35s ease;
+}
+.folder.open > .folder-body{grid-template-rows:1fr;}
+.folder-inner{overflow:hidden;}
+.folder-content{
+  padding:4px 14px 18px;
+  border-top:1px solid transparent;
+}
+.folder.open .folder-content{border-top-color:var(--line);}
+.folder-content > .sub:first-child{margin-top:12px;}
+
+.sub{
+  font-size:1rem;
+  font-weight:800;
+  color:var(--navy);
+  letter-spacing:-.005em;
+  margin:1.35em 0 .55em;
+  padding-left:.6em;
+  border-left:4px solid var(--accent);
+  line-height:1.35;
+}
+.folder:nth-of-type(2) .sub{border-left-color:#0e7490;}
+.folder:nth-of-type(3) .sub{border-left-color:#7c3aed;}
+.folder:nth-of-type(4) .sub{border-left-color:#d97706;}
+.folder:nth-of-type(5) .sub{border-left-color:#15803d;}
+.folder:nth-of-type(6) .sub{border-left-color:#be185d;}
+.folder:nth-of-type(7) .sub{border-left-color:#0e7490;}
+.sub-sub{
+  font-size:.92rem;
+  font-weight:700;
+  color:#274561;
+  margin:1.1em 0 .45em;
+}
+p{font-size:.915rem;color:#2c3e50;}
+.lead{color:#3d5165;}
+
+.eq{
+  font-family:Georgia,"Times New Roman",Cambria,serif;
+  font-size:1.06rem;
+  text-align:center;
+  margin:.85em 0;
+  padding:.15em 0;
+  color:#12263a;
+  overflow-x:auto;
+  overflow-y:hidden;
+  white-space:nowrap;
+  letter-spacing:.01em;
+}
+.eq.wrap{white-space:normal;}
+.frac{
+  display:inline-flex;
+  flex-direction:column;
+  vertical-align:middle;
+  text-align:center;
+  line-height:1.22;
+  margin:0 .2em;
+  font-size:.94em;
+}
+.frac > span{padding:0 .32em;}
+.frac > span:first-child{border-bottom:1.4px solid currentColor;padding-bottom:.08em;}
+.frac > span:last-child{padding-top:.08em;}
+.rad-body{
+  border-top:1.4px solid currentColor;
+  padding:0 .16em 0 .1em;
+  margin-left:-.02em;
+}
+.boxed{
+  display:inline-block;
+  border:2px solid var(--accent);
+  background:var(--accent-soft);
+  border-radius:12px;
+  padding:.5em 1em;
+  box-shadow:0 2px 10px -6px rgba(217,119,6,.9);
+}
+
+ul.plain,ol.plain{padding-left:1.1em;}
+ul.plain li,p li{font-size:.9rem;color:#2c3e50;}
+
+.rules{
+  background:#f7fafd;
+  border:1px solid #e2ebf4;
+  border-left:4px solid var(--teal);
+  border-radius:0 12px 12px 0;
+  padding:.75em 1em .75em .95em;
+  margin:.85em 0;
+}
+.rules h4{
+  font-size:.78rem;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--teal);
+  margin:0 0 .45em;
+  font-weight:800;
+}
+.rules ul{margin:0;padding-left:1.1em;}
+.rules li{font-size:.875rem;color:#33465c;}
+
+.example{
+  background:#fbfdff;
+  border:1px solid #e2ebf4;
+  border-left:4px solid var(--accent);
+  border-radius:0 12px 12px 0;
+  padding:.8em 1em;
+  margin:.9em 0;
+}
+.example h4{
+  font-size:.78rem;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:#b45309;
+  margin:0 0 .5em;
+  font-weight:800;
+}
+.example .eq{margin:.5em 0;}
+
+.apps{
+  background:linear-gradient(180deg,#f2fbfd,#f8fdff);
+  border:1px solid #d8edf4;
+  border-radius:12px;
+  padding:.8em 1em;
+  margin:.9em 0;
+}
+.apps h4{
+  font-size:.78rem;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:#0b6b84;
+  margin:0 0 .45em;
+  font-weight:800;
+  display:flex;align-items:center;gap:.42em;
+}
+.apps h4::before{content:"⚙";font-size:1rem;color:#0e7490;}
+.apps ul{margin:0;padding-left:1.1em;}
+.apps li{font-size:.875rem;color:#2f4759;}
+
+.memo{
+  background:linear-gradient(135deg,#fff7ed,#fffdf7);
+  border:1px dashed #f0c184;
+  border-radius:12px;
+  padding:.75em .95em;
+  margin:.85em 0;
+  font-size:.875rem;
+  color:#7c4a03;
+}
+.memo b{color:#b45309;}
+
+.note{
+  background:#f5f3ff;
+  border:1px solid #ddd6fe;
+  border-left:4px solid var(--violet);
+  border-radius:0 12px 12px 0;
+  padding:.75em .95em;
+  margin:.85em 0;
+  font-size:.875rem;
+  color:#4c1d95;
+}
+.note b{color:#6d28d9;}
+
+.table-wrap{
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  margin:.8em 0 1em;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#fff;
+}
+table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:.85rem;
+  min-width:280px;
+}
+thead th{
+  background:#eef4fa;
+  color:#3b5470;
+  font-size:.72rem;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  font-weight:800;
+  text-align:left;
+  padding:.62em .8em;
+  border-bottom:1px solid #dbe6f0;
+  white-space:nowrap;
+}
+tbody td{
+  padding:.58em .8em;
+  border-bottom:1px solid #eef2f7;
+  color:#2c3e50;
+  vertical-align:top;
+}
+tbody tr:last-child td{border-bottom:0;}
+tbody tr:nth-child(even){background:#fafcfe;}
+td.center,th.center{text-align:center;}
+table.mathy td{font-family:Georgia,"Times New Roman",serif;font-size:.93rem;}
+
+.diagram{
+  background:#f9fbfd;
+  border:1px solid #e4ecf4;
+  border-radius:14px;
+  padding:12px 10px 8px;
+  margin:.9em 0 1em;
+}
+.diagram svg{display:block;width:100%;height:auto;}
+.diagram figcaption{
+  font-size:.75rem;
+  color:var(--muted);
+  text-align:center;
+  margin-top:.5em;
+  line-height:1.4;
+}
+
+.heat-bar{
+  display:flex;
+  height:28px;
+  border-radius:99px;
+  overflow:hidden;
+  margin:.8em 0 .3em;
+  box-shadow:inset 0 1px 3px rgba(0,0,0,.08);
+}
+.heat-seg{
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:.62rem;
+  font-weight:800;
+  color:#fff;
+  letter-spacing:.03em;
+  white-space:nowrap;
+  overflow:hidden;
+}
+.heat-seg.hb1{background:#15803d;}
+.heat-seg.hb2{background:#b45309;}
+.heat-seg.hb3{background:#0e7490;}
+.heat-seg.hb4{background:#94a3b8;}
+.heat-legend{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.4em 1em;
+  font-size:.72rem;
+  color:#5b6b7c;
+  margin-bottom:.3em;
+}
+.heat-legend span{display:inline-flex;align-items:center;gap:.35em;}
+.heat-dot{
+  display:inline-block;
+  width:10px;height:10px;
+  border-radius:3px;
+}
+.heat-dot.d1{background:#15803d;}
+.heat-dot.d2{background:#b45309;}
+.heat-dot.d3{background:#0e7490;}
+.heat-dot.d4{background:#94a3b8;}
+
+.acc-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin:.8em 0;
+}
+.acc-card{
+  background:#fbfdff;
+  border:1px solid #e4ecf4;
+  border-radius:12px;
+  padding:.7em .8em;
+  text-align:center;
+}
+.acc-card h5{
+  margin:0 0 .3em;
+  font-size:.7rem;
+  text-transform:uppercase;
+  letter-spacing:.07em;
+  font-weight:800;
+}
+.acc-card.a h5{color:#15803d;}
+.acc-card.p h5{color:#0e7490;}
+.acc-card p{
+  margin:0;
+  font-size:.8rem;
+  color:#3d5165;
+  line-height:1.5;
+}
+.acc-card .acc-icon{
+  font-size:1.4rem;
+  display:block;
+  margin-bottom:.15em;
+}
+.acc-card.a .acc-icon{color:#15803d;}
+.acc-card.p .acc-icon{color:#0e7490;}
+
+footer{
+  max-width:920px;
+  margin:0 auto;
+  padding:0 14px 34px;
+  text-align:center;
+  font-size:.76rem;
+  color:#8496a8;
+  line-height:1.6;
+}
+footer b{color:#5b6b7c;}
+
+@media (min-width:720px){
+  .hero{padding:40px 24px 44px;}
+  .hero h1{font-size:2rem;}
+  .hero .sub{font-size:1.02rem;}
+  .intro{font-size:.94rem;max-width:70ch;}
+  main{padding:24px 24px 48px;}
+  .search-wrap{margin:-14px -24px 16px;padding:12px 24px 14px;}
+  #searchInput{font-size:.95rem;}
+  .sr-text{font-size:.87rem;}
+  .back-to-top{right:28px;bottom:28px;width:54px;height:54px;}
+  .back-to-top svg{width:24px;height:24px;}
+  .folder-head{padding:16px 18px;gap:14px;}
+  .folder-title b{font-size:1.04rem;}
+  .folder-content{padding:4px 22px 22px;}
+  p{font-size:.95rem;}
+  table{font-size:.9rem;}
+  .acc-grid{grid-template-columns:1fr 1fr;gap:12px;}
+  .test-cta{padding:18px 22px;border-radius:18px;}
+  .test-cta-text b{font-size:1.1rem;}
+  .test-cta-text span{font-size:.82rem;}
+}
+@media (min-width:1000px){
+  .hero h1{font-size:2.2rem;}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition-duration:.01ms !important;animation-duration:.01ms !important;}
+}
+
+.exam-overlay{
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  background:#eef2f7;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+}
+.exam-overlay[hidden]{display:none;}
+.exam-screen{display:none;}
+.exam-screen.active{display:block;}
+
+#examConfigScreen{
+  min-height:100vh;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px 14px;
+}
+#examConfigScreen.active{display:flex;}
+.exam-config-card{
+  width:100%;
+  max-width:720px;
+  background:#fff;
+  border-radius:20px;
+  box-shadow:0 30px 60px -30px rgba(15,41,66,.7),0 4px 14px rgba(15,41,66,.08);
+  overflow:hidden;
+}
+.exam-config-head{
+  background:linear-gradient(155deg,#0f2942,#0e7490);
+  color:#fff;
+  padding:22px 22px 24px;
+  position:relative;
+  overflow:hidden;
+}
+.exam-config-head::before{
+  content:"";position:absolute;right:-40px;top:-50px;
+  width:170px;height:170px;
+  background:radial-gradient(circle,rgba(217,119,6,.4),transparent 65%);
+  border-radius:50%;
+}
+.exam-config-head h2{
+  margin:0;font-size:1.32rem;letter-spacing:-.01em;
+  position:relative;z-index:1;
+}
+.exam-config-head p{
+  margin:.35em 0 0;font-size:.82rem;color:#a9cbe4;
+  position:relative;z-index:1;
+}
+.exam-close{
+  position:absolute;top:14px;right:14px;
+  width:34px;height:34px;border:0;border-radius:50%;
+  background:rgba(255,255,255,.15);color:#fff;font-size:1.4rem;
+  line-height:1;cursor:pointer;z-index:2;display:grid;place-items:center;
+  transition:background .18s;
+}
+.exam-close:hover{background:rgba(255,255,255,.28);}
+
+.exam-config-body{padding:20px 20px 22px;}
+.config-group{margin-bottom:20px;}
+.config-group > label{
+  display:block;font-size:.76rem;font-weight:800;
+  text-transform:uppercase;letter-spacing:.08em;color:#5b6b7c;margin-bottom:9px;
+}
+.config-options{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:7px;
+}
+.config-opt{
+  font:inherit;font-size:.82rem;font-weight:700;
+  padding:.58em 0;border-radius:10px;
+  border:1.5px solid #d6dfea;background:#fff;color:#33465c;cursor:pointer;
+  transition:all .15s;
+}
+.config-opt:hover{border-color:#9ec8e6;background:#f4f9fd;}
+.config-opt.active{
+  border-color:var(--navy);
+  background:linear-gradient(150deg,#0f2942,#1d5b8c);
+  color:#fff;
+  box-shadow:0 6px 14px -8px rgba(15,41,66,.9);
+}
+.config-summary{
+  background:#f7fafd;border:1px solid #e2ebf4;border-radius:12px;
+  padding:12px 14px;margin-bottom:18px;
+}
+.config-summary-row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:.35em 0;font-size:.86rem;color:#5b6b7c;
+}
+.config-summary-row + .config-summary-row{border-top:1px solid #e2ebf4;}
+.config-summary-row b{color:#12263a;font-weight:800;font-size:.92rem;}
+.exam-btn-primary{
+  width:100%;font:inherit;font-size:.95rem;font-weight:800;
+  letter-spacing:.02em;padding:.85em 1.2em;border-radius:12px;border:0;
+  background:linear-gradient(150deg,#0f2942,#1d5b8c);color:#fff;cursor:pointer;
+  box-shadow:0 12px 24px -14px rgba(15,41,66,.95);
+  transition:transform .12s,opacity .18s;
+}
+.exam-btn-primary:hover{opacity:.94;}
+.exam-btn-primary:active{transform:scale(.98);}
+
+#examTestScreen.active{
+  display:flex;flex-direction:column;min-height:100vh;
+}
+.exam-header{
+  position:sticky;top:0;z-index:20;
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px;background:#fff;border-bottom:1px solid var(--line);
+  box-shadow:0 6px 16px -18px rgba(15,41,66,.9);
+}
+.exam-header-left{flex:1;min-width:0;display:flex;flex-direction:column;gap:5px;}
+.exam-q-counter{font-size:.84rem;color:#5b6b7c;font-weight:600;}
+.exam-q-counter b{font-size:1rem;color:#12263a;font-weight:800;}
+.exam-progress-bar{height:5px;border-radius:99px;background:#e6edf4;overflow:hidden;}
+.exam-progress-fill{
+  height:100%;width:0%;border-radius:99px;
+  background:linear-gradient(90deg,#0e7490,#1d5b8c);
+  transition:width .3s ease;
+}
+.exam-timer{
+  flex:0 0 auto;font-size:1rem;font-weight:800;color:#12263a;
+  font-variant-numeric:tabular-nums;background:#f2f6fa;border:1px solid #dde6ef;
+  padding:.32em .7em;border-radius:9px;letter-spacing:.02em;
+  min-width:64px;text-align:center;
+}
+.exam-timer.warn{
+  background:#fef2f2;border-color:#fca5a5;color:#b91c1c;
+  animation:pulseWarn 1.2s ease-in-out infinite;
+}
+@keyframes pulseWarn{
+  0%,100%{box-shadow:0 0 0 0 rgba(185,28,28,0);}
+  50%{box-shadow:0 0 0 4px rgba(185,28,28,.16);}
+}
+.exam-btn-submit{
+  flex:0 0 auto;font:inherit;font-size:.82rem;font-weight:800;
+  padding:.55em .95em;border-radius:10px;border:0;
+  background:var(--accent);color:#fff;cursor:pointer;
+  transition:transform .12s,background .18s;white-space:nowrap;
+}
+.exam-btn-submit:hover{background:#c26a05;}
+.exam-btn-submit:active{transform:scale(.96);}
+
+.exam-body{
+  flex:1;display:grid;grid-template-columns:1fr;gap:14px;
+  padding:14px;max-width:1200px;width:100%;margin:0 auto;align-items:start;
+}
+.exam-main{min-width:0;}
+.exam-question-card{
+  background:#fff;border:1px solid var(--line);border-radius:16px;
+  padding:16px 16px 18px;box-shadow:var(--shadow);
+}
+.exam-q-meta{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:10px;margin-bottom:12px;flex-wrap:wrap;
+}
+.exam-difficulty{
+  font-size:.66rem;font-weight:800;letter-spacing:.06em;
+  text-transform:uppercase;padding:.34em .7em;border-radius:99px;
+}
+.exam-difficulty.d-easy{background:#dcfce7;color:#166534;}
+.exam-difficulty.d-medium{background:#dbeafe;color:#1e40af;}
+.exam-difficulty.d-difficult{background:#ffedd5;color:#9a3412;}
+.exam-difficulty.d-very-difficult{background:#fee2e2;color:#991b1b;}
+.exam-mark-btn{
+  font:inherit;font-size:.72rem;font-weight:700;
+  padding:.4em .75em;border-radius:8px;border:1px solid #d6dfea;
+  background:#fff;color:#5b6b7c;cursor:pointer;transition:all .15s;
+}
+.exam-mark-btn:hover{background:#f7fafd;border-color:#bccddf;}
+.exam-mark-btn.marked{
+  background:#fff7ed;border-color:#f0c184;color:#b45309;font-weight:800;
+}
+.exam-q-text{
+  font-size:1rem;line-height:1.55;color:#12263a;font-weight:600;
+  margin-bottom:14px;word-break:break-word;
+}
+.exam-options{display:flex;flex-direction:column;gap:8px;}
+.exam-option{
+  display:flex;align-items:flex-start;gap:10px;width:100%;
+  text-align:left;font:inherit;font-size:.9rem;padding:.72em .9em;
+  border:1.5px solid #dde6ef;background:#fbfdff;border-radius:11px;
+  cursor:pointer;transition:all .15s;color:#2c3e50;line-height:1.5;
+  word-break:break-word;
+}
+.exam-option:hover{border-color:#9ec8e6;background:#f4f9fd;}
+.exam-option.selected{
+  border-color:#0e7490;background:#effbff;
+  box-shadow:0 0 0 3px rgba(14,116,144,.12);
+  color:#0b3a47;font-weight:600;
+}
+.exam-option .opt-letter{
+  flex:0 0 auto;width:22px;height:22px;border-radius:50%;
+  background:#e6edf4;color:#5b6b7c;font-size:.72rem;font-weight:800;
+  display:grid;place-items:center;
+}
+.exam-option.selected .opt-letter{background:#0e7490;color:#fff;}
+.exam-controls{display:flex;gap:10px;margin-top:14px;}
+.exam-btn-secondary{
+  flex:1;font:inherit;font-size:.86rem;font-weight:800;
+  padding:.78em 1em;border-radius:11px;border:1.5px solid #d6dfea;
+  background:#fff;color:#33465c;cursor:pointer;transition:all .15s;
+}
+.exam-btn-secondary:hover{background:#f4f9fd;border-color:#bccddf;}
+.exam-btn-secondary:disabled{opacity:.45;cursor:not-allowed;}
+.exam-controls .exam-btn-primary{flex:1;width:auto;padding:.78em 1em;font-size:.86rem;}
+.exam-controls .exam-btn-primary:disabled{opacity:.45;cursor:not-allowed;}
+
+.exam-sidebar{
+  background:#fff;border:1px solid var(--line);border-radius:16px;
+  padding:14px;box-shadow:var(--shadow);
+}
+.exam-sidebar-head{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:10px;margin-bottom:10px;
+}
+.exam-sidebar-head h3{
+  margin:0;font-size:.9rem;color:#12263a;font-weight:800;
+}
+.exam-nav-toggle{
+  font:inherit;font-size:.72rem;font-weight:700;
+  padding:.3em .6em;border-radius:7px;border:1px solid #d6dfea;
+  background:#f7fafd;color:#5b6b7c;cursor:pointer;
+}
+.exam-nav-legend{
+  display:flex;flex-wrap:wrap;gap:6px 12px;margin-bottom:10px;
+  font-size:.68rem;color:#5b6b7c;font-weight:600;
+}
+.exam-nav-legend span{display:inline-flex;align-items:center;gap:5px;}
+.lg{
+  display:inline-block;width:11px;height:11px;border-radius:3px;
+  border:1.5px solid #cbd8e4;background:#fff;
+}
+.lg.lg-answered{background:#1d5b8c;border-color:#1d5b8c;}
+.lg.lg-marked{background:#fff;border-color:#d97706;box-shadow:inset 0 0 0 2px #fff,inset 0 0 0 3px #d97706;}
+.lg.lg-current{border-color:#0f2942;box-shadow:0 0 0 1.5px #0f2942 inset;}
+.exam-nav-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(34px,1fr));
+  gap:5px;max-height:340px;overflow-y:auto;padding-right:2px;
+  -webkit-overflow-scrolling:touch;
+}
+.exam-nav-grid.hidden{display:none;}
+.exam-nav-btn{
+  position:relative;font:inherit;font-size:.78rem;font-weight:700;
+  aspect-ratio:1;border-radius:7px;border:1.5px solid #d6dfea;
+  background:#fff;color:#5b6b7c;cursor:pointer;transition:all .14s;padding:0;
+}
+.exam-nav-btn:hover{border-color:#9ec8e6;}
+.exam-nav-btn.answered{background:#1d5b8c;border-color:#1d5b8c;color:#fff;}
+.exam-nav-btn.marked::after{
+  content:"";position:absolute;top:2px;right:2px;
+  width:6px;height:6px;border-radius:50%;background:#d97706;
+  box-shadow:0 0 0 1.5px #fff;
+}
+.exam-nav-btn.current{
+  border-color:#0f2942;box-shadow:0 0 0 2px rgba(15,41,66,.28);
+  transform:scale(1.06);
+}
+
+#examResultsScreen.active{display:flex;align-items:flex-start;justify-content:center;padding:20px 14px 40px;min-height:100vh;}
+.results-container{
+  width:100%;max-width:680px;background:#fff;border-radius:20px;
+  box-shadow:0 30px 60px -30px rgba(15,41,66,.7),0 4px 14px rgba(15,41,66,.08);
+  overflow:hidden;
+}
+.results-hero{
+  background:linear-gradient(155deg,#0f2942,#0e7490);color:#fff;
+  padding:26px 20px 26px;text-align:center;position:relative;overflow:hidden;
+}
+.results-hero::before{
+  content:"";position:absolute;left:50%;top:-70px;
+  width:280px;height:280px;transform:translateX(-50%);
+  background:radial-gradient(circle,rgba(217,119,6,.32),transparent 60%);
+  border-radius:50%;
+}
+.results-score-circle{
+  position:relative;width:120px;height:120px;margin:0 auto 14px;
+  border-radius:50%;display:grid;place-items:center;
+  background:conic-gradient(#4ade80 0deg, #4ade80 var(--ring,0deg), rgba(255,255,255,.15) var(--ring,0deg));
+  z-index:1;
+}
+.results-score-circle::before{
+  content:"";position:absolute;inset:9px;border-radius:50%;background:#0f2942;
+}
+.results-percent{
+  position:relative;z-index:1;font-size:1.7rem;font-weight:800;letter-spacing:-.02em;
+}
+.results-score-label{
+  position:relative;z-index:1;display:block;font-size:.68rem;
+  text-transform:uppercase;letter-spacing:.1em;color:#a9cbe4;margin-top:1px;
+}
+.results-title{
+  position:relative;z-index:1;font-size:1.28rem;margin:0 0 .25em;letter-spacing:-.01em;
+}
+.results-subtitle{
+  position:relative;z-index:1;margin:0;font-size:.86rem;color:#a9cbe4;
+}
+.results-stats{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:8px;padding:18px 16px 0;
+}
+.stat-card{
+  background:#f7fafd;border:1px solid #e2ebf4;border-radius:12px;
+  padding:.75em .8em;text-align:center;
+}
+.stat-card .stat-val{
+  display:block;font-size:1.3rem;font-weight:800;color:#12263a;line-height:1.1;
+}
+.stat-card .stat-lbl{
+  display:block;font-size:.68rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.06em;color:#5b6b7c;margin-top:2px;
+}
+.stat-card.stat-green{background:#f0fdf4;border-color:#bbf7d0;}
+.stat-card.stat-green .stat-val{color:#15803d;}
+.stat-card.stat-red{background:#fef2f2;border-color:#fecaca;}
+.stat-card.stat-red .stat-val{color:#b91c1c;}
+.stat-card.stat-gray{background:#f7fafd;}
+.results-details{padding:16px 16px 0;}
+.results-detail-row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  font-size:.88rem;color:#5b6b7c;padding:.42em 0;border-bottom:1px solid #eef2f7;
+}
+.results-detail-row:last-child{border-bottom:0;}
+.results-detail-row b{color:#12263a;font-weight:800;}
+.results-progress{padding:14px 16px 0;}
+.progress-bar-multi{
+  display:flex;height:12px;border-radius:99px;overflow:hidden;background:#e6edf4;
+}
+.pb-seg{height:100%;transition:width .5s ease;}
+.pb-correct{background:#15803d;}
+.pb-incorrect{background:#b91c1c;}
+.pb-unanswered{background:#94a3b8;}
+.results-actions{
+  display:flex;flex-direction:column;gap:8px;padding:18px 16px 20px;
+}
+.results-actions .exam-btn-primary{width:100%;}
+.exam-btn-ghost{
+  font:inherit;font-size:.86rem;font-weight:700;padding:.75em 1em;
+  border-radius:11px;border:1.5px solid transparent;background:transparent;
+  color:#5b6b7c;cursor:pointer;transition:background .15s;
+}
+.exam-btn-ghost:hover{background:#f2f6fa;}
+
+#examReviewScreen.active{display:block;padding:0 0 30px;min-height:100vh;}
+.review-header{
+  position:sticky;top:0;z-index:15;background:#fff;border-bottom:1px solid var(--line);
+  padding:12px 14px;box-shadow:0 6px 16px -18px rgba(15,41,66,.9);
+}
+.review-header h2{
+  font-size:1.08rem;margin:8px 0 10px;color:#12263a;letter-spacing:-.01em;
+}
+.review-filters{
+  display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px;
+}
+.review-filter{
+  flex:0 0 auto;font:inherit;font-size:.76rem;font-weight:700;
+  padding:.5em .85em;border-radius:99px;border:1.5px solid #d6dfea;
+  background:#fff;color:#5b6b7c;cursor:pointer;transition:all .15s;white-space:nowrap;
+}
+.review-filter:hover{border-color:#9ec8e6;}
+.review-filter.active{
+  background:linear-gradient(150deg,#0f2942,#1d5b8c);border-color:#0f2942;color:#fff;
+}
+.review-list{
+  max-width:820px;margin:0 auto;padding:14px;display:flex;flex-direction:column;gap:12px;
+}
+.review-item{
+  background:#fff;border:1px solid var(--line);border-left:5px solid #cbd8e4;
+  border-radius:14px;padding:14px 14px 16px;
+  box-shadow:0 4px 12px -10px rgba(15,41,66,.4);
+}
+.review-item.review-correct{border-left-color:#15803d;}
+.review-item.review-incorrect{border-left-color:#b91c1c;}
+.review-item.review-unanswered{border-left-color:#94a3b8;}
+.review-meta{
+  display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:10px;
+}
+.review-num{
+  font-size:.78rem;font-weight:800;color:#fff;background:#0f2942;
+  padding:.24em .65em;border-radius:6px;
+}
+.review-badge{
+  font-size:.62rem;font-weight:800;letter-spacing:.06em;
+  text-transform:uppercase;padding:.28em .6em;border-radius:99px;
+}
+.badge-easy{background:#dcfce7;color:#166534;}
+.badge-medium{background:#dbeafe;color:#1e40af;}
+.badge-difficult{background:#ffedd5;color:#9a3412;}
+.badge-very-difficult{background:#fee2e2;color:#991b1b;}
+.review-status{
+  margin-left:auto;font-size:.68rem;font-weight:800;letter-spacing:.05em;
+  text-transform:uppercase;padding:.3em .65em;border-radius:99px;
+}
+.status-correct{background:#dcfce7;color:#15803d;}
+.status-incorrect{background:#fee2e2;color:#b91c1c;}
+.status-unanswered{background:#e2e8f0;color:#475569;}
+.review-question{
+  font-size:.92rem;font-weight:700;color:#12263a;line-height:1.5;margin-bottom:10px;
+}
+.review-options{display:flex;flex-direction:column;gap:5px;margin-bottom:10px;}
+.review-option{
+  display:flex;align-items:flex-start;gap:8px;font-size:.85rem;
+  padding:.5em .7em;border-radius:8px;border:1px solid #eef2f7;
+  background:#fbfdff;color:#2c3e50;line-height:1.5;word-break:break-word;
+}
+.review-option .ro-letter{flex:0 0 auto;font-weight:800;color:#5b6b7c;}
+.review-option.correct{background:#f0fdf4;border-color:#bbf7d0;color:#14532d;font-weight:600;}
+.review-option.correct .ro-letter{color:#15803d;}
+.review-option.wrong{background:#fef2f2;border-color:#fecaca;color:#7f1d1d;font-weight:600;}
+.review-option.wrong .ro-letter{color:#b91c1c;}
+.review-option .ro-tag{
+  margin-left:auto;font-size:.62rem;font-weight:800;text-transform:uppercase;
+  letter-spacing:.05em;padding:.2em .5em;border-radius:5px;
+  background:rgba(0,0,0,.06);color:inherit;white-space:nowrap;
+}
+.review-answer{
+  display:flex;flex-direction:column;gap:4px;background:#f7fafd;
+  border:1px solid #e2ebf4;border-radius:10px;padding:.65em .85em;
+  font-size:.82rem;color:#5b6b7c;margin-bottom:10px;
+}
+.review-answer b{color:#12263a;font-weight:800;}
+.review-solution{
+  background:#fbfdff;border-left:3px solid var(--accent);border-radius:0 8px 8px 0;
+  padding:.65em .85em;font-size:.84rem;color:#33465c;line-height:1.55;
+  white-space:pre-line;
+}
+.review-solution h5{
+  margin:0 0 .3em;font-size:.66rem;font-weight:800;letter-spacing:.08em;
+  text-transform:uppercase;color:#b45309;
+}
+.review-empty{
+  text-align:center;padding:40px 20px;color:#8496a8;font-size:.9rem;
+}
+
+.exam-confirm{
+  position:fixed;inset:0;z-index:1200;display:flex;align-items:center;
+  justify-content:center;padding:20px;background:rgba(15,41,66,.55);
+  backdrop-filter:blur(3px);
+}
+.exam-confirm[hidden]{display:none;}
+.exam-confirm-card{
+  width:100%;max-width:400px;background:#fff;border-radius:16px;
+  padding:20px;box-shadow:0 30px 60px -20px rgba(0,0,0,.5);
+}
+.exam-confirm-card h3{margin:0 0 .4em;font-size:1.06rem;color:#12263a;}
+.exam-confirm-card p{font-size:.88rem;color:#5b6b7c;margin:0 0 16px;}
+.exam-confirm-actions{display:flex;gap:8px;}
+.exam-confirm-actions button{
+  flex:1;font:inherit;font-size:.85rem;font-weight:800;
+  padding:.72em 1em;border-radius:10px;cursor:pointer;transition:all .15s;
+}
+#confirmCancel{border:1.5px solid #d6dfea;background:#fff;color:#33465c;}
+#confirmCancel:hover{background:#f4f9fd;}
+#confirmSubmit{border:0;background:var(--accent);color:#fff;}
+#confirmSubmit:hover{background:#c26a05;}
+
+@media (min-width:820px){
+  .exam-body{grid-template-columns:1fr 300px;padding:20px 24px;gap:20px;}
+  .exam-question-card{padding:22px 24px 24px;}
+  .exam-q-text{font-size:1.06rem;}
+  .exam-nav-grid{max-height:60vh;}
+  .results-stats{grid-template-columns:repeat(4,1fr);}
+  .results-actions{flex-direction:row;}
+  .results-actions .exam-btn-primary{width:auto;flex:2;}
+  .results-actions .exam-btn-secondary,
+  .results-actions .exam-btn-ghost{flex:1;}
+  .review-header{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;padding:14px 24px;}
+  .review-header h2{margin:0;}
+  .review-list{padding:20px 24px;}
+  .review-item{padding:18px 20px 20px;}
+  .config-options{grid-template-columns:repeat(10,1fr);}
+}
+@media (max-width:520px){
+  .config-options{grid-template-columns:repeat(5,1fr);}
+  .exam-timer{font-size:.92rem;min-width:58px;padding:.3em .55em;}
+  .exam-btn-submit{font-size:.78rem;padding:.5em .8em;}
+  .exam-header{padding:8px 10px;gap:7px;}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="badge">GME Pre-Sea Training Preparation</span>
+    <h1>Applied Engineering Mathematics – Quick Study</h1>
+    <p class="sub">Mechanical Engineering Fundamentals</p>
+    <div class="meta">
+      <span><b>Subject:</b> Engineering Mathematics</span>
+      <span><b>Topic:</b> Applied Engineering Mathematics</span>
+      <span><b>Level:</b> Mechanical Engineering Graduate</span>
+    </div>
+    <p class="intro">
+      These notes focus on practical calculations used in Marine Engineering, ship machinery,
+      engine-room operations, thermodynamics and measurements.
+    </p>
+  </div>
+</header>
+
+<main>
+
+  <div class="search-wrap">
+    <div class="search-box">
+      <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="15.6" y1="15.6" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <input
+        id="searchInput"
+        type="search"
+        placeholder="Search formulas, definitions, topics…"
+        autocomplete="off"
+        spellcheck="false"
+        aria-label="Search formulas, definitions and topics"
+      />
+      <button type="button" id="searchClear" class="search-clear" aria-label="Clear search" hidden>&times;</button>
+    </div>
+    <div id="searchResults" class="search-results" role="region" aria-live="polite" aria-label="Search results"></div>
+  </div>
+
+  <div class="test-cta">
+    <div class="test-cta-text">
+      <b>Practice MCQ Test</b>
+      <span>300 questions · Configurable timer · Instant results &amp; solutions</span>
+    </div>
+    <button type="button" id="takeTestBtn" class="test-cta-btn">Take Test →</button>
+  </div>
+
+  <div class="toolbar">
+    <button type="button" id="expandAll">Expand all</button>
+    <button type="button" id="collapseAll">Collapse all</button>
+  </div>
+
+  <section class="folder open" id="f-units">
+    <button class="folder-head" aria-expanded="true" aria-controls="body-units">
+      <span class="folder-num">1</span>
+      <span class="folder-title">
+        <b>Unit Conversion and Dimensional Analysis</b>
+        <small>SI units, conversions &amp; checking equation correctness</small>
+      </span>
+      <span class="chev" aria-hidden="true"></span>
+    </button>
+    <div class="folder-body" id="body-units">
+      <div class="folder-inner">
+        <div class="folder-content">
+          <h3 class="sub">1.1 Basic concept</h3>
+          <ul class="plain">
+            <li>Unit conversion means changing a physical quantity from one unit to another without changing its actual value.</li>
+            <li>Dimensional analysis checks whether an equation is physically correct.</li>
+            <li>Always convert quantities into compatible units before calculations.</li>
+          </ul>
+          <h3 class="sub">1.2 Important SI units</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Physical quantity</th><th>SI unit</th><th>Symbol</th></tr></thead>
+              <tbody>
+                <tr><td>Length</td><td>Metre</td><td>m</td></tr>
+                <tr><td>Mass</td><td>Kilogram</td><td>kg</td></tr>
+                <tr><td>Time</td><td>Second</td><td>s</td></tr>
+                <tr><td>Temperature</td><td>Kelvin</td><td>K</td></tr>
+                <tr><td>Force</td><td>Newton</td><td>N</td></tr>
+                <tr><td>Pressure</td><td>Pascal</td><td>Pa</td></tr>
+                <tr><td>Energy / Work</td><td>Joule</td><td>J</td></tr>
+                <tr><td>Power</td><td>Watt</td><td>W</td></tr>
+                <tr><td>Density</td><td>kg/m³</td><td>ρ</td></tr>
+                <tr><td>Velocity</td><td>m/s</td><td>v</td></tr>
+                <tr><td>Acceleration</td><td>m/s²</td><td>a</td></tr>
+                <tr><td>Volume</td><td>Cubic metre</td><td>m³</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h3 class="sub">1.3 Important unit conversions</h3>
+          <p class="sub-sub">Length</p>
+          <ul class="plain">
+            <li>1 km = 1000 m</li><li>1 m = 100 cm</li><li>1 inch = 25.4 mm</li><li>1 foot = 0.3048 m</li>
+          </ul>
+          <p class="sub-sub">Area and volume</p>
+          <ul class="plain">
+            <li>1 m² = 10,000 cm²</li><li>1 m³ = 1000 litres</li><li>1 litre = 0.001 m³</li><li>1 cm³ = 1 mL</li>
+          </ul>
+          <p class="sub-sub">Mass</p>
+          <ul class="plain"><li>1 tonne = 1000 kg</li><li>1 kg = 1000 g</li></ul>
+          <p class="sub-sub">Pressure</p>
+          <ul class="plain">
+            <li>1 bar = 100,000 Pa</li><li>1 kPa = 1000 Pa</li><li>1 MPa = 10 bar</li>
+            <li>1 atmosphere ≈ 1.01325 bar</li><li>1 bar ≈ 14.5 psi</li>
+          </ul>
+          <p class="sub-sub">Energy and power</p>
+          <ul class="plain">
+            <li>1 kW = 1000 W</li><li>1 MW = 1000 kW</li><li>1 kWh = 3.6 MJ</li>
+            <li>1 HP ≈ 746 W</li><li>1 metric horsepower (PS) ≈ 735.5 W</li>
+          </ul>
+          <p class="sub-sub">Temperature</p>
+          <ul class="plain">
+            <li>K = °C + 273.15</li><li>°C = (°F − 32) × 5/9</li><li>°F = (°C × 9/5) + 32</li>
+          </ul>
+          <h3 class="sub">1.4 Dimensional analysis</h3>
+          <p>Dimensions represent the physical nature of a quantity.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Quantity</th><th>Dimensions</th></tr></thead>
+              <tbody>
+                <tr><td>Velocity</td><td>[LT⁻¹]</td></tr>
+                <tr><td>Acceleration</td><td>[LT⁻²]</td></tr>
+                <tr><td>Force</td><td>[MLT⁻²]</td></tr>
+                <tr><td>Work / Energy</td><td>[ML²T⁻²]</td></tr>
+                <tr><td>Power</td><td>[ML²T⁻³]</td></tr>
+                <tr><td>Pressure</td><td>[ML⁻¹T⁻²]</td></tr>
+                <tr><td>Density</td><td>[ML⁻³]</td></tr>
+                <tr><td>Momentum</td><td>[MLT⁻¹]</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="rules">
+            <h4>Principle of dimensional homogeneity</h4>
+            <ul>
+              <li>Both sides of a physically valid equation must have the same dimensions.</li>
+              <li>Only quantities with compatible dimensions can be added or subtracted.</li>
+            </ul>
+          </div>
+          <div class="example">
+            <h4>Example</h4>
+            <div class="eq">F = ma</div>
+            <div class="eq">[MLT⁻²] = [M][LT⁻²]</div>
+            <p style="margin:0;">Hence, the equation is dimensionally correct.</p>
+          </div>
+          <div class="apps">
+            <h4>Engineering applications</h4>
+            <ul>
+              <li>Converting engine power from kW to HP.</li>
+              <li>Converting boiler pressure from bar to Pa.</li>
+              <li>Converting fuel consumption from litres to cubic metres.</li>
+              <li>Checking dimensional correctness of engineering formulas.</li>
+              <li>Converting temperature readings in marine machinery.</li>
+            </ul>
+          </div>
+          <div class="memo"><b>Remember:</b> Always convert units before substituting values into formulas.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="folder" id="f-graphs">
+    <button class="folder-head" aria-expanded="false" aria-controls="body-graphs">
+      <span class="folder-num">2</span>
+      <span class="folder-title">
+        <b>Graphs and Engineering Data Interpretation</b>
+        <small>Types of graphs, slope &amp; reading engineering curves</small>
+      </span>
+      <span class="chev" aria-hidden="true"></span>
+    </button>
+    <div class="folder-body" id="body-graphs">
+      <div class="folder-inner">
+        <div class="folder-content">
+          <h3 class="sub">2.1 Basic concept</h3>
+          <ul class="plain">
+            <li>Graphs represent the relationship between two or more variables.</li>
+            <li>They help engineers understand machine performance and operating conditions.</li>
+            <li>The horizontal axis is called the X-axis.</li>
+            <li>The vertical axis is called the Y-axis.</li>
+          </ul>
+          <h3 class="sub">2.2 Types of engineering graphs</h3>
+          <div class="diagram">
+            <svg viewBox="0 0 360 300" role="img" aria-label="Four types of engineering graphs">
+              <g transform="translate(10,10)">
+                <rect width="160" height="125" rx="8" fill="#fff" stroke="#dbe6f0"/>
+                <text x="80" y="16" font-size="9" font-weight="700" text-anchor="middle" fill="#0f2942">1. Linear</text>
+                <line x1="22" y1="105" x2="148" y2="105" stroke="#a8b8c8" stroke-width="1.2"/>
+                <line x1="22" y1="105" x2="22" y2="28" stroke="#a8b8c8" stroke-width="1.2"/>
+                <line x1="22" y1="105" x2="140" y2="38" stroke="#0e7490" stroke-width="2.4" stroke-linecap="round"/>
+                <circle cx="140" cy="38" r="3" fill="#d97706"/>
+                <text x="80" y="120" font-size="7.5" text-anchor="middle" fill="#5b6b7c">Distance vs Time</text>
+              </g>
+              <g transform="translate(190,10)">
+                <rect width="160" height="125" rx="8" fill="#fff" stroke="#dbe6f0"/>
+                <text x="80" y="16" font-size="9" font-weight="700" text-anchor="middle" fill="#0f2942">2. Non-linear</text>
+                <line x1="22" y1="105" x2="148" y2="105" stroke="#a8b8c8" stroke-width="1.2"/>
+                <line x1="22" y1="105" x2="22" y2="28" stroke="#a8b8c8" stroke-width="1.2"/>
+                <path d="M22 105 Q 80 100 140 40" fill="none" stroke="#7c3aed" stroke-width="2.4" stroke-linecap="round"/>
+                <circle cx="140" cy="40" r="3" fill="#d97706"/>
+                <text x="80" y="120" font-size="7.5" text-anchor="middle" fill="#5b6b7c">Pump performance</text>
+              </g>
+              <g transform="translate(10,160)">
+                <rect width="160" height="125" rx="8" fill="#fff" stroke="#dbe6f0"/>
+                <text x="80" y="16" font-size="9" font-weight="700" text-anchor="middle" fill="#0f2942">3. P-T graph</text>
+                <line x1="22" y1="105" x2="148" y2="105" stroke="#a8b8c8" stroke-width="1.2"/>
+                <line x1="22" y1="105" x2="22" y2="28" stroke="#a8b8c8" stroke-width="1.2"/>
+                <path d="M22 100 L140 40" fill="none" stroke="#b45309" stroke-width="2.4" stroke-linecap="round"/>
+                <circle cx="60" cy="84" r="2.8" fill="#d97706"/>
+                <circle cx="100" cy="66" r="2.8" fill="#d97706"/>
+                <circle cx="140" cy="40" r="2.8" fill="#d97706"/>
+                <text x="80" y="120" font-size="7.5" text-anchor="middle" fill="#5b6b7c">Pressure vs Temperature</text>
+              </g>
+              <g transform="translate(190,160)">
+                <rect width="160" height="125" rx="8" fill="#fff" stroke="#dbe6f0"/>
+                <text x="80" y="16" font-size="9" font-weight="700" text-anchor="middle" fill="#0f2942">4. Bar graph</text>
+                <line x1="22" y1="105" x2="148" y2="105" stroke="#a8b8c8" stroke-width="1.2"/>
+                <rect x="34" y="62" width="16" height="43" rx="2" fill="#0e7490"/>
+                <rect x="60" y="48" width="16" height="57" rx="2" fill="#0e7490"/>
+                <rect x="86" y="72" width="16" height="33" rx="2" fill="#0e7490"/>
+                <rect x="112" y="40" width="16" height="65" rx="2" fill="#0e7490"/>
+                <text x="80" y="120" font-size="7.5" text-anchor="middle" fill="#5b6b7c">Fuel consumption</text>
+              </g>
+            </svg>
+            <figcaption>Common graph types used in marine engineering.</figcaption>
+          </div>
+          <ul class="plain">
+            <li><b>1. Linear graph</b> – Shows a straight-line relationship. Example: Distance versus time at constant velocity. Slope represents the rate of change.</li>
+            <li><b>2. Non-linear graph</b> – Shows a curved relationship. Example: Pump performance and engine characteristics.</li>
+            <li><b>3. P-T graph</b> – Shows pressure versus temperature. Used in refrigeration and thermodynamics.</li>
+            <li><b>4. Bar graph</b> – Compares different values. Example: Fuel consumption of different engines.</li>
+          </ul>
+          <h3 class="sub">2.3 Important graph formulas</h3>
+          <p class="sub-sub">Slope / Gradient</p>
+          <div class="eq">m = <span class="frac"><span>y₂ − y₁</span><span>x₂ − x₁</span></span></div>
+          <ul class="plain">
+            <li>Positive slope: Variables increase together.</li>
+            <li>Negative slope: One increases while the other decreases.</li>
+            <li>Zero slope: Constant Y value.</li>
+          </ul>
+          <p class="sub-sub">Percentage change</p>
+          <div class="eq">% Change = <span class="frac"><span>New − Original</span><span>Original</span></span> × 100</div>
+          <p class="sub-sub">Percentage efficiency</p>
+          <div class="eq">η = <span class="frac"><span>Output</span><span>Input</span></span> × 100</div>
+          <h3 class="sub">2.4 Important engineering graphs</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Graph</th><th>Application</th></tr></thead>
+              <tbody>
+                <tr><td>Pressure vs Temperature</td><td>Boiler and refrigeration</td></tr>
+                <tr><td>Temperature vs Time</td><td>Heating and cooling</td></tr>
+                <tr><td>Speed vs Time</td><td>Engine acceleration</td></tr>
+                <tr><td>Power vs Speed</td><td>Engine performance</td></tr>
+                <tr><td>Pressure vs Volume</td><td>Thermodynamic cycles</td></tr>
+                <tr><td>Fuel consumption vs Load</td><td>Engine efficiency</td></tr>
+                <tr><td>Flow rate vs Pressure</td><td>Pump performance</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h3 class="sub">2.5 How to interpret a graph</h3>
+          <ol class="plain">
+            <li>Read the title.</li><li>Identify X-axis and Y-axis.</li><li>Check units and scale.</li>
+            <li>Identify maximum and minimum values.</li><li>Observe increasing or decreasing trends.</li>
+            <li>Calculate slope if required.</li><li>Compare data points.</li>
+            <li>Identify unusual changes or sudden variations.</li>
+          </ol>
+          <div class="memo">
+            <b>Remember:</b><br>
+            Slope = Rate of change.<br>
+            Area under a velocity-time graph = Displacement.<br>
+            Area under a force-displacement graph = Work.<br>
+            Area under a power-time graph = Energy.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="folder" id="f-power">
+    <button class="folder-head" aria-expanded="false" aria-controls="body-power">
+      <span class="folder-num">3</span>
+      <span class="folder-title">
+        <b>Pressure, Force, Power and Efficiency Calculations</b>
+        <small>Core formulas used in pumps, compressors, boilers &amp; engines</small>
+      </span>
+      <span class="chev" aria-hidden="true"></span>
+    </button>
+    <div class="folder-body" id="body-power">
+      <div class="folder-inner">
+        <div class="folder-content">
+          <p class="lead" style="margin-top:12px;">
+            These calculations are extremely important in marine engineering because they are used
+            in pumps, compressors, boilers, diesel engines and propulsion systems.
+          </p>
+          <h3 class="sub">3.1 Force</h3>
+          <p>Force is a push or pull that changes or tends to change the motion of an object.</p>
+          <div class="eq"><span class="boxed">F = m × a</span></div>
+          <ul class="plain">
+            <li><b>F</b> = Force (N)</li><li><b>m</b> = Mass (kg)</li><li><b>a</b> = Acceleration (m/s²)</li>
+          </ul>
+          <p class="sub-sub">Weight</p>
+          <div class="eq"><span class="boxed">W = m × g</span></div>
+          <p>Where g = 9.81 m/s².</p>
+          <div class="example">
+            <h4>Example</h4>
+            <p>A body has a mass of 50 kg. Find its weight.</p>
+            <div class="eq">W = 50 × 9.81 = 490.5 N</div>
+          </div>
+          <h3 class="sub">3.2 Pressure</h3>
+          <p>Pressure is the force acting per unit area.</p>
+          <div class="eq"><span class="boxed">P = <span class="frac"><span>F</span><span>A</span></span></span></div>
+          <p class="sub-sub">Hydrostatic pressure</p>
+          <div class="eq"><span class="boxed">P = ρgh</span></div>
+          <div class="example">
+            <h4>Example</h4>
+            <p>Calculate the pressure at a depth of 5 m in seawater. Take density = 1025 kg/m³.</p>
+            <div class="eq">P = 1025 × 9.81 × 5</div>
+            <div class="eq">P = 50,276.25 Pa</div>
+            <div class="eq"><span class="boxed">P ≈ 0.503 bar</span></div>
+          </div>
+          <p class="sub-sub">Types of pressure</p>
+          <ul class="plain">
+            <li><b>Atmospheric pressure:</b> Pressure exerted by the atmosphere.</li>
+            <li><b>Absolute pressure:</b> Pressure measured relative to a perfect vacuum.</li>
+            <li><b>Gauge pressure:</b> Pressure measured relative to atmospheric pressure.</li>
+            <li><b>Vacuum pressure:</b> Pressure below atmospheric pressure.</li>
+          </ul>
+          <div class="eq"><span class="boxed">P<sub>absolute</sub> = P<sub>atmospheric</sub> + P<sub>gauge</sub></span></div>
+          <h3 class="sub">3.3 Power</h3>
+          <div class="eq"><span class="boxed">P = <span class="frac"><span>W</span><span>t</span></span></span></div>
+          <p class="sub-sub">Mechanical power</p>
+          <div class="eq"><span class="boxed">P = F × v</span></div>
+          <p class="sub-sub">Rotational power</p>
+          <div class="eq"><span class="boxed">P = <span class="frac"><span>2πNT</span><span>60</span></span></span></div>
+          <p class="sub-sub">Power in kW</p>
+          <div class="eq"><span class="boxed">P (kW) = <span class="frac"><span>2πNT</span><span>60,000</span></span></span></div>
+          <p class="sub-sub">Hydraulic power</p>
+          <div class="eq"><span class="boxed">P = Δp × Q</span></div>
+          <h3 class="sub">3.4 Efficiency</h3>
+          <div class="eq"><span class="boxed">η = <span class="frac"><span>Output</span><span>Input</span></span> × 100</span></div>
+          <p class="sub-sub">Combined efficiency</p>
+          <div class="eq"><span class="boxed">η<sub>overall</sub> = η₁ × η₂</span></div>
+          <div class="memo">
+            <b>Remember:</b><br>
+            Force = Mass × Acceleration.<br>
+            Pressure = Force ÷ Area.<br>
+            Power = Work ÷ Time.<br>
+            Efficiency = Output ÷ Input × 100.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="folder" id="f-heat">
+    <button class="folder-head" aria-expanded="false" aria-controls="body-heat">
+      <span class="folder-num">4</span>
+      <span class="folder-title">
+        <b>Heat Balance and Mass Balance</b>
+        <small>Conservation of energy &amp; mass in marine systems</small>
+      </span>
+      <span class="chev" aria-hidden="true"></span>
+    </button>
+    <div class="folder-body" id="body-heat">
+      <div class="folder-inner">
+        <div class="folder-content">
+          <h3 class="sub">4.1 Heat balance</h3>
+          <p>Heat balance is the accounting of heat energy entering, leaving, and being stored in a system.</p>
+          <p>For a steady-state system with no energy storage:</p>
+          <div class="eq"><span class="boxed">Heat Input = Heat Output</span></div>
+          <h3 class="sub">4.2 Important heat formulas</h3>
+          <p class="sub-sub">Sensible heat</p>
+          <div class="eq"><span class="boxed">Q = mc<sub>p</sub>ΔT</span></div>
+          <p class="sub-sub">Latent heat</p>
+          <div class="eq"><span class="boxed">Q = mL</span></div>
+          <p class="sub-sub">Heat transfer rate</p>
+          <div class="eq"><span class="boxed">Q̇ = ṁ c<sub>p</sub> (T₂ − T₁)</span></div>
+          <h3 class="sub">4.3 Heat balance example</h3>
+          <p>A boiler transfers heat to 100 kg of water. The water temperature rises from 30°C to 80°C. Take specific heat capacity = 4.18 kJ/kg K.</p>
+          <div class="eq">Q = mc<sub>p</sub>ΔT</div>
+          <div class="eq">Q = 100 × 4.18 × (80 − 30)</div>
+          <div class="eq"><span class="boxed">Q = 20,900 kJ</span></div>
+          <h3 class="sub">4.4 Heat balance in a marine diesel engine</h3>
+          <div class="diagram" style="padding:14px 14px 10px;">
+            <div class="heat-bar">
+              <div class="heat-seg hb1" style="flex-basis:40%;">40%</div>
+              <div class="heat-seg hb2" style="flex-basis:30%;">30%</div>
+              <div class="heat-seg hb3" style="flex-basis:25%;">25%</div>
+              <div class="heat-seg hb4" style="flex-basis:5%;">5%</div>
+            </div>
+            <div class="heat-legend">
+              <span><i class="heat-dot d1"></i>Useful brake power</span>
+              <span><i class="heat-dot d2"></i>Exhaust gas heat</span>
+              <span><i class="heat-dot d3"></i>Cooling system heat</span>
+              <span><i class="heat-dot d4"></i>Radiation &amp; other losses</span>
+            </div>
+          </div>
+          <h3 class="sub">4.5 Mass balance</h3>
+          <div class="eq"><span class="boxed">Mass In = Mass Out</span></div>
+          <p class="sub-sub">Mass flow rate</p>
+          <div class="eq"><span class="boxed">ṁ = ρQ</span></div>
+          <h3 class="sub">4.6 Mass balance example</h3>
+          <p>A tank receives 10 kg/s of water and discharges 7 kg/s.</p>
+          <div class="eq">= 10 − 7 = 3 kg/s</div>
+          <div class="memo">
+            <b>Remember:</b><br>
+            Heat balance follows conservation of energy.<br>
+            Mass balance follows conservation of mass.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="folder" id="f-stats">
+    <button class="folder-head" aria-expanded="false" aria-controls="body-stats">
+      <span class="folder-num">5</span>
+      <span class="folder-title">
+        <b>Basic Statistics, Mean, Standard Deviation &amp; Measurement Uncertainty</b>
+        <small>Averages, spread of data, errors &amp; instrument types</small>
+      </span>
+      <span class="chev" aria-hidden="true"></span>
+    </button>
+    <div class="folder-body" id="body-stats">
+      <div class="folder-inner">
+        <div class="folder-content">
+          <h3 class="sub">5.1 Basic statistics</h3>
+          <p>Statistics is the mathematical study of collecting, organizing, analyzing and interpreting data.</p>
+          <h3 class="sub">5.2 Mean (Average)</h3>
+          <div class="eq"><span class="boxed">x̄ = <span class="frac"><span>Σx</span><span>n</span></span></span></div>
+          <h3 class="sub">5.3 Median</h3>
+          <p>Median is the middle value when data is arranged in ascending or descending order.</p>
+          <h3 class="sub">5.4 Mode</h3>
+          <p>Mode is the value that occurs most frequently.</p>
+          <h3 class="sub">5.5 Standard deviation</h3>
+          <p class="sub-sub">Population standard deviation</p>
+          <div class="eq">σ = √<span class="rad-body"><span class="frac"><span>Σ(x − μ)²</span><span>N</span></span></span></div>
+          <p class="sub-sub">Sample standard deviation</p>
+          <div class="eq">s = √<span class="rad-body"><span class="frac"><span>Σ(x − x̄)²</span><span>n − 1</span></span></span></div>
+          <div class="diagram">
+            <svg viewBox="0 0 320 160" role="img" aria-label="Standard deviation spread around the mean">
+              <line x1="20" y1="110" x2="300" y2="110" stroke="#a8b8c8" stroke-width="1.2"/>
+              <line x1="160" y1="110" x2="160" y2="22" stroke="#a8b8c8" stroke-width="1.2" stroke-dasharray="3 3"/>
+              <path d="M30 108 C 90 108, 110 30, 160 30 C 210 30, 230 108, 290 108" fill="none" stroke="#0e7490" stroke-width="2.4" stroke-linecap="round"/>
+              <line x1="120" y1="110" x2="120" y2="78" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="3 2"/>
+              <line x1="200" y1="110" x2="200" y2="78" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="3 2"/>
+              <circle cx="160" cy="30" r="4" fill="#d97706"/>
+              <text x="160" y="138" font-size="11" font-weight="700" fill="#0f2942" text-anchor="middle">μ</text>
+              <text x="120" y="138" font-size="10" font-weight="700" fill="#6d28d9" text-anchor="middle">μ − σ</text>
+              <text x="200" y="138" font-size="10" font-weight="700" fill="#6d28d9" text-anchor="middle">μ + σ</text>
+              <text x="160" y="18" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">σ</text>
+            </svg>
+            <figcaption>Most values lie close to the mean μ; σ measures how spread out the data is.</figcaption>
+          </div>
+          <h3 class="sub">5.6 Measurement uncertainty</h3>
+          <p>Measurement uncertainty indicates the possible range of doubt associated with a measured value.</p>
+          <div class="example">
+            <h4>Example</h4>
+            <div class="eq"><span class="boxed">80 ± 1 °C</span></div>
+          </div>
+          <h3 class="sub">5.7 Accuracy and precision</h3>
+          <div class="acc-grid">
+            <div class="acc-card a">
+              <span class="acc-icon">◎</span>
+              <h5>Accuracy</h5>
+              <p>Closeness to the true value.<br>Indicates correctness.<br>Affected by systematic error.</p>
+            </div>
+            <div class="acc-card p">
+              <span class="acc-icon">⋮⋮⋮</span>
+              <h5>Precision</h5>
+              <p>Closeness of repeated readings to each other.<br>Indicates consistency.<br>Affected by random variation.</p>
+            </div>
+          </div>
+          <h3 class="sub">5.8 Percentage error</h3>
+          <div class="eq">% Error = <span class="frac"><span>|Measured − True|</span><span>True</span></span> × 100</div>
+          <h3 class="sub">5.9 Types of measuring instruments</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Instrument</th><th>Measurement</th></tr></thead>
+              <tbody>
+                <tr><td>Pressure gauge</td><td>Pressure</td></tr>
+                <tr><td>Thermometer</td><td>Temperature</td></tr>
+                <tr><td>Tachometer</td><td>RPM</td></tr>
+                <tr><td>Vernier caliper</td><td>Length / diameter</td></tr>
+                <tr><td>Micrometer</td><td>Small dimensions</td></tr>
+                <tr><td>Flow meter</td><td>Flow rate</td></tr>
+                <tr><td>Dynamometer</td><td>Torque / power</td></tr>
+                <tr><td>Hydrometer</td><td>Relative density of liquids</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="memo">
+            <b>Remember:</b><br>
+            Mean = Average. Median = Middle value. Mode = Most frequent value.<br>
+            Standard deviation = Spread of data. Accuracy = Correctness. Precision = Consistency.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="folder" id="f-formulas">
+    <button class="folder-head" aria-expanded="false" aria-controls="body-formulas">
+      <span class="folder-num">6</span>
+      <span class="folder-title">
+        <b>Important Formula Revision Sheet</b>
+        <small>All key formulas in one place for quick revision</small>
+      </span>
+      <span class="chev" aria-hidden="true"></span>
+    </button>
+    <div class="folder-body" id="body-formulas">
+      <div class="folder-inner">
+        <div class="folder-content">
+          <p class="lead" style="margin-top:12px;">Use this section for quick revision before your GME examination.</p>
+          <div class="table-wrap">
+            <table class="mathy">
+              <thead><tr><th>Topic</th><th>Formula</th></tr></thead>
+              <tbody>
+                <tr><td>Force</td><td>F = ma</td></tr>
+                <tr><td>Weight</td><td>W = mg</td></tr>
+                <tr><td>Pressure</td><td>P = F/A</td></tr>
+                <tr><td>Hydrostatic pressure</td><td>P = ρgh</td></tr>
+                <tr><td>Work</td><td>W = Fs</td></tr>
+                <tr><td>Power</td><td>P = W/t</td></tr>
+                <tr><td>Mechanical power</td><td>P = Fv</td></tr>
+                <tr><td>Rotational power</td><td>P = 2πNT/60</td></tr>
+                <tr><td>Hydraulic power</td><td>P = ΔpQ</td></tr>
+                <tr><td>Efficiency</td><td>η = Output/Input × 100</td></tr>
+                <tr><td>Density</td><td>ρ = m/V</td></tr>
+                <tr><td>Mass flow rate</td><td>ṁ = ρQ</td></tr>
+                <tr><td>Sensible heat</td><td>Q = mc<sub>p</sub>ΔT</td></tr>
+                <tr><td>Latent heat</td><td>Q = mL</td></tr>
+                <tr><td>Heat transfer rate</td><td>Q̇ = ṁ c<sub>p</sub>ΔT</td></tr>
+                <tr><td>Mean</td><td>x̄ = Σx / n</td></tr>
+                <tr><td>Percentage error</td><td>|Measured − True| / True × 100</td></tr>
+                <tr><td>Percentage change</td><td>(New − Original) / Original × 100</td></tr>
+                <tr><td>Slope</td><td>(y₂ − y₁) / (x₂ − x₁)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="folder" id="f-exampoints">
+    <button class="folder-head" aria-expanded="false" aria-controls="body-exampoints">
+      <span class="folder-num">7</span>
+      <span class="folder-title">
+        <b>Important Points for GME Examination</b>
+        <small>Concepts you should be particularly comfortable with</small>
+      </span>
+      <span class="chev" aria-hidden="true"></span>
+    </button>
+    <div class="folder-body" id="body-exampoints">
+      <div class="folder-inner">
+        <div class="folder-content">
+          <p class="lead" style="margin-top:12px;">These are the concepts you should be particularly comfortable with.</p>
+          <ol class="plain">
+            <li>Conversion of bar into Pascal and vice versa.</li>
+            <li>Conversion of kW into HP.</li>
+            <li>Conversion of Celsius into Kelvin.</li>
+            <li>Dimensional formula of force, pressure, power and energy.</li>
+            <li>Calculating pressure at a given depth in seawater.</li>
+            <li>Calculating force acting on a piston.</li>
+            <li>Calculating mechanical and hydraulic power.</li>
+            <li>Calculating efficiency of pumps and motors.</li>
+            <li>Calculating heat absorbed by water.</li>
+            <li>Understanding heat balance of a diesel engine.</li>
+            <li>Calculating mass flow rate from density and volume flow.</li>
+            <li>Understanding steady-state mass balance.</li>
+            <li>Calculating mean and median of measured readings.</li>
+            <li>Understanding standard deviation and measurement errors.</li>
+            <li>Interpreting engineering graphs and calculating slopes.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <b>Applied Engineering Mathematics – Quick Study</b><br>
+  GME Pre-Sea Training Preparation · Mechanical Engineering Fundamentals · Engineering Mathematics
+</footer>
+
+<button type="button" id="backToTop" class="back-to-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M12 19V5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+    <path d="M5.5 11.5 12 5l6.5 6.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+
+<div class="exam-overlay" id="examOverlay" hidden>
+
+  <section class="exam-screen" id="examConfigScreen">
+    <div class="exam-config-card">
+      <div class="exam-config-head">
+        <h2>Exam Configuration</h2>
+        <p>Set up your practice test below · 300-question bank</p>
+        <button type="button" class="exam-close" id="configClose" aria-label="Close">&times;</button>
+      </div>
+      <div class="exam-config-body">
+        <div class="config-group">
+          <label>Number of Questions</label>
+          <div class="config-options" id="questionCountOptions">
+            <button type="button" data-count="10" class="config-opt active">10</button>
+            <button type="button" data-count="20" class="config-opt">20</button>
+            <button type="button" data-count="30" class="config-opt">30</button>
+            <button type="button" data-count="40" class="config-opt">40</button>
+            <button type="button" data-count="50" class="config-opt">50</button>
+            <button type="button" data-count="60" class="config-opt">60</button>
+            <button type="button" data-count="70" class="config-opt">70</button>
+            <button type="button" data-count="80" class="config-opt">80</button>
+            <button type="button" data-count="90" class="config-opt">90</button>
+            <button type="button" data-count="100" class="config-opt">100</button>
+            <button type="button" data-count="110" class="config-opt">110</button>
+            <button type="button" data-count="120" class="config-opt">120</button>
+            <button type="button" data-count="130" class="config-opt">130</button>
+            <button type="button" data-count="140" class="config-opt">140</button>
+            <button type="button" data-count="150" class="config-opt">150</button>
+            <button type="button" data-count="160" class="config-opt">160</button>
+            <button type="button" data-count="170" class="config-opt">170</button>
+            <button type="button" data-count="180" class="config-opt">180</button>
+            <button type="button" data-count="190" class="config-opt">190</button>
+            <button type="button" data-count="200" class="config-opt">200</button>
+            <button type="button" data-count="210" class="config-opt">210</button>
+            <button type="button" data-count="220" class="config-opt">220</button>
+            <button type="button" data-count="230" class="config-opt">230</button>
+            <button type="button" data-count="240" class="config-opt">240</button>
+            <button type="button" data-count="250" class="config-opt">250</button>
+            <button type="button" data-count="260" class="config-opt">260</button>
+            <button type="button" data-count="270" class="config-opt">270</button>
+            <button type="button" data-count="280" class="config-opt">280</button>
+            <button type="button" data-count="290" class="config-opt">290</button>
+            <button type="button" data-count="300" class="config-opt">300</button>
+          </div>
+        </div>
+        <div class="config-group">
+          <label>Time per 10 Questions (minutes)</label>
+          <div class="config-options" id="timeOptions">
+            <button type="button" data-min="1" class="config-opt">1</button>
+            <button type="button" data-min="2" class="config-opt">2</button>
+            <button type="button" data-min="3" class="config-opt">3</button>
+            <button type="button" data-min="4" class="config-opt">4</button>
+            <button type="button" data-min="5" class="config-opt active">5</button>
+            <button type="button" data-min="6" class="config-opt">6</button>
+            <button type="button" data-min="7" class="config-opt">7</button>
+            <button type="button" data-min="8" class="config-opt">8</button>
+            <button type="button" data-min="9" class="config-opt">9</button>
+            <button type="button" data-min="10" class="config-opt">10</button>
+          </div>
+        </div>
+        <div class="config-summary">
+          <div class="config-summary-row"><span>Total Questions</span><b id="sumQuestions">10</b></div>
+          <div class="config-summary-row"><span>Total Duration</span><b id="sumDuration">5 minutes</b></div>
+          <div class="config-summary-row"><span>Difficulty Mix</span><b id="sumDist">3E · 3M · 3D · 1VD</b></div>
+        </div>
+        <button type="button" class="exam-btn-primary" id="startExamBtn">Start Examination</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="exam-screen" id="examTestScreen">
+    <div class="exam-header">
+      <div class="exam-header-left">
+        <div class="exam-q-counter">Question <b id="examQCurrent">1</b> of <span id="examQTotal">10</span></div>
+        <div class="exam-progress-bar"><div class="exam-progress-fill" id="examProgressFill"></div></div>
+      </div>
+      <div class="exam-timer" id="examTimer">05:00</div>
+      <button type="button" class="exam-btn-submit" id="submitExamBtn">Submit</button>
+    </div>
+    <div class="exam-body">
+      <div class="exam-main">
+        <div class="exam-question-card">
+          <div class="exam-q-meta">
+            <span class="exam-difficulty d-easy" id="examDifficulty">Easy</span>
+            <button type="button" class="exam-mark-btn" id="markReviewBtn">⚑ Mark for Review</button>
+          </div>
+          <div class="exam-q-text" id="examQuestionText"></div>
+          <div class="exam-options" id="examOptions"></div>
+        </div>
+        <div class="exam-controls">
+          <button type="button" class="exam-btn-secondary" id="prevQBtn">← Previous</button>
+          <button type="button" class="exam-btn-primary" id="nextQBtn">Next →</button>
+        </div>
+      </div>
+      <aside class="exam-sidebar">
+        <div class="exam-sidebar-head">
+          <h3>Question Navigator</h3>
+          <button type="button" class="exam-nav-toggle" id="navToggleBtn">Hide</button>
+        </div>
+        <div class="exam-nav-legend">
+          <span><i class="lg lg-unanswered"></i>Unanswered</span>
+          <span><i class="lg lg-answered"></i>Answered</span>
+          <span><i class="lg lg-marked"></i>Marked</span>
+          <span><i class="lg lg-current"></i>Current</span>
+        </div>
+        <div class="exam-nav-grid" id="examNavGrid"></div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="exam-screen" id="examResultsScreen">
+    <div class="results-container">
+      <div class="results-hero">
+        <div class="results-score-circle" id="resCircle">
+          <div>
+            <span class="results-percent" id="resPercent">0%</span>
+            <span class="results-score-label">Score</span>
+          </div>
+        </div>
+        <h2 class="results-title">Examination Complete</h2>
+        <p class="results-subtitle" id="resVerdict">Keep practising!</p>
+      </div>
+      <div class="results-stats">
+        <div class="stat-card"><span class="stat-val" id="resTotal">10</span><span class="stat-lbl">Total</span></div>
+        <div class="stat-card stat-green"><span class="stat-val" id="resCorrect">0</span><span class="stat-lbl">Correct</span></div>
+        <div class="stat-card stat-red"><span class="stat-val" id="resIncorrect">0</span><span class="stat-lbl">Incorrect</span></div>
+        <div class="stat-card stat-gray"><span class="stat-val" id="resUnanswered">0</span><span class="stat-lbl">Unanswered</span></div>
+      </div>
+      <div class="results-details">
+        <div class="results-detail-row"><span>Marks obtained</span><b id="resMarks">0 / 10</b></div>
+        <div class="results-detail-row"><span>Percentage</span><b id="resPct">0%</b></div>
+        <div class="results-detail-row"><span>Time taken</span><b id="resTime">00:00</b></div>
+        <div class="results-detail-row"><span>Difficulty mix</span><b id="resMix">—</b></div>
+      </div>
+      <div class="results-progress">
+        <div class="progress-bar-multi">
+          <div class="pb-seg pb-correct" id="pbCorrect" style="width:0%"></div>
+          <div class="pb-seg pb-incorrect" id="pbIncorrect" style="width:0%"></div>
+          <div class="pb-seg pb-unanswered" id="pbUnanswered" style="width:100%"></div>
+        </div>
+      </div>
+      <div class="results-actions">
+        <button type="button" class="exam-btn-primary" id="reviewBtn">Review Answers &amp; Solutions</button>
+        <button type="button" class="exam-btn-secondary" id="retakeBtn">Retake Test</button>
+        <button type="button" class="exam-btn-ghost" id="closeResultsBtn">Back to Study Notes</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="exam-screen" id="examReviewScreen">
+    <div class="review-header">
+      <button type="button" class="exam-btn-ghost" id="backToResultsBtn" style="justify-self:start;">← Results</button>
+      <h2>Detailed Review</h2>
+      <button type="button" class="exam-btn-ghost" id="closeReviewBtn" style="justify-self:end;">Close</button>
+      <div class="review-filters" style="grid-column:1/-1;">
+        <button type="button" class="review-filter active" data-filter="all">All</button>
+        <button type="button" class="review-filter" data-filter="correct">Correct</button>
+        <button type="button" class="review-filter" data-filter="incorrect">Incorrect</button>
+        <button type="button" class="review-filter" data-filter="unanswered">Unanswered</button>
+      </div>
+    </div>
+    <div class="review-list" id="reviewList"></div>
+  </section>
+</div>
+
+<div class="exam-confirm" id="confirmModal" hidden>
+  <div class="exam-confirm-card">
+    <h3>Submit Examination?</h3>
+    <p id="confirmText">You have answered 0 of 10 questions. Are you sure you want to submit?</p>
+    <div class="exam-confirm-actions">
+      <button type="button" id="confirmCancel">Cancel</button>
+      <button type="button" id="confirmSubmit">Submit</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ============================================================
+     QUESTION BANK – 300 MCQs (100 original + 200 additional)
+     ============================================================ */
+  var QB = [
+    // ============ ORIGINAL SET (IDs 1–100) ============
+    {id:1,diff:'easy',q:'How many metres are there in 5 kilometres?',opts:['500 m','5000 m','50,000 m','500,000 m'],ans:1,sol:'1 km = 1000 m\n5 km = 5 × 1000 = 5000 m.'},
+    {id:2,diff:'easy',q:'Convert 2.5 bar into Pascal.',opts:['25,000 Pa','250,000 Pa','2,500,000 Pa','2500 Pa'],ans:1,sol:'1 bar = 100,000 Pa\n2.5 × 100,000 = 250,000 Pa.'},
+    {id:3,diff:'easy',q:'Convert 3 kW into watts.',opts:['30 W','300 W','3000 W','30,000 W'],ans:2,sol:'1 kW = 1000 W\n3 × 1000 = 3000 W.'},
+    {id:4,diff:'easy',q:'Convert 25°C into Kelvin.',opts:['248.15 K','273.15 K','298.15 K','310.15 K'],ans:2,sol:'K = °C + 273.15\nK = 25 + 273.15 = 298.15 K.'},
+    {id:5,diff:'easy',q:'What is the SI unit of force?',opts:['Joule','Pascal','Newton','Watt'],ans:2,sol:'Force = Mass × Acceleration.\nSI unit = kg × m/s² = Newton (N).'},
+    {id:6,diff:'easy',q:'What is the dimensional formula of velocity?',opts:['[LT⁻¹]','[LT⁻²]','[MLT⁻²]','[ML²T⁻²]'],ans:0,sol:'Velocity = Distance / Time\nDimension = Length / Time = [LT⁻¹].'},
+    {id:7,diff:'easy',q:'The slope of a distance-time graph represents:',opts:['Acceleration','Velocity','Force','Power'],ans:1,sol:'Slope = Change in Distance / Change in Time\nThis represents velocity.'},
+    {id:8,diff:'easy',q:'A horizontal line on a temperature-time graph indicates:',opts:['Increasing temperature','Decreasing temperature','Constant temperature','Zero pressure'],ans:2,sol:'A horizontal line means the Y-axis value does not change with time.'},
+    {id:9,diff:'easy',q:'Which graph is most suitable for comparing fuel consumption of four different engines?',opts:['Bar graph','Pie graph only','Distance-time graph','Velocity-time graph'],ans:0,sol:'A bar graph is useful for comparing separate categories or machines.'},
+    {id:10,diff:'easy',q:"A machine's temperature increases from 40°C to 60°C. What is the temperature rise?",opts:['10°C','20°C','40°C','100°C'],ans:1,sol:'ΔT = T₂ − T₁ = 60 − 40 = 20°C.'},
+    {id:11,diff:'easy',q:'A body of mass 10 kg accelerates at 2 m/s². Calculate the force.',opts:['5 N','10 N','20 N','40 N'],ans:2,sol:'F = ma = 10 × 2 = 20 N.'},
+    {id:12,diff:'easy',q:'Calculate the weight of a 10 kg object on Earth.',opts:['9.81 N','19.62 N','98.1 N','1000 N'],ans:2,sol:'W = mg = 10 × 9.81 = 98.1 N.'},
+    {id:13,diff:'easy',q:'A force of 100 N acts on an area of 2 m². Find the pressure.',opts:['25 Pa','50 Pa','100 Pa','200 Pa'],ans:1,sol:'P = F/A = 100/2 = 50 Pa.'},
+    {id:14,diff:'easy',q:'A machine performs 500 J of work in 10 seconds. Calculate its power.',opts:['5 W','25 W','50 W','5000 W'],ans:2,sol:'P = W/t = 500/10 = 50 W.'},
+    {id:15,diff:'easy',q:'A motor receives 1000 W input and produces 800 W output. Find its efficiency.',opts:['60%','70%','80%','90%'],ans:2,sol:'η = (Output/Input) × 100 = (800/1000) × 100 = 80%.'},
+    {id:16,diff:'easy',q:'What is the approximate value of gravitational acceleration on Earth?',opts:['5.81 m/s²','8.91 m/s²','9.81 m/s²','12.81 m/s²'],ans:2,sol:"The standard approximate value of gravitational acceleration near Earth's surface is 9.81 m/s²."},
+    {id:17,diff:'easy',q:'Which law is the basis of heat balance calculations?',opts:['Conservation of mass','Conservation of energy',"Newton's third law",'Ohm\'s law'],ans:1,sol:'Energy cannot be created or destroyed; it can only be transferred or transformed.'},
+    {id:18,diff:'easy',q:'Calculate the heat required to raise the temperature of 1 kg of water by 10°C. Take cp = 4.18 kJ/kg K.',opts:['4.18 kJ','10 kJ','41.8 kJ','418 kJ'],ans:2,sol:'Q = mcₚΔT = 1 × 4.18 × 10 = 41.8 kJ.'},
+    {id:19,diff:'easy',q:'What is the principle of mass balance?',opts:['Mass in = Mass out + Accumulation','Mass in = Heat out','Energy in = Mass out','Pressure in = Pressure out'],ans:0,sol:'Mass balance is based on conservation of mass.'},
+    {id:20,diff:'easy',q:'A tank receives 10 kg/s of water and discharges 10 kg/s. What is the rate of mass accumulation?',opts:['0 kg/s','5 kg/s','10 kg/s','20 kg/s'],ans:0,sol:'Accumulation = Inflow − Outflow = 10 − 10 = 0 kg/s.'},
+    {id:21,diff:'easy',q:'Which formula represents latent heat?',opts:['Q = mcΔT','Q = mL','P = F/A','F = ma'],ans:1,sol:'Q = mL. Latent heat is associated with a phase change without a temperature change at constant pressure.'},
+    {id:22,diff:'easy',q:'Find the mean of 10, 20 and 30.',opts:['10','15','20','30'],ans:2,sol:'Mean = (10+20+30)/3 = 20.'},
+    {id:23,diff:'easy',q:'Find the median of 5, 10, 15, 20 and 25.',opts:['5','10','15','20'],ans:2,sol:'The data is already arranged in ascending order.\nMiddle value = 15.'},
+    {id:24,diff:'easy',q:'Find the mode of 2, 3, 3, 4, 5.',opts:['2','3','4','5'],ans:1,sol:'3 appears twice, while all other values appear once.\nTherefore, mode = 3.'},
+    {id:25,diff:'easy',q:'Which quantity measures the spread of data around the mean?',opts:['Mean','Median','Mode','Standard deviation'],ans:3,sol:'Standard deviation measures how far observations typically spread around their mean.'},
+    {id:26,diff:'easy',q:'A measuring instrument gives the same reading repeatedly but the reading is far from the true value. This indicates:',opts:['High accuracy and high precision','High precision but low accuracy','High accuracy but low precision','Neither precision nor consistency'],ans:1,sol:'Repeated readings are close together, indicating precision. Their distance from the true value indicates poor accuracy.'},
+    {id:27,diff:'easy',q:'A pressure gauge reads 9 bar when the true pressure is 10 bar. Find the absolute percentage error.',opts:['1%','5%','10%','20%'],ans:2,sol:'Error = |9 − 10| / 10 × 100 = 10%.'},
+    {id:28,diff:'easy',q:'An instrument has a least count of 0.01 mm. What does this represent?',opts:['Maximum measurement','Smallest measurable increment','Average measurement','Percentage error'],ans:1,sol:'Least count is the smallest increment that an instrument can resolve or indicate.'},
+    {id:29,diff:'easy',q:'Which instrument is commonly used to measure engine rotational speed?',opts:['Hydrometer','Tachometer','Thermometer','Barometer'],ans:1,sol:'A tachometer measures rotational speed, generally in revolutions per minute (RPM).'},
+    {id:30,diff:'easy',q:'If all observations in a dataset are identical, the standard deviation is:',opts:['1','10','Zero','Infinite'],ans:2,sol:'Every observation equals the mean.\nTherefore, every deviation from the mean is zero, so standard deviation is zero.'},
+    {id:31,diff:'medium',q:'Convert 72 km/h into m/s.',opts:['10 m/s','15 m/s','20 m/s','25 m/s'],ans:2,sol:'72 × (1000/3600) = 20 m/s.'},
+    {id:32,diff:'medium',q:'Convert 7500 W into kW.',opts:['0.75 kW','7.5 kW','75 kW','750 kW'],ans:1,sol:'7500 / 1000 = 7.5 kW.'},
+    {id:33,diff:'medium',q:'Convert 2.5 m³ into litres.',opts:['250 L','2500 L','25,000 L','25 L'],ans:1,sol:'1 m³ = 1000 L\n2.5 × 1000 = 2500 L.'},
+    {id:34,diff:'medium',q:'What is the dimensional formula of pressure?',opts:['[MLT⁻²]','[ML⁻¹T⁻²]','[ML²T⁻²]','[M⁰LT⁻¹]'],ans:1,sol:'Pressure = Force / Area\n= MLT⁻² / L²\n= ML⁻¹T⁻².'},
+    {id:35,diff:'medium',q:'Convert 5 HP into watts.',opts:['1865 W','3730 W','5000 W','7460 W'],ans:1,sol:'1 HP = 746 W\n5 × 746 = 3730 W.'},
+    {id:36,diff:'medium',q:'Which of the following has the same dimensions as energy?',opts:['Force','Power','Torque','Pressure'],ans:2,sol:'Energy = Force × Distance.\nTorque = Force × Perpendicular distance.\nBoth have dimensions [ML²T⁻²].\nNote: Although their dimensions are the same, torque and energy represent different physical quantities.'},
+    {id:37,diff:'medium',q:'A vehicle travels 100 m in 5 seconds at constant speed. What is the slope of its distance-time graph?',opts:['5 m/s','10 m/s','20 m/s','50 m/s'],ans:2,sol:'Velocity = Distance / Time = 100/5 = 20 m/s.'},
+    {id:38,diff:'medium',q:'A velocity-time graph shows a constant velocity of 10 m/s for 5 seconds. Find the displacement.',opts:['10 m','25 m','50 m','100 m'],ans:2,sol:'Displacement = Area under velocity-time graph.\ns = v × t = 10 × 5 = 50 m.'},
+    {id:39,diff:'medium',q:'Engine power increases from 100 kW to 125 kW. Calculate the percentage increase.',opts:['15%','20%','25%','30%'],ans:2,sol:'% Increase = (125 − 100)/100 × 100 = 25%.'},
+    {id:40,diff:'medium',q:'The temperature of a machine increases from 50°C to 90°C in 10 minutes. Find the average rate of temperature increase.',opts:['2°C/min','4°C/min','5°C/min','10°C/min'],ans:1,sol:'Rate = (90 − 50)/10 = 4°C/min.'},
+    {id:41,diff:'medium',q:'A force-displacement graph is a horizontal line at 100 N. The object moves through 5 m. Calculate the work done.',opts:['20 J','100 J','500 J','1000 J'],ans:2,sol:'Work = Area under force-displacement graph.\nW = F × s = 100 × 5 = 500 J.'},
+    {id:42,diff:'medium',q:'The slope of a velocity-time graph represents:',opts:['Distance','Displacement','Acceleration','Momentum'],ans:2,sol:'Slope = ΔVelocity / ΔTime\nThis is the definition of acceleration.'},
+    {id:43,diff:'medium',q:'A piston has an area of 0.02 m² and experiences a pressure of 200,000 Pa. Calculate the force.',opts:['400 N','2000 N','4000 N','10,000 N'],ans:2,sol:'F = P × A = 200000 × 0.02 = 4000 N.'},
+    {id:44,diff:'medium',q:'Calculate the hydrostatic gauge pressure at a depth of 10 m in seawater of density 1025 kg/m³.',opts:['0.503 bar','1.005 bar','2.010 bar','10.25 bar'],ans:1,sol:'P = ρgh = 1025 × 9.81 × 10\n= 100552.5 Pa ≈ 1.0055 bar.\nThis is gauge pressure, not absolute pressure.'},
+    {id:45,diff:'medium',q:'A force of 200 N moves an object at 5 m/s. Find the power.',opts:['40 W','200 W','1000 W','2000 W'],ans:2,sol:'P = Fv = 200 × 5 = 1000 W.'},
+    {id:46,diff:'medium',q:'An engine produces 150 kW of useful output from 200 kW of input. Calculate its efficiency.',opts:['65%','70%','75%','80%'],ans:2,sol:'η = (150/200) × 100 = 75%.'},
+    {id:47,diff:'medium',q:'A shaft rotates at 1000 RPM and develops a torque of 50 Nm. Calculate the power.',opts:['2.62 kW','5.24 kW','7.85 kW','10.47 kW'],ans:1,sol:'P = 2πNT/60 = (2 × 3.1416 × 1000 × 50)/60\n= 5236 W ≈ 5.24 kW.'},
+    {id:48,diff:'medium',q:'A hydraulic pump delivers water at 0.01 m³/s against a pressure difference of 300,000 Pa. Find the hydraulic output power.',opts:['0.3 kW','3 kW','30 kW','300 kW'],ans:1,sol:'P = Δp × Q = 300000 × 0.01 = 3000 W = 3 kW.'},
+    {id:49,diff:'medium',q:'Calculate the heat required to raise 5 kg of water from 20°C to 60°C. Take cp = 4.18 kJ/kg K.',opts:['418 kJ','836 kJ','1000 kJ','1254 kJ'],ans:1,sol:'Q = mcₚΔT = 5 × 4.18 × (60 − 20) = 836 kJ.'},
+    {id:50,diff:'medium',q:'A system receives 1000 kJ of heat and loses 700 kJ. If there is no work transfer, how much energy accumulates in the system?',opts:['100 kJ','200 kJ','300 kJ','1700 kJ'],ans:2,sol:'Accumulation = Energy In − Energy Out = 1000 − 700 = 300 kJ.'},
+    {id:51,diff:'medium',q:'A pipe carries water with density 1000 kg/m³ and volumetric flow rate 0.02 m³/s. Find the mass flow rate.',opts:['2 kg/s','10 kg/s','20 kg/s','50 kg/s'],ans:2,sol:'ṁ = ρQ = 1000 × 0.02 = 20 kg/s.'},
+    {id:52,diff:'medium',q:'A tank receives 15 kg/s of liquid and discharges 12 kg/s. Find the accumulation over 10 seconds, assuming constant flow rates.',opts:['10 kg','20 kg','30 kg','50 kg'],ans:2,sol:'Net accumulation rate = 15 − 12 = 3 kg/s\nAccumulated mass = 3 × 10 = 30 kg.'},
+    {id:53,diff:'medium',q:'A 2 kg substance is heated and absorbs 500 kJ of heat during a phase change. Find its specific latent heat.',opts:['100 kJ/kg','200 kJ/kg','250 kJ/kg','500 kJ/kg'],ans:2,sol:'Q = mL → L = Q/m = 500/2 = 250 kJ/kg.'},
+    {id:54,diff:'medium',q:'A heat exchanger transfers 100 kW of heat to water flowing at 2 kg/s. Find the water temperature rise. Take cp = 4.18 kJ/kg K.',opts:['5.98°C','8.50°C','11.96°C','20°C'],ans:2,sol:'Q̇ = ṁcₚΔT → ΔT = 100/(2 × 4.18) ≈ 11.96°C.'},
+    {id:55,diff:'medium',q:'Find the mean of 12, 15, 18, 20 and 25.',opts:['16','18','20','22'],ans:1,sol:'Mean = (12+15+18+20+25)/5 = 90/5 = 18.'},
+    {id:56,diff:'medium',q:'Find the median of 8, 12, 15, 18, 20, 25.',opts:['12','15','16.5','18'],ans:2,sol:'There are six observations.\nMedian = (15 + 18)/2 = 16.5.'},
+    {id:57,diff:'medium',q:'A pressure gauge reads 48 bar when the true pressure is 50 bar. Calculate the percentage error.',opts:['2%','4%','5%','10%'],ans:1,sol:'Error = |48 − 50| / 50 × 100 = 4%.'},
+    {id:58,diff:'medium',q:'The average of four temperature readings is 80°C. Three readings are 75°C, 78°C and 82°C. Find the fourth reading.',opts:['80°C','82°C','85°C','90°C'],ans:2,sol:'(75 + 78 + 82 + x)/4 = 80\n235 + x = 320\nx = 85°C.'},
+    {id:59,diff:'medium',q:'A measuring instrument has an uncertainty of ±0.5 mm. If the measured length is 100 mm, find the percentage uncertainty.',opts:['0.05%','0.5%','5%','50%'],ans:1,sol:'% Uncertainty = 0.5/100 × 100 = 0.5%.'},
+    {id:60,diff:'medium',q:'Which error is most likely to occur due to an improperly calibrated pressure gauge?',opts:['Random error','Systematic error','Gross error','Calculation error'],ans:1,sol:'An improperly calibrated instrument may consistently indicate readings higher or lower than the true value. This is a systematic error.'},
+    {id:61,diff:'difficult',q:"A ship's auxiliary engine operates at 1500 RPM. Calculate its rotational speed in revolutions per second.",opts:['15 rps','20 rps','25 rps','30 rps'],ans:2,sol:'rps = RPM/60 = 1500/60 = 25 rps.'},
+    {id:62,diff:'difficult',q:'Convert 0.85 g/cm³ into kg/m³.',opts:['85 kg/m³','850 kg/m³','8500 kg/m³','0.85 kg/m³'],ans:1,sol:'1 g/cm³ = 1000 kg/m³\n0.85 × 1000 = 850 kg/m³.'},
+    {id:63,diff:'difficult',q:'An engine produces 75 kW of power. Express this power in metric horsepower (PS). Take 1 PS = 735.5 W.',opts:['75.00 PS','89.12 PS','101.97 PS','110.25 PS'],ans:2,sol:'PS = 75000/735.5 ≈ 101.97 PS.'},
+    {id:64,diff:'difficult',q:'Which of the following equations is dimensionally incorrect?',opts:['F = ma','P = F/A','E = Pt','v = at²'],ans:3,sol:'[v] = LT⁻¹\n[at²] = LT⁻² × T² = L\nThe right side has dimensions of length, not velocity.\nTherefore, D is dimensionally incorrect.'},
+    {id:65,diff:'difficult',q:'A pipe has an internal diameter of 100 mm and carries water at an average velocity of 2 m/s. Calculate the volumetric flow rate.',opts:['0.00157 m³/s','0.00785 m³/s','0.0157 m³/s','0.157 m³/s'],ans:2,sol:'D = 100 mm = 0.1 m\nA = πD²/4 = π × 0.1²/4 = 0.007854 m²\nQ = Av = 0.007854 × 2 = 0.0157 m³/s.'},
+    {id:66,diff:'difficult',q:'The velocity of a moving component increases uniformly from 5 m/s to 25 m/s in 4 seconds. Calculate its acceleration.',opts:['2.5 m/s²','4 m/s²','5 m/s²','10 m/s²'],ans:2,sol:'a = (v₂ − v₁)/t = (25 − 5)/4 = 5 m/s².'},
+    {id:67,diff:'difficult',q:"A machine's output power increases from 40 kW to 60 kW. What is the percentage increase relative to the original output?",opts:['25%','33.33%','50%','60%'],ans:2,sol:'% Increase = (60 − 40)/40 × 100 = 50%.'},
+    {id:68,diff:'difficult',q:'A force-displacement graph shows a force increasing linearly from 0 N to 200 N over a displacement of 5 m. Calculate the work done.',opts:['250 J','400 J','500 J','1000 J'],ans:2,sol:'The graph forms a triangle.\nWork = Area = ½ × Base × Height = ½ × 5 × 200 = 500 J.'},
+    {id:69,diff:'difficult',q:'A machine operates at the following power levels: 0–2 hours 50 kW; 2–5 hours 100 kW; 5–7 hours 150 kW. Calculate the total energy consumed.',opts:['600 kWh','650 kWh','700 kWh','750 kWh'],ans:2,sol:'E = P × t\nFirst period: 50 × 2 = 100 kWh\nSecond period: 100 × 3 = 300 kWh\nThird period: 150 × 2 = 300 kWh\nTotal = 100 + 300 + 300 = 700 kWh.'},
+    {id:70,diff:'difficult',q:'Engine fuel consumption readings: 25% load → 20 kg/h; 50% → 35 kg/h; 75% → 50 kg/h; 100% → 65 kg/h. Assuming a linear relationship, estimate fuel consumption at 60% load.',opts:['45 kg/h','41 kg/h','55 kg/h','60 kg/h'],ans:1,sol:'Slope from 50% to 75% load = (50 − 35)/(75 − 50) = 0.6 kg/h per percentage point\nAt 60% load: FC = 35 + (60 − 50) × 0.6 = 41 kg/h.'},
+    {id:71,diff:'difficult',q:'A hydraulic cylinder has a piston diameter of 200 mm. The applied pressure is 5 MPa. Calculate the force exerted by the piston.',opts:['78.54 kN','100 kN','157.08 kN','200 kN'],ans:2,sol:'D = 0.2 m\nA = πD²/4 = π × 0.2²/4 = 0.031416 m²\nF = PA = 5,000,000 × 0.031416 = 157,080 N = 157.08 kN.'},
+    {id:72,diff:'difficult',q:'A pump delivers 0.05 m³/s of water against a pressure rise of 400 kPa. If its efficiency is 80%, calculate the input power.',opts:['20 kW','25 kW','30 kW','40 kW'],ans:1,sol:'Hydraulic output power: P_out = ΔpQ = 400000 × 0.05 = 20000 W\nInput power: P_in = P_out/η = 20/0.8 = 25 kW.'},
+    {id:73,diff:'difficult',q:'An engine develops 100 kW at 1500 RPM. Calculate its shaft torque.',opts:['318.3 Nm','477.5 Nm','636.6 Nm','954.9 Nm'],ans:2,sol:'P = 2πNT/60 → T = 60P/(2πN)\nT = 60 × 100000/(2 × 3.1416 × 1500) ≈ 636.62 Nm.'},
+    {id:74,diff:'difficult',q:'A pump delivers 30 kW of hydraulic power. Its mechanical efficiency is 90% and volumetric efficiency is 85%. Calculate the total input power.',opts:['33.33 kW','35.29 kW','39.22 kW','42.50 kW'],ans:2,sol:'Overall efficiency η = 0.90 × 0.85 = 0.765\nInput power: P_in = 30/0.765 ≈ 39.22 kW.'},
+    {id:75,diff:'difficult',q:'A pressure gauge shows 4 bar gauge pressure. Atmospheric pressure is 1.013 bar. Calculate the absolute pressure.',opts:['2.987 bar','4 bar','5.013 bar','5.5 bar'],ans:2,sol:'P_absolute = P_gauge + P_atmospheric = 4 + 1.013 = 5.013 bar.'},
+    {id:76,diff:'difficult',q:'A 500 kg object is lifted vertically through 10 m in 20 seconds. Calculate the useful lifting power.',opts:['1.226 kW','2.4525 kW','4.905 kW','9.81 kW'],ans:1,sol:'Work done: W = mgh = 500 × 9.81 × 10 = 49050 J\nPower: P = 49050/20 = 2452.5 W = 2.4525 kW.'},
+    {id:77,diff:'difficult',q:'A heat exchanger heats 3 kg/s of water from 25°C to 65°C. Calculate the heat transfer rate. Take cp = 4.18 kJ/kg K.',opts:['125.4 kW','250.8 kW','418 kW','501.6 kW'],ans:3,sol:'Q̇ = ṁcₚΔT = 3 × 4.18 × (65 − 25) = 501.6 kJ/s = 501.6 kW.'},
+    {id:78,diff:'difficult',q:'A boiler receives 1000 kg/h of feedwater and produces 900 kg/h of steam. Assuming no other mass outlet, calculate the accumulation rate.',opts:['50 kg/h','100 kg/h','150 kg/h','1900 kg/h'],ans:1,sol:'Accumulation = 1000 − 900 = 100 kg/h.'},
+    {id:79,diff:'difficult',q:'A diesel engine consumes 20 kg/h of fuel. Its calorific value is 42,000 kJ/kg. Calculate the fuel energy input rate.',opts:['116.67 kW','200 kW','233.33 kW','420 kW'],ans:2,sol:'Fuel energy per hour: 20 × 42000 = 840000 kJ/h\nConvert into kW: P = 840000/3600 ≈ 233.33 kW.'},
+    {id:80,diff:'difficult',q:'An engine receives 1000 kW of fuel energy. Its brake power is 350 kW, cooling water losses are 250 kW and exhaust losses are 300 kW. Find the remaining energy losses.',opts:['50 kW','100 kW','150 kW','200 kW'],ans:1,sol:'Remaining = 1000 − (350 + 250 + 300) = 100 kW.'},
+    {id:81,diff:'difficult',q:'A mixing tank receives two water streams. Stream 1: 4 kg/s at 20°C. Stream 2: 6 kg/s at 50°C. Find the outlet temperature assuming no heat loss, no phase change and equal specific heat capacities.',opts:['30°C','32°C','38°C','40°C'],ans:2,sol:'T_out = (ṁ₁T₁ + ṁ₂T₂)/(ṁ₁ + ṁ₂)\n= (4 × 20 + 6 × 50)/(4 + 6)\n= (80 + 300)/10 = 38°C.'},
+    {id:82,diff:'difficult',q:'A cooling system removes 418 kW of heat from an engine. Cooling water enters at 30°C and leaves at 40°C. Calculate the mass flow rate of water.',opts:['5 kg/s','10 kg/s','15 kg/s','20 kg/s'],ans:1,sol:'Q̇ = ṁcₚΔT → ṁ = Q̇/(cₚΔT)\n= 418/(4.18 × 10) = 10 kg/s.'},
+    {id:83,diff:'difficult',q:'Calculate the population standard deviation of the following values: 2, 4, 6, 8, 10.',opts:['2.00','2.83','3.16','4.00'],ans:1,sol:'Mean: μ = (2+4+6+8+10)/5 = 6\nSquared deviations: 16, 4, 0, 4, 16\nSum = 40\nσ = √(40/5) = √8 ≈ 2.83.'},
+    {id:84,diff:'difficult',q:'Calculate the sample standard deviation of the values 4, 6, 8.',opts:['1','2','2.5','4'],ans:1,sol:'Mean: x̄ = (4+6+8)/3 = 6\nSquared deviations: 4 + 0 + 4 = 8\ns = √(8/(3−1)) = √4 = 2.'},
+    {id:85,diff:'difficult',q:'A pressure measurement is recorded as 20 ± 0.2 bar. Calculate its relative uncertainty as a percentage.',opts:['0.1%','0.5%','1%','2%'],ans:2,sol:'Relative uncertainty = 0.2/20 × 100 = 1%.'},
+    {id:86,diff:'difficult',q:'The readings of a thermometer are 98°C, 100°C, 101°C, 99°C and 102°C. Find the range.',opts:['2°C','3°C','4°C','5°C'],ans:2,sol:'Range = Maximum − Minimum = 102 − 98 = 4°C.'},
+    {id:87,diff:'difficult',q:'Five pressure readings have a mean of 10 bar. If four readings are 9, 10, 11 and 12 bar, find the fifth reading.',opts:['6 bar','7 bar','8 bar','9 bar'],ans:2,sol:'(9 + 10 + 11 + 12 + x)/5 = 10\n42 + x = 50\nx = 8 bar.'},
+    {id:88,diff:'difficult',q:'A measuring instrument has a systematic error of +0.5 mm. If the true length is 50 mm, what is the indicated reading?',opts:['49.0 mm','49.5 mm','50.0 mm','50.5 mm'],ans:3,sol:'Positive systematic error means the instrument reads higher than the true value.\nReading = 50 + 0.5 = 50.5 mm.'},
+    {id:89,diff:'difficult',q:'Two independent measurements have standard uncertainties of 3 units and 4 units. Calculate the combined standard uncertainty.',opts:['1 unit','5 units','7 units','12 units'],ans:1,sol:'For independent uncertainties:\nu_c = √(3² + 4²) = √25 = 5.'},
+    {id:90,diff:'difficult',q:'A pressure gauge has a full-scale range of 0–100 bar and an accuracy specification of ±1% of full scale. What is the maximum absolute error?',opts:['±0.1 bar','±0.5 bar','±1 bar','±10 bar'],ans:2,sol:'Accuracy = ±1% of full scale.\nError = (1/100) × 100 = ±1 bar.'},
+    {id:91,diff:'very-difficult',q:'A marine diesel engine develops 500 kW brake power at 120 RPM. Calculate the shaft torque.',opts:['19,894 Nm','29,841 Nm','39,789 Nm','49,735 Nm'],ans:2,sol:'P = 2πNT/60 → T = 60P/(2πN)\nT = (60 × 500000)/(2 × 3.1416 × 120)\n= 30,000,000/753.984 ≈ 39,789 Nm.'},
+    {id:92,diff:'very-difficult',q:'A centrifugal pump delivers 0.08 m³/s of seawater against a pressure difference of 500 kPa. The pump efficiency is 75%. Calculate the electrical input power if the driving motor efficiency is 90%.',opts:['44.44 kW','53.33 kW','59.26 kW','66.67 kW'],ans:2,sol:'Step 1: P_h = Δp × Q = 500000 × 0.08 = 40 kW\nStep 2: P_s = 40/0.75 = 53.333 kW\nStep 3: P_e = 53.333/0.90 ≈ 59.26 kW.'},
+    {id:93,diff:'very-difficult',q:'A boiler produces 5000 kg/h of steam. Feedwater enters at an enthalpy of 125 kJ/kg, and the produced steam has an enthalpy of 2750 kJ/kg. If the boiler fuel energy input rate is 5000 kW, calculate the boiler efficiency.',opts:['65%','70%','72.92%','80%'],ans:2,sol:'Δh = 2750 − 125 = 2625 kJ/kg\nQ = 5000 × 2625 = 13,125,000 kJ/h\nP_out = 13,125,000/3600 ≈ 3645.83 kW\nη = 3645.83/5000 × 100 ≈ 72.92%.'},
+    {id:94,diff:'very-difficult',q:'A cooling system receives 12 kg/s of water at 25°C and mixes it with 8 kg/s of water at 70°C. If there is no heat loss to the surroundings and both streams have the same specific heat capacity, calculate the final mixture temperature.',opts:['37°C','40°C','43°C','47°C'],ans:2,sol:'T_f = (m₁T₁ + m₂T₂)/(m₁ + m₂)\n= (12 × 25 + 8 × 70)/(12 + 8)\n= (300 + 560)/20 = 43°C.'},
+    {id:95,diff:'very-difficult',q:'A diesel engine receives fuel at 40 kg/h with a calorific value of 42,000 kJ/kg. The engine brake power is 350 kW. Calculate its brake thermal efficiency.',opts:['65%','70%','75%','80%'],ans:2,sol:'Q_in = 40 × 42000 = 1,680,000 kJ/h\nP_in = 1,680,000/3600 ≈ 466.67 kW\nη_bth = (350/466.67) × 100 = 75%.'},
+    {id:96,diff:'very-difficult',q:'A machine produces the following five temperature readings: 90°C, 92°C, 94°C, 96°C and 98°C. Calculate the population standard deviation.',opts:['2.00°C','2.83°C','3.16°C','4.00°C'],ans:1,sol:'Mean: μ = (90+92+94+96+98)/5 = 94°C\nSquared deviations: 16, 4, 0, 4, 16 → sum = 40\nσ = √(40/5) = √8 ≈ 2.83°C.'},
+    {id:97,diff:'very-difficult',q:'A rectangular metal plate has a measured length of 200 ± 1 mm and a width of 100 ± 0.5 mm. Assuming independent uncertainties, calculate the approximate relative uncertainty in its area.',opts:['0.25%','0.50%','1.00%','0.71%'],ans:3,sol:'u_A/A = √((u_L/L)² + (u_W/W)²)\n= √((1/200)² + (0.5/100)²)\n= √(0.000025 + 0.000025)\n= √0.00005 ≈ 0.007071 = 0.7071% ≈ 0.71%.'},
+    {id:98,diff:'very-difficult',q:'A pressure gauge has a range of 0–200 bar and an accuracy of ±0.5% of full scale. If it indicates 120 bar, calculate the possible pressure range based on this accuracy specification.',opts:['119–121 bar','119.5–120.5 bar','118–122 bar','120–121 bar'],ans:0,sol:'Error = (0.5/100) × 200 = ±1 bar\nPossible range = 120 − 1 to 120 + 1 = 119 to 121 bar.'},
+    {id:99,diff:'very-difficult',q:"An engine's fuel consumption readings over five operating periods are 40, 42, 38, 45 and 35 kg/h. Calculate the sample standard deviation.",opts:['3.00 kg/h','3.81 kg/h','4.00 kg/h','4.25 kg/h'],ans:1,sol:'Mean: x̄ = (40+42+38+45+35)/5 = 40\nSquared deviations: 0, 4, 4, 25, 25 → sum = 58\ns = √(58/(5−1)) = √14.5 ≈ 3.81 kg/h.'},
+    {id:100,diff:'very-difficult',q:"A ship's main engine operates at 80% of its rated power of 10 MW. Its brake thermal efficiency is 45%. The fuel calorific value is 42,000 kJ/kg. Calculate the fuel consumption in kg/h.",opts:['1200 kg/h','1371.43 kg/h','1523.81 kg/h','1800 kg/h'],ans:2,sol:'P_out = 10 × 0.80 = 8 MW = 8000 kW\nP_in = 8000/0.45 ≈ 17777.78 kW\nE = 17777.78 × 3600 = 64,000,000 kJ/h\nFuel = 64,000,000/42,000 ≈ 1523.81 kg/h.'},
+
+    // ============ ADDITIONAL SET 200 (IDs 101–300) ============
+    // ---------- PART A: EASY (New Q1–Q60 → IDs 101–160) ----------
+    {id:101,diff:'easy',q:'Convert 4500 millimetres into metres.',opts:['0.45 m','4.5 m','45 m','450 m'],ans:1,sol:'4500/1000 = 4.5 m.'},
+    {id:102,diff:'easy',q:'Convert 0.75 tonne into kilograms.',opts:['75 kg','750 kg','7500 kg','75000 kg'],ans:1,sol:'0.75 × 1000 = 750 kg.'},
+    {id:103,diff:'easy',q:'Convert 3600 seconds into hours.',opts:['0.5 hour','1 hour','2 hours','3 hours'],ans:1,sol:'3600/3600 = 1 hour.'},
+    {id:104,diff:'easy',q:'Convert 250 kPa into bar.',opts:['0.25 bar','2.5 bar','25 bar','250 bar'],ans:1,sol:'1 bar = 100 kPa\n250/100 = 2.5 bar.'},
+    {id:105,diff:'easy',q:'Convert 4500 W into horsepower.',opts:['4.03 HP','5.36 HP','6.03 HP','7.46 HP'],ans:2,sol:'HP = 4500/746 = 6.03 HP.'},
+    {id:106,diff:'easy',q:'Convert 3 hours 30 minutes into seconds.',opts:['10,800 s','12,600 s','13,500 s','15,000 s'],ans:1,sol:'3.5 × 3600 = 12600 s.'},
+    {id:107,diff:'easy',q:'Convert 500 cm³ into litres.',opts:['0.05 L','0.5 L','5 L','50 L'],ans:1,sol:'1000 cm³ = 1 L\n500/1000 = 0.5 L.'},
+    {id:108,diff:'easy',q:'Convert 36 km/h into metres per second.',opts:['5 m/s','10 m/s','15 m/s','20 m/s'],ans:1,sol:'36 × 5/18 = 10 m/s.'},
+    {id:109,diff:'easy',q:'Convert 2.4 MPa into bar.',opts:['2.4 bar','12 bar','24 bar','240 bar'],ans:2,sol:'1 MPa = 10 bar\n2.4 × 10 = 24 bar.'},
+    {id:110,diff:'easy',q:'What is the dimensional formula of density?',opts:['[ML⁻³]','[MLT⁻²]','[ML²T⁻²]','[M⁰LT⁻¹]'],ans:0,sol:'Density = Mass/Volume = M/L³ = ML⁻³.'},
+    {id:111,diff:'easy',q:'Convert 15 litres into cubic metres.',opts:['0.0015 m³','0.015 m³','0.15 m³','1.5 m³'],ans:1,sol:'15 × 0.001 = 0.015 m³.'},
+    {id:112,diff:'easy',q:'What is the SI unit of momentum?',opts:['kg m/s','kg m/s²','N/m²','J/s'],ans:0,sol:'Momentum = Mass × Velocity\nUnit = kg × m/s = kg m/s.'},
+    {id:113,diff:'easy',q:'Convert 86°F into Celsius.',opts:['20°C','25°C','30°C','35°C'],ans:2,sol:'C = (F − 32) × 5/9 = (86 − 32) × 5/9 = 30°C.'},
+    {id:114,diff:'easy',q:'What is the dimensional formula of work?',opts:['[MLT⁻²]','[ML²T⁻²]','[ML²T⁻³]','[ML⁻¹T⁻²]'],ans:1,sol:'Work = Force × Distance\n= MLT⁻² × L = ML²T⁻².'},
+    {id:115,diff:'easy',q:'Convert 0.02 m² into cm².',opts:['20 cm²','200 cm²','2000 cm²','20,000 cm²'],ans:1,sol:'1 m² = 10000 cm²\n0.02 × 10000 = 200 cm².'},
+    {id:116,diff:'easy',q:'Which type of graph is most appropriate for showing the distribution of continuous numerical data into intervals?',opts:['Histogram','Pie chart','Flowchart','Pictograph'],ans:0,sol:'A histogram represents the frequency distribution of continuous numerical data using adjacent bars.'},
+    {id:117,diff:'easy',q:'A straight-line graph passes through the origin. If its slope is 5, what is the value of Y when X = 4?',opts:['9','15','20','25'],ans:2,sol:'Y = mX = 5 × 4 = 20.'},
+    {id:118,diff:'easy',q:'What does a negative slope indicate?',opts:['Both variables increase','One variable decreases as the other increases','Both variables remain constant','No relationship exists'],ans:1,sol:'A negative gradient indicates an inverse trend between the two plotted variables.'},
+    {id:119,diff:'easy',q:"A machine's output is 40 kW at one operating condition and 50 kW at another. Find the average output power of these two equally weighted observations.",opts:['40 kW','45 kW','50 kW','90 kW'],ans:1,sol:'Average = (40 + 50)/2 = 45 kW.'},
+    {id:120,diff:'easy',q:'Which graph is generally used to represent the relationship between two numerical variables?',opts:['Scatter plot','Pie chart','Organizational chart','Flowchart'],ans:0,sol:'A scatter plot displays paired numerical observations and helps identify relationships or correlations.'},
+    {id:121,diff:'easy',q:'In a graph, the X-axis generally represents:',opts:['Dependent variable','Independent variable','Measurement error','Percentage efficiency'],ans:1,sol:'The independent variable is generally placed on the horizontal X-axis.'},
+    {id:122,diff:'easy',q:"A machine's operating temperature decreases from 120°C to 90°C. What is the percentage decrease?",opts:['20%','25%','30%','35%'],ans:1,sol:'% Decrease = (120 − 90)/120 × 100 = 25%.'},
+    {id:123,diff:'easy',q:'A velocity-time graph is a straight line parallel to the time axis. What does it indicate?',opts:['Constant velocity','Constant acceleration','Increasing velocity','Decreasing velocity'],ans:0,sol:'A horizontal velocity-time graph indicates that velocity remains unchanged.'},
+    {id:124,diff:'easy',q:'Which graph is best suited to show the proportion of different energy losses in a machine?',opts:['Pie chart','Distance-time graph','Velocity-time graph','Scatter plot'],ans:0,sol:'A pie chart represents the contribution of different categories to a whole.'},
+    {id:125,diff:'easy',q:'The slope of a pressure-volume graph is:',opts:['Always power','Change in pressure divided by change in volume','Volume multiplied by pressure','Density multiplied by volume'],ans:1,sol:'Slope = ΔP/ΔV. Its units are Pa/m³.'},
+    {id:126,diff:'easy',q:'A force of 250 N acts on an area of 0.5 m². Calculate pressure.',opts:['125 Pa','250 Pa','500 Pa','1000 Pa'],ans:2,sol:'P = 250/0.5 = 500 Pa.'},
+    {id:127,diff:'easy',q:'Calculate the force required to accelerate a 25 kg body at 4 m/s².',opts:['50 N','75 N','100 N','125 N'],ans:2,sol:'F = ma = 25 × 4 = 100 N.'},
+    {id:128,diff:'easy',q:'A machine performs 1200 J of work in 20 seconds. Calculate its power.',opts:['40 W','50 W','60 W','80 W'],ans:2,sol:'P = 1200/20 = 60 W.'},
+    {id:129,diff:'easy',q:'A motor has an input power of 5 kW and efficiency of 80%. Calculate output power.',opts:['3 kW','4 kW','4.5 kW','5 kW'],ans:1,sol:'P_out = 5 × 0.8 = 4 kW.'},
+    {id:130,diff:'easy',q:'A force of 400 N acts through a distance of 3 m in the direction of motion. Calculate work done.',opts:['400 J','800 J','1000 J','1200 J'],ans:3,sol:'W = Fs = 400 × 3 = 1200 J.'},
+    {id:131,diff:'easy',q:'Calculate the pressure exerted by a 600 N force on an area of 0.2 m².',opts:['300 Pa','1200 Pa','3000 Pa','6000 Pa'],ans:2,sol:'P = 600/0.2 = 3000 Pa.'},
+    {id:132,diff:'easy',q:'A motor has 90% efficiency and receives 20 kW input. Calculate its power loss.',opts:['1 kW','2 kW','3 kW','18 kW'],ans:1,sol:'Output = 20 × 0.90 = 18 kW\nLoss = 20 − 18 = 2 kW.'},
+    {id:133,diff:'easy',q:'A body has a mass of 80 kg. Calculate its weight on Earth.',opts:['78.48 N','784.8 N','800 N','981 N'],ans:1,sol:'W = mg = 80 × 9.81 = 784.8 N.'},
+    {id:134,diff:'easy',q:'A machine uses 12 kW input and loses 3 kW. Calculate its efficiency.',opts:['65%','70%','75%','80%'],ans:2,sol:'Output = 12 − 3 = 9 kW\nη = 9/12 × 100 = 75%.'},
+    {id:135,diff:'easy',q:'A force of 150 N moves an object at 4 m/s at an angle of 60° to the direction of motion. Calculate power.',opts:['150 W','300 W','450 W','600 W'],ans:1,sol:'P = Fv cos θ = 150 × 4 × cos 60°\n= 600 × 0.5 = 300 W.'},
+    {id:136,diff:'easy',q:'Calculate the heat needed to raise 2 kg of oil by 20°C if its specific heat capacity is 2 kJ/kg K.',opts:['20 kJ','40 kJ','60 kJ','80 kJ'],ans:3,sol:'Q = mcₚΔT = 2 × 2 × 20 = 80 kJ.'},
+    {id:137,diff:'easy',q:'A tank receives 25 kg/min and discharges 20 kg/min. Find the accumulation in 4 minutes.',opts:['10 kg','15 kg','20 kg','25 kg'],ans:2,sol:'Accumulation = (25 − 20) × 4 = 20 kg.'},
+    {id:138,diff:'easy',q:'How much heat is released when 3 kg of a substance solidifies, if its latent heat of fusion is 200 kJ/kg?',opts:['200 kJ','300 kJ','400 kJ','600 kJ'],ans:3,sol:'Q = mL = 3 × 200 = 600 kJ.'},
+    {id:139,diff:'easy',q:'A water stream of 5 kg/s enters a system and 2 kg/s leaves through one outlet. If there is no accumulation, what must the other outlet flow rate be?',opts:['1 kg/s','2 kg/s','3 kg/s','7 kg/s'],ans:2,sol:'5 = 2 + ṁ₂ → ṁ₂ = 3 kg/s.'},
+    {id:140,diff:'easy',q:'A heater supplies 60 kJ of energy in 2 minutes. Calculate its average heat transfer rate.',opts:['250 W','500 W','1000 W','2000 W'],ans:1,sol:'Q̇ = 60000/120 = 500 W.'},
+    {id:141,diff:'easy',q:'A 10 kg metal block absorbs 90 kJ of heat, increasing its temperature by 30°C. Find its specific heat capacity.',opts:['0.1 kJ/kg K','0.2 kJ/kg K','0.3 kJ/kg K','0.4 kJ/kg K'],ans:2,sol:'cₚ = Q/(mΔT) = 90/(10 × 30) = 0.3 kJ/kg K.'},
+    {id:142,diff:'easy',q:'A tank initially contains 500 kg of water. It receives 40 kg/min and discharges 25 kg/min. How much water is present after 10 minutes?',opts:['550 kg','600 kg','650 kg','700 kg'],ans:2,sol:'Net accumulation = 40 − 25 = 15 kg/min\nFinal mass = 500 + (15 × 10) = 650 kg.'},
+    {id:143,diff:'easy',q:'Which heat transfer method requires no material medium?',opts:['Conduction','Convection','Radiation','Both conduction and convection'],ans:2,sol:'Radiation transfers energy through electromagnetic waves and can occur through a vacuum.'},
+    {id:144,diff:'easy',q:'A heat exchanger receives 100 kW of heat and rejects 15 kW to its surroundings. How much heat is transferred to the process fluid?',opts:['15 kW','75 kW','85 kW','115 kW'],ans:2,sol:'Q_useful = 100 − 15 = 85 kW.'},
+    {id:145,diff:'easy',q:'A fluid has a density of 900 kg/m³ and a volume of 2 m³. Calculate its mass.',opts:['450 kg','900 kg','1800 kg','2000 kg'],ans:2,sol:'m = ρV = 900 × 2 = 1800 kg.'},
+    {id:146,diff:'easy',q:'Find the mean of 5, 7, 9, 11 and 13.',opts:['7','8','9','10'],ans:2,sol:'Mean = (5+7+9+11+13)/5 = 9.'},
+    {id:147,diff:'easy',q:'Find the median of 4, 8, 12, 16.',opts:['8','10','12','14'],ans:1,sol:'Median = (8 + 12)/2 = 10.'},
+    {id:148,diff:'easy',q:'Find the mode of 5, 6, 6, 7, 8, 8, 8, 9.',opts:['6','7','8','9'],ans:2,sol:'8 appears three times, more than any other value.'},
+    {id:149,diff:'easy',q:'Find the range of the values 25, 30, 35, 40 and 50.',opts:['15','20','25','30'],ans:2,sol:'Range = 50 − 25 = 25.'},
+    {id:150,diff:'easy',q:'A thermometer reads 75°C when the true temperature is 78°C. Find the absolute error.',opts:['2°C','3°C','4°C','5°C'],ans:1,sol:'Absolute Error = |75 − 78| = 3°C.'},
+    {id:151,diff:'easy',q:'What happens to the mean when the same constant is added to every observation?',opts:['Mean decreases','Mean increases by that constant','Mean remains unchanged','Mean becomes zero'],ans:1,sol:'Adding a constant to all observations increases their arithmetic mean by exactly that constant.'},
+    {id:152,diff:'easy',q:'Which measurement is most precise?',opts:['10.1 ± 0.5 mm','10.1 ± 0.2 mm','10.1 ± 0.1 mm','10.1 ± 1.0 mm'],ans:2,sol:'The smallest uncertainty indicates the highest measurement precision, assuming comparable conditions.'},
+    {id:153,diff:'easy',q:'A machine produces readings of 100, 101, 99, 100 and 100. What is the mean?',opts:['99','99.5','100','101'],ans:2,sol:'Mean = (100+101+99+100+100)/5 = 100.'},
+    {id:154,diff:'easy',q:'If a dataset has a population variance of 25, what is its population standard deviation?',opts:['4','5','10','25'],ans:1,sol:'σ = √Variance = √25 = 5.'},
+    {id:155,diff:'easy',q:'A measurement is recorded as 150 ± 3 mm. What is the lower limit?',opts:['143 mm','147 mm','150 mm','153 mm'],ans:1,sol:'Lower Limit = 150 − 3 = 147 mm.'},
+    {id:156,diff:'easy',q:'A set of readings has a standard deviation of zero. What does this indicate?',opts:['Readings are highly scattered','All readings are identical','Mean is zero','Maximum reading is zero'],ans:1,sol:'Zero standard deviation means there is no variation among observations.'},
+    {id:157,diff:'easy',q:'If the true value is 200 and the measured value is 204, calculate the percentage error.',opts:['1%','2%','4%','5%'],ans:1,sol:'% Error = |204 − 200|/200 × 100 = 2%.'},
+    {id:158,diff:'easy',q:'Which type of error can occur due to incorrect recording of a reading by an operator?',opts:['Systematic error','Random error','Gross error','Instrumental resolution error'],ans:2,sol:'Incorrect observation, reading or recording by a person is classified as a gross error.'},
+    {id:159,diff:'easy',q:'If all observations are multiplied by 3, the standard deviation becomes:',opts:['One-third','Unchanged','Three times','Nine times'],ans:2,sol:'Multiplying every observation by a constant multiplies the standard deviation by the absolute value of that constant.'},
+    {id:160,diff:'easy',q:'A pressure instrument reads 48, 49, 48, 49 and 48 bar. What is the range?',opts:['0 bar','0.5 bar','1 bar','2 bar'],ans:2,sol:'Range = 49 − 48 = 1 bar.'},
+
+    // ---------- PART B: MEDIUM (New Q61–Q120 → IDs 161–220) ----------
+    {id:161,diff:'medium',q:'Convert 5.5 m³/min into litres per second.',opts:['55 L/s','91.67 L/s','110 L/s','550 L/s'],ans:1,sol:'5.5 m³/min = 5500 L/min\nQ = 5500/60 = 91.67 L/s.'},
+    {id:162,diff:'medium',q:'Convert 1.2 kg/L into kg/m³.',opts:['120 kg/m³','1200 kg/m³','12,000 kg/m³','1.2 kg/m³'],ans:1,sol:'1 kg/L = 1000 kg/m³\n1.2 × 1000 = 1200 kg/m³.'},
+    {id:163,diff:'medium',q:'A ship travels at 12 knots. Approximately what is its speed in m/s? Take 1 knot = 0.5144 m/s.',opts:['4.17 m/s','5.00 m/s','6.17 m/s','7.20 m/s'],ans:2,sol:'12 × 0.5144 = 6.1728 m/s.'},
+    {id:164,diff:'medium',q:'Convert 750 mmHg into approximately kPa. Take 1 mmHg = 133.322 Pa.',opts:['75.0 kPa','99.99 kPa','101.3 kPa','133.3 kPa'],ans:1,sol:'P = 750 × 133.322 = 99991.5 Pa ≈ 99.99 kPa.'},
+    {id:165,diff:'medium',q:'What is the dimensional formula of angular momentum?',opts:['[ML²T⁻¹]','[MLT⁻¹]','[ML²T⁻²]','[ML²T⁻³]'],ans:0,sol:'Angular Momentum = Momentum × Radius\n= MLT⁻¹ × L = ML²T⁻¹.'},
+    {id:166,diff:'medium',q:'A liquid has a specific gravity of 0.85. What is its density if the reference water density is 1000 kg/m³?',opts:['85 kg/m³','850 kg/m³','1000 kg/m³','1180 kg/m³'],ans:1,sol:'SG = ρ_liquid/ρ_water\nρ = 0.85 × 1000 = 850 kg/m³.'},
+    {id:167,diff:'medium',q:'Convert 2.5 kWh into megajoules.',opts:['3.6 MJ','7.2 MJ','9 MJ','12.5 MJ'],ans:2,sol:'1 kWh = 3.6 MJ\n2.5 × 3.6 = 9 MJ.'},
+    {id:168,diff:'medium',q:'Convert 0.006 m³/s into m³/h.',opts:['6.6 m³/h','12.6 m³/h','21.6 m³/h','36 m³/h'],ans:2,sol:'0.006 × 3600 = 21.6 m³/h.'},
+    {id:169,diff:'medium',q:'Which of the following is dimensionless?',opts:['Force','Pressure','Strain','Power'],ans:2,sol:'Strain = Change in Length / Original Length\nBoth quantities have the same dimensions, so strain is dimensionless.'},
+    {id:170,diff:'medium',q:'A rotating shaft runs at 1800 RPM. Calculate its angular velocity in rad/s.',opts:['94.25 rad/s','157.08 rad/s','188.50 rad/s','314.16 rad/s'],ans:2,sol:'ω = 2πN/60 = (2 × 3.1416 × 1800)/60 = 188.50 rad/s.'},
+    {id:171,diff:'medium',q:'Convert 0.0045 MPa into kPa.',opts:['0.45 kPa','4.5 kPa','45 kPa','450 kPa'],ans:1,sol:'1 MPa = 1000 kPa\n0.0045 × 1000 = 4.5 kPa.'},
+    {id:172,diff:'medium',q:'A fluid flows at 1200 litres per minute. Convert its flow rate into m³/s.',opts:['0.002 m³/s','0.02 m³/s','0.2 m³/s','2 m³/s'],ans:1,sol:'1200 L/min = 1.2 m³/min\nQ = 1.2/60 = 0.02 m³/s.'},
+    {id:173,diff:'medium',q:'A linear graph is represented by Y = 3X + 5. Find Y when X = 7.',opts:['21','24','26','35'],ans:2,sol:'Y = 3(7) + 5 = 26.'},
+    {id:174,diff:'medium',q:'A velocity-time graph shows velocity increasing uniformly from 10 m/s to 30 m/s over 5 seconds. Find the displacement.',opts:['50 m','75 m','100 m','150 m'],ans:2,sol:'Area under graph = Trapezium area.\ns = (10+30)/2 × 5 = 100 m.'},
+    {id:175,diff:'medium',q:'A machine produces 80 kW at 1000 RPM and 100 kW at 1250 RPM. Assuming a linear relationship, estimate its output at 1500 RPM.',opts:['110 kW','115 kW','120 kW','125 kW'],ans:2,sol:'Slope = (100−80)/(1250−1000) = 0.08 kW/RPM\nP = 100 + (1500−1250)(0.08) = 120 kW.'},
+    {id:176,diff:'medium',q:'A pressure-time graph shows pressure increasing from 2 bar to 8 bar in 3 minutes. Calculate the average rate of pressure increase.',opts:['1 bar/min','2 bar/min','3 bar/min','6 bar/min'],ans:1,sol:'Rate = (8 − 2)/3 = 2 bar/min.'},
+    {id:177,diff:'medium',q:'A force varies linearly from 100 N to 300 N over a displacement of 4 m. Calculate the work done.',opts:['400 J','600 J','800 J','1200 J'],ans:2,sol:'W = (100+300)/2 × 4 = 200 × 4 = 800 J.'},
+    {id:178,diff:'medium',q:"An engine's fuel consumption is 40 kg/h at 50% load and 70 kg/h at 100% load. Assuming a linear relationship, find consumption at 80% load.",opts:['52 kg/h','55 kg/h','58 kg/h','64 kg/h'],ans:2,sol:'Slope = (70−40)/(100−50) = 0.6\nFC = 40 + (80−50)(0.6) = 58 kg/h.'},
+    {id:179,diff:'medium',q:"A machine's temperature is 30°C, 40°C, 50°C and 60°C at equally spaced time intervals. What type of trend is indicated?",opts:['Constant temperature','Linear increase','Exponential decrease','Random variation only'],ans:1,sol:'Temperature rises by 10°C at each equal time interval, indicating a constant rate of increase.'},
+    {id:180,diff:'medium',q:'A scatter plot shows points closely following a downward-sloping straight line. What type of correlation exists?',opts:['Strong positive','Weak positive','Strong negative','Zero correlation'],ans:2,sol:'Points close to a downward-sloping line indicate strong negative correlation.'},
+    {id:181,diff:'medium',q:'A graph has X-axis values from 0 to 100 and Y-axis values from 0 to 500. If the plotted point is at X = 40 and Y = 200, what is the ratio Y/X?',opts:['2','4','5','10'],ans:2,sol:'Y/X = 200/40 = 5.'},
+    {id:182,diff:'medium',q:'A power-time graph shows 20 kW for 2 hours and 40 kW for 3 hours. Calculate total energy consumption.',opts:['100 kWh','120 kWh','160 kWh','180 kWh'],ans:2,sol:'E = 20(2) + 40(3) = 40 + 120 = 160 kWh.'},
+    {id:183,diff:'medium',q:'A graph shows displacement against time. The curve becomes progressively steeper. What does this indicate?',opts:['Decreasing velocity','Increasing velocity','Zero acceleration','Constant displacement'],ans:1,sol:'The slope of a displacement-time graph represents velocity. An increasing slope indicates increasing velocity.'},
+    {id:184,diff:'medium',q:"A machine's efficiency increases from 70% to 84%. Calculate the relative percentage increase in efficiency.",opts:['14%','16%','20%','24%'],ans:2,sol:'% Increase = (84−70)/70 × 100 = 20%.'},
+    {id:185,diff:'medium',q:'A hydraulic ram has a piston diameter of 100 mm and operates at 8 bar. Calculate the force generated.',opts:['3141.6 N','5000 N','6283.2 N','8000 N'],ans:2,sol:'D = 0.1 m\nA = π(0.1)²/4 = 0.007854 m²\nF = 800000 × 0.007854 = 6283.2 N.'},
+    {id:186,diff:'medium',q:'A 2-tonne mass is lifted vertically through 5 m. Calculate the work done.',opts:['49.05 kJ','98.1 kJ','100 kJ','196.2 kJ'],ans:1,sol:'m = 2000 kg\nW = mgh = 2000 × 9.81 × 5 = 98100 J = 98.1 kJ.'},
+    {id:187,diff:'medium',q:'A pump produces 15 kW output with an efficiency of 75%. Calculate the input power.',opts:['10 kW','15 kW','20 kW','25 kW'],ans:2,sol:'P_in = 15/0.75 = 20 kW.'},
+    {id:188,diff:'medium',q:'A motor produces 120 Nm torque at 1500 RPM. Calculate its power.',opts:['12.57 kW','15.71 kW','18.85 kW','20.25 kW'],ans:2,sol:'P = 2πNT/60 = 2(3.1416)(1500)(120)/60 = 18.85 kW.'},
+    {id:189,diff:'medium',q:'A hydraulic system has an input power of 50 kW and an output power of 42.5 kW. Calculate the power loss percentage relative to input.',opts:['10%','12%','15%','17.5%'],ans:2,sol:'Loss = 50 − 42.5 = 7.5 kW\nLoss% = 7.5/50 × 100 = 15%.'},
+    {id:190,diff:'medium',q:'A pump raises water through a head of 25 m at a flow rate of 0.02 m³/s. Take water density as 1000 kg/m³. Calculate hydraulic power.',opts:['2.45 kW','4.905 kW','9.81 kW','12.5 kW'],ans:1,sol:'P = ρgQH = 1000 × 9.81 × 0.02 × 25 = 4905 W = 4.905 kW.'},
+    {id:191,diff:'medium',q:'A pressure of 6 bar acts on a circular surface of diameter 150 mm. Calculate the force.',opts:['5301 N','7500 N','10,603 N','15,000 N'],ans:2,sol:'A = π(0.15)²/4 = 0.017671 m²\nF = 600000 × 0.017671 = 10603 N.'},
+    {id:192,diff:'medium',q:'An engine develops 75 kW brake power from 90 kW indicated power. Calculate mechanical efficiency.',opts:['75%','80%','83.33%','90%'],ans:2,sol:'η_m = BP/IP × 100 = 75/90 × 100 = 83.33%.'},
+    {id:193,diff:'medium',q:'A motor runs at 1000 RPM with a torque of 80 Nm. If its efficiency is 85%, calculate input power.',opts:['8.38 kW','9.87 kW','10.47 kW','12.50 kW'],ans:1,sol:'Output = 2π(1000)(80)/60 = 8377.6 W\nInput = 8.3776/0.85 = 9.86 kW ≈ 9.87 kW.'},
+    {id:194,diff:'medium',q:'A 500 N force acts at an angle of 30° to the horizontal. Calculate its horizontal component.',opts:['250 N','353.55 N','433.01 N','500 N'],ans:2,sol:'F_x = F cos 30° = 500 × 0.8660 = 433.01 N.'},
+    {id:195,diff:'medium',q:'A machine receives 60 kW input and has an efficiency of 92%. Calculate useful output.',opts:['48.2 kW','52.8 kW','55.2 kW','57.6 kW'],ans:2,sol:'P_out = 60 × 0.92 = 55.2 kW.'},
+    {id:196,diff:'medium',q:'A pump discharges water at 0.03 m³/s against a head of 40 m. Calculate its hydraulic output power.',opts:['9.81 kW','11.77 kW','15.0 kW','20.0 kW'],ans:1,sol:'P = ρgQH = 1000 × 9.81 × 0.03 × 40 = 11.772 kW.'},
+    {id:197,diff:'medium',q:'A 4 kg steel component with specific heat capacity 0.46 kJ/kg K is heated from 25°C to 125°C. Calculate the heat absorbed.',opts:['92 kJ','138 kJ','184 kJ','230 kJ'],ans:2,sol:'Q = mcₚΔT = 4 × 0.46 × 100 = 184 kJ.'},
+    {id:198,diff:'medium',q:'A cooling water system receives 15 kg/s and discharges 12 kg/s. If the system operates for 5 minutes, calculate the mass accumulation.',opts:['300 kg','600 kg','900 kg','1200 kg'],ans:2,sol:'Net Rate = 15 − 12 = 3 kg/s\nTime = 5 × 60 = 300 s\nAccumulation = 3 × 300 = 900 kg.'},
+    {id:199,diff:'medium',q:'A heater transfers 250 kJ of heat to 5 kg of water. Calculate the temperature rise.',opts:['10°C','11.96°C','15°C','20°C'],ans:1,sol:'ΔT = Q/(mcₚ) = 250/(5 × 4.18) = 11.96°C.'},
+    {id:200,diff:'medium',q:'A fuel oil separator receives 1000 kg/h of fuel. It produces 950 kg/h of clean fuel and 30 kg/h of sludge. Calculate the remaining unaccounted mass.',opts:['10 kg/h','20 kg/h','30 kg/h','50 kg/h'],ans:1,sol:'Remaining = 1000 − 950 − 30 = 20 kg/h.'},
+    {id:201,diff:'medium',q:'A boiler produces 2000 kg/h of steam. If 5% of the feedwater is lost through blowdown and other outlets, calculate the required feedwater flow assuming these are the only two flow streams.',opts:['2000 kg/h','2050 kg/h','2105.26 kg/h','2200 kg/h'],ans:2,sol:'If 5% is lost, 95% becomes steam.\n0.95 ṁ_in = 2000\nṁ_in = 2000/0.95 = 2105.26 kg/h.'},
+    {id:202,diff:'medium',q:'A heat exchanger receives 150 kW of heat. If 90% is transferred usefully to water, calculate the useful heat transfer rate.',opts:['120 kW','125 kW','135 kW','145 kW'],ans:2,sol:'Q_useful = 150 × 0.90 = 135 kW.'},
+    {id:203,diff:'medium',q:'A water tank contains 2 m³ of water. If its density is 1000 kg/m³, calculate the total mass.',opts:['500 kg','1000 kg','2000 kg','4000 kg'],ans:2,sol:'m = ρV = 1000 × 2 = 2000 kg.'},
+    {id:204,diff:'medium',q:'A stream of hot water at 80°C flows at 2 kg/s and mixes with cold water at 20°C flowing at 3 kg/s. Find the final temperature, assuming adiabatic mixing and equal specific heat capacities.',opts:['36°C','40°C','44°C','50°C'],ans:2,sol:'T_f = (2×80 + 3×20)/(2+3) = (160+60)/5 = 44°C.'},
+    {id:205,diff:'medium',q:'A system loses 40 kW of heat continuously for 30 minutes. Calculate the total heat lost.',opts:['40 MJ','60 MJ','72 MJ','120 MJ'],ans:2,sol:'Q = Pt = 40 × (30×60) = 72000 kJ = 72 MJ.'},
+    {id:206,diff:'medium',q:'A fluid has a mass flow rate of 18 kg/s and a density of 900 kg/m³. Find its volumetric flow rate.',opts:['0.01 m³/s','0.02 m³/s','0.03 m³/s','0.05 m³/s'],ans:1,sol:'Q = ṁ/ρ = 18/900 = 0.02 m³/s.'},
+    {id:207,diff:'medium',q:'A boiler receives 800 kW of heat. It loses 100 kW through its casing and 50 kW through other losses. Calculate the useful heat output.',opts:['600 kW','650 kW','700 kW','750 kW'],ans:1,sol:'Q_out = 800 − 100 − 50 = 650 kW.'},
+    {id:208,diff:'medium',q:'A metal block of mass 20 kg absorbs 1200 kJ of heat. Its temperature rises by 50°C. Find its specific heat capacity.',opts:['0.8 kJ/kg K','1.0 kJ/kg K','1.2 kJ/kg K','1.5 kJ/kg K'],ans:2,sol:'cₚ = 1200/(20 × 50) = 1.2 kJ/kg K.'},
+    {id:209,diff:'medium',q:'Find the population variance of 3, 5, 7, 9, 11.',opts:['4','6','8','10'],ans:2,sol:'Mean μ = 7\nSquared deviations: 16+4+0+4+16 = 40\nVariance = 40/5 = 8.'},
+    {id:210,diff:'medium',q:'Find the sample variance of 2, 4, 6, 8.',opts:['4.00','5.00','6.67','8.00'],ans:2,sol:'Mean x̄ = 5\nSquared deviations: 9+1+1+9 = 20\ns² = 20/(4−1) = 6.67.'},
+    {id:211,diff:'medium',q:'A measuring instrument reads 98.5 bar when the actual pressure is 100 bar. Calculate the relative error.',opts:['0.5%','1.0%','1.5%','2.0%'],ans:2,sol:'Error = (100−98.5)/100 × 100 = 1.5%.'},
+    {id:212,diff:'medium',q:'A machine has the following readings: 20, 22, 24, 26, 28. Calculate the population standard deviation.',opts:['2.00','2.83','3.16','4.00'],ans:1,sol:'Mean μ = 24\nSquared deviations: 16+4+0+4+16 = 40\nσ = √(40/5) = 2.83.'},
+    {id:213,diff:'medium',q:'A measuring instrument has a range of 0–500°C and a resolution of 0.1°C. How many equal display intervals exist between the endpoints?',opts:['500','1000','5000','50,000'],ans:2,sol:'Intervals = (500−0)/0.1 = 5000.'},
+    {id:214,diff:'medium',q:'The mean of six readings is 25. The sum of the first five readings is 120. Find the sixth reading.',opts:['20','25','30','35'],ans:2,sol:'Total sum = 6×25 = 150\nSixth reading = 150 − 120 = 30.'},
+    {id:215,diff:'medium',q:'If every reading is increased by 10, which statistical measure remains unchanged?',opts:['Mean','Median','Standard deviation','Maximum value'],ans:2,sol:'Adding the same constant to every observation does not change their deviations from the mean. Therefore, standard deviation remains unchanged.'},
+    {id:216,diff:'medium',q:'Two independent instruments have uncertainties of ±3 units and ±4 units. Calculate their combined uncertainty using the root-sum-square method.',opts:['±1 unit','±5 units','±7 units','±12 units'],ans:1,sol:'u_c = √(3² + 4²) = √25 = ±5.'},
+    {id:217,diff:'medium',q:'A set of measurements has a mean of 50 and a standard deviation of 5. Calculate the coefficient of variation.',opts:['5%','10%','15%','20%'],ans:1,sol:'CV = σ/μ × 100 = 5/50 × 100 = 10%.'},
+    {id:218,diff:'medium',q:'A vernier caliper has a main scale division of 1 mm and 10 vernier divisions equal to 9 mm. Calculate its least count.',opts:['0.01 mm','0.1 mm','0.5 mm','1 mm'],ans:1,sol:'One vernier division = 9/10 = 0.9 mm\nLeast count = 1 − 0.9 = 0.1 mm.'},
+    {id:219,diff:'medium',q:'Which distribution has mean, median and mode equal to each other?',opts:['Symmetrical normal distribution','Strongly positively skewed distribution','Strongly negatively skewed distribution','Uniformly decreasing distribution'],ans:0,sol:'For an ideal normal distribution: Mean = Median = Mode.'},
+    {id:220,diff:'medium',q:'A machine gives 10 readings with a mean of 100 units. If one additional reading of 120 units is added, what is the new mean?',opts:['100','101.82','102','110'],ans:1,sol:'Original total = 10×100 = 1000\nNew total = 1000 + 120 = 1120\nNew mean = 1120/11 = 101.82.'},
+
+    // ---------- PART C: DIFFICULT (New Q121–Q180 → IDs 221–280) ----------
+    {id:221,diff:'difficult',q:'A ship travels 180 nautical miles in 12 hours. Calculate its average speed in knots.',opts:['12 knots','15 knots','18 knots','20 knots'],ans:1,sol:'Speed = Distance/Time = 180/12 = 15 knots.'},
+    {id:222,diff:'difficult',q:'Convert 2.8 kgf/cm² into bar. Take 1 kgf/cm² = 0.980665 bar.',opts:['1.96 bar','2.45 bar','2.75 bar','3.20 bar'],ans:2,sol:'2.8 × 0.980665 = 2.746 bar ≈ 2.75 bar.'},
+    {id:223,diff:'difficult',q:'A rotating machine operates at 25 revolutions per second. Calculate its angular velocity.',opts:['78.54 rad/s','125.66 rad/s','157.08 rad/s','188.50 rad/s'],ans:2,sol:'ω = 2πf = 2 × 3.1416 × 25 = 157.08 rad/s.'},
+    {id:224,diff:'difficult',q:'A fluid has a kinematic viscosity of 12 cSt. Convert it into m²/s.',opts:['1.2 × 10⁻⁵ m²/s','1.2 × 10⁻⁴ m²/s','1.2 × 10⁻⁶ m²/s','12 × 10⁻³ m²/s'],ans:0,sol:'1 cSt = 10⁻⁶ m²/s\n12 × 10⁻⁶ = 1.2 × 10⁻⁵ m²/s.'},
+    {id:225,diff:'difficult',q:"A ship's engine consumes 240 grams of fuel per kWh. Convert this specific fuel consumption into kg/kWh.",opts:['0.024 kg/kWh','0.24 kg/kWh','2.4 kg/kWh','24 kg/kWh'],ans:1,sol:'240/1000 = 0.24 kg/kWh.'},
+    {id:226,diff:'difficult',q:'What is the dimensional formula of dynamic viscosity?',opts:['[ML⁻¹T⁻¹]','[MLT⁻¹]','[ML⁻¹T⁻²]','[ML²T⁻¹]'],ans:0,sol:"From Newton's law of viscosity:\nτ = μ(du/dy)\nμ = τ/(du/dy)\n[τ] = ML⁻¹T⁻²\n[du/dy] = T⁻¹\n[μ] = ML⁻¹T⁻¹."},
+    {id:227,diff:'difficult',q:'A pipe has a diameter of 75 mm. Calculate its cross-sectional area in cm².',opts:['22.09 cm²','36.25 cm²','44.18 cm²','56.25 cm²'],ans:2,sol:'D = 7.5 cm\nA = πD²/4 = π×7.5²/4 = 44.18 cm².'},
+    {id:228,diff:'difficult',q:'A fluid has a density of 850 kg/m³ and a dynamic viscosity of 0.0255 Pa·s. Calculate its kinematic viscosity.',opts:['3 × 10⁻⁵ m²/s','3 × 10⁻⁴ m²/s','3 × 10⁻³ m²/s','3 × 10⁻⁶ m²/s'],ans:0,sol:'ν = μ/ρ = 0.0255/850 = 0.00003 m²/s = 3 × 10⁻⁵ m²/s.'},
+    {id:229,diff:'difficult',q:'A machine operates at 1200 RPM. How many complete revolutions does it make in 15 minutes?',opts:['12,000','15,000','18,000','20,000'],ans:2,sol:'Revolutions = RPM × Time = 1200 × 15 = 18000.'},
+    {id:230,diff:'difficult',q:'Convert 1.5 bar into kgf/cm². Take 1 kgf/cm² = 0.980665 bar.',opts:['1.20 kgf/cm²','1.53 kgf/cm²','1.75 kgf/cm²','2.00 kgf/cm²'],ans:1,sol:'= 1.5/0.980665 = 1.5295 ≈ 1.53 kgf/cm².'},
+    {id:231,diff:'difficult',q:'A velocity-time graph shows a body accelerating from 5 m/s to 25 m/s during the first 4 seconds, followed by a constant velocity of 25 m/s for another 6 seconds. Calculate the total displacement.',opts:['150 m','170 m','190 m','210 m'],ans:3,sol:'First 4 seconds: s₁ = (5+25)/2 × 4 = 60 m\nNext 6 seconds: s₂ = 25 × 6 = 150 m\nTotal: s = 60 + 150 = 210 m.'},
+    {id:232,diff:'difficult',q:'A force-displacement graph shows force increasing from 50 N to 150 N over 2 m, remaining constant at 150 N for 3 m, then decreasing to zero over the final 1 m. Calculate total work.',opts:['500 J','600 J','625 J','725 J'],ans:3,sol:'W₁ = (50+150)/2 × 2 = 200 J\nW₂ = 150 × 3 = 450 J\nW₃ = ½ × 1 × 150 = 75 J\nTotal = 200 + 450 + 75 = 725 J.'},
+    {id:233,diff:'difficult',q:'The power output of an engine is 200 kW at 1000 RPM and 260 kW at 1300 RPM. Assuming a linear relationship, estimate the power at 1150 RPM.',opts:['215 kW','220 kW','230 kW','240 kW'],ans:2,sol:'Slope = (260−200)/(1300−1000) = 0.2 kW/RPM\nP = 200 + (1150−1000)(0.2) = 230 kW.'},
+    {id:234,diff:'difficult',q:"An engine's exhaust temperature is measured every 5 minutes: 200°C, 210°C, 225°C, 245°C, 270°C. Calculate the average rate of temperature increase over the 20-minute period.",opts:['2.5°C/min','3.0°C/min','3.5°C/min','4.0°C/min'],ans:2,sol:'Rate = (270−200)/20 = 3.5°C/min.'},
+    {id:235,diff:'difficult',q:'A machine has speed-power data: 500 RPM → 20 kW; 750 RPM → 30 kW; 1000 RPM → 40 kW; 1250 RPM → 50 kW. Calculate the average power increase per 100 RPM.',opts:['2 kW','4 kW','5 kW','10 kW'],ans:1,sol:'(50−20)/(1250−500) = 30/750 = 0.04 kW/RPM\nPer 100 RPM: 0.04 × 100 = 4 kW.'},
+    {id:236,diff:'difficult',q:'A velocity-time graph shows velocity decreasing uniformly from 30 m/s to 10 m/s over 5 seconds. Calculate the magnitude of acceleration.',opts:['2 m/s²','4 m/s²','5 m/s²','8 m/s²'],ans:1,sol:'a = (10−30)/5 = −4 m/s²\nMagnitude = 4 m/s².'},
+    {id:237,diff:'difficult',q:"A machine's fuel consumption is 30 kg/h at 20% load, 45 kg/h at 50% load and 60 kg/h at 80% load. Calculate the average rate of fuel consumption increase per 10% load increase.",opts:['3 kg/h','5 kg/h','7.5 kg/h','10 kg/h'],ans:1,sol:'Rate = (60−30)/(80−20) = 0.5 kg/h per percentage point\nFor 10 percentage points: 0.5 × 10 = 5 kg/h.'},
+    {id:238,diff:'difficult',q:'The area under a power-time graph represents:',opts:['Force','Energy','Acceleration','Pressure'],ans:1,sol:'Energy = ∫P dt. Therefore, the area under a power-time graph represents energy transferred.'},
+    {id:239,diff:'difficult',q:'A graph has a negative slope of −4. If X increases by 6 units, what is the corresponding change in Y?',opts:['+24','−24','+10','−10'],ans:1,sol:'ΔY = mΔX = −4 × 6 = −24.'},
+    {id:240,diff:'difficult',q:"A machine's efficiency versus load graph has the following values: 25% load → 60%; 50% load → 75%; 75% load → 85%; 100% load → 80%. At which load is efficiency maximum?",opts:['25%','50%','75%','100%'],ans:2,sol:'The maximum listed efficiency is 85%, occurring at 75% load.'},
+    {id:241,diff:'difficult',q:'A hydraulic press has a large piston diameter of 300 mm and a small piston diameter of 50 mm. If 200 N is applied to the small piston, calculate the ideal output force.',opts:['1800 N','3600 N','5400 N','7200 N'],ans:3,sol:'F₂/F₁ = (D₂/D₁)²\nF₂ = 200(300/50)² = 200 × 36 = 7200 N.'},
+    {id:242,diff:'difficult',q:'A centrifugal pump delivers 0.04 m³/s of water through a head of 30 m. If its efficiency is 80%, calculate the required input power.',opts:['11.77 kW','14.72 kW','16.35 kW','18.40 kW'],ans:1,sol:'Hydraulic output: P_h = ρgQH = 1000 × 9.81 × 0.04 × 30 = 11.772 kW\nInput = 11.772/0.8 = 14.715 kW ≈ 14.72 kW.'},
+    {id:243,diff:'difficult',q:'A shaft transmits 250 kW at 250 RPM. Calculate the torque.',opts:['4774.6 Nm','7162.0 Nm','9549.3 Nm','12,000 Nm'],ans:2,sol:'T = 60P/(2πN) = 60×250000/(2×3.1416×250) = 9549.3 Nm.'},
+    {id:244,diff:'difficult',q:'A force of 800 N acts at a perpendicular distance of 0.4 m from a pivot. Calculate the moment.',opts:['160 Nm','240 Nm','320 Nm','400 Nm'],ans:2,sol:'Moment = F × d = 800 × 0.4 = 320 Nm.'},
+    {id:245,diff:'difficult',q:'A pump operates at 70% efficiency. It requires 35 kW shaft input. Calculate its hydraulic output power.',opts:['20.5 kW','24.5 kW','28.0 kW','30.5 kW'],ans:1,sol:'P_out = 35 × 0.70 = 24.5 kW.'},
+    {id:246,diff:'difficult',q:'A water column produces a gauge pressure of 196.2 kPa. Calculate its height. Take density = 1000 kg/m³.',opts:['10 m','15 m','20 m','25 m'],ans:2,sol:'h = P/(ρg) = 196200/(1000 × 9.81) = 20 m.'},
+    {id:247,diff:'difficult',q:'A machine produces 75 kW output with 25% losses relative to its input. Calculate its input power.',opts:['90 kW','93.75 kW','100 kW','125 kW'],ans:2,sol:'If losses are 25% of input, output is 75% of input.\n75 = 0.75 P_in\nP_in = 100 kW.'},
+    {id:248,diff:'difficult',q:'A hydraulic motor receives 20 kW mechanical input and has 85% efficiency. Calculate its output torque if it rotates at 600 RPM.',opts:['180.5 Nm','227.4 Nm','270.6 Nm','318.3 Nm'],ans:2,sol:'P_out = 20 × 0.85 = 17 kW\nT = 60×17000/(2π×600) = 270.6 Nm.'},
+    {id:249,diff:'difficult',q:'A piston of area 0.015 m² experiences a force of 4500 N. Calculate the pressure in bar.',opts:['2 bar','3 bar','4 bar','5 bar'],ans:1,sol:'P = 4500/0.015 = 300000 Pa = 3 bar.'},
+    {id:250,diff:'difficult',q:'A 1500 kg vehicle moves at 20 m/s. Calculate its kinetic energy.',opts:['150 kJ','200 kJ','300 kJ','600 kJ'],ans:2,sol:'KE = ½mv² = ½ × 1500 × 20² = 300000 J = 300 kJ.'},
+    {id:251,diff:'difficult',q:'A machine operates with an overall efficiency of 72%. If its input is 125 kW, calculate useful output power.',opts:['75 kW','80 kW','90 kW','100 kW'],ans:2,sol:'P_out = 125 × 0.72 = 90 kW.'},
+    {id:252,diff:'difficult',q:'A pump transfers 5000 litres of water in 4 minutes against a pressure rise of 200 kPa. Calculate its hydraulic power.',opts:['3.47 kW','4.17 kW','5.00 kW','6.25 kW'],ans:1,sol:'Q = 5/(4×60) = 0.020833 m³/s\nP = ΔpQ = 200000 × 0.020833 = 4.167 kW ≈ 4.17 kW.'},
+    {id:253,diff:'difficult',q:'A boiler supplies 3000 kg/h of steam. Feedwater enters at 90°C and steam leaves at 180°C. Assume the specific heat of water is 4.18 kJ/kg K and neglect latent heat and phase change for this simplified sensible-heating problem. Calculate heat transfer rate.',opts:['313.5 kW','418 kW','627 kW','836 kW'],ans:0,sol:'ṁ = 3000/3600 = 0.8333 kg/s\nQ̇ = ṁcₚΔT = 0.8333 × 4.18 × 90 = 313.5 kW.'},
+    {id:254,diff:'difficult',q:'A cooling water system removes 600 kW of heat. The water temperature increases by 15°C. Calculate the mass flow rate.',opts:['6.57 kg/s','7.18 kg/s','9.57 kg/s','12 kg/s'],ans:2,sol:'ṁ = Q̇/(cₚΔT) = 600/(4.18 × 15) = 9.57 kg/s.'},
+    {id:255,diff:'difficult',q:'A tank initially contains 1000 kg of liquid. Inflow is 50 kg/min and outflow is 35 kg/min. Calculate the final mass after 20 minutes.',opts:['1100 kg','1200 kg','1300 kg','1400 kg'],ans:2,sol:'Net Inflow = 50 − 35 = 15 kg/min\nFinal Mass = 1000 + (15 × 20) = 1300 kg.'},
+    {id:256,diff:'difficult',q:'A diesel engine consumes 30 kg/h of fuel with a calorific value of 43,000 kJ/kg. Calculate the energy input rate.',opts:['250 kW','300 kW','358.33 kW','430 kW'],ans:2,sol:'Energy = 30 × 43000 = 1290000 kJ/h\nP = 1290000/3600 = 358.33 kW.'},
+    {id:257,diff:'difficult',q:'A heat exchanger receives 250 kW from a hot fluid and transfers 200 kW to a cold fluid. Calculate the percentage heat loss.',opts:['10%','15%','20%','25%'],ans:2,sol:'Loss = 250 − 200 = 50 kW\nLoss% = 50/250 × 100 = 20%.'},
+    {id:258,diff:'difficult',q:'A mixing chamber receives 4 kg/s at 100°C and 6 kg/s at 40°C. Calculate the outlet temperature assuming no heat loss and equal specific heat capacities.',opts:['52°C','60°C','64°C','70°C'],ans:2,sol:'T_f = (4×100 + 6×40)/(4+6) = (400+240)/10 = 64°C.'},
+    {id:259,diff:'difficult',q:'A substance of mass 5 kg is heated from 20°C to 80°C. Its specific heat capacity is 0.9 kJ/kg K. Calculate the heat supplied.',opts:['180 kJ','270 kJ','360 kJ','450 kJ'],ans:1,sol:'Q = 5 × 0.9 × 60 = 270 kJ.'},
+    {id:260,diff:'difficult',q:'A tank receives 100 kg/h of water and discharges 60 kg/h through one outlet and 25 kg/h through another. Calculate mass accumulation per hour.',opts:['10 kg','15 kg','25 kg','35 kg'],ans:1,sol:'Accumulation = 100 − 60 − 25 = 15 kg/h.'},
+    {id:261,diff:'difficult',q:'A boiler receives 500 kW of fuel energy. It produces 350 kW useful steam energy and loses 100 kW through exhaust gases. Calculate the remaining heat losses.',opts:['25 kW','50 kW','75 kW','100 kW'],ans:1,sol:'Remaining = 500 − 350 − 100 = 50 kW.'},
+    {id:262,diff:'difficult',q:'A fluid flows through a pipe at 0.025 m³/s. Its density is 800 kg/m³. Calculate the mass transported in 10 minutes.',opts:['8000 kg','10,000 kg','12,000 kg','15,000 kg'],ans:2,sol:'ṁ = 800 × 0.025 = 20 kg/s\nTime = 600 s\nMass = 20 × 600 = 12000 kg.'},
+    {id:263,diff:'difficult',q:'A cooling system removes 1.2 MJ of heat in 5 minutes. Calculate the average cooling capacity in kW.',opts:['2 kW','3 kW','4 kW','5 kW'],ans:2,sol:'P = 1200 kJ / 300 s = 4 kW.'},
+    {id:264,diff:'difficult',q:'A heat exchanger cools oil flowing at 2 kg/s from 100°C to 60°C. Oil specific heat capacity is 2.1 kJ/kg K. Calculate heat removed.',opts:['84 kW','126 kW','168 kW','210 kW'],ans:2,sol:'Q̇ = ṁcₚΔT = 2 × 2.1 × 40 = 168 kW.'},
+    {id:265,diff:'difficult',q:"A vessel's freshwater generator produces 12 tonnes of freshwater in 8 hours. Calculate its average production rate in kg/min.",opts:['15 kg/min','20 kg/min','25 kg/min','30 kg/min'],ans:2,sol:'12 tonnes = 12000 kg\n8 hours = 480 min\nRate = 12000/480 = 25 kg/min.'},
+    {id:266,diff:'difficult',q:'Calculate the sample standard deviation of 10, 12, 14, 16 and 18.',opts:['2.83','3.16','3.61','4.00'],ans:1,sol:'Mean x̄ = 14\nSquared deviations: 16+4+0+4+16 = 40\ns = √(40/(5−1)) = √10 = 3.16.'},
+    {id:267,diff:'difficult',q:'A machine produces readings of 98, 100, 102, 104 and 106. Find the population variance.',opts:['4','6','8','10'],ans:2,sol:'Mean μ = 102\nSquared deviations: 16+4+0+4+16 = 40\nVariance = 40/5 = 8.'},
+    {id:268,diff:'difficult',q:'A measurement is 250 ± 2.5 mm. Calculate percentage uncertainty.',opts:['0.5%','1%','1.5%','2%'],ans:1,sol:'% Uncertainty = 2.5/250 × 100 = 1%.'},
+    {id:269,diff:'difficult',q:'Two independent measurements have relative uncertainties of 2% and 3%. If they are multiplied to calculate a derived quantity, calculate the combined relative uncertainty using root-sum-square propagation.',opts:['1%','3%','3.61%','5%'],ans:2,sol:'u_r = √(2² + 3²) = √13 = 3.61%.'},
+    {id:270,diff:'difficult',q:'A pressure gauge shows 75 bar when the true pressure is 80 bar. Calculate the percentage error relative to the true value.',opts:['5.00%','6.25%','7.50%','8.00%'],ans:1,sol:'Error = |75−80|/80 × 100 = 6.25%.'},
+    {id:271,diff:'difficult',q:'A set of 8 measurements has a mean of 25 units. What is the total sum of all observations?',opts:['100','150','200','250'],ans:2,sol:'Sum = Mean × n = 25 × 8 = 200.'},
+    {id:272,diff:'difficult',q:'The coefficient of variation is 5% and the mean is 200. Calculate standard deviation.',opts:['5','10','15','20'],ans:1,sol:'CV = σ/μ × 100\n5 = σ/200 × 100\nσ = 10.'},
+    {id:273,diff:'difficult',q:'A vernier caliper has 20 vernier divisions equal to 19 mm. Its main scale division is 1 mm. Calculate the least count.',opts:['0.01 mm','0.05 mm','0.1 mm','0.5 mm'],ans:1,sol:'1 VSD = 19/20 = 0.95 mm\nLC = 1 − 0.95 = 0.05 mm.'},
+    {id:274,diff:'difficult',q:'A micrometer has a screw pitch of 0.5 mm and 50 divisions on its circular scale. Calculate least count.',opts:['0.001 mm','0.01 mm','0.05 mm','0.1 mm'],ans:1,sol:'LC = Pitch/Number of divisions = 0.5/50 = 0.01 mm.'},
+    {id:275,diff:'difficult',q:'A measurement is 100.0 ± 0.2 mm. Which interval represents its stated uncertainty range?',opts:['99.0–101.0 mm','99.8–100.2 mm','98.0–102.0 mm','100.0–100.2 mm'],ans:1,sol:'Lower = 100 − 0.2 = 99.8\nUpper = 100 + 0.2 = 100.2.'},
+    {id:276,diff:'difficult',q:'The mean of 5 readings is 40. If a new reading of 70 is added, calculate the new mean.',opts:['42','45','50','55'],ans:1,sol:'Original sum = 5×40 = 200\nNew sum = 200 + 70 = 270\nNew mean = 270/6 = 45.'},
+    {id:277,diff:'difficult',q:'Which statistical measure is least affected by an extremely high or low outlier?',opts:['Mean','Median','Range','Standard deviation'],ans:1,sol:'The median depends on the middle position of ordered data, so extreme observations generally have much less effect on it than on the mean.'},
+    {id:278,diff:'difficult',q:'A measuring instrument has a full-scale range of 0–500°C and an accuracy of ±0.2% of full scale. Find the maximum absolute error.',opts:['±0.1°C','±0.5°C','±1°C','±2°C'],ans:2,sol:'Error = 500 × 0.2/100 = ±1°C.'},
+    {id:279,diff:'difficult',q:'A sample has a standard deviation of 4 and a sample size of 16. Calculate the standard error of the mean.',opts:['0.25','0.5','1','2'],ans:2,sol:'SE = s/√n = 4/√16 = 4/4 = 1.'},
+    {id:280,diff:'difficult',q:'A machine produces the following measurements: 12, 14, 16, 18, 20, 22, 24. Calculate the interquartile range using the median-of-halves method.',opts:['6','8','10','12'],ans:1,sol:'Median = 18\nLower half: 12, 14, 16 → Q₁ = 14\nUpper half: 20, 22, 24 → Q₃ = 22\nIQR = 22 − 14 = 8.'},
+
+    // ---------- PART D: VERY DIFFICULT (New Q181–Q200 → IDs 281–300) ----------
+    {id:281,diff:'very-difficult',q:'A marine engine shaft rotates at 90 RPM and transmits 1.2 MW of power. Calculate the torque transmitted.',opts:['95,493 Nm','105,493 Nm','127,324 Nm','150,000 Nm'],ans:2,sol:'T = 60P/(2πN)\nT = (60 × 1200000)/(2 × 3.1416 × 90) = 127324 Nm.'},
+    {id:282,diff:'very-difficult',q:'A seawater pipeline carries 0.12 m³/s of seawater with density 1025 kg/m³. Calculate the mass transported in 30 minutes.',opts:['180,000 kg','221,400 kg','250,000 kg','300,000 kg'],ans:1,sol:'ṁ = ρQ = 1025 × 0.12 = 123 kg/s\nTime = 30 × 60 = 1800 s\nMass = 123 × 1800 = 221400 kg.'},
+    {id:283,diff:'very-difficult',q:'A hydraulic system has a pressure of 12 MPa and a piston diameter of 80 mm. Calculate the force exerted by the piston.',opts:['30.16 kN','45.24 kN','60.32 kN','75.40 kN'],ans:2,sol:'D = 0.08 m\nA = π(0.08)²/4 = 0.005027 m²\nF = 12,000,000 × 0.005027 = 60.32 kN.'},
+    {id:284,diff:'very-difficult',q:'A machine consumes 0.28 kg of fuel per kWh of useful output. If its output power is 750 kW, calculate its fuel consumption per hour.',opts:['180 kg/h','200 kg/h','210 kg/h','240 kg/h'],ans:2,sol:'Fuel Consumption = SFC × Power = 0.28 × 750 = 210 kg/h.'},
+    {id:285,diff:'very-difficult',q:"An engine's speed and torque measurements are: 500 RPM → 800 Nm; 750 RPM → 760 Nm; 1000 RPM → 720 Nm; 1250 RPM → 680 Nm. Assuming a linear relationship, estimate torque at 1500 RPM.",opts:['600 Nm','620 Nm','640 Nm','660 Nm'],ans:2,sol:'Torque decreases by 40 Nm for every 250 RPM.\nAt 1500 RPM: T = 680 − 40 = 640 Nm.'},
+    {id:286,diff:'very-difficult',q:"A machine's power-time graph is represented by three operating periods: 0–2 hours: 100 kW; 2–5 hours: 150 kW; 5–8 hours: 200 kW. Calculate the average power over the entire 8-hour period.",opts:['125 kW','150 kW','156.25 kW','175 kW'],ans:2,sol:'Total energy: E = 100(2) + 150(3) + 200(3) = 200 + 450 + 600 = 1250 kWh\nAverage power = 1250/8 = 156.25 kW.'},
+    {id:287,diff:'very-difficult',q:'Velocity measurements at equal time intervals: t=0 s → 0 m/s; t=2 s → 8 m/s; t=4 s → 16 m/s; t=6 s → 24 m/s; t=8 s → 32 m/s. Calculate the total displacement over 8 seconds.',opts:['64 m','96 m','128 m','160 m'],ans:2,sol:'Velocity increases linearly from 0 to 32 m/s.\nArea = ½ × 8 × 32 = 128 m.'},
+    {id:288,diff:'very-difficult',q:'A pump delivers 0.06 m³/s of water against a total head of 45 m. Pump efficiency is 78%, and motor efficiency is 90%. Calculate electrical input power.',opts:['28.8 kW','34.62 kW','37.73 kW','42.50 kW'],ans:2,sol:'Hydraulic output: P_h = ρgQH = 1000 × 9.81 × 0.06 × 45 = 26.487 kW\nOverall efficiency = 0.78 × 0.90 = 0.702\nElectrical input = 26.487/0.702 ≈ 37.73 kW.'},
+    {id:289,diff:'very-difficult',q:"A ship's main engine develops 900 kW at 150 RPM. If the shaft torque is reduced by 10% while RPM remains constant, calculate the new power.",opts:['720 kW','810 kW','850 kW','990 kW'],ans:1,sol:'At constant RPM, power is directly proportional to torque.\nP₂ = P₁(1 − 0.10) = 900 × 0.90 = 810 kW.'},
+    {id:290,diff:'very-difficult',q:'A hydraulic press has two pistons with diameters of 40 mm and 200 mm. An input force of 300 N is applied to the smaller piston. If the actual mechanical efficiency is 85%, calculate the actual output force.',opts:['5100 N','6375 N','7650 N','8500 N'],ans:1,sol:'Ideal force: F₂ = 300(200/40)² = 300 × 25 = 7500 N\nActual force = 7500 × 0.85 = 6375 N.'},
+    {id:291,diff:'very-difficult',q:'A pump has an input shaft power of 45 kW and delivers 0.05 m³/s of water. Calculate the maximum pressure rise if pump efficiency is 80%.',opts:['500 kPa','600 kPa','720 kPa','900 kPa'],ans:2,sol:'Hydraulic output power = 45 × 0.80 = 36 kW\nΔp = 36000/0.05 = 720000 Pa = 720 kPa.'},
+    {id:292,diff:'very-difficult',q:'A diesel engine consumes 50 kg/h of fuel having a calorific value of 42,500 kJ/kg. Its brake thermal efficiency is 40%. Calculate the brake power.',opts:['200.5 kW','236.11 kW','250 kW','295.14 kW'],ans:1,sol:'Fuel energy input: E = 50 × 42500 = 2125000 kJ/h\nP_in = 2125000/3600 = 590.278 kW\nBrake power = 590.278 × 0.40 = 236.11 kW.'},
+    {id:293,diff:'very-difficult',q:'A boiler receives feedwater at 80°C and produces steam at an enthalpy of 2700 kJ/kg. Feedwater enthalpy is 335 kJ/kg. Steam production is 4000 kg/h. Calculate the useful heat output rate.',opts:['2638.89 kW','2738.89 kW','2838.89 kW','2938.89 kW'],ans:0,sol:'Δh = 2700 − 335 = 2365 kJ/kg\nQ = 4000 × 2365 = 9460000 kJ/h\nP = 9460000/3600 ≈ 2638.89 kW.'},
+    {id:294,diff:'very-difficult',q:'A cooling system has two water inlets. The first supplies 5 kg/s at 20°C, and the second supplies 10 kg/s at 60°C. The combined outlet temperature is 45°C. Calculate the heat lost to the surroundings. Assume both streams have equal specific heat capacity of 4.18 kJ/kg K.',opts:['0 kW','104.5 kW','313.5 kW','627 kW'],ans:1,sol:'Q_loss = cₚ[ṁ₁T₁ + ṁ₂T₂ − (ṁ₁+ṁ₂)T_out]\n= 4.18[5(20) + 10(60) − 15(45)]\n= 4.18[100 + 600 − 675]\n= 4.18 × 25 = 104.5 kW.'},
+    {id:295,diff:'very-difficult',q:'A tank receives 80 kg/min of liquid. It discharges 30 kg/min through one outlet and 20 kg/min through another. Initially, the tank contains 500 kg. Calculate the tank mass after 15 minutes.',opts:['750 kg','850 kg','950 kg','1050 kg'],ans:2,sol:'Net accumulation = 80 − 30 − 20 = 30 kg/min\nMass accumulated = 30 × 15 = 450 kg\nFinal mass = 500 + 450 = 950 kg.'},
+    {id:296,diff:'very-difficult',q:'A heat exchanger cools 4 kg/s of oil from 120°C to 70°C. The specific heat capacity of oil is 2.2 kJ/kg K. The cooling water enters at 25°C and leaves at 45°C. Calculate the required water mass flow rate. Take cp of water = 4.18 kJ/kg K.',opts:['4.21 kg/s','5.26 kg/s','6.32 kg/s','8.42 kg/s'],ans:1,sol:'Heat removed from oil: Q = 4 × 2.2 × (120−70) = 440 kW\nHeat gained by water: 440 = ṁ_w × 4.18 × (45−25)\nṁ_w = 440/83.6 = 5.26 kg/s.'},
+    {id:297,diff:'very-difficult',q:'A set of measurements has the following values: 20, 22, 24, 26, 28, 30. Calculate the sample standard deviation.',opts:['3.16','3.74','4.00','4.47'],ans:1,sol:'Mean x̄ = (20+22+24+26+28+30)/6 = 25\nSquared deviations: 25+9+1+1+9+25 = 70\ns = √(70/(6−1)) = √14 = 3.74.'},
+    {id:298,diff:'very-difficult',q:"A machine's measured pressure is 150 ± 2 bar and its measured flow rate is 0.05 ± 0.001 m³/s. Assuming independent uncertainties, calculate the approximate relative uncertainty in hydraulic power.",opts:['1.0%','1.33%','2.40%','3.00%'],ans:2,sol:'u_r = √((2/150)² + (0.001/0.05)²) × 100\n= √(0.0001778 + 0.0004) × 100\n= √0.0005778 × 100\n≈ 2.40%.'},
+    {id:299,diff:'very-difficult',q:'A sample of 25 engine temperature readings has a mean of 90°C and a sample standard deviation of 5°C. Calculate the standard error of the mean.',opts:['0.5°C','1°C','2°C','5°C'],ans:1,sol:'SE = s/√n = 5/√25 = 5/5 = 1°C.'},
+    {id:300,diff:'very-difficult',q:'A pressure measurement is obtained from an instrument with a full-scale range of 0–250 bar and accuracy of ±0.4% of full scale. The indicated reading is 180 bar. A separate calibration correction of +0.5 bar must be applied. Calculate the corrected reading and the maximum absolute uncertainty due to the instrument accuracy.',opts:['180.5 ± 0.5 bar','180.5 ± 1.0 bar','181.0 ± 1.0 bar','180.0 ± 0.4 bar'],ans:1,sol:'Step 1: P_corrected = 180 + 0.5 = 180.5 bar\nStep 2: u = (0.4/100) × 250 = 1.0 bar\nFinal result: 180.5 ± 1.0 bar.'}
+  ];
+
+  /* ============================================================
+     FOLDER ACCORDION (single-open mode)
+     ============================================================ */
+  var folders = Array.prototype.slice.call(document.querySelectorAll(".folder"));
+  folders.forEach(function(folder){
+    var head = folder.querySelector(".folder-head");
+    head.addEventListener("click", function(){
+      var wasOpen = folder.classList.contains("open");
+      folders.forEach(function(f){
+        f.classList.remove("open");
+        f.querySelector(".folder-head").setAttribute("aria-expanded", "false");
+      });
+      if (!wasOpen){
+        folder.classList.add("open");
+        head.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+  document.getElementById("expandAll").addEventListener("click", function(){
+    folders.forEach(function(folder){
+      folder.classList.add("open");
+      folder.querySelector(".folder-head").setAttribute("aria-expanded", "true");
+    });
+  });
+  document.getElementById("collapseAll").addEventListener("click", function(){
+    folders.forEach(function(folder){
+      folder.classList.remove("open");
+      folder.querySelector(".folder-head").setAttribute("aria-expanded", "false");
+    });
+  });
+
+  /* ============================================================
+     BACK TO TOP
+     ============================================================ */
+  var backBtn = document.getElementById("backToTop");
+  window.addEventListener("scroll", function(){
+    if (window.pageYOffset > 420) backBtn.classList.add("show");
+    else backBtn.classList.remove("show");
+  }, {passive:true});
+  backBtn.addEventListener("click", function(){
+    window.scrollTo({top:0, behavior:"smooth"});
+  });
+
+  /* ============================================================
+     SEARCH
+     ============================================================ */
+  var searchInput = document.getElementById("searchInput");
+  var searchClear = document.getElementById("searchClear");
+  var searchResults = document.getElementById("searchResults");
+  var searchIndex = [];
+  folders.forEach(function(folder){
+    var folderTitle = folder.querySelector(".folder-title b").textContent.trim();
+    var content = folder.querySelector(".folder-content");
+    if (!content) return;
+    content.querySelectorAll("p, li, td, .eq, h3, h4, .memo, .note, .rules li, .example p").forEach(function(el){
+      var text = el.textContent.replace(/\s+/g," ").trim();
+      if (text.length < 3) return;
+      if (el.closest(".eq") && el !== el.closest(".eq")) return;
+      searchIndex.push({ topic: folderTitle, text: text, element: el, folder: folder });
+    });
+  });
+  function escapeRegExp(str){ return str.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"); }
+  function highlight(text, query){
+    var re = new RegExp("(" + escapeRegExp(query) + ")","ig");
+    return text.replace(re, "<mark>$1</mark>");
+  }
+  function runSearch(query){
+    query = query.trim();
+    if (query.length < 2){ searchResults.classList.remove("show"); searchResults.innerHTML = ""; return; }
+    var qLower = query.toLowerCase();
+    var hits = searchIndex.filter(function(item){ return item.text.toLowerCase().indexOf(qLower) !== -1; }).slice(0, 30);
+    if (hits.length === 0){
+      searchResults.innerHTML = '<div class="sr-head">No matches</div><div class="sr-empty">No results found for “' + query.replace(/</g,"&lt;") + '”. Try another keyword.</div>';
+      searchResults.classList.add("show"); return;
+    }
+    var html = '<div class="sr-head">' + hits.length + ' result' + (hits.length > 1 ? "s" : "") + '</div>';
+    hits.forEach(function(item, i){
+      var snippet = item.text;
+      if (snippet.length > 160){
+        var pos = snippet.toLowerCase().indexOf(qLower);
+        var start = Math.max(0, pos - 50);
+        snippet = (start > 0 ? "…" : "") + snippet.substr(start, 160) + (start + 160 < item.text.length ? "…" : "");
+      }
+      var esc = snippet.replace(/</g,"&lt;").replace(/>/g,"&gt;");
+      var hl = highlight(esc, query.replace(/</g,"&lt;").replace(/>/g,"&gt;"));
+      html += '<button type="button" class="sr-item" data-idx="' + i + '"><span class="sr-topic">' + item.topic.replace(/</g,"&lt;") + '</span><span class="sr-text">' + hl + '</span></button>';
+    });
+    searchResults.innerHTML = html;
+    searchResults.classList.add("show");
+    searchResults._hits = hits;
+    searchResults.querySelectorAll(".sr-item").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        var hit = searchResults._hits[parseInt(btn.dataset.idx, 10)];
+        if (!hit) return;
+        folders.forEach(function(f){
+          f.classList.remove("open");
+          f.querySelector(".folder-head").setAttribute("aria-expanded","false");
+        });
+        hit.folder.classList.add("open");
+        hit.folder.querySelector(".folder-head").setAttribute("aria-expanded","true");
+        setTimeout(function(){
+          hit.element.scrollIntoView({behavior:"smooth", block:"center"});
+          hit.element.classList.add("flash-hit");
+          setTimeout(function(){ hit.element.classList.remove("flash-hit"); }, 1900);
+        }, 250);
+        searchResults.classList.remove("show");
+        searchInput.blur();
+      });
+    });
+  }
+  var searchTimer = null;
+  searchInput.addEventListener("input", function(){
+    var val = searchInput.value;
+    searchClear.hidden = val.length === 0;
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(function(){ runSearch(val); }, 180);
+  });
+  searchClear.addEventListener("click", function(){
+    searchInput.value = "";
+    searchClear.hidden = true;
+    searchResults.classList.remove("show");
+    searchResults.innerHTML = "";
+    searchInput.focus();
+  });
+  document.addEventListener("click", function(e){
+    if (!e.target.closest(".search-wrap")) searchResults.classList.remove("show");
+  });
+  searchInput.addEventListener("keydown", function(e){
+    if (e.key === "Escape"){ searchResults.classList.remove("show"); searchInput.blur(); }
+  });
+
+  /* ============================================================
+     EXAM SYSTEM
+     ============================================================ */
+  var overlay = document.getElementById("examOverlay");
+  var configScreen = document.getElementById("examConfigScreen");
+  var testScreen = document.getElementById("examTestScreen");
+  var resultsScreen = document.getElementById("examResultsScreen");
+  var reviewScreen = document.getElementById("examReviewScreen");
+
+  var selectedCount = 10;
+  var selectedMinutes = 5;
+  var examState = null;
+  var timerInterval = null;
+
+  function showScreen(name){
+    [configScreen, testScreen, resultsScreen, reviewScreen].forEach(function(s){ s.classList.remove("active"); });
+    if (name === "config") configScreen.classList.add("active");
+    else if (name === "test") testScreen.classList.add("active");
+    else if (name === "results") resultsScreen.classList.add("active");
+    else if (name === "review") reviewScreen.classList.add("active");
+  }
+
+  function shuffle(arr){
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--){
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+
+  function selectQuestions(count){
+    var per10 = count / 10;
+    var need = {
+      easy: per10 * 3,
+      medium: per10 * 3,
+      difficult: per10 * 3,
+      'very-difficult': per10 * 1
+    };
+    var out = [];
+    Object.keys(need).forEach(function(d){
+      var pool = QB.filter(function(q){ return q.diff === d; });
+      out = out.concat(shuffle(pool).slice(0, need[d]));
+    });
+    return shuffle(out);
+  }
+
+  function difficultyLabel(d){
+    return d === 'very-difficult' ? 'Very Difficult'
+         : d === 'difficult' ? 'Difficult'
+         : d === 'medium' ? 'Medium' : 'Easy';
+  }
+  function difficultyClass(d){ return 'd-' + d; }
+
+  function formatTime(sec){
+    var m = Math.floor(sec / 60);
+    var s = sec % 60;
+    var pad = function(n){ return n < 10 ? '0' + n : '' + n; };
+    return pad(m) + ':' + pad(s);
+  }
+
+  var countOptions = document.getElementById("questionCountOptions");
+  var timeOptions = document.getElementById("timeOptions");
+  var sumQuestions = document.getElementById("sumQuestions");
+  var sumDuration = document.getElementById("sumDuration");
+  var sumDist = document.getElementById("sumDist");
+
+  function updateConfigSummary(){
+    sumQuestions.textContent = selectedCount;
+    var totalMin = (selectedCount / 10) * selectedMinutes;
+    sumDuration.textContent = totalMin + ' minute' + (totalMin === 1 ? '' : 's');
+    var per10 = selectedCount / 10;
+    sumDist.textContent = (per10 * 3) + 'E · ' + (per10 * 3) + 'M · ' + (per10 * 3) + 'D · ' + (per10 * 1) + 'VD';
+  }
+
+  countOptions.querySelectorAll(".config-opt").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      countOptions.querySelectorAll(".config-opt").forEach(function(b){ b.classList.remove("active"); });
+      btn.classList.add("active");
+      selectedCount = parseInt(btn.dataset.count, 10);
+      updateConfigSummary();
+    });
+  });
+  timeOptions.querySelectorAll(".config-opt").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      timeOptions.querySelectorAll(".config-opt").forEach(function(b){ b.classList.remove("active"); });
+      btn.classList.add("active");
+      selectedMinutes = parseInt(btn.dataset.min, 10);
+      updateConfigSummary();
+    });
+  });
+
+  function openExam(){
+    overlay.hidden = false;
+    document.body.classList.add("exam-active");
+    showScreen("config");
+    updateConfigSummary();
+  }
+  function closeExam(){
+    overlay.hidden = true;
+    document.body.classList.remove("exam-active");
+    if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+  }
+
+  document.getElementById("takeTestBtn").addEventListener("click", openExam);
+  document.getElementById("configClose").addEventListener("click", closeExam);
+
+  document.getElementById("startExamBtn").addEventListener("click", function(){
+    var questions = selectQuestions(selectedCount);
+    var totalSec = (selectedCount / 10) * selectedMinutes * 60;
+    examState = {
+      questions: questions,
+      answers: new Array(questions.length).fill(-1),
+      marked: new Array(questions.length).fill(false),
+      current: 0,
+      totalSec: totalSec,
+      remaining: totalSec,
+      startedAt: Date.now(),
+      submitted: false
+    };
+    showScreen("test");
+    renderQuestion();
+    renderNavGrid();
+    startTimer();
+  });
+
+  function startTimer(){
+    if (timerInterval) clearInterval(timerInterval);
+    updateTimerDisplay();
+    timerInterval = setInterval(function(){
+      if (!examState || examState.submitted) { clearInterval(timerInterval); return; }
+      examState.remaining--;
+      if (examState.remaining <= 0){
+        examState.remaining = 0;
+        updateTimerDisplay();
+        clearInterval(timerInterval);
+        submitExam(true);
+        return;
+      }
+      updateTimerDisplay();
+    }, 1000);
+  }
+  function updateTimerDisplay(){
+    var el = document.getElementById("examTimer");
+    el.textContent = formatTime(examState.remaining);
+    if (examState.remaining <= 60) el.classList.add("warn");
+    else el.classList.remove("warn");
+  }
+
+  function renderQuestion(){
+    var st = examState;
+    var q = st.questions[st.current];
+    var idx = st.current;
+    var total = st.questions.length;
+
+    document.getElementById("examQCurrent").textContent = idx + 1;
+    document.getElementById("examQTotal").textContent = total;
+    document.getElementById("examProgressFill").style.width = ((idx + 1) / total * 100) + '%';
+
+    var dEl = document.getElementById("examDifficulty");
+    dEl.textContent = difficultyLabel(q.diff);
+    dEl.className = 'exam-difficulty ' + difficultyClass(q.diff);
+
+    document.getElementById("examQuestionText").textContent = q.q;
+
+    var optsHtml = '';
+    var letters = ['A','B','C','D'];
+    q.opts.forEach(function(opt, i){
+      var sel = st.answers[idx] === i ? ' selected' : '';
+      optsHtml += '<button type="button" class="exam-option' + sel + '" data-opt="' + i + '">' +
+        '<span class="opt-letter">' + letters[i] + '</span>' +
+        '<span class="opt-text">' + opt.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</span>' +
+      '</button>';
+    });
+    var optsEl = document.getElementById("examOptions");
+    optsEl.innerHTML = optsHtml;
+    optsEl.querySelectorAll(".exam-option").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (examState.submitted) return;
+        var opt = parseInt(btn.dataset.opt, 10);
+        examState.answers[examState.current] = opt;
+        renderQuestion();
+        renderNavGrid();
+      });
+    });
+
+    var markBtn = document.getElementById("markReviewBtn");
+    if (st.marked[idx]){
+      markBtn.classList.add("marked");
+      markBtn.textContent = '⚑ Marked for Review';
+    } else {
+      markBtn.classList.remove("marked");
+      markBtn.textContent = '⚑ Mark for Review';
+    }
+
+    document.getElementById("prevQBtn").disabled = idx === 0;
+    document.getElementById("nextQBtn").textContent = (idx === total - 1) ? 'Finish →' : 'Next →';
+  }
+
+  document.getElementById("markReviewBtn").addEventListener("click", function(){
+    if (!examState || examState.submitted) return;
+    examState.marked[examState.current] = !examState.marked[examState.current];
+    renderQuestion();
+    renderNavGrid();
+  });
+
+  document.getElementById("prevQBtn").addEventListener("click", function(){
+    if (!examState || examState.current === 0) return;
+    examState.current--;
+    renderQuestion();
+    renderNavGrid();
+  });
+  document.getElementById("nextQBtn").addEventListener("click", function(){
+    if (!examState) return;
+    if (examState.current === examState.questions.length - 1){
+      openConfirm();
+    } else {
+      examState.current++;
+      renderQuestion();
+      renderNavGrid();
+    }
+  });
+
+  function renderNavGrid(){
+    var st = examState;
+    var html = '';
+    st.questions.forEach(function(q, i){
+      var cls = 'exam-nav-btn';
+      if (st.answers[i] !== -1) cls += ' answered';
+      if (st.marked[i]) cls += ' marked';
+      if (i === st.current) cls += ' current';
+      html += '<button type="button" class="' + cls + '" data-i="' + i + '">' + (i + 1) + '</button>';
+    });
+    var grid = document.getElementById("examNavGrid");
+    grid.innerHTML = html;
+    grid.querySelectorAll(".exam-nav-btn").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        examState.current = parseInt(btn.dataset.i, 10);
+        renderQuestion();
+        renderNavGrid();
+      });
+    });
+  }
+
+  var navToggle = document.getElementById("navToggleBtn");
+  navToggle.addEventListener("click", function(){
+    var grid = document.getElementById("examNavGrid");
+    grid.classList.toggle("hidden");
+    navToggle.textContent = grid.classList.contains("hidden") ? 'Show' : 'Hide';
+  });
+
+  document.getElementById("submitExamBtn").addEventListener("click", openConfirm);
+
+  function openConfirm(){
+    if (!examState || examState.submitted) return;
+    var answered = examState.answers.filter(function(a){ return a !== -1; }).length;
+    document.getElementById("confirmText").textContent =
+      'You have answered ' + answered + ' of ' + examState.questions.length + ' questions. Are you sure you want to submit?';
+    document.getElementById("confirmModal").hidden = false;
+  }
+  document.getElementById("confirmCancel").addEventListener("click", function(){
+    document.getElementById("confirmModal").hidden = true;
+  });
+  document.getElementById("confirmSubmit").addEventListener("click", function(){
+    document.getElementById("confirmModal").hidden = true;
+    submitExam(false);
+  });
+
+  function submitExam(auto){
+    if (!examState || examState.submitted) return;
+    examState.submitted = true;
+    if (timerInterval){ clearInterval(timerInterval); timerInterval = null; }
+    examState.timeTakenSec = Math.max(0, Math.round((Date.now() - examState.startedAt) / 1000));
+    showResults();
+  }
+
+  function showResults(){
+    var st = examState;
+    var total = st.questions.length;
+    var correct = 0, incorrect = 0, unanswered = 0;
+    st.questions.forEach(function(q, i){
+      if (st.answers[i] === -1) unanswered++;
+      else if (st.answers[i] === q.ans) correct++;
+      else incorrect++;
+    });
+    var pct = Math.round((correct / total) * 100);
+
+    document.getElementById("resTotal").textContent = total;
+    document.getElementById("resCorrect").textContent = correct;
+    document.getElementById("resIncorrect").textContent = incorrect;
+    document.getElementById("resUnanswered").textContent = unanswered;
+    document.getElementById("resPercent").textContent = pct + '%';
+    document.getElementById("resMarks").textContent = correct + ' / ' + total;
+    document.getElementById("resPct").textContent = pct + '%';
+    document.getElementById("resTime").textContent = formatTime(st.timeTakenSec);
+    document.getElementById("resMix").textContent = document.getElementById("sumDist").textContent;
+
+    var verdict = 'Keep practising!';
+    if (pct >= 85) verdict = 'Excellent work!';
+    else if (pct >= 70) verdict = 'Good progress!';
+    else if (pct >= 50) verdict = 'Developing understanding.';
+    document.getElementById("resVerdict").textContent = verdict;
+
+    var circle = document.getElementById("resCircle");
+    circle.style.setProperty('--ring', (pct * 3.6) + 'deg');
+
+    var wC = (correct / total) * 100;
+    var wI = (incorrect / total) * 100;
+    var wU = (unanswered / total) * 100;
+    document.getElementById("pbCorrect").style.width = wC + '%';
+    document.getElementById("pbIncorrect").style.width = wI + '%';
+    document.getElementById("pbUnanswered").style.width = wU + '%';
+
+    showScreen("results");
+  }
+
+  var currentFilter = 'all';
+  document.getElementById("reviewBtn").addEventListener("click", function(){
+    currentFilter = 'all';
+    document.querySelectorAll(".review-filter").forEach(function(f){
+      f.classList.toggle("active", f.dataset.filter === 'all');
+    });
+    renderReview();
+    showScreen("review");
+  });
+  document.getElementById("backToResultsBtn").addEventListener("click", function(){
+    showScreen("results");
+  });
+  document.getElementById("closeReviewBtn").addEventListener("click", closeExam);
+  document.getElementById("retakeBtn").addEventListener("click", function(){
+    showScreen("config");
+    updateConfigSummary();
+  });
+  document.getElementById("closeResultsBtn").addEventListener("click", closeExam);
+
+  document.querySelectorAll(".review-filter").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      document.querySelectorAll(".review-filter").forEach(function(b){ b.classList.remove("active"); });
+      btn.classList.add("active");
+      currentFilter = btn.dataset.filter;
+      renderReview();
+    });
+  });
+
+  function renderReview(){
+    var st = examState;
+    var letters = ['A','B','C','D'];
+    var list = document.getElementById("reviewList");
+    var html = '';
+    var shown = 0;
+
+    st.questions.forEach(function(q, i){
+      var sel = st.answers[i];
+      var status;
+      if (sel === -1) status = 'unanswered';
+      else if (sel === q.ans) status = 'correct';
+      else status = 'incorrect';
+
+      if (currentFilter !== 'all' && currentFilter !== status) return;
+      shown++;
+
+      var itemCls = 'review-item review-' + status;
+      var statusCls = 'status-' + status;
+      var statusLabel = status === 'correct' ? 'Correct' : status === 'incorrect' ? 'Incorrect' : 'Unanswered';
+
+      var optsHtml = '';
+      q.opts.forEach(function(opt, oi){
+        var oCls = 'review-option';
+        var tag = '';
+        if (oi === q.ans){ oCls += ' correct'; tag = '<span class="ro-tag">Correct</span>'; }
+        if (sel !== -1 && oi === sel && oi !== q.ans){ oCls += ' wrong'; tag = '<span class="ro-tag">Your answer</span>'; }
+        optsHtml += '<div class="' + oCls + '"><span class="ro-letter">' + letters[oi] + '.</span><span>' + opt.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</span>' + tag + '</div>';
+      });
+
+      var ansLine = '';
+      if (status === 'unanswered'){
+        ansLine = '<div class="review-answer"><span><b>Your answer:</b> Not answered</span><span><b>Correct answer:</b> ' + letters[q.ans] + '. ' + q.opts[q.ans] + '</span></div>';
+      } else if (status === 'correct'){
+        ansLine = '<div class="review-answer"><span><b>Your answer:</b> ' + letters[sel] + '. ' + q.opts[sel] + '</span></div>';
+      } else {
+        ansLine = '<div class="review-answer"><span><b>Your answer:</b> ' + letters[sel] + '. ' + q.opts[sel] + '</span><span><b>Correct answer:</b> ' + letters[q.ans] + '. ' + q.opts[q.ans] + '</span></div>';
+      }
+
+      html += '<div class="' + itemCls + '">' +
+        '<div class="review-meta">' +
+          '<span class="review-num">Q' + (i + 1) + '</span>' +
+          '<span class="review-badge badge-' + q.diff + '">' + difficultyLabel(q.diff) + '</span>' +
+          '<span class="review-status ' + statusCls + '">' + statusLabel + '</span>' +
+        '</div>' +
+        '<div class="review-question">' + q.q.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</div>' +
+        '<div class="review-options">' + optsHtml + '</div>' +
+        ansLine +
+        '<div class="review-solution"><h5>Solution</h5>' + q.sol.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</div>' +
+      '</div>';
+    });
+
+    if (shown === 0){
+      html = '<div class="review-empty">No questions match this filter.</div>';
+    }
+    list.innerHTML = html;
+  }
+
+  window.addEventListener("beforeunload", function(e){
+    if (examState && !examState.submitted && !overlay.hidden){
+      var msg = 'You have an exam in progress. Are you sure you want to leave?';
+      e.preventDefault();
+      e.returnValue = msg;
+      return msg;
+    }
+  });
+
+})();
+</script>
+</body>
+</html>
