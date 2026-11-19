@@ -1,0 +1,2168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<meta name="theme-color" content="#0f2942" />
+<title>Manufacturing &amp; Workshop Technology – Fitting &amp; Measurement</title>
+<style>
+/* ===== RESET / BASE ===== */
+*,*::before,*::after{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:#eef2f7;color:#1e2c3a;font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;}
+body.exam-active{overflow:hidden;}
+:root{--navy:#0f2942;--navy-2:#16395c;--ink:#1e2c3a;--muted:#5b6b7c;--line:#e3e9f0;--bg:#eef2f7;--card:#fff;--accent:#d97706;--accent-soft:#fff8ed;--teal:#0e7490;--teal-soft:#effbff;--violet:#7c3aed;--green:#15803d;--red:#b91c1c;--radius:16px;--shadow:0 1px 2px rgba(15,41,66,.07),0 12px 28px -20px rgba(15,41,66,.6);}
+h1,h2,h3,h4,p,ul,ol{margin:0 0 .7em;}
+ul,ol{padding-left:1.15em;}
+li{margin:.25em 0;}
+sup{font-size:.68em;}
+b,strong{font-weight:700;}
+
+/* ===== HERO ===== */
+.hero{position:relative;overflow:hidden;background:linear-gradient(155deg,#0f2942 0%,#17456e 55%,#0e7490 100%);color:#e9f2fa;padding:26px 18px 30px;}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 88% 12%,rgba(255,255,255,.14),transparent 42%),radial-gradient(circle at 12% 92%,rgba(217,119,6,.30),transparent 46%);pointer-events:none;}
+.hero-inner{position:relative;max-width:920px;margin:0 auto;z-index:1;}
+.badge{display:inline-block;font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;font-weight:700;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);color:#cfe4f5;padding:.32em .8em;border-radius:999px;margin-bottom:.85em;}
+.hero h1{font-size:1.42rem;line-height:1.28;letter-spacing:-.01em;margin:0 0 .35em;color:#fff;}
+.hero .sub{font-size:.94rem;color:#a9cbe4;margin:0 0 1em;font-weight:600;letter-spacing:.02em;}
+.meta{display:flex;flex-wrap:wrap;gap:.45em .6em;margin-bottom:1em;}
+.meta span{font-size:.76rem;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.16);border-radius:8px;padding:.35em .65em;color:#d7e8f6;}
+.meta b{color:#fff;font-weight:700;}
+.intro{font-size:.88rem;line-height:1.65;color:#c6dcee;border-left:3px solid var(--accent);padding-left:.85em;margin:0;}
+
+/* ===== LAYOUT ===== */
+main{max-width:920px;margin:0 auto;padding:16px 12px 40px;}
+.toolbar{display:flex;gap:8px;margin-bottom:14px;}
+.toolbar button{flex:1;font:inherit;font-size:.8rem;font-weight:700;letter-spacing:.02em;padding:.62em .8em;border-radius:11px;border:1px solid #d6dfea;background:#fff;color:#33465c;cursor:pointer;box-shadow:0 1px 2px rgba(15,41,66,.05);transition:background .18s,border-color .18s,transform .12s;}
+.toolbar button:active{transform:scale(.97);}
+.toolbar button:hover{background:#f4f8fd;border-color:#bccddf;}
+
+/* ===== TEST CTA ===== */
+.test-cta{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#0f2942,#0e7490);color:#fff;border-radius:16px;padding:14px 16px;margin-bottom:12px;box-shadow:0 12px 24px -18px rgba(15,41,66,.95);position:relative;overflow:hidden;}
+.test-cta::before{content:"";position:absolute;right:-30px;top:-40px;width:140px;height:140px;background:radial-gradient(circle,rgba(217,119,6,.35),transparent 65%);border-radius:50%;}
+.test-cta-text{position:relative;z-index:1;flex:1;min-width:0;}
+.test-cta-text b{display:block;font-size:1rem;letter-spacing:-.005em;}
+.test-cta-text span{font-size:.76rem;color:#a9cbe4;}
+.test-cta-btn{position:relative;z-index:1;flex:0 0 auto;font:inherit;font-size:.82rem;font-weight:800;letter-spacing:.02em;border:0;padding:.72em 1.05em;border-radius:11px;background:var(--accent);color:#fff;cursor:pointer;box-shadow:0 6px 14px -8px rgba(217,119,6,.9);transition:transform .12s,background .18s;white-space:nowrap;}
+.test-cta-btn:hover{background:#c26a05;}
+.test-cta-btn:active{transform:scale(.96);}
+
+/* ===== SEARCH ===== */
+.search-wrap{position:sticky;top:0;z-index:45;margin:-8px -12px 12px;padding:8px 12px 10px;background:var(--bg);box-shadow:0 10px 16px -16px rgba(15,41,66,.85);}
+.search-box{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #d6dfea;border-radius:14px;padding:.5em .7em;box-shadow:0 1px 2px rgba(15,41,66,.05);transition:border-color .18s,box-shadow .18s;}
+.search-box:focus-within{border-color:#8fb8d8;box-shadow:0 0 0 3px rgba(14,116,144,.14);}
+.search-icon{width:18px;height:18px;flex:0 0 auto;color:#8ba0b4;}
+#searchInput{flex:1 1 auto;min-width:0;border:0;outline:0;background:transparent;font:inherit;font-size:.9rem;color:var(--ink);padding:0;-webkit-appearance:none;appearance:none;}
+#searchInput::placeholder{color:#95a7b8;}
+#searchInput::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;}
+.search-clear{flex:0 0 auto;width:24px;height:24px;border-radius:50%;border:0;background:#eef2f7;color:#5b6b7c;font-size:1rem;line-height:1;display:grid;place-items:center;cursor:pointer;padding:0;transition:background .16s,color .16s;}
+.search-clear:hover{background:#e0e8f1;color:#33465c;}
+.search-results{display:none;margin-top:8px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);max-height:52vh;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+.search-results.show{display:block;}
+.sr-head{position:sticky;top:0;background:#f7fafd;border-bottom:1px solid #e9eff6;font-size:.7rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:#5b6b7c;padding:.6em .85em;}
+.sr-item{display:block;width:100%;text-align:left;font:inherit;background:none;border:0;border-bottom:1px solid #eef2f7;padding:.62em .85em;cursor:pointer;transition:background .14s;}
+.sr-item:last-child{border-bottom:0;}
+.sr-item:hover,.sr-item:focus-visible{background:#f4f9fd;outline:0;}
+.sr-topic{display:block;font-size:.68rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#0e7490;margin-bottom:.18em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sr-text{display:block;font-size:.83rem;line-height:1.45;color:#2c3e50;word-break:break-word;}
+.sr-empty{padding:.9em .85em 1.1em;font-size:.83rem;color:#6b7c8d;}
+mark{background:#fde68a;color:#5b3a00;border-radius:3px;padding:0 .1em;}
+.flash-hit{animation:flashHit 1.8s ease-out;}
+@keyframes flashHit{0%{background:#fff2c9;box-shadow:0 0 0 6px #fff2c9;}70%{background:#fff8e2;box-shadow:0 0 0 2px #fff8e2;}100%{background:transparent;box-shadow:0 0 0 0 transparent;}}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top{position:fixed;right:16px;bottom:18px;z-index:60;width:50px;height:50px;border:0;border-radius:50%;display:grid;place-items:center;background:linear-gradient(150deg,#0f2942,#1d5b8c);color:#fff;cursor:pointer;box-shadow:0 10px 24px -10px rgba(15,41,66,.95),0 2px 6px rgba(15,41,66,.25);opacity:0;visibility:hidden;transform:translateY(14px) scale(.9);transition:opacity .26s ease,transform .26s ease,visibility .26s;}
+.back-to-top.show{opacity:1;visibility:visible;transform:none;}
+.back-to-top:active{transform:scale(.93);}
+.back-to-top svg{width:22px;height:22px;display:block;}
+
+/* ===== FOLDER ===== */
+.folder{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:13px;overflow:hidden;scroll-margin-top:12px;}
+.folder-head{width:100%;display:flex;align-items:center;gap:12px;padding:14px 14px;background:transparent;border:0;font:inherit;color:inherit;text-align:left;cursor:pointer;transition:background .18s;}
+.folder-head:hover{background:#f7fafd;}
+.folder-head:focus-visible{outline:3px solid #9ec8e6;outline-offset:-3px;}
+.folder-num{flex:0 0 auto;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;font-weight:800;font-size:.95rem;color:#fff;background:linear-gradient(150deg,var(--navy),#1d5b8c);box-shadow:0 3px 8px -4px rgba(15,41,66,.9);}
+.folder:nth-of-type(2) .folder-num{background:linear-gradient(150deg,#0e7490,#0891b2);}
+.folder:nth-of-type(3) .folder-num{background:linear-gradient(150deg,#7c3aed,#6366f1);}
+.folder:nth-of-type(4) .folder-num{background:linear-gradient(150deg,#b45309,#d97706);}
+.folder:nth-of-type(5) .folder-num{background:linear-gradient(150deg,#166534,#15803d);}
+.folder:nth-of-type(6) .folder-num{background:linear-gradient(150deg,#9d174d,#be185d);}
+.folder:nth-of-type(7) .folder-num{background:linear-gradient(150deg,#0f766e,#14b8a6);}
+.folder-title{display:flex;flex-direction:column;gap:2px;min-width:0;}
+.folder-title b{font-size:.98rem;line-height:1.3;color:#152a3f;letter-spacing:-.005em;}
+.folder-title small{font-size:.735rem;color:var(--muted);line-height:1.35;}
+.chev{margin-left:auto;flex:0 0 auto;width:26px;height:26px;position:relative;border-radius:50%;background:#f1f5fa;transition:background .2s;}
+.chev::before{content:"";position:absolute;top:50%;left:50%;width:8px;height:8px;border-right:2px solid #4a5f76;border-bottom:2px solid #4a5f76;transform:translate(-50%,-70%) rotate(45deg);transition:transform .3s ease;}
+.folder.open .chev{background:#e3edf7;}
+.folder.open .chev::before{transform:translate(-50%,-30%) rotate(-135deg);}
+.folder-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease;}
+.folder.open > .folder-body{grid-template-rows:1fr;}
+.folder-inner{overflow:hidden;}
+.folder-content{padding:4px 14px 18px;border-top:1px solid transparent;}
+.folder.open .folder-content{border-top-color:var(--line);}
+.folder-content > .sub:first-child{margin-top:12px;}
+
+/* ===== TYPOGRAPHY INSIDE ===== */
+.sub{font-size:1rem;font-weight:800;color:var(--navy);letter-spacing:-.005em;margin:1.35em 0 .55em;padding-left:.6em;border-left:4px solid var(--accent);line-height:1.35;}
+.folder:nth-of-type(2) .sub{border-left-color:#0e7490;}
+.folder:nth-of-type(3) .sub{border-left-color:#7c3aed;}
+.folder:nth-of-type(4) .sub{border-left-color:#d97706;}
+.folder:nth-of-type(5) .sub{border-left-color:#15803d;}
+.folder:nth-of-type(6) .sub{border-left-color:#be185d;}
+.folder:nth-of-type(7) .sub{border-left-color:#14b8a6;}
+.sub-sub{font-size:.92rem;font-weight:700;color:#274561;margin:1.1em 0 .45em;}
+p{font-size:.915rem;color:#2c3e50;}
+.lead{color:#3d5165;}
+
+/* ===== MATH ===== */
+.eq{font-family:Georgia,"Times New Roman",Cambria,serif;font-size:1.06rem;text-align:center;margin:.85em 0;padding:.15em 0;color:#12263a;overflow-x:auto;overflow-y:hidden;white-space:nowrap;letter-spacing:.01em;}
+.eq.wrap{white-space:normal;}
+.frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;line-height:1.22;margin:0 .2em;font-size:.94em;}
+.frac > span{padding:0 .32em;}
+.frac > span:first-child{border-bottom:1.4px solid currentColor;padding-bottom:.08em;}
+.frac > span:last-child{padding-top:.08em;}
+.rad-body{border-top:1.4px solid currentColor;padding:0 .16em 0 .1em;margin-left:-.02em;}
+.boxed{display:inline-block;border:2px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:.5em 1em;box-shadow:0 2px 10px -6px rgba(217,119,6,.9);}
+
+/* ===== LISTS / CALLOUTS ===== */
+ul.plain,ol.plain{padding-left:1.1em;}
+ul.plain li,p li{font-size:.9rem;color:#2c3e50;}
+.rules{background:#f7fafd;border:1px solid #e2ebf4;border-left:4px solid var(--teal);border-radius:0 12px 12px 0;padding:.75em 1em .75em .95em;margin:.85em 0;}
+.rules h4{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--teal);margin:0 0 .45em;font-weight:800;}
+.rules ul{margin:0;padding-left:1.1em;}
+.rules li{font-size:.875rem;color:#33465c;}
+.example{background:#fbfdff;border:1px solid #e2ebf4;border-left:4px solid var(--accent);border-radius:0 12px 12px 0;padding:.8em 1em;margin:.9em 0;}
+.example h4{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:#b45309;margin:0 0 .5em;font-weight:800;}
+.example .eq{margin:.5em 0;}
+.apps{background:linear-gradient(180deg,#f2fbfd,#f8fdff);border:1px solid #d8edf4;border-radius:12px;padding:.8em 1em;margin:.9em 0;}
+.apps h4{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:#0b6b84;margin:0 0 .45em;font-weight:800;display:flex;align-items:center;gap:.42em;}
+.apps h4::before{content:"⚙";font-size:1rem;color:#0e7490;}
+.apps ul{margin:0;padding-left:1.1em;}
+.apps li{font-size:.875rem;color:#2f4759;}
+.memo{background:linear-gradient(135deg,#fff7ed,#fffdf7);border:1px dashed #f0c184;border-radius:12px;padding:.75em .95em;margin:.85em 0;font-size:.875rem;color:#7c4a03;}
+.memo b{color:#b45309;}
+.note{background:#f5f3ff;border:1px solid #ddd6fe;border-left:4px solid var(--violet);border-radius:0 12px 12px 0;padding:.75em .95em;margin:.85em 0;font-size:.875rem;color:#4c1d95;}
+.note b{color:#6d28d9;}
+
+/* ===== TABLES ===== */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:.8em 0 1em;border:1px solid var(--line);border-radius:12px;background:#fff;}
+table{width:100%;border-collapse:collapse;font-size:.85rem;min-width:280px;}
+thead th{background:#eef4fa;color:#3b5470;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;font-weight:800;text-align:left;padding:.62em .8em;border-bottom:1px solid #dbe6f0;white-space:nowrap;}
+tbody td{padding:.58em .8em;border-bottom:1px solid #eef2f7;color:#2c3e50;vertical-align:top;}
+tbody tr:last-child td{border-bottom:0;}
+tbody tr:nth-child(even){background:#fafcfe;}
+td.center,th.center{text-align:center;}
+table.mathy td{font-family:Georgia,"Times New Roman",serif;font-size:.93rem;}
+
+/* ===== DIAGRAMS ===== */
+.diagram{background:#f9fbfd;border:1px solid #e4ecf4;border-radius:14px;padding:12px 10px 8px;margin:.9em 0 1em;}
+.diagram svg{display:block;width:100%;height:auto;}
+.diagram figcaption{font-size:.75rem;color:var(--muted);text-align:center;margin-top:.5em;line-height:1.4;}
+
+/* ===== FOOTER ===== */
+footer{max-width:920px;margin:0 auto;padding:0 14px 34px;text-align:center;font-size:.76rem;color:#8496a8;line-height:1.6;}
+footer b{color:#5b6b7c;}
+
+/* ===== DESKTOP ===== */
+@media (min-width:720px){
+  .hero{padding:40px 24px 44px;}
+  .hero h1{font-size:2rem;}
+  .hero .sub{font-size:1.02rem;}
+  .intro{font-size:.94rem;max-width:70ch;}
+  main{padding:24px 24px 48px;}
+  .search-wrap{margin:-14px -24px 16px;padding:12px 24px 14px;}
+  #searchInput{font-size:.95rem;}
+  .sr-text{font-size:.87rem;}
+  .back-to-top{right:28px;bottom:28px;width:54px;height:54px;}
+  .back-to-top svg{width:24px;height:24px;}
+  .folder-head{padding:16px 18px;gap:14px;}
+  .folder-title b{font-size:1.04rem;}
+  .folder-content{padding:4px 22px 22px;}
+  p{font-size:.95rem;}
+  table{font-size:.9rem;}
+  .test-cta{padding:18px 22px;border-radius:18px;}
+  .test-cta-text b{font-size:1.1rem;}
+  .test-cta-text span{font-size:.82rem;}
+}
+@media (min-width:1000px){.hero h1{font-size:2.2rem;}}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms !important;animation-duration:.01ms !important;}}
+
+/* ===== EXAM SYSTEM STYLES ===== */
+.exam-overlay{position:fixed;inset:0;z-index:1000;background:#eef2f7;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+.exam-overlay[hidden]{display:none;}
+.exam-screen{display:none;}
+.exam-screen.active{display:block;}
+
+/* Config screen */
+#examConfigScreen{min-height:100vh;display:none;align-items:center;justify-content:center;padding:20px 14px;}
+#examConfigScreen.active{display:flex;}
+.exam-config-card{width:100%;max-width:640px;background:#fff;border-radius:20px;box-shadow:0 30px 60px -30px rgba(15,41,66,.7),0 4px 14px rgba(15,41,66,.08);overflow:hidden;}
+.exam-config-head{background:linear-gradient(155deg,#0f2942,#0e7490);color:#fff;padding:22px 22px 24px;position:relative;overflow:hidden;}
+.exam-config-head::before{content:"";position:absolute;right:-40px;top:-50px;width:170px;height:170px;background:radial-gradient(circle,rgba(217,119,6,.4),transparent 65%);border-radius:50%;}
+.exam-config-head h2{margin:0;font-size:1.32rem;letter-spacing:-.01em;position:relative;z-index:1;}
+.exam-config-head p{margin:.35em 0 0;font-size:.82rem;color:#a9cbe4;position:relative;z-index:1;}
+.exam-close{position:absolute;top:14px;right:14px;width:34px;height:34px;border:0;border-radius:50%;background:rgba(255,255,255,.15);color:#fff;font-size:1.4rem;line-height:1;cursor:pointer;z-index:2;display:grid;place-items:center;transition:background .18s;}
+.exam-close:hover{background:rgba(255,255,255,.28);}
+.exam-config-body{padding:20px 20px 22px;}
+.config-group{margin-bottom:20px;}
+.config-group > label{display:block;font-size:.76rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#5b6b7c;margin-bottom:9px;}
+.config-options{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;}
+.config-opt{font:inherit;font-size:.82rem;font-weight:700;padding:.58em 0;border-radius:10px;border:1.5px solid #d6dfea;background:#fff;color:#33465c;cursor:pointer;transition:all .15s;}
+.config-opt:hover{border-color:#9ec8e6;background:#f4f9fd;}
+.config-opt.active{border-color:var(--navy);background:linear-gradient(150deg,#0f2942,#1d5b8c);color:#fff;box-shadow:0 6px 14px -8px rgba(15,41,66,.9);}
+.config-summary{background:#f7fafd;border:1px solid #e2ebf4;border-radius:12px;padding:12px 14px;margin-bottom:18px;}
+.config-summary-row{display:flex;justify-content:space-between;align-items:baseline;padding:.35em 0;font-size:.86rem;color:#5b6b7c;}
+.config-summary-row + .config-summary-row{border-top:1px solid #e2ebf4;}
+.config-summary-row b{color:#12263a;font-weight:800;font-size:.92rem;}
+.exam-btn-primary{width:100%;font:inherit;font-size:.95rem;font-weight:800;letter-spacing:.02em;padding:.85em 1.2em;border-radius:12px;border:0;background:linear-gradient(150deg,#0f2942,#1d5b8c);color:#fff;cursor:pointer;box-shadow:0 12px 24px -14px rgba(15,41,66,.95);transition:transform .12s,opacity .18s;}
+.exam-btn-primary:hover{opacity:.94;}
+.exam-btn-primary:active{transform:scale(.98);}
+
+/* Exam screen */
+#examTestScreen.active{display:flex;flex-direction:column;min-height:100vh;}
+.exam-header{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:10px;padding:10px 14px;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 6px 16px -18px rgba(15,41,66,.9);}
+.exam-header-left{flex:1;min-width:0;display:flex;flex-direction:column;gap:5px;}
+.exam-q-counter{font-size:.84rem;color:#5b6b7c;font-weight:600;}
+.exam-q-counter b{font-size:1rem;color:#12263a;font-weight:800;}
+.exam-progress-bar{height:5px;border-radius:99px;background:#e6edf4;overflow:hidden;}
+.exam-progress-fill{height:100%;width:0%;border-radius:99px;background:linear-gradient(90deg,#0e7490,#1d5b8c);transition:width .3s ease;}
+.exam-timer{flex:0 0 auto;font-size:1rem;font-weight:800;color:#12263a;font-variant-numeric:tabular-nums;background:#f2f6fa;border:1px solid #dde6ef;padding:.32em .7em;border-radius:9px;letter-spacing:.02em;min-width:64px;text-align:center;}
+.exam-timer.warn{background:#fef2f2;border-color:#fca5a5;color:#b91c1c;animation:pulseWarn 1.2s ease-in-out infinite;}
+@keyframes pulseWarn{0%,100%{box-shadow:0 0 0 0 rgba(185,28,28,0);}50%{box-shadow:0 0 0 4px rgba(185,28,28,.16);}}
+.exam-btn-submit{flex:0 0 auto;font:inherit;font-size:.82rem;font-weight:800;padding:.55em .95em;border-radius:10px;border:0;background:var(--accent);color:#fff;cursor:pointer;transition:transform .12s,background .18s;white-space:nowrap;}
+.exam-btn-submit:hover{background:#c26a05;}
+.exam-btn-submit:active{transform:scale(.96);}
+.exam-body{flex:1;display:grid;grid-template-columns:1fr;gap:14px;padding:14px;max-width:1200px;width:100%;margin:0 auto;align-items:start;}
+.exam-main{min-width:0;}
+.exam-question-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 16px 18px;box-shadow:var(--shadow);}
+.exam-q-meta{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+.exam-difficulty{font-size:.66rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:.34em .7em;border-radius:99px;}
+.exam-difficulty.d-easy{background:#dcfce7;color:#166534;}
+.exam-difficulty.d-medium{background:#dbeafe;color:#1e40af;}
+.exam-difficulty.d-difficult{background:#ffedd5;color:#9a3412;}
+.exam-difficulty.d-very-difficult{background:#fee2e2;color:#991b1b;}
+.exam-mark-btn{font:inherit;font-size:.72rem;font-weight:700;padding:.4em .75em;border-radius:8px;border:1px solid #d6dfea;background:#fff;color:#5b6b7c;cursor:pointer;transition:all .15s;}
+.exam-mark-btn:hover{background:#f7fafd;border-color:#bccddf;}
+.exam-mark-btn.marked{background:#fff7ed;border-color:#f0c184;color:#b45309;font-weight:800;}
+.exam-q-text{font-size:1rem;line-height:1.55;color:#12263a;font-weight:600;margin-bottom:14px;word-break:break-word;}
+.exam-options{display:flex;flex-direction:column;gap:8px;}
+.exam-option{display:flex;align-items:flex-start;gap:10px;width:100%;text-align:left;font:inherit;font-size:.9rem;padding:.72em .9em;border:1.5px solid #dde6ef;background:#fbfdff;border-radius:11px;cursor:pointer;transition:all .15s;color:#2c3e50;line-height:1.5;word-break:break-word;}
+.exam-option:hover{border-color:#9ec8e6;background:#f4f9fd;}
+.exam-option.selected{border-color:#0e7490;background:#effbff;box-shadow:0 0 0 3px rgba(14,116,144,.12);color:#0b3a47;font-weight:600;}
+.exam-option .opt-letter{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:#e6edf4;color:#5b6b7c;font-size:.72rem;font-weight:800;display:grid;place-items:center;}
+.exam-option.selected .opt-letter{background:#0e7490;color:#fff;}
+.exam-controls{display:flex;gap:10px;margin-top:14px;}
+.exam-btn-secondary{flex:1;font:inherit;font-size:.86rem;font-weight:800;padding:.78em 1em;border-radius:11px;border:1.5px solid #d6dfea;background:#fff;color:#33465c;cursor:pointer;transition:all .15s;}
+.exam-btn-secondary:hover{background:#f4f9fd;border-color:#bccddf;}
+.exam-btn-secondary:disabled{opacity:.45;cursor:not-allowed;}
+.exam-controls .exam-btn-primary{flex:1;width:auto;padding:.78em 1em;font-size:.86rem;}
+.exam-controls .exam-btn-primary:disabled{opacity:.45;cursor:not-allowed;}
+.exam-sidebar{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:var(--shadow);}
+.exam-sidebar-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;}
+.exam-sidebar-head h3{margin:0;font-size:.9rem;color:#12263a;font-weight:800;}
+.exam-nav-toggle{font:inherit;font-size:.72rem;font-weight:700;padding:.3em .6em;border-radius:7px;border:1px solid #d6dfea;background:#f7fafd;color:#5b6b7c;cursor:pointer;}
+.exam-nav-legend{display:flex;flex-wrap:wrap;gap:6px 12px;margin-bottom:10px;font-size:.68rem;color:#5b6b7c;font-weight:600;}
+.exam-nav-legend span{display:inline-flex;align-items:center;gap:5px;}
+.lg{display:inline-block;width:11px;height:11px;border-radius:3px;border:1.5px solid #cbd8e4;background:#fff;}
+.lg.lg-answered{background:#1d5b8c;border-color:#1d5b8c;}
+.lg.lg-marked{background:#fff;border-color:#d97706;box-shadow:inset 0 0 0 2px #fff,inset 0 0 0 3px #d97706;}
+.lg.lg-current{border-color:#0f2942;box-shadow:0 0 0 1.5px #0f2942 inset;}
+.exam-nav-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(34px,1fr));gap:5px;max-height:340px;overflow-y:auto;padding-right:2px;-webkit-overflow-scrolling:touch;}
+.exam-nav-grid.hidden{display:none;}
+.exam-nav-btn{position:relative;font:inherit;font-size:.78rem;font-weight:700;aspect-ratio:1;border-radius:7px;border:1.5px solid #d6dfea;background:#fff;color:#5b6b7c;cursor:pointer;transition:all .14s;padding:0;}
+.exam-nav-btn:hover{border-color:#9ec8e6;}
+.exam-nav-btn.answered{background:#1d5b8c;border-color:#1d5b8c;color:#fff;}
+.exam-nav-btn.marked::after{content:"";position:absolute;top:2px;right:2px;width:6px;height:6px;border-radius:50%;background:#d97706;box-shadow:0 0 0 1.5px #fff;}
+.exam-nav-btn.current{border-color:#0f2942;box-shadow:0 0 0 2px rgba(15,41,66,.28);transform:scale(1.06);}
+
+/* Results screen */
+#examResultsScreen.active{display:flex;align-items:flex-start;justify-content:center;padding:20px 14px 40px;min-height:100vh;}
+.results-container{width:100%;max-width:680px;background:#fff;border-radius:20px;box-shadow:0 30px 60px -30px rgba(15,41,66,.7),0 4px 14px rgba(15,41,66,.08);overflow:hidden;}
+.results-hero{background:linear-gradient(155deg,#0f2942,#0e7490);color:#fff;padding:26px 20px 26px;text-align:center;position:relative;overflow:hidden;}
+.results-hero::before{content:"";position:absolute;left:50%;top:-70px;width:280px;height:280px;transform:translateX(-50%);background:radial-gradient(circle,rgba(217,119,6,.32),transparent 60%);border-radius:50%;}
+.results-score-circle{position:relative;width:120px;height:120px;margin:0 auto 14px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#4ade80 0deg,#4ade80 var(--ring,0deg),rgba(255,255,255,.15) var(--ring,0deg));z-index:1;}
+.results-score-circle::before{content:"";position:absolute;inset:9px;border-radius:50%;background:#0f2942;}
+.results-percent{position:relative;z-index:1;font-size:1.7rem;font-weight:800;letter-spacing:-.02em;}
+.results-score-label{position:relative;z-index:1;display:block;font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:#a9cbe4;margin-top:1px;}
+.results-title{position:relative;z-index:1;font-size:1.28rem;margin:0 0 .25em;letter-spacing:-.01em;}
+.results-subtitle{position:relative;z-index:1;margin:0;font-size:.86rem;color:#a9cbe4;}
+.results-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;padding:18px 16px 0;}
+.stat-card{background:#f7fafd;border:1px solid #e2ebf4;border-radius:12px;padding:.75em .8em;text-align:center;}
+.stat-card .stat-val{display:block;font-size:1.3rem;font-weight:800;color:#12263a;line-height:1.1;}
+.stat-card .stat-lbl{display:block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#5b6b7c;margin-top:2px;}
+.stat-card.stat-green{background:#f0fdf4;border-color:#bbf7d0;}
+.stat-card.stat-green .stat-val{color:#15803d;}
+.stat-card.stat-red{background:#fef2f2;border-color:#fecaca;}
+.stat-card.stat-red .stat-val{color:#b91c1c;}
+.stat-card.stat-gray{background:#f7fafd;}
+.results-details{padding:16px 16px 0;}
+.results-detail-row{display:flex;justify-content:space-between;align-items:baseline;font-size:.88rem;color:#5b6b7c;padding:.42em 0;border-bottom:1px solid #eef2f7;}
+.results-detail-row:last-child{border-bottom:0;}
+.results-detail-row b{color:#12263a;font-weight:800;}
+.results-progress{padding:14px 16px 0;}
+.progress-bar-multi{display:flex;height:12px;border-radius:99px;overflow:hidden;background:#e6edf4;}
+.pb-seg{height:100%;transition:width .5s ease;}
+.pb-correct{background:#15803d;}
+.pb-incorrect{background:#b91c1c;}
+.pb-unanswered{background:#94a3b8;}
+.results-actions{display:flex;flex-direction:column;gap:8px;padding:18px 16px 20px;}
+.results-actions .exam-btn-primary{width:100%;}
+.exam-btn-ghost{font:inherit;font-size:.86rem;font-weight:700;padding:.75em 1em;border-radius:11px;border:1.5px solid transparent;background:transparent;color:#5b6b7c;cursor:pointer;transition:background .15s;}
+.exam-btn-ghost:hover{background:#f2f6fa;}
+
+/* Review screen */
+#examReviewScreen.active{display:block;padding:0 0 30px;min-height:100vh;}
+.review-header{position:sticky;top:0;z-index:15;background:#fff;border-bottom:1px solid var(--line);padding:12px 14px;box-shadow:0 6px 16px -18px rgba(15,41,66,.9);}
+.review-header h2{font-size:1.08rem;margin:8px 0 10px;color:#12263a;letter-spacing:-.01em;}
+.review-filters{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px;}
+.review-filter{flex:0 0 auto;font:inherit;font-size:.76rem;font-weight:700;padding:.5em .85em;border-radius:99px;border:1.5px solid #d6dfea;background:#fff;color:#5b6b7c;cursor:pointer;transition:all .15s;white-space:nowrap;}
+.review-filter:hover{border-color:#9ec8e6;}
+.review-filter.active{background:linear-gradient(150deg,#0f2942,#1d5b8c);border-color:#0f2942;color:#fff;}
+.review-list{max-width:820px;margin:0 auto;padding:14px;display:flex;flex-direction:column;gap:12px;}
+.review-item{background:#fff;border:1px solid var(--line);border-left:5px solid #cbd8e4;border-radius:14px;padding:14px 14px 16px;box-shadow:0 4px 12px -10px rgba(15,41,66,.4);}
+.review-item.review-correct{border-left-color:#15803d;}
+.review-item.review-incorrect{border-left-color:#b91c1c;}
+.review-item.review-unanswered{border-left-color:#94a3b8;}
+.review-meta{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:10px;}
+.review-num{font-size:.78rem;font-weight:800;color:#fff;background:#0f2942;padding:.24em .65em;border-radius:6px;}
+.review-badge{font-size:.62rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:.28em .6em;border-radius:99px;}
+.badge-easy{background:#dcfce7;color:#166534;}
+.badge-medium{background:#dbeafe;color:#1e40af;}
+.badge-difficult{background:#ffedd5;color:#9a3412;}
+.badge-very-difficult{background:#fee2e2;color:#991b1b;}
+.review-status{margin-left:auto;font-size:.68rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:.3em .65em;border-radius:99px;}
+.status-correct{background:#dcfce7;color:#15803d;}
+.status-incorrect{background:#fee2e2;color:#b91c1c;}
+.status-unanswered{background:#e2e8f0;color:#475569;}
+.review-question{font-size:.92rem;font-weight:700;color:#12263a;line-height:1.5;margin-bottom:10px;}
+.review-options{display:flex;flex-direction:column;gap:5px;margin-bottom:10px;}
+.review-option{display:flex;align-items:flex-start;gap:8px;font-size:.85rem;padding:.5em .7em;border-radius:8px;border:1px solid #eef2f7;background:#fbfdff;color:#2c3e50;line-height:1.5;word-break:break-word;}
+.review-option .ro-letter{flex:0 0 auto;font-weight:800;color:#5b6b7c;}
+.review-option.correct{background:#f0fdf4;border-color:#bbf7d0;color:#14532d;font-weight:600;}
+.review-option.correct .ro-letter{color:#15803d;}
+.review-option.wrong{background:#fef2f2;border-color:#fecaca;color:#7f1d1d;font-weight:600;}
+.review-option.wrong .ro-letter{color:#b91c1c;}
+.review-option .ro-tag{margin-left:auto;font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding:.2em .5em;border-radius:5px;background:rgba(0,0,0,.06);color:inherit;white-space:nowrap;}
+.review-answer{display:flex;flex-direction:column;gap:4px;background:#f7fafd;border:1px solid #e2ebf4;border-radius:10px;padding:.65em .85em;font-size:.82rem;color:#5b6b7c;margin-bottom:10px;}
+.review-answer b{color:#12263a;font-weight:800;}
+.review-solution{background:#fbfdff;border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:.65em .85em;font-size:.84rem;color:#33465c;line-height:1.55;}
+.review-solution h5{margin:0 0 .3em;font-size:.66rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#b45309;}
+.review-empty{text-align:center;padding:40px 20px;color:#8496a8;font-size:.9rem;}
+
+/* Confirmation modal */
+.exam-confirm{position:fixed;inset:0;z-index:1200;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(15,41,66,.55);backdrop-filter:blur(3px);}
+.exam-confirm[hidden]{display:none;}
+.exam-confirm-card{width:100%;max-width:400px;background:#fff;border-radius:16px;padding:20px;box-shadow:0 30px 60px -20px rgba(0,0,0,.5);}
+.exam-confirm-card h3{margin:0 0 .4em;font-size:1.06rem;color:#12263a;}
+.exam-confirm-card p{font-size:.88rem;color:#5b6b7c;margin:0 0 16px;}
+.exam-confirm-actions{display:flex;gap:8px;}
+.exam-confirm-actions button{flex:1;font:inherit;font-size:.85rem;font-weight:800;padding:.72em 1em;border-radius:10px;cursor:pointer;transition:all .15s;}
+#confirmCancel{border:1.5px solid #d6dfea;background:#fff;color:#33465c;}
+#confirmCancel:hover{background:#f4f9fd;}
+#confirmSubmit{border:0;background:var(--accent);color:#fff;}
+#confirmSubmit:hover{background:#c26a05;}
+
+/* Exam desktop */
+@media (min-width:820px){
+  .exam-body{grid-template-columns:1fr 300px;padding:20px 24px;gap:20px;}
+  .exam-question-card{padding:22px 24px 24px;}
+  .exam-q-text{font-size:1.06rem;}
+  .exam-nav-grid{max-height:60vh;}
+  .results-stats{grid-template-columns:repeat(4,1fr);}
+  .results-actions{flex-direction:row;}
+  .results-actions .exam-btn-primary{width:auto;flex:2;}
+  .results-actions .exam-btn-secondary,.results-actions .exam-btn-ghost{flex:1;}
+  .review-header{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;padding:14px 24px;}
+  .review-header h2{margin:0;}
+  .review-list{padding:20px 24px;}
+  .review-item{padding:18px 20px 20px;}
+  .config-options{grid-template-columns:repeat(10,1fr);}
+}
+@media (max-width:520px){
+  .config-options{grid-template-columns:repeat(5,1fr);}
+  .exam-timer{font-size:.92rem;min-width:58px;padding:.3em .55em;}
+  .exam-btn-submit{font-size:.78rem;padding:.5em .8em;}
+  .exam-header{padding:8px 10px;gap:7px;}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <span class="badge">GME Pre-Sea Training Preparation</span>
+    <h1>Manufacturing &amp; Workshop Technology</h1>
+    <p class="sub">Fitting and Measurement – Mechanical Engineering Fundamentals</p>
+    <div class="meta">
+      <span><b>Subject:</b> Workshop Technology</span>
+      <span><b>Level:</b> Mechanical Engineering Graduate</span>
+    </div>
+    <p class="intro">
+      These notes cover the fundamental fitting operations, measuring instruments, precision measurement techniques and calibration procedures required for a Mechanical Engineering Graduate preparing for Graduate Marine Engineering (GME) Pre-Sea Training.
+    </p>
+  </div>
+</header>
+
+<main>
+
+  <!-- TEST CTA -->
+  <div class="test-cta">
+    <div class="test-cta-text">
+      <b>Practice MCQ Test</b>
+      <span>300 questions · Configurable timer · Instant results &amp; solutions</span>
+    </div>
+    <button type="button" id="takeTestBtn" class="test-cta-btn">Take Test →</button>
+  </div>
+
+  <!-- SEARCH -->
+  <div class="search-wrap">
+    <div class="search-box">
+      <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="15.6" y1="15.6" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <input id="searchInput" type="search" placeholder="Search formulas, definitions, topics…" autocomplete="off" spellcheck="false" aria-label="Search formulas, definitions and topics" />
+      <button type="button" id="searchClear" class="search-clear" aria-label="Clear search" hidden>&times;</button>
+    </div>
+    <div id="searchResults" class="search-results" role="region" aria-live="polite" aria-label="Search results"></div>
+  </div>
+
+  <div class="toolbar">
+    <button type="button" id="expandAll">Expand all</button>
+    <button type="button" id="collapseAll">Collapse all</button>
+  </div>
+
+  <!-- FOLDER 1 -->
+  <section class="folder open" id="f-fitting">
+    <button class="folder-head" aria-expanded="true" aria-controls="body-fitting">
+      <span class="folder-num">1</span>
+      <span class="folder-title">
+        <b>Hacksawing, Filing &amp; Tapping</b>
+        <small>Fitting operations: cutting, shaping and threading</small>
+      </span>
+      <span class="chev" aria-hidden="true"></span>
+    </button>
+    <div class="folder-body" id="body-fitting">
+      <div class="folder-inner">
+        <div class="folder-content">
+          <h3 class="sub">A1. Introduction to Fitting</h3>
+          <p class="lead">Fitting is a manufacturing and workshop process in which a workpiece is manually shaped, finished, assembled or adjusted to obtain the required dimensions and fit.</p>
+          <p>It involves removing small amounts of material using hand tools and checking dimensions using measuring instruments. Fitting is generally performed after basic manufacturing operations such as casting, forging, rolling or machining.</p>
+          <div class="rules">
+            <h4>When fitting is used</h4>
+            <ul>
+              <li>Components require accurate dimensions.</li>
+              <li>Parts need to be assembled with proper clearance or interference.</li>
+              <li>Small adjustments are required.</li>
+              <li>Machining alone cannot achieve the required final finish or fit.</li>
+            </ul>
+          </div>
+          <p class="sub-sub">Objectives of fitting</p>
+          <ul class="plain">
+            <li>To achieve the required dimensions and tolerances.</li>
+            <li>To obtain accurate mating surfaces.</li>
+            <li>To remove burrs, sharp edges and excess material.</li>
+            <li>To improve surface finish.</li>
+            <li>To produce accurate holes, slots and threads.</li>
+            <li>To ensure proper assembly and functioning of machine components.</li>
+          </ul>
+          <p class="sub-sub">Common fitting operations</p>
+          <ol class="plain">
+            <li>Marking and layout.</li><li>Sawing.</li><li>Chipping.</li><li>Filing.</li><li>Drilling.</li><li>Reaming.</li><li>Tapping.</li><li>Die threading.</li><li>Scraping.</li><li>Deburring and finishing.</li>
+          </ol>
+          <p class="sub-sub">Common fitting tools</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Tool</th><th>Main purpose</th></tr></thead>
+              <tbody>
+                <tr><td>Bench vice</td><td>Holding workpieces</td></tr>
+                <tr><td>Hacksaw</td><td>Cutting metal</td></tr>
+                <tr><td>Files</td><td>Removing material and finishing</td></tr>
+                <tr><td>Hammer</td><td>Striking tools</td></tr>
+                <tr><td>Chisel</td><td>Cutting and chipping metal</td></tr>
+                <tr><td>Try square</td><td>Checking squareness</td></tr>
+                <tr><td>Scriber</td><td>Marking lines</td></tr>
+                <tr><td>Centre punch</td><td>Making centre marks</td></tr>
+                <tr><td>Tap</td><td>Producing internal threads</td></tr>
+                <tr><td>Die</td><td>Producing external threads</td></tr>
+                <tr><td>Vernier calliper</td><td>Measuring dimensions</td></tr>
+                <tr><td>Micrometer</td><td>Precision measurement</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="sub">A2. Hacksawing</h3>
+          <p><b>Definition:</b> Hacksawing is a metal-cutting operation performed using a hacksaw blade to remove material from a workpiece. It is commonly used for cutting metal rods, pipes, bars, plates and other workshop materials. The cutting action takes place through the teeth of the blade. A hacksaw generally performs cutting during the forward stroke.</p>
+          <figure class="diagram">
+            <svg viewBox="0 0 360 180" role="img" aria-label="Hacksaw diagram">
+              <rect x="40" y="40" width="260" height="20" rx="6" fill="#dbe6f0" stroke="#0e7490" stroke-width="2"/>
+              <rect x="30" y="55" width="40" height="40" rx="8" fill="#b45309" stroke="#8b4513" stroke-width="2"/>
+              <rect x="300" y="55" width="30" height="40" rx="6" fill="#b45309" stroke="#8b4513" stroke-width="2"/>
+              <line x1="70" y1="75" x2="300" y2="75" stroke="#0f2942" stroke-width="3"/>
+              <line x1="70" y1="80" x2="300" y2="80" stroke="#d97706" stroke-width="2" stroke-dasharray="4 3"/>
+              <text x="160" y="30" font-size="11" font-weight="700" fill="#0b5c72" text-anchor="middle">Frame</text>
+              <text x="48" y="115" font-size="10" font-weight="700" fill="#b45309" text-anchor="middle">Handle</text>
+              <text x="185" y="100" font-size="10" font-weight="700" fill="#0f2942" text-anchor="middle">Blade (teeth forward)</text>
+            </svg>
+            <figcaption>Main parts of a hacksaw: frame, handle and blade.</figcaption>
+          </figure>
+          <p class="sub-sub">Main parts of a hacksaw</p>
+          <ol class="plain">
+            <li><b>Frame</b> – Holds and supports the hacksaw blade. May be fixed or adjustable.</li>
+            <li><b>Handle</b> – Provides a comfortable grip and allows the operator to apply cutting force.</li>
+            <li><b>Blade</b> – Thin, hardened steel strip containing cutting teeth.</li>
+            <li><b>Blade pins</b> – Hold the blade at both ends of the frame.</li>
+            <li><b>Tensioning mechanism</b> – Maintains proper tension in the blade.</li>
+          </ol>
+          <p class="sub-sub">Teeth per inch (TPI)</p>
+          <p>TPI represents the number of teeth present in one inch of blade length. It determines the size and spacing of the teeth.</p>
+          <div class="table-wrap">
+            <table><thead><tr><th>Blade teeth</th><th>Typical application</th></tr></thead>
+              <tbody>
+                <tr><td>14 TPI</td><td>Thick sections and soft materials</td></tr>
+                <tr><td>18 TPI</td><td>Medium-thick sections</td></tr>
+                <tr><td>24 TPI</td><td>General-purpose cutting</td></tr>
+                <tr><td>32 TPI</td><td>Thin sections and small tubes</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="memo"><b>Important principle:</b> Coarse blades have fewer teeth per inch and larger spaces between teeth. Fine blades have more teeth per inch and smaller spaces between teeth. At least 2–3 teeth should ideally remain engaged with the workpiece during cutting to avoid tooth damage.</div>
+          <p class="sub-sub">Types of hacksaw blades (based on construction)</p>
+          <ul class="plain">
+            <li><b>All-hard blade:</b> Hardened throughout its entire body. Offers high cutting hardness. More brittle compared with flexible blades.</li>
+            <li><b>Flexible blade:</b> Teeth are hardened while the remaining body is relatively flexible. Reduces the possibility of blade breakage.</li>
+            <li><b>Bi-metal blade:</b> Made by combining different metals. Usually has high-speed steel cutting teeth and a flexible alloy-steel backing.</li>
+          </ul>
+          <p class="sub-sub">Hacksawing procedure</p>
+          <ol class="plain">
+            <li>Select a suitable blade according to the material and thickness.</li>
+            <li>Fix the blade in the frame. Ensure that the teeth point in the forward cutting direction.</li>
+            <li>Tighten the blade properly. Mark the cutting line on the workpiece.</li>
+            <li>Hold the workpiece firmly in a bench vice. Position the blade at the starting point.</li>
+            <li>Apply light pressure to establish a cutting groove.</li>
+            <li>Continue cutting using smooth and controlled strokes.</li>
+            <li>Apply pressure during the forward stroke and release pressure during the return stroke.</li>
+            <li>Reduce pressure when approaching the end of the cut. Remove burrs after cutting.</li>
+          </ol>
+          <div class="table-wrap">
+            <table><thead><tr><th>Defect</th><th>Possible cause</th></tr></thead>
+              <tbody>
+                <tr><td>Blade breakage</td><td>Excessive pressure or incorrect tension</td></tr>
+                <tr><td>Rough cutting</td><td>Dull or unsuitable blade</td></tr>
+                <tr><td>Teeth stripping</td><td>Too few teeth engaged</td></tr>
+                <tr><td>Crooked cutting</td><td>Incorrect blade alignment</td></tr>
+                <tr><td>Excessive vibration</td><td>Improper clamping</td></tr>
+                <tr><td>Slow cutting</td><td>Incorrect blade selection or dull teeth</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="memo"><b>Remember:</b> Hacksaw cutting generally occurs on the forward stroke. Higher TPI means finer teeth. Lower TPI means coarser teeth. Blade tension is essential for accurate cutting.</div>
+
+          <h3 class="sub">A3. Filing</h3>
+          <p><b>Definition:</b> Filing is a metal-removal operation performed using a file. A file is a hardened steel tool containing multiple small cutting teeth. It removes small quantities of material from a workpiece through repeated strokes. Filing is mainly used for sizing, shaping, smoothing and finishing metal surfaces.</p>
+          <figure class="diagram">
+            <svg viewBox="0 0 360 140" role="img" aria-label="File diagram">
+              <path d="M40 60 L280 60 L300 70 L280 80 L40 80 Z" fill="#dbe6f0" stroke="#0e7490" stroke-width="2"/>
+              <rect x="300" y="55" width="50" height="30" rx="6" fill="#b45309" stroke="#8b4513" stroke-width="2"/>
+              <text x="60" y="50" font-size="9" font-weight="700" fill="#0b5c72">Point</text>
+              <text x="150" y="50" font-size="9" font-weight="700" fill="#0b5c72">Face</text>
+              <text x="230" y="50" font-size="9" font-weight="700" fill="#0b5c72">Heel</text>
+              <text x="310" y="45" font-size="9" font-weight="700" fill="#b45309">Tang</text>
+              <text x="320" y="105" font-size="9" font-weight="700" fill="#b45309">Handle</text>
+              <text x="20" y="95" font-size="9" font-weight="700" fill="#0b5c72">Edge</text>
+            </svg>
+            <figcaption>Parts of a file.</figcaption>
+          </figure>
+          <p class="sub-sub">Classification of files (cross-sectional shape)</p>
+          <div class="table-wrap">
+            <table><thead><tr><th>Type</th><th>Application</th></tr></thead>
+              <tbody>
+                <tr><td>Flat file</td><td>Flat surfaces and edges</td></tr>
+                <tr><td>Hand file</td><td>Finishing flat surfaces</td></tr>
+                <tr><td>Square file</td><td>Square holes and rectangular slots</td></tr>
+                <tr><td>Round file</td><td>Enlarging circular holes</td></tr>
+                <tr><td>Half-round file</td><td>Flat and curved surfaces</td></tr>
+                <tr><td>Triangular file</td><td>Internal angles and V-shaped grooves</td></tr>
+                <tr><td>Knife-edge file</td><td>Narrow grooves and acute angles</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="sub-sub">Based on tooth arrangement</p>
+          <ul class="plain">
+            <li><b>Single-cut file:</b> Has one set of parallel teeth. Used for fine finishing.</li>
+            <li><b>Double-cut file:</b> Has two sets of intersecting teeth. Removes material faster.</li>
+            <li><b>Rasp-cut file:</b> Has individually raised teeth. Used for soft materials.</li>
+            <li><b>Curved-cut file:</b> Has curved rows of teeth. Used for certain soft metals.</li>
+          </ul>
+          <p class="sub-sub">Based on grade or coarseness</p>
+          <div class="table-wrap">
+            <table><thead><tr><th>Grade</th><th>Characteristics</th></tr></thead>
+              <tbody>
+                <tr><td>Rough</td><td>Very coarse material removal</td></tr>
+                <tr><td>Bastard</td><td>Coarse filing</td></tr>
+                <tr><td>Second cut</td><td>Medium material removal</td></tr>
+                <tr><td>Smooth</td><td>Fine finishing</td></tr>
+                <tr><td>Dead smooth</td><td>Very fine finishing</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="sub-sub">Filing methods</p>
+          <ul class="plain">
+            <li><b>Cross filing:</b> File is moved diagonally across the workpiece. Used for rapid material removal.</li>
+            <li><b>Draw filing:</b> File is held across the workpiece and moved along its length. Used for smooth surface finish.</li>
+            <li><b>Straight filing:</b> File is moved approximately parallel to the length of the workpiece.</li>
+            <li><b>Lathe filing:</b> File is applied carefully to a rotating workpiece.</li>
+          </ul>
+          <div class="memo"><b>Remember:</b> Single-cut = finer finishing. Double-cut = faster material removal. Draw filing = smooth finishing. Round file = circular holes. Triangular file = internal corners and V-grooves.</div>
+
+          <h3 class="sub">A4. Tapping</h3>
+          <p><b>Definition:</b> Tapping is a machining operation used to produce internal screw threads inside a drilled hole. The tool used is called a <b>tap</b>. It is commonly performed manually using a tap wrench or mechanically using a tapping machine.</p>
+          <p class="sub-sub">Types of hand taps</p>
+          <ul class="plain">
+            <li><b>Taper tap:</b> Has a long chamfer at its cutting end. Gradually starts the internal thread.</li>
+            <li><b>Second tap / Intermediate tap:</b> Has a shorter chamfer than the taper tap. Deepens the partially formed threads.</li>
+            <li><b>Plug / Bottoming tap:</b> Has a very short chamfer. Produces threads close to the bottom of a blind hole.</li>
+          </ul>
+          <p class="sub-sub">Tapping drill size</p>
+          <p>For a standard metric ISO coarse thread, a commonly used approximate formula is:</p>
+          <div class="eq">Tap drill diameter ≈ D − P</div>
+          <p>Where D = Nominal thread diameter in mm, P = Thread pitch in mm.</p>
+          <div class="example">
+            <h4>Example: M10 × 1.5</h4>
+            <div class="eq">10 − 1.5 = 8.5 mm</div>
+            <p>Therefore, the approximate tapping drill diameter is 8.5 mm.</p>
+          </div>
+          <div class="table-wrap">
+            <table><thead><tr><th>Problem</th><th>Cause</th></tr></thead>
+              <tbody>
+                <tr><td>Tap breakage</td><td>Excessive force or misalignment</td></tr>
+                <tr><td>Damaged threads</td><td>Incorrect drill size</td></tr>
+                <tr><td>Rough threads</td><td>Dull tap or poor lubrication</td></tr>
+                <tr><td>Cross-threading</td><td>Tap not aligned properly</td></tr>
+                <tr><td>Difficult rotation</td><td>Insufficient lubrication or chip accumulation</td></tr>
+                <tr><td>Incomplete bottom threads</td><td>Incorrect tap selection</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="memo"><b>Remember:</b> Tapping produces internal threads, while die threading produces external threads.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOLDER 2 -->
+  <section class="folder" id="f-vernier">
+    <button class="folder-head" aria-expanded="false" aria-controls="body-vernier">
+      <span class="folder-num">2</span>
+      <span class="folder-title"><b>Vernier Calliper &amp; Micrometer</b><small>Precision measurement: least count, reading and zero error</small></span>
+      <span class="chev" aria-hidden="true"></span>
+    </button>
+    <div class="folder-body" id="body-vernier">
+      <div class="folder-inner">
+        <div class="folder-content">
+          <h3 class="sub">B1. Fundamentals of Measurement</h3>
+          <p><b>Definition:</b> Measurement is the process of determining the magnitude of a physical quantity by comparing it with an accepted standard.</p>
+          <div class="rules">
+            <h4>Important terms</h4>
+            <ul>
+              <li><b>Accuracy</b> – Closeness of a measured value to the true or accepted reference value.</li>
+              <li><b>Precision</b> – Closeness of repeated measurements to one another.</li>
+              <li><b>Resolution</b> – Smallest change an instrument can display.</li>
+              <li><b>Least count</b> – Smallest measurement increment an instrument can directly indicate.</li>
+              <li><b>Repeatability</b> – Ability to produce similar results under the same conditions.</li>
+              <li><b>Sensitivity</b> – Ability to respond to small changes in the measured quantity.</li>
+              <li><b>Error</b> – Difference between measured value and true/reference value.</li>
+              <li><b>Tolerance</b> – Permissible variation in a component's dimension.</li>
+            </ul>
+          </div>
+          <div class="eq">Error = Measured value − Reference value</div>
+          <div class="eq">Tolerance = Upper limit − Lower limit</div>
+          <p class="sub-sub">Accuracy vs Precision</p>
+          <div class="table-wrap">
+            <table><thead><tr><th>Accuracy</th><th>Precision</th></tr></thead>
+              <tbody>
+                <tr><td>Closeness to true value</td><td>Closeness among repeated readings</td></tr>
+                <tr><td>Indicates correctness</td><td>Indicates consistency</td></tr>
+                <tr><td>Affected by systematic errors</td><td>Affected by random variation</td></tr>
+                <tr><td>Important for dimensional correctness</td><td>Important for repeatability</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h3 class="sub">B2. Vernier Calliper</h3>
+          <p><b>Definition:</b> A vernier calliper is a precision measuring instrument used to measure internal dimensions, external dimensions, depths and step dimensions. It consists of a main scale and a sliding vernier scale.</p>
+          <figure class="diagram">
+            <svg viewBox="0 0 400 130" role="img" aria-label="Vernier calliper diagram">
+              <rect x="30" y="50" width="280" height="12" rx="3" fill="#eef4fa" stroke="#0e7490" stroke-width="2"/>
+              <rect x="200" y="40" width="110" height="35" rx="5" fill="#fff8ed" stroke="#d97706" stroke-width="2"/>
+              <rect x="20" y="62" width="22" height="28" rx="4" fill="#dbe6f0" stroke="#0e7490" stroke-width="1.5"/>
+              <rect x="310" y="62" width="22" height="28" rx="4" fill="#dbe6f0" stroke="#0e7490" stroke-width="1.5"/>
+              <line x1="200" y1="72" x2="370" y2="72" stroke="#0f2942" stroke-width="2"/>
+              <text x="60" y="38" font-size="9" font-weight="700" fill="#0b5c72">Main scale</text>
+              <text x="240" y="32" font-size="9" font-weight="700" fill="#b45309">Vernier scale</text>
+              <text x="20" y="100" font-size="9" font-weight="700" fill="#0b5c72">Outside jaws</text>
+              <text x="280" y="100" font-size="9" font-weight="700" fill="#0b5c72">Inside jaws</text>
+              <text x="340" y="100" font-size="9" font-weight="700" fill="#0f2942">Depth rod</text>
+            </svg>
+            <figcaption>Main parts of a vernier calliper.</figcaption>
+          </figure>
+          <p class="sub-sub">Least count of vernier calliper</p>
+          <div class="eq">LC = 1 MSD − 1 VSD</div>
+          <div class="eq">LC = (Value of 1 MSD) / (Number of vernier divisions)</div>
+          <div class="example">
+            <h4>Example</h4>
+            <p>If 1 MSD = 1 mm and 10 VSD = 9 mm, then:</p>
+            <div class="eq">1 VSD = 9/10 = 0.9 mm</div>
+            <div class="eq"><span class="boxed">LC = 1 − 0.9 = 0.1 mm</span></div>
+          </div>
+          <p class="sub-sub">Reading a vernier calliper</p>
+          <div class="eq">Final Reading = Main Scale Reading + Vernier Reading</div>
+          <div class="eq">Vernier Reading = n × LC</div>
+          <div class="example">
+            <h4>Example</h4>
+            <p>Main scale reading = 24 mm, coinciding vernier division = 6, LC = 0.1 mm.</p>
+            <div class="eq">Vernier Reading = 6 × 0.1 = 0.6 mm</div>
+            <div class="eq"><span class="boxed">Final reading = 24 + 0.6 = 24.6 mm</span></div>
+          </div>
+          <div class="note"><b>Zero error:</b> Occurs when the instrument displays a non-zero reading when jaws are fully closed. Positive zero error → subtract correction. Negative zero error → add correction.</div>
+          <div class="eq">Correct Reading = Observed Reading − Zero Error</div>
+          <p class="sub-sub">Advantages &amp; Limitations</p>
+          <ul class="plain">
+            <li>Versatile – measures internal, external, depth and step dimensions.</li>
+            <li>Portable and easy to use; more accurate than a steel rule.</li>
+            <li>Generally less precise than a micrometer.</li>
+            <li>Reading errors may occur due to parallax or poor alignment.</li>
+          </ul>
+          <h3 class="sub">B3. Micrometer</h3>
+          <p><b>Definition:</b> A micrometer is a precision measuring instrument used to measure small dimensions accurately. It works on the principle of a precision screw and nut mechanism.</p>
+          <figure class="diagram">
+            <svg viewBox="0 0 360 120" role="img" aria-label="Micrometer diagram">
+              <path d="M40 30 Q40 20 60 20 L200 20 Q220 20 220 40 L220 80 Q220 100 200 100 L60 100 Q40 100 40 90 Z" fill="#dbe6f0" stroke="#0e7490" stroke-width="2"/>
+              <rect x="220" y="45" width="100" height="20" rx="4" fill="#eef4fa" stroke="#0e7490" stroke-width="1.5"/>
+              <rect x="320" y="35" width="30" height="40" rx="6" fill="#fff8ed" stroke="#d97706" stroke-width="2"/>
+              <rect x="100" y="48" width="18" height="14" rx="2" fill="#0f2942"/>
+              <line x1="118" y1="55" x2="220" y2="55" stroke="#0f2942" stroke-width="2"/>
+              <text x="100" y="115" font-size="9" font-weight="700" fill="#0b5c72" text-anchor="middle">Anvil</text>
+              <text x="260" y="115" font-size="9" font-weight="700" fill="#0b5c72" text-anchor="middle">Sleeve / Barrel</text>
+              <text x="335" y="115" font-size="9" font-weight="700" fill="#b45309" text-anchor="middle">Thimble</text>
+              <text x="60" y="115" font-size="9" font-weight="700" fill="#0b5c72" text-anchor="middle">Frame</text>
+            </svg>
+            <figcaption>Parts of an outside micrometer.</figcaption>
+          </figure>
+          <p class="sub-sub">Least count of a micrometer</p>
+          <div class="eq">LC = Pitch of screw / Number of divisions on thimble</div>
+          <div class="example">
+            <h4>Example</h4>
+            <p>Screw pitch = 0.5 mm, thimble divisions = 50.</p>
+            <div class="eq"><span class="boxed">LC = 0.5 / 50 = 0.01 mm</span></div>
+          </div>
+          <p class="sub-sub">Reading of an outside micrometer</p>
+          <div class="eq">Final Reading = Sleeve Reading + Thimble Reading</div>
+          <div class="eq">Thimble Reading = n × LC</div>
+          <div class="example">
+            <h4>Example</h4>
+            <p>Sleeve reading = 12.5 mm, thimble reading = 28 divisions, LC = 0.01 mm.</p>
+            <div class="eq">Thimble Reading = 28 × 0.01 = 0.28 mm</div>
+            <div class="eq"><span class="boxed">Final reading = 12.5 + 0.28 = 12.78 mm</span></div>
+          </div>
+          <p class="sub-sub">Vernier calliper vs Micrometer</p>
+          <div class="table-wrap">
+            <table><thead><tr><th>Parameter</th><th>Vernier calliper</th><th>Micrometer</th></tr></thead>
+              <tbody>
+                <tr><td>Principle</td><td>Vernier scale</td><td>Screw and nut</td></tr>
+                <tr><td>Typical least count</td><td>0.02–0.1 mm</td><td>0.01 mm</td></tr>
+                <tr><td>Measuring range</td><td>Relatively large</td><td>Relatively small</td></tr>
+                <tr><td>Precision</td><td>Generally lower</td><td>Generally higher</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="memo"><b>Remember:</b> A micrometer generally offers finer resolution than a standard vernier calliper.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOLDER 3 -->
+  <section class="folder" id="f-dial">
+    <button class="folder-head" aria-expanded="false" aria-controls="body-dial">
+      <span class="folder-num">3</span>
+      <span class="folder-title"><b>Dial Gauge &amp; Feeler Gauge</b><small>Comparative measurement, runout and clearance checking</small></span>
+      <span class="chev" aria-hidden="true"></span>
+    </button>
+    <div class="folder-body" id="body-dial">
+      <div class="folder-inner">
+        <div class="folder-content">
+          <h3 class="sub">B4. Dial Gauge / Dial Indicator</h3>
+          <p><b>Definition:</b> A dial gauge is a precision comparative measuring instrument used to detect small linear movements and dimensional variations. It consists of a graduated circular dial and a movable contact plunger or lever.</p>
+          <figure class="diagram">
+            <svg viewBox="0 0 300 200" role="img" aria-label="Dial gauge diagram">
+              <circle cx="150" cy="90" r="70" fill="#f9fbfd" stroke="#0e7490" stroke-width="2.5"/>
+              <circle cx="150" cy="90" r="58" fill="none" stroke="#dbe6f0" stroke-width="1.5"/>
+              <line x1="150" y1="90" x2="195" y2="55" stroke="#b91c1c" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="150" cy="90" r="4" fill="#0f2942"/>
+              <line x1="150" y1="160" x2="150" y2="190" stroke="#0f2942" stroke-width="3"/>
+              <circle cx="150" cy="160" r="6" fill="#0f2942"/>
+              <text x="150" y="30" font-size="10" font-weight="700" fill="#0b5c72" text-anchor="middle">Dial face</text>
+              <text x="210" y="50" font-size="9" font-weight="700" fill="#b91c1c">Pointer</text>
+              <text x="150" y="205" font-size="9" font-weight="700" fill="#0f2942" text-anchor="middle">Plunger</text>
+            </svg>
+            <figcaption>Parts of a dial indicator.</figcaption>
+          </figure>
+          <p class="sub-sub">Applications</p>
+          <ul class="plain">
+            <li>Checking shaft runout.</li><li>Checking surface flatness and parallelism.</li><li>Checking alignment of machine components.</li><li>Checking concentricity and eccentricity.</li><li>Checking bearing movement and clearances.</li>
+          </ul>
+          <p class="sub-sub">Total Indicator Reading (TIR)</p>
+          <div class="eq">TIR = R<sub>max</sub> − R<sub>min</sub></div>
+          <div class="example">
+            <h4>Example</h4>
+            <p>Maximum reading = +0.08 mm, minimum reading = −0.04 mm.</p>
+            <div class="eq"><span class="boxed">TIR = 0.08 − (−0.04) = 0.12 mm</span></div>
+          </div>
+          <div class="memo"><b>Remember:</b> Dial gauge = comparative measurement and deviation checking.</div>
+          <h3 class="sub">B5. Feeler Gauge</h3>
+          <p><b>Definition:</b> A feeler gauge is a precision measuring tool consisting of thin metal blades of known thickness. It is used to measure small gaps and clearances between two surfaces.</p>
+          <figure class="diagram">
+            <svg viewBox="0 0 320 120" role="img" aria-label="Feeler gauge diagram">
+              <rect x="40" y="50" width="240" height="20" rx="6" fill="#dbe6f0" stroke="#0e7490" stroke-width="2"/>
+              <line x1="80" y1="45" x2="80" y2="75" stroke="#0f2942" stroke-width="1.5"/>
+              <line x1="110" y1="45" x2="110" y2="75" stroke="#0f2942" stroke-width="1.5"/>
+              <line x1="140" y1="45" x2="140" y2="75" stroke="#0f2942" stroke-width="1.5"/>
+              <line x1="170" y1="45" x2="170" y2="75" stroke="#0f2942" stroke-width="1.5"/>
+              <line x1="200" y1="45" x2="200" y2="75" stroke="#0f2942" stroke-width="1.5"/>
+              <line x1="230" y1="45" x2="230" y2="75" stroke="#0f2942" stroke-width="1.5"/>
+              <text x="160" y="95" font-size="10" font-weight="700" fill="#0b5c72" text-anchor="middle">Blades of known thickness (e.g., 0.05 mm – 1.00 mm)</text>
+            </svg>
+            <figcaption>Feeler gauge blades.</figcaption>
+          </figure>
+          <p class="sub-sub">Applications in marine engineering</p>
+          <ul class="plain">
+            <li>Checking valve clearance in diesel engines.</li><li>Checking piston ring end gaps.</li><li>Measuring spark plug gaps.</li><li>Checking bearing and machine clearances.</li><li>Checking gaps between mating surfaces.</li>
+          </ul>
+          <div class="memo"><b>Remember:</b> Feeler gauge measures small gaps and clearances using blades of known thickness.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOLDER 4 -->
+  <section class="folder" id="f-bore">
+    <button class="folder-head" aria-expanded="false" aria-controls="body-bore">
+      <span class="folder-num">4</span>
+      <span class="folder-title"><b>Bore Gauge &amp; Depth Gauge</b><small>Internal diameter, taper, ovality and depth measurement</small></span>
+      <span class="chev" aria-hidden="true"></span>
+    </button>
+    <div class="folder-body" id="body-bore">
+      <div class="folder-inner">
+        <div class="folder-content">
+          <h3 class="sub">C1. Bore Gauge</h3>
+          <p><b>Definition:</b> A bore gauge is a precision measuring instrument used to measure the internal diameter of holes, cylinders and bores. It is particularly useful for detecting variations in internal diameter at different positions.</p>
+          <p class="sub-sub">Applications</p>
+          <ul class="plain">
+            <li>Measuring engine cylinder bore diameter.</li><li>Measuring bearing housing dimensions.</li><li>Checking pump casing bores.</li><li>Checking cylinder wear.</li><li>Measuring taper and ovality in cylindrical bores.</li>
+          </ul>
+          <p class="sub-sub">Working principle</p>
+          <p>A bore gauge generally works as a comparative measuring instrument. It is first set against a known reference dimension using a micrometer or setting ring. Changes in the internal diameter cause movement of the measuring contacts, which is indicated on the dial.</p>
+          <p class="sub-sub">Important bore measurement terms</p>
+          <div class="eq">Taper = (D₁ − D₂) / L</div>
+          <div class="eq">Ovality = D<sub>max</sub> − D<sub>min</sub></div>
+          <div class="note"><b>Marine Engineering Application:</b> Bore gauges are particularly important when inspecting marine diesel engine cylinder liners for wear, taper and ovality.</div>
+          <h3 class="sub">C2. Depth Gauge</h3>
+          <p><b>Definition:</b> A depth gauge is a measuring instrument used to determine the depth of holes, slots, recesses, grooves and steps. It generally consists of a base that rests on the reference surface and a measuring rod or blade that moves into the feature.</p>
+          <p class="sub-sub">Types of depth gauges</p>
+          <ul class="plain">
+            <li><b>Vernier depth gauge:</b> Uses a main scale and vernier scale.</li>
+            <li><b>Micrometer depth gauge:</b> Uses a precision screw mechanism.</li>
+            <li><b>Digital depth gauge:</b> Displays depth electronically.</li>
+          </ul>
+          <p class="sub-sub">Applications</p>
+          <ul class="plain">
+            <li>Measuring the depth of drilled holes.</li><li>Measuring recesses in machine components.</li><li>Measuring groove depth and counterbore depth.</li><li>Checking machined steps.</li>
+          </ul>
+          <div class="memo"><b>Remember:</b> A depth gauge measures the vertical distance from a reference surface to the bottom of a feature.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOLDER 5 -->
+  <section class="folder" id="f-surface">
+    <button class="folder-head" aria-expanded="false" aria-controls="body-surface">
+      <span class="folder-num">5</span>
+      <span class="folder-title"><b>Surface Plate &amp; Straightedge</b><small>Reference plane and straightness inspection</small></span>
+      <span class="chev" aria-hidden="true"></span>
+    </button>
+    <div class="folder-body" id="body-surface">
+      <div class="folder-inner">
+        <div class="folder-content">
+          <h3 class="sub">D1. Surface Plate</h3>
+          <p><b>Definition:</b> A surface plate is a precision-engineered flat reference surface used for inspection, marking and measurement. It provides a stable reference plane for checking the accuracy of mechanical components.</p>
+          <p class="sub-sub">Types</p>
+          <ul class="plain">
+            <li><b>Granite surface plate:</b> Good dimensional stability, corrosion-resistant, non-magnetic, good wear characteristics.</li>
+            <li><b>Cast-iron surface plate:</b> Can be resurfaced and reconditioned. Requires protection against rust.</li>
+          </ul>
+          <p class="sub-sub">Grades (common metrology classifications)</p>
+          <div class="table-wrap">
+            <table><thead><tr><th>Grade</th><th>Application</th></tr></thead>
+              <tbody>
+                <tr><td>Grade 0</td><td>Precision inspection and laboratory applications</td></tr>
+                <tr><td>Grade 1</td><td>General precision inspection</td></tr>
+                <tr><td>Grade 2</td><td>Workshop inspection</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="memo"><b>Remember:</b> A surface plate provides a reference plane for precision measurement and inspection.</div>
+          <h3 class="sub">D2. Straightedge</h3>
+          <p><b>Definition:</b> A straightedge is a precision tool used to check the straightness of surfaces and edges. It is generally a long, straight, rigid bar with a precisely finished working edge.</p>
+          <p class="sub-sub">Types</p>
+          <ul class="plain">
+            <li><b>Steel straightedge:</b> Made from hardened or precision-finished steel.</li>
+            <li><b>Knife-edge straightedge:</b> Has a narrow working edge for checking small deviations.</li>
+            <li><b>Precision straightedge:</b> Manufactured to high dimensional accuracy.</li>
+            <li><b>Granite straightedge:</b> Provides a stable reference edge.</li>
+          </ul>
+          <p class="sub-sub">Straightedge vs Surface plate</p>
+          <div class="table-wrap">
+            <table><thead><tr><th>Surface plate</th><th>Straightedge</th></tr></thead>
+              <tbody>
+                <tr><td>Provides a reference plane</td><td>Provides a reference straight line or edge</td></tr>
+                <tr><td>Used for flatness inspection</td><td>Used for straightness inspection</td></tr>
+                <tr><td>Generally a large flat surface</td><td>Generally a long narrow tool</td></tr>
+                <tr><td>Supports components and instruments</td><td>Placed against or over a component</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="memo"><b>Remember:</b> Surface plate = reference plane; straightedge = reference straight line.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOLDER 6 -->
+  <section class="folder" id="f-calibration">
+    <button class="folder-head" aria-expanded="false" aria-controls="body-calibration">
+      <span class="folder-num">6</span>
+      <span class="folder-title"><b>Precision Measurement &amp; Calibration</b><small>Errors, temperature effects, traceability and standards</small></span>
+      <span class="chev" aria-hidden="true"></span>
+    </button>
+    <div class="folder-body" id="body-calibration">
+      <div class="folder-inner">
+        <div class="folder-content">
+          <h3 class="sub">E1. Precision Measurement</h3>
+          <p><b>Definition:</b> Precision measurement is the process of determining dimensions with a high degree of accuracy, repeatability and resolution.</p>
+          <p class="sub-sub">Important concepts</p>
+          <ul class="plain">
+            <li><b>Absolute measurement:</b> Obtained directly from the instrument scale.</li>
+            <li><b>Comparative measurement:</b> Dimension compared against a known reference.</li>
+            <li><b>Direct measurement:</b> Measured quantity obtained directly from the instrument.</li>
+            <li><b>Indirect measurement:</b> Measured quantity calculated from other measured quantities.</li>
+          </ul>
+          <p class="sub-sub">Sources of measurement errors</p>
+          <div class="rules">
+            <h4>Error types</h4>
+            <ul>
+              <li><b>Instrumental errors:</b> Zero error, wear of measuring surfaces, backlash, calibration error.</li>
+              <li><b>Environmental errors:</b> Temperature changes, humidity, vibration, dust.</li>
+              <li><b>Personal errors:</b> Incorrect positioning, parallax error, excessive measuring force, incorrect scale reading.</li>
+              <li><b>Method errors:</b> Incorrect alignment, improper clamping, incorrect reference selection.</li>
+            </ul>
+          </div>
+          <p class="sub-sub">Temperature effects</p>
+          <p>Precision dimensional measurements are commonly referenced to a standard temperature of 20°C.</p>
+          <div class="eq">ΔL = α L₀ ΔT</div>
+          <div class="example">
+            <h4>Example</h4>
+            <p>Steel component: L₀ = 100 mm, α = 12×10⁻⁶/°C, ΔT = 20°C.</p>
+            <div class="eq">ΔL = 12×10⁻⁶ × 100 × 20 = 0.024 mm</div>
+            <p>The component expands by 0.024 mm.</p>
+          </div>
+          <h3 class="sub">E2. Calibration</h3>
+          <p><b>Definition:</b> Calibration is the process of establishing the relationship between the readings of a measuring instrument and the corresponding values provided by measurement standards.</p>
+          <p class="sub-sub">Calibration vs Adjustment vs Verification</p>
+          <div class="table-wrap">
+            <table><thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+              <tbody>
+                <tr><td>Calibration</td><td>Determines the relationship between instrument reading and a reference standard. Identifies errors.</td></tr>
+                <tr><td>Adjustment</td><td>Changes the instrument so its readings correspond more closely to required values.</td></tr>
+                <tr><td>Verification</td><td>Provides objective evidence that specified requirements are fulfilled.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="sub-sub">Calibration standards</p>
+          <ul class="plain">
+            <li><b>Gauge blocks / slip gauges:</b> Precision blocks used for calibrating micrometers and callipers.</li>
+            <li><b>Setting rings:</b> Precision rings used for setting and checking bore gauges.</li>
+            <li><b>Master standards:</b> High-accuracy reference instruments.</li>
+            <li><b>Reference weights:</b> Used for calibrating weighing instruments.</li>
+          </ul>
+          <p class="sub-sub">Traceability</p>
+          <p>Metrological traceability is the property of a measurement result whereby it can be related to a reference through a documented, unbroken chain of calibrations.</p>
+          <div class="eq" style="white-space:normal;font-size:.92rem;">International standards → National standards → Reference standards / Calibration labs → Working standards → Workshop instruments</div>
+          <p class="sub-sub">Measurement uncertainty</p>
+          <p>Measurement uncertainty is a parameter that characterizes the dispersion of values that could reasonably be attributed to a measured quantity. It is not the same as measurement error.</p>
+          <div class="note"><b>Importance in marine engineering:</b> Incorrect measurements can lead to incorrect bearing clearances, improper component assembly, excessive vibration, increased friction and wear, lubrication problems, reduced machinery efficiency and premature component failure.</div>
+          <div class="memo"><b>Remember:</b> Calibration establishes measurement relationships. Adjustment changes instrument characteristics. Verification checks conformity. Traceability connects measurement results to recognized standards.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOLDER 7 – Revision -->
+  <section class="folder" id="f-revision">
+    <button class="folder-head" aria-expanded="false" aria-controls="body-revision">
+      <span class="folder-num">7</span>
+      <span class="folder-title"><b>Quick Revision &amp; Marine Applications</b><small>Instrument identification, formulas and key facts</small></span>
+      <span class="chev" aria-hidden="true"></span>
+    </button>
+    <div class="folder-body" id="body-revision">
+      <div class="folder-inner">
+        <div class="folder-content">
+          <h3 class="sub">F. Marine Engineering Applications</h3>
+          <div class="table-wrap">
+            <table><thead><tr><th>Instrument</th><th>Marine engineering application</th></tr></thead>
+              <tbody>
+                <tr><td>Vernier calliper</td><td>Measuring general component dimensions</td></tr>
+                <tr><td>Outside micrometer</td><td>Measuring crankshaft and shaft diameters</td></tr>
+                <tr><td>Inside micrometer</td><td>Measuring internal dimensions</td></tr>
+                <tr><td>Dial gauge</td><td>Checking shaft runout and alignment</td></tr>
+                <tr><td>Feeler gauge</td><td>Checking valve clearance</td></tr>
+                <tr><td>Bore gauge</td><td>Measuring cylinder liner wear</td></tr>
+                <tr><td>Depth gauge</td><td>Measuring recess and groove depths</td></tr>
+                <tr><td>Surface plate</td><td>Inspecting flatness of components</td></tr>
+                <tr><td>Straightedge</td><td>Checking straightness of machine surfaces</td></tr>
+                <tr><td>Gauge blocks</td><td>Setting and checking measuring instruments</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h3 class="sub">G1. Important Instrument Identification</h3>
+          <div class="table-wrap">
+            <table><thead><tr><th>Instrument</th><th>Measures / function</th></tr></thead>
+              <tbody>
+                <tr><td>Hacksaw</td><td>Cuts metal</td></tr>
+                <tr><td>File</td><td>Removes small quantities of metal</td></tr>
+                <tr><td>Tap</td><td>Produces internal threads</td></tr>
+                <tr><td>Vernier calliper</td><td>Internal, external, depth and step dimensions</td></tr>
+                <tr><td>Micrometer</td><td>Precision dimensions</td></tr>
+                <tr><td>Dial gauge</td><td>Small displacement and dimensional deviation</td></tr>
+                <tr><td>Feeler gauge</td><td>Small gaps and clearances</td></tr>
+                <tr><td>Bore gauge</td><td>Internal diameter and bore variation</td></tr>
+                <tr><td>Depth gauge</td><td>Depth of holes and recesses</td></tr>
+                <tr><td>Surface plate</td><td>Reference plane for inspection</td></tr>
+                <tr><td>Straightedge</td><td>Straightness</td></tr>
+                <tr><td>Gauge blocks</td><td>Precision reference dimensions</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h3 class="sub">G2. Important Formulas</h3>
+          <div class="table-wrap">
+            <table><thead><tr><th>Parameter</th><th>Formula</th></tr></thead>
+              <tbody>
+                <tr><td>Vernier least count</td><td>1 MSD − 1 VSD</td></tr>
+                <tr><td>Micrometer least count</td><td>Screw pitch / Thimble divisions</td></tr>
+                <tr><td>Vernier reading</td><td>Main scale + Vernier reading</td></tr>
+                <tr><td>Micrometer reading</td><td>Sleeve reading + Thimble reading</td></tr>
+                <tr><td>Measurement error</td><td>Measured value − Reference value</td></tr>
+                <tr><td>Tolerance</td><td>Upper limit − Lower limit</td></tr>
+                <tr><td>TIR</td><td>Maximum reading − Minimum reading</td></tr>
+                <tr><td>Ovality</td><td>Maximum diameter − Minimum diameter</td></tr>
+                <tr><td>Tap drill approximation</td><td>Nominal diameter − Pitch</td></tr>
+                <tr><td>Thermal expansion</td><td>ΔL = α L₀ ΔT</td></tr>
+                <tr><td>Taper per unit length</td><td>(D₁ − D₂) / L</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h3 class="sub">G3. Important Facts to Memorize</h3>
+          <ol class="plain">
+            <li>Hacksawing generally cuts on the forward stroke.</li>
+            <li>Higher TPI means finer hacksaw teeth.</li>
+            <li>Double-cut files generally remove material faster than single-cut files.</li>
+            <li>Draw filing is used for smooth finishing.</li>
+            <li>Tapping produces internal threads.</li>
+            <li>Taper taps have a longer chamfer than bottoming taps.</li>
+            <li>Tap drill diameter is smaller than nominal thread diameter.</li>
+            <li>Vernier callipers work using the difference between two scale divisions.</li>
+            <li>Micrometers work on the screw-and-nut principle.</li>
+            <li>A ratchet stop helps maintain consistent measuring force.</li>
+            <li>A dial gauge is commonly used for runout and alignment checks.</li>
+            <li>TIR is the difference between maximum and minimum indicator readings.</li>
+            <li>A feeler gauge measures small clearances.</li>
+            <li>A bore gauge measures internal diameters.</li>
+            <li>A depth gauge measures the depth of holes and recesses.</li>
+            <li>A granite surface plate is corrosion-resistant and non-magnetic.</li>
+            <li>Standard reference temperature for dimensional metrology is commonly 20°C.</li>
+            <li>Calibration does not necessarily mean adjustment.</li>
+            <li>Measurement uncertainty is not the same as measurement error.</li>
+            <li>Cylinder liner wear can be evaluated through bore diameter, taper and ovality measurements.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <b>Manufacturing &amp; Workshop Technology – Fitting and Measurement</b><br>
+  GME Pre-Sea Training Preparation · Mechanical Engineering Fundamentals
+</footer>
+
+<button type="button" id="backToTop" class="back-to-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M12 19V5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+    <path d="M5.5 11.5 12 5l6.5 6.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+
+<!-- ==================== EXAM OVERLAY ==================== -->
+<div class="exam-overlay" id="examOverlay" hidden>
+
+  <!-- CONFIG SCREEN -->
+  <section class="exam-screen" id="examConfigScreen">
+    <div class="exam-config-card">
+      <div class="exam-config-head">
+        <h2>Exam Configuration</h2>
+        <p>Set up your practice test below</p>
+        <button type="button" class="exam-close" id="configClose" aria-label="Close">&times;</button>
+      </div>
+      <div class="exam-config-body">
+        <div class="config-group">
+          <label>Number of Questions</label>
+          <div class="config-options" id="questionCountOptions"></div>
+        </div>
+        <div class="config-group">
+          <label>Time per 10 Questions (minutes)</label>
+          <div class="config-options" id="timeOptions"></div>
+        </div>
+        <div class="config-summary">
+          <div class="config-summary-row"><span>Total Questions</span><b id="sumQuestions">10</b></div>
+          <div class="config-summary-row"><span>Total Duration</span><b id="sumDuration">5 minutes</b></div>
+          <div class="config-summary-row"><span>Difficulty Mix</span><b id="sumDist">3E · 3M · 3D · 1VD</b></div>
+        </div>
+        <button type="button" class="exam-btn-primary" id="startExamBtn">Start Examination</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEST SCREEN -->
+  <section class="exam-screen" id="examTestScreen">
+    <div class="exam-header">
+      <div class="exam-header-left">
+        <div class="exam-q-counter">Question <b id="examQCurrent">1</b> of <span id="examQTotal">10</span></div>
+        <div class="exam-progress-bar"><div class="exam-progress-fill" id="examProgressFill"></div></div>
+      </div>
+      <div class="exam-timer" id="examTimer">05:00</div>
+      <button type="button" class="exam-btn-submit" id="submitExamBtn">Submit</button>
+    </div>
+    <div class="exam-body">
+      <div class="exam-main">
+        <div class="exam-question-card">
+          <div class="exam-q-meta">
+            <span class="exam-difficulty d-easy" id="examDifficulty">Easy</span>
+            <button type="button" class="exam-mark-btn" id="markReviewBtn">⚑ Mark for Review</button>
+          </div>
+          <div class="exam-q-text" id="examQuestionText"></div>
+          <div class="exam-options" id="examOptions"></div>
+        </div>
+        <div class="exam-controls">
+          <button type="button" class="exam-btn-secondary" id="prevQBtn">← Previous</button>
+          <button type="button" class="exam-btn-primary" id="nextQBtn">Next →</button>
+        </div>
+      </div>
+      <aside class="exam-sidebar">
+        <div class="exam-sidebar-head">
+          <h3>Question Navigator</h3>
+          <button type="button" class="exam-nav-toggle" id="navToggleBtn">Hide</button>
+        </div>
+        <div class="exam-nav-legend">
+          <span><i class="lg lg-unanswered"></i>Unanswered</span>
+          <span><i class="lg lg-answered"></i>Answered</span>
+          <span><i class="lg lg-marked"></i>Marked</span>
+          <span><i class="lg lg-current"></i>Current</span>
+        </div>
+        <div class="exam-nav-grid" id="examNavGrid"></div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- RESULTS SCREEN -->
+  <section class="exam-screen" id="examResultsScreen">
+    <div class="results-container">
+      <div class="results-hero">
+        <div class="results-score-circle" id="resCircle">
+          <div>
+            <span class="results-percent" id="resPercent">0%</span>
+            <span class="results-score-label">Score</span>
+          </div>
+        </div>
+        <h2 class="results-title">Examination Complete</h2>
+        <p class="results-subtitle" id="resVerdict">Keep practising!</p>
+      </div>
+      <div class="results-stats">
+        <div class="stat-card"><span class="stat-val" id="resTotal">10</span><span class="stat-lbl">Total</span></div>
+        <div class="stat-card stat-green"><span class="stat-val" id="resCorrect">0</span><span class="stat-lbl">Correct</span></div>
+        <div class="stat-card stat-red"><span class="stat-val" id="resIncorrect">0</span><span class="stat-lbl">Incorrect</span></div>
+        <div class="stat-card stat-gray"><span class="stat-val" id="resUnanswered">0</span><span class="stat-lbl">Unanswered</span></div>
+      </div>
+      <div class="results-details">
+        <div class="results-detail-row"><span>Marks Obtained</span><b id="resMarks">0 / 10</b></div>
+        <div class="results-detail-row"><span>Percentage</span><b id="resPct2">0%</b></div>
+        <div class="results-detail-row"><span>Time Taken</span><b id="resTime">00:00</b></div>
+      </div>
+      <div class="results-progress">
+        <div class="progress-bar-multi">
+          <div class="pb-seg pb-correct" id="pbCorrect" style="width:0%"></div>
+          <div class="pb-seg pb-incorrect" id="pbIncorrect" style="width:0%"></div>
+          <div class="pb-seg pb-unanswered" id="pbUnanswered" style="width:100%"></div>
+        </div>
+      </div>
+      <div class="results-actions">
+        <button type="button" class="exam-btn-primary" id="reviewBtn">Review Answers</button>
+        <button type="button" class="exam-btn-secondary" id="retakeBtn">Retake</button>
+        <button type="button" class="exam-btn-ghost" id="exitExamBtn">Back to Notes</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEW SCREEN -->
+  <section class="exam-screen" id="examReviewScreen">
+    <div class="review-header">
+      <button type="button" class="exam-btn-ghost" id="backToResultsBtn" style="padding:.4em .8em;">← Back</button>
+      <h2>Answer Review</h2>
+      <div></div>
+      <div class="review-filters">
+        <button type="button" class="review-filter active" data-filter="all">All</button>
+        <button type="button" class="review-filter" data-filter="correct">Correct</button>
+        <button type="button" class="review-filter" data-filter="incorrect">Incorrect</button>
+        <button type="button" class="review-filter" data-filter="unanswered">Unanswered</button>
+      </div>
+    </div>
+    <div class="review-list" id="reviewList"></div>
+  </section>
+
+</div>
+
+<!-- CONFIRMATION MODAL -->
+<div class="exam-confirm" id="examConfirmModal" hidden>
+  <div class="exam-confirm-card">
+    <h3>Submit Examination?</h3>
+    <p id="confirmMsg">You have answered 0 of 10 questions. Unanswered questions will be marked incorrect.</p>
+    <div class="exam-confirm-actions">
+      <button type="button" id="confirmCancel">Cancel</button>
+      <button type="button" id="confirmSubmit">Submit</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   QUESTION BANK – 300 MCQs (as provided)
+   d: E=Easy, M=Medium, D=Difficult, V=Very Difficult
+   o: 4 options, a: correct index (0=A,1=B,2=C,3=D), s: solution
+   ============================================================ */
+const QUESTIONS = [
+/* ============ EASY (1–90) ============ */
+{d:'E',q:`What is the primary purpose of a hacksaw?`,o:[`Measuring dimensions`,`Cutting metal`,`Producing threads`,`Polishing surfaces`],a:1,s:`A hacksaw is a hand-operated cutting tool used to cut metal rods, pipes, bars and plates.`},
+{d:'E',q:`In which stroke does a conventional hand hacksaw generally cut?`,o:[`Forward stroke`,`Return stroke`,`Both strokes equally`,`No stroke`],a:0,s:`Conventional hacksaw blades have teeth oriented to cut during the forward stroke. Pressure is reduced during the return stroke.`},
+{d:'E',q:`What does TPI stand for in a hacksaw blade?`,o:[`Teeth per inch`,`Thickness per inch`,`Turns per inch`,`Tension per inch`],a:0,s:`TPI indicates the number of teeth present in one inch of blade length.`},
+{d:'E',q:`Which blade has finer teeth?`,o:[`14 TPI`,`18 TPI`,`24 TPI`,`32 TPI`],a:3,s:`Higher TPI means more teeth per inch and therefore finer teeth.`},
+{d:'E',q:`Which blade is generally suitable for cutting thin-walled tubes?`,o:[`10 TPI`,`14 TPI`,`18 TPI`,`32 TPI`],a:3,s:`Fine teeth help maintain multiple teeth in contact with thin sections, reducing tooth snagging.`},
+{d:'E',q:`What is the function of the hacksaw frame?`,o:[`Measuring the workpiece`,`Holding the blade`,`Lubricating the blade`,`Sharpening the teeth`],a:1,s:`The frame supports the blade and maintains its position and tension.`},
+{d:'E',q:`Which component maintains proper blade tension?`,o:[`Handle`,`Blade pin`,`Tensioning mechanism`,`Cutting teeth`],a:2,s:`The tensioning mechanism keeps the blade sufficiently tight during cutting.`},
+{d:'E',q:`What is the usual material used for hacksaw cutting teeth?`,o:[`Rubber`,`High-speed steel`,`Copper`,`Aluminium`],a:1,s:`High-speed steel is commonly used for hacksaw teeth because of its hardness and wear resistance.`},
+{d:'E',q:`What is the purpose of securing a workpiece in a bench vice?`,o:[`To increase its temperature`,`To prevent movement during cutting`,`To reduce its hardness`,`To increase blade length`],a:1,s:`Proper clamping improves safety and cutting accuracy.`},
+{d:'E',q:`What happens when excessive force is applied during hacksawing?`,o:[`Blade life always increases`,`Cutting becomes perfectly accurate`,`Blade teeth may break`,`Material hardness decreases`],a:2,s:`Excessive pressure can overload the teeth and cause blade damage.`},
+{d:'E',q:`What is the main advantage of a bi-metal hacksaw blade?`,o:[`It contains no cutting teeth`,`It combines cutting hardness with flexibility`,`It cannot wear out`,`It is made entirely of copper`],a:1,s:`Bi-metal blades typically combine hardened high-speed steel teeth with a tougher flexible backing.`},
+{d:'E',q:`What should be done after completing a hacksaw cut?`,o:[`Leave sharp burrs`,`Remove burrs`,`Heat the workpiece`,`Bend the cut surface`],a:1,s:`Deburring removes sharp projections and improves safety and component finish.`},
+{d:'E',q:`What is the main purpose of filing?`,o:[`Joining two components`,`Removing small quantities of material`,`Measuring temperature`,`Producing electrical current`],a:1,s:`Filing is used for sizing, shaping and finishing workpiece surfaces.`},
+{d:'E',q:`Which part of a file is inserted into its handle?`,o:[`Point`,`Face`,`Tang`,`Edge`],a:2,s:`The tang is the tapered portion fitted into the file handle.`},
+{d:'E',q:`Which file is suitable for enlarging a circular hole?`,o:[`Flat file`,`Round file`,`Square file`,`Triangular file`],a:1,s:`A round file is designed for working on circular holes and curved internal surfaces.`},
+{d:'E',q:`Which file is suitable for filing square corners and rectangular slots?`,o:[`Round file`,`Square file`,`Half-round file`,`Knife-edge file`],a:1,s:`A square file has a square cross-section and is suitable for square openings and slots.`},
+{d:'E',q:`Which file is generally used for filing triangular grooves?`,o:[`Flat file`,`Round file`,`Triangular file`,`Hand file`],a:2,s:`Triangular files are used for V-grooves and internal angular surfaces.`},
+{d:'E',q:`Which file has two intersecting sets of teeth?`,o:[`Single-cut file`,`Double-cut file`,`Rasp-cut file`,`Curved-cut file`],a:1,s:`Double-cut files contain two crossing rows of teeth and are used for relatively rapid material removal.`},
+{d:'E',q:`Which file is generally preferred for fine finishing?`,o:[`Rough file`,`Bastard file`,`Dead-smooth file`,`Rasp file`],a:2,s:`Dead-smooth files have fine teeth and produce a smoother finish.`},
+{d:'E',q:`What is draw filing primarily used for?`,o:[`Producing deep holes`,`Improving surface finish`,`Cutting external threads`,`Measuring diameter`],a:1,s:`Draw filing helps remove filing marks and improve the smoothness of flat surfaces.`},
+{d:'E',q:`What should be used to clean a clogged file?`,o:[`Hammer`,`File card`,`Hacksaw`,`Screwdriver`],a:1,s:`A file card or file brush removes metal particles lodged between the teeth.`},
+{d:'E',q:`Why should a file always have a properly fitted handle?`,o:[`To increase its weight`,`To prevent injury from the tang`,`To change its tooth pitch`,`To increase material hardness`],a:1,s:`An exposed tang can penetrate the operator's hand during filing.`},
+{d:'E',q:`Which file is suitable for working on both flat and curved surfaces?`,o:[`Half-round file`,`Square file`,`Knife-edge file`,`Triangular file`],a:0,s:`Its flat face is suitable for flat surfaces, while its curved face is suitable for curved surfaces.`},
+{d:'E',q:`During conventional filing, when should cutting pressure generally be applied?`,o:[`Forward stroke`,`Return stroke`,`Both strokes equally`,`Only when the file is stationary`],a:0,s:`Conventional files cut primarily during the forward stroke.`},
+{d:'E',q:`What is tapping?`,o:[`Producing external threads`,`Producing internal threads`,`Cutting metal sheets`,`Polishing a shaft`],a:1,s:`Tapping uses a tap to produce internal screw threads in a prepared hole.`},
+{d:'E',q:`Which tool is used for tapping?`,o:[`Die`,`Tap`,`Reamer`,`Scriber`],a:1,s:`A tap is specifically designed for producing internal threads.`},
+{d:'E',q:`Which tool is generally used to hold a hand tap?`,o:[`Pipe wrench`,`Tap wrench`,`Ring spanner`,`Pliers`],a:1,s:`A tap wrench grips the square end of a hand tap.`},
+{d:'E',q:`Which tool produces external threads?`,o:[`Tap`,`Die`,`Reamer`,`File`],a:1,s:`A die is used to cut or form external screw threads.`},
+{d:'E',q:`Which tap generally has the longest chamfer?`,o:[`Bottoming tap`,`Plug tap`,`Taper tap`,`Machine tap`],a:2,s:`A taper tap has a relatively long chamfer, making thread starting easier.`},
+{d:'E',q:`Which tap is suitable for producing threads near the bottom of a blind hole?`,o:[`Taper tap`,`Bottoming tap`,`Spiral-point tap`,`Die`],a:1,s:`A bottoming tap has a short chamfer and can produce threads close to the bottom.`},
+{d:'E',q:`What is the purpose of flutes in a tap?`,o:[`To measure pitch`,`To provide cutting edges and chip space`,`To hold the workpiece`,`To increase hole diameter before drilling`],a:1,s:`Tap flutes contain cutting edges and provide passages for chips and cutting fluid.`},
+{d:'E',q:`What is the function of cutting fluid during tapping?`,o:[`Increase friction`,`Reduce friction and heat`,`Increase thread pitch`,`Harden the workpiece`],a:1,s:`Cutting fluid improves cutting conditions, reduces friction and helps extend tool life.`},
+{d:'E',q:`What is a blind hole?`,o:[`A hole passing completely through a component`,`A hole that does not pass completely through a component`,`A hole with no diameter`,`A hole having external threads`],a:1,s:`A blind hole has a closed bottom.`},
+{d:'E',q:`What does thread pitch represent?`,o:[`Thread height only`,`Distance between corresponding points of adjacent threads`,`External diameter only`,`Hole depth`],a:1,s:`Pitch is measured parallel to the thread axis.`},
+{d:'E',q:`What is the approximate tapping drill diameter for an M10 × 1.5 metric thread?`,o:[`10 mm`,`9.5 mm`,`8.5 mm`,`7 mm`],a:2,s:`Approximate drill size = nominal diameter − pitch = 10 − 1.5 = 8.5 mm.`},
+{d:'E',q:`What can cause a tap to break during manual tapping?`,o:[`Correct alignment`,`Excessive force`,`Proper lubrication`,`Correct drill size`],a:1,s:`Excessive torque, misalignment and chip jamming can cause tap breakage.`},
+{d:'E',q:`Which principle is used in a vernier calliper?`,o:[`Screw and nut principle`,`Difference between two scale divisions`,`Hydraulic principle`,`Magnetic principle`],a:1,s:`A vernier scale allows fractional readings by comparing its graduations with the main scale.`},
+{d:'E',q:`Which part is used to measure external dimensions?`,o:[`Inside jaws`,`Outside jaws`,`Depth rod`,`Locking screw`],a:1,s:`Outside jaws measure external diameters, widths and thicknesses.`},
+{d:'E',q:`Which part measures internal diameters?`,o:[`Outside jaws`,`Inside jaws`,`Depth rod`,`Main scale`],a:1,s:`The smaller upper jaws are used for internal measurements.`},
+{d:'E',q:`Which part measures the depth of a hole?`,o:[`Outside jaws`,`Inside jaws`,`Depth rod`,`Locking screw`],a:2,s:`The depth rod extends from the calliper body and contacts the bottom of the hole.`},
+{d:'E',q:`What is the least count if 10 vernier divisions equal 9 mm and 1 MSD equals 1 mm?`,o:[`1 mm`,`0.9 mm`,`0.1 mm`,`0.01 mm`],a:2,s:`LC = 1 − 0.9 = 0.1 mm.`},
+{d:'E',q:`If the least count is 0.1 mm and the sixth vernier division coincides, what is the vernier reading?`,o:[`0.06 mm`,`0.6 mm`,`6 mm`,`0.1 mm`],a:1,s:`Vernier reading = 6 × 0.1 = 0.6 mm.`},
+{d:'E',q:`What is positive zero error?`,o:[`Instrument reads zero correctly`,`Instrument shows a positive reading when closed`,`Instrument shows a negative reading when closed`,`Instrument cannot move`],a:1,s:`Positive zero error occurs when the instrument indicates a positive value despite the jaws being fully closed.`},
+{d:'E',q:`What is the correct reading formula for a vernier calliper?`,o:[`Main scale reading − Vernier reading`,`Main scale reading + Vernier reading`,`Main scale reading × Vernier reading`,`Main scale reading / Vernier reading`],a:1,s:`The main scale gives the primary reading, and the vernier provides the additional fraction.`},
+{d:'E',q:`Which instrument is generally more suitable for measuring the thickness of a thin metal sheet accurately?`,o:[`Steel rule`,`Outside micrometer`,`Try square`,`Straightedge`],a:1,s:`A micrometer is designed for precise external dimensional measurement.`},
+{d:'E',q:`What is the main function of the locking screw in a vernier calliper?`,o:[`Sharpening jaws`,`Locking the sliding jaw`,`Changing least count`,`Increasing measuring range`],a:1,s:`It holds the sliding assembly in a fixed position.`},
+{d:'E',q:`What does MSD stand for?`,o:[`Main Scale Division`,`Minimum Scale Diameter`,`Maximum Standard Division`,`Measuring Screw Distance`],a:0,s:`MSD is the value of one main-scale division.`},
+{d:'E',q:`A vernier calliper with 20 divisions equal to 19 mm has a least count of:`,o:[`1 mm`,`0.5 mm`,`0.05 mm`,`0.01 mm`],a:2,s:`One MSD = 1 mm; one VSD = 19/20 = 0.95 mm. LC = 1 − 0.95 = 0.05 mm.`},
+{d:'E',q:`Which condition is essential for accurate vernier measurement?`,o:[`Dirty jaws`,`Proper alignment and clean measuring surfaces`,`Excessive measuring pressure`,`Loose sliding assembly`],a:1,s:`Dirt, misalignment and excessive force can affect the measured value.`},
+{d:'E',q:`Which measurement can a standard vernier calliper perform?`,o:[`External diameter only`,`Internal diameter only`,`Depth only`,`External, internal, depth and step measurement`],a:3,s:`A standard vernier calliper is a versatile dimensional measuring instrument.`},
+{d:'E',q:`Which principle is used in a micrometer?`,o:[`Vernier principle`,`Screw and nut principle`,`Hydraulic principle`,`Optical reflection`],a:1,s:`Rotation of a precision screw produces linear spindle movement.`},
+{d:'E',q:`Which part of an outside micrometer is fixed?`,o:[`Spindle`,`Anvil`,`Thimble`,`Ratchet`],a:1,s:`The anvil is the fixed measuring face.`},
+{d:'E',q:`Which part moves linearly during micrometer operation?`,o:[`Frame`,`Anvil`,`Spindle`,`Sleeve`],a:2,s:`The spindle advances or retracts as the thimble rotates.`},
+{d:'E',q:`What is the function of the ratchet stop?`,o:[`Increase spindle speed`,`Apply approximately consistent measuring force`,`Change the screw pitch`,`Increase the measuring range`],a:1,s:`The ratchet reduces errors caused by excessive or inconsistent tightening.`},
+{d:'E',q:`A micrometer has a pitch of 0.5 mm and 50 thimble divisions. What is its least count?`,o:[`0.5 mm`,`0.1 mm`,`0.01 mm`,`0.001 mm`],a:2,s:`LC = 0.5/50 = 0.01 mm.`},
+{d:'E',q:`Which micrometer measures external dimensions?`,o:[`Depth micrometer`,`Outside micrometer`,`Inside micrometer`,`Bore gauge`],a:1,s:`Outside micrometers measure external diameters and thicknesses.`},
+{d:'E',q:`Which micrometer is used to measure hole depth?`,o:[`Outside micrometer`,`Inside micrometer`,`Depth micrometer`,`Thread micrometer`],a:2,s:`A depth micrometer measures the depth of recesses, slots and holes.`},
+{d:'E',q:`Which component of a micrometer contains the main scale?`,o:[`Anvil`,`Sleeve`,`Frame`,`Ratchet`],a:1,s:`The sleeve or barrel carries the main graduated scale.`},
+{d:'E',q:`What is the function of the spindle lock?`,o:[`Increase least count`,`Hold the spindle position`,`Increase pitch`,`Sharpen the anvil`],a:1,s:`It locks the spindle to preserve the measurement position.`},
+{d:'E',q:`If a micrometer has a positive zero error, what should be done?`,o:[`Add the error`,`Subtract the error`,`Multiply by the error`,`Ignore the error`],a:1,s:`Correct reading = observed reading − zero error.`},
+{d:'E',q:`Which instrument is generally more precise for small external dimensions?`,o:[`Steel rule`,`Standard outside micrometer`,`Try square`,`Straightedge`],a:1,s:`A micrometer commonly has a smaller least count than a basic vernier calliper.`},
+{d:'E',q:`A micrometer has a screw pitch of 1 mm and 100 thimble divisions. Its least count is:`,o:[`1 mm`,`0.1 mm`,`0.01 mm`,`0.001 mm`],a:2,s:`LC = 1/100 = 0.01 mm.`},
+{d:'E',q:`Which part of a micrometer provides the rigid supporting structure?`,o:[`Thimble`,`Frame`,`Ratchet`,`Spindle`],a:1,s:`The frame supports the measuring mechanism and maintains rigidity.`},
+{d:'E',q:`What should be checked before using a micrometer?`,o:[`Colour of the instrument`,`Zero error and condition of measuring faces`,`Handle length only`,`Weight of the workpiece`],a:1,s:`Zero error, cleanliness and damage can affect measurement accuracy.`},
+{d:'E',q:`What does a dial gauge primarily measure?`,o:[`Temperature`,`Small displacement and dimensional variation`,`Chemical composition`,`Mass`],a:1,s:`A dial indicator detects small linear movements through pointer deflection.`},
+{d:'E',q:`What converts plunger movement into pointer movement in a conventional dial indicator?`,o:[`Hydraulic pump`,`Rack-and-pinion mechanism`,`Gearbox only`,`Screwdriver mechanism`],a:1,s:`The rack-and-pinion mechanism converts linear motion into rotary pointer motion.`},
+{d:'E',q:`What is the purpose of a magnetic stand?`,o:[`Increase dial diameter`,`Hold the dial indicator securely`,`Measure temperature`,`Sharpen the contact point`],a:1,s:`A magnetic stand provides a stable mounting arrangement on suitable ferromagnetic surfaces.`},
+{d:'E',q:`What does TIR stand for?`,o:[`Total Indicator Reading`,`Thermal Inspection Range`,`Total Internal Resistance`,`Tool Inspection Ratio`],a:0,s:`TIR is the difference between maximum and minimum indicator readings.`},
+{d:'E',q:`Which instrument is suitable for measuring small gaps?`,o:[`Dial gauge`,`Feeler gauge`,`Surface plate`,`Hacksaw`],a:1,s:`Feeler gauges contain blades of known thickness for checking clearances.`},
+{d:'E',q:`What is the main material commonly used for feeler gauge blades?`,o:[`Rubber`,`Thin steel`,`Wood`,`Glass`],a:1,s:`Feeler gauge blades are generally made from thin, accurately dimensioned steel.`},
+{d:'E',q:`Which application commonly uses a feeler gauge?`,o:[`Measuring engine valve clearance`,`Measuring engine temperature`,`Measuring fuel pressure`,`Measuring shaft speed`],a:0,s:`Feeler gauges are widely used for checking specified valve-train clearances.`},
+{d:'E',q:`What does a dial indicator bezel do?`,o:[`Holds the workpiece`,`Allows the dial reference position to be set`,`Measures thread pitch`,`Changes the measuring range`],a:1,s:`The bezel can be rotated to align the zero graduation with the pointer.`},
+{d:'E',q:`Which instrument is more suitable for checking shaft runout?`,o:[`Feeler gauge`,`Dial indicator`,`Steel rule`,`Depth gauge`],a:1,s:`A dial indicator detects the variation in radial or axial position as a shaft rotates.`},
+{d:'E',q:`What is meant by preload in a dial indicator?`,o:[`Removing the pointer`,`Applying initial plunger movement before setting the reference`,`Increasing the dial size`,`Removing the measuring spring`],a:1,s:`Preload maintains contact and allows the instrument to measure variations in both directions within its range.`},
+{d:'E',q:`A feeler gauge blade should fit into a clearance with:`,o:[`Heavy hammering`,`Slight resistance`,`No contact`,`Excessive bending`],a:1,s:`A slight, uniform drag indicates a suitable blade thickness without excessive force.`},
+{d:'E',q:`What can happen if a feeler gauge blade is bent?`,o:[`Accuracy improves`,`Measurement becomes unreliable`,`Thickness becomes perfectly constant`,`Clearance disappears`],a:1,s:`A bent blade may not contact the surfaces correctly and can produce an incorrect clearance reading.`},
+{d:'E',q:`Which instrument measures internal bore diameter?`,o:[`Outside micrometer`,`Bore gauge`,`Feeler gauge`,`Straightedge`],a:1,s:`Bore gauges are designed to measure internal diameters and variations within holes and cylinders.`},
+{d:'E',q:`A bore gauge is generally classified as which type of instrument?`,o:[`Comparative instrument`,`Cutting instrument`,`Marking instrument`,`Joining instrument`],a:0,s:`A conventional dial bore gauge is set to a known dimension and indicates deviations from that reference.`},
+{d:'E',q:`Which instrument is suitable for measuring cylinder liner wear?`,o:[`Hacksaw`,`Bore gauge`,`Try square`,`Scriber`],a:1,s:`A bore gauge measures internal diameter at different heights and directions.`},
+{d:'E',q:`What is ovality?`,o:[`Difference between maximum and minimum diameters at the same cross-section`,`Difference in component length`,`Change in surface colour`,`Difference in mass`],a:0,s:`Ovality indicates the departure of a bore from a circular shape.`},
+{d:'E',q:`Which instrument is used to measure the depth of a recess?`,o:[`Depth gauge`,`Surface plate`,`Straightedge`,`Hacksaw`],a:0,s:`Depth gauges measure vertical distances from a reference surface to the bottom of a feature.`},
+{d:'E',q:`What is the main purpose of a surface plate?`,o:[`Cutting metal`,`Providing a precision reference plane`,`Producing threads`,`Measuring temperature`],a:1,s:`Surface plates are used for inspection, marking and precision measurement.`},
+{d:'E',q:`Which material is commonly used for granite surface plates?`,o:[`Natural granite`,`Rubber`,`Aluminium foil`,`Copper sheet`],a:0,s:`Granite provides dimensional stability, corrosion resistance and non-magnetic properties.`},
+{d:'E',q:`Which tool checks straightness?`,o:[`Straightedge`,`Tap`,`Feeler gauge alone`,`Micrometer alone`],a:0,s:`A straightedge provides a reference straight line for inspecting surface deviations.`},
+{d:'E',q:`Which tool is commonly used with a straightedge to estimate small gaps?`,o:[`Hacksaw`,`Feeler gauge`,`Tap wrench`,`File card`],a:1,s:`A feeler gauge can be inserted between the straightedge and workpiece to estimate the gap.`},
+{d:'E',q:`Which property makes granite suitable for surface plates?`,o:[`High electrical conductivity`,`Dimensional stability and corrosion resistance`,`High magnetic attraction`,`Very low hardness`],a:1,s:`Granite is stable, wear-resistant and non-magnetic.`},
+{d:'E',q:`Which is a common use of a depth micrometer?`,o:[`Measuring external shaft diameter`,`Measuring recess depth`,`Cutting internal threads`,`Checking surface colour`],a:1,s:`A depth micrometer is designed for precise depth measurement.`},
+{d:'E',q:`Which instrument is best suited for checking the flatness of a precision component using a reference plane and suitable inspection setup?`,o:[`Surface plate`,`Hacksaw`,`Tap`,`File`],a:0,s:`A surface plate provides the reference plane for flatness inspection.`},
+{d:'E',q:`Which of the following is an example of a precision length standard?`,o:[`Gauge block`,`Hacksaw blade`,`Bench vice`,`File handle`],a:0,s:`Gauge blocks are manufactured to precise known dimensions and are used as dimensional standards.`},
+{d:'E',q:`What is the commonly used reference temperature for dimensional metrology?`,o:[`0°C`,`10°C`,`20°C`,`100°C`],a:2,s:`ISO dimensional metrology conventionally uses 20°C as the standard reference temperature.`},
+
+/* ============ MEDIUM (91–180) ============ */
+{d:'M',q:`A hacksaw blade has 18 teeth per inch. How many teeth are present in 2 inches of blade length?`,o:[`18`,`24`,`36`,`48`],a:2,s:`Number of teeth = 18 × 2 = 36.`},
+{d:'M',q:`Which blade is generally most suitable for cutting a thin-walled steel tube?`,o:[`10 TPI`,`14 TPI`,`18 TPI`,`32 TPI`],a:3,s:`Fine teeth ensure that multiple teeth remain engaged with the thin material, reducing snagging.`},
+{d:'M',q:`A hacksaw blade repeatedly breaks during cutting. Which is the most likely cause?`,o:[`Proper blade tension`,`Excessive cutting pressure`,`Correct blade selection`,`Proper workpiece clamping`],a:1,s:`Excessive pressure can overload the teeth and cause blade breakage.`},
+{d:'M',q:`Which operation is most appropriate for removing a relatively large amount of material from a flat workpiece using a file?`,o:[`Draw filing`,`Cross filing`,`Polishing`,`Lapping`],a:1,s:`Cross filing is generally used for relatively rapid material removal and surface shaping.`},
+{d:'M',q:`Which file is most appropriate for finishing a narrow V-shaped groove?`,o:[`Round file`,`Triangular file`,`Half-round file`,`Flat file`],a:1,s:`Its triangular cross-section allows it to work on angular grooves and internal corners.`},
+{d:'M',q:`A file becomes clogged with metal particles. What is the most appropriate action?`,o:[`Heat the file`,`Clean it with a file card`,`Strike it with a hammer`,`Dip it in molten metal`],a:1,s:`A file card removes chips trapped between the cutting teeth.`},
+{d:'M',q:`Which filing technique is particularly suitable for producing a smooth finish on a flat surface?`,o:[`Draw filing`,`Chipping`,`Sawing`,`Drilling`],a:0,s:`Draw filing involves moving the file along the workpiece while holding it across the surface.`},
+{d:'M',q:`Which file is generally suitable for filing a large flat surface?`,o:[`Flat file`,`Round file`,`Knife-edge file`,`Needle file only`],a:0,s:`The broad flat working face is suitable for flat surfaces.`},
+{d:'M',q:`Which of the following is most likely to cause a rough thread during tapping?`,o:[`Correct tap selection`,`Suitable cutting fluid`,`Dull cutting edges`,`Proper alignment`],a:2,s:`Dull taps produce poor cutting action and can damage the thread surface.`},
+{d:'M',q:`A metric thread is designated M12 × 1.75. What does 1.75 represent?`,o:[`Major diameter`,`Thread pitch`,`Minor diameter`,`Hole depth`],a:1,s:`In the designation M12 × 1.75, 12 mm is the nominal diameter and 1.75 mm is the pitch.`},
+{d:'M',q:`Calculate the approximate tapping drill diameter for an M8 × 1.25 thread.`,o:[`8 mm`,`7.5 mm`,`6.75 mm`,`5 mm`],a:2,s:`D_drill = D − P = 8 − 1.25 = 6.75 mm.`},
+{d:'M',q:`What is the main purpose of reversing a hand tap slightly during tapping when using a conventional cutting tap?`,o:[`Increase nominal diameter`,`Help break and clear chips`,`Increase thread pitch`,`Harden the tap`],a:1,s:`A small reverse movement can help break chips and reduce jamming. The technique depends on tap design and material.`},
+{d:'M',q:`Which type of tap is especially suitable for removing chips forward into a through hole?`,o:[`Spiral-point tap`,`Bottoming tap`,`Forming tap`,`Hand reamer`],a:0,s:`Spiral-point taps push chips ahead of the cutting tool and are commonly used for through holes.`},
+{d:'M',q:`Which tap design is particularly useful for evacuating chips from a blind hole?`,o:[`Spiral-flute tap`,`Straight reamer`,`Die`,`Thread gauge`],a:0,s:`Spiral flutes help carry chips out of the hole, making them useful for many blind-hole applications.`},
+{d:'M',q:`What is the main purpose of a tap chamfer?`,o:[`To measure the hole`,`To initiate thread cutting gradually`,`To increase the frame size`,`To remove external burrs only`],a:1,s:`The chamfer provides a gradual cutting entry and helps establish the thread.`},
+{d:'M',q:`Which statement about a forming tap is correct?`,o:[`It produces threads by removing chips`,`It produces threads by displacing material`,`It is used only for external threads`,`It cannot produce metric threads`],a:1,s:`Forming taps plastically displace suitable ductile material rather than cutting conventional chips.`},
+{d:'M',q:`What is the main reason for drilling the correct tapping hole size?`,o:[`To eliminate thread pitch`,`To provide the correct material allowance for thread formation`,`To increase the tap length`,`To eliminate the need for lubrication`],a:1,s:`An undersized hole can overload the tap, while an oversized hole can produce shallow or incomplete threads.`},
+{d:'M',q:`Which condition is especially important when tapping a blind hole?`,o:[`Ignoring the bottom depth`,`Providing adequate hole depth and chip clearance`,`Using an external die`,`Avoiding all lubrication`],a:1,s:`The drilled hole must accommodate the tap chamfer, required thread depth and chip space.`},
+{d:'M',q:`A vernier calliper has 1 MSD = 1 mm and 10 VSD = 9 mm. What is its least count?`,o:[`1 mm`,`0.9 mm`,`0.1 mm`,`0.01 mm`],a:2,s:`LC = 1 − 9/10 = 0.1 mm.`},
+{d:'M',q:`The main scale reading is 35 mm. The fourth vernier division coincides. If LC = 0.1 mm, calculate the reading.`,o:[`35.04 mm`,`35.4 mm`,`39 mm`,`35.1 mm`],a:1,s:`35 + (4 × 0.1) = 35.4 mm.`},
+{d:'M',q:`A vernier calliper shows 28.6 mm. Its positive zero error is 0.2 mm. What is the correct reading?`,o:[`28.8 mm`,`28.4 mm`,`28.6 mm`,`28.2 mm`],a:1,s:`28.6 − 0.2 = 28.4 mm.`},
+{d:'M',q:`A vernier calliper has a negative zero error of 0.1 mm. Its observed reading is 15.6 mm. What is the correct reading?`,o:[`15.5 mm`,`15.6 mm`,`15.7 mm`,`15.8 mm`],a:2,s:`The signed zero error is −0.1 mm. 15.6 − (−0.1) = 15.7 mm.`},
+{d:'M',q:`A vernier calliper has 50 divisions on its vernier scale equal to 49 mm. What is the least count if 1 MSD = 1 mm?`,o:[`0.1 mm`,`0.05 mm`,`0.02 mm`,`0.01 mm`],a:2,s:`LC = 1 − 49/50 = 0.02 mm.`},
+{d:'M',q:`A vernier calliper has a least count of 0.02 mm. If the 17th vernier division coincides, what is the vernier contribution?`,o:[`0.17 mm`,`0.34 mm`,`0.034 mm`,`0.85 mm`],a:1,s:`17 × 0.02 = 0.34 mm.`},
+{d:'M',q:`Which error can occur if the measuring jaws are not properly aligned with the workpiece?`,o:[`Alignment error`,`Chemical error`,`Magnetic error`,`Thermal expansion only`],a:0,s:`Incorrect positioning changes the effective measured dimension.`},
+{d:'M',q:`What is parallax error?`,o:[`Error caused by temperature`,`Error caused by viewing a scale from an incorrect angle`,`Error caused by thread pitch`,`Error caused by material hardness`],a:1,s:`The apparent position of a scale mark changes when viewed from different angles.`},
+{d:'M',q:`A vernier calliper measures a shaft diameter of 42.36 mm. If the instrument has zero error of +0.04 mm, what is the corrected diameter?`,o:[`42.40 mm`,`42.32 mm`,`42.36 mm`,`42.30 mm`],a:1,s:`42.36 − 0.04 = 42.32 mm.`},
+{d:'M',q:`Which feature allows a vernier calliper to measure the difference in height between two adjacent surfaces?`,o:[`Inside jaws`,`Step measuring surfaces`,`Depth rod only`,`Locking screw`],a:1,s:`The rear step-measuring faces can be used to determine step dimensions.`},
+{d:'M',q:`Which condition is likely to produce an incorrect external diameter measurement?`,o:[`Clean measuring faces`,`Proper alignment`,`Excessive jaw pressure`,`Zero verification`],a:2,s:`Excessive force can deform the workpiece or affect the measurement.`},
+{d:'M',q:`A direct vernier has 1 MSD = 0.5 mm and 25 VSD = 12 mm. What is its least count?`,o:[`0.02 mm`,`0.04 mm`,`0.08 mm`,`0.5 mm`],a:1,s:`1 VSD = 12/25 = 0.48 mm. LC = 0.5 − 0.48 = 0.02 mm.`},
+{d:'M',q:`What is the primary limitation of using a standard vernier calliper for very high-precision shaft measurement?`,o:[`It cannot measure length`,`Its resolution and contact arrangement may be insufficient`,`It cannot be made of steel`,`It always produces zero error`],a:1,s:`A suitable micrometer generally provides finer resolution and controlled contact force for precision external measurement.`},
+{d:'M',q:`If 20 vernier divisions equal 19 mm, what is the value of one vernier division?`,o:[`1 mm`,`0.95 mm`,`0.90 mm`,`0.05 mm`],a:1,s:`1 VSD = 19/20 = 0.95 mm.`},
+{d:'M',q:`Which measuring surface should be used to measure the internal diameter of a pipe?`,o:[`Lower external jaws`,`Upper internal jaws`,`Depth rod`,`Rear step face`],a:1,s:`The internal jaws expand against the internal wall of the pipe.`},
+{d:'M',q:`A vernier calliper has LC = 0.05 mm. The main scale reads 18 mm and the 12th vernier division coincides. Find the reading.`,o:[`18.12 mm`,`18.5 mm`,`18.6 mm`,`18.05 mm`],a:2,s:`18 + (12 × 0.05) = 18.6 mm.`},
+{d:'M',q:`Why should a vernier calliper be checked for zero error before measurement?`,o:[`To increase the jaw length`,`To identify and correct systematic offset`,`To increase workpiece hardness`,`To change its least count`],a:1,s:`Zero checking identifies an offset that would otherwise affect all subsequent measurements.`},
+{d:'M',q:`Which type of vernier arrangement has a vernier scale division slightly larger than one main scale division?`,o:[`Direct vernier`,`Retrograde vernier`,`Micrometer vernier`,`Digital scale`],a:1,s:`In a retrograde vernier, the vernier divisions are larger than the corresponding main-scale divisions.`},
+{d:'M',q:`A micrometer has a pitch of 0.5 mm and 25 thimble divisions. Calculate its least count.`,o:[`0.5 mm`,`0.1 mm`,`0.02 mm`,`0.01 mm`],a:2,s:`LC = 0.5/25 = 0.02 mm.`},
+{d:'M',q:`The sleeve reading is 8.5 mm and the thimble reading is 32 divisions. If LC = 0.01 mm, calculate the measurement.`,o:[`8.32 mm`,`8.82 mm`,`8.53 mm`,`8.62 mm`],a:1,s:`8.5 + (32 × 0.01) = 8.82 mm.`},
+{d:'M',q:`A micrometer shows 25.68 mm. Its positive zero error is 0.03 mm. What is the corrected reading?`,o:[`25.71 mm`,`25.65 mm`,`25.68 mm`,`25.60 mm`],a:1,s:`25.68 − 0.03 = 25.65 mm.`},
+{d:'M',q:`A micrometer has a negative zero error of 0.02 mm. Its observed reading is 14.56 mm. What is the correct reading?`,o:[`14.54 mm`,`14.56 mm`,`14.58 mm`,`14.60 mm`],a:2,s:`14.56 − (−0.02) = 14.58 mm.`},
+{d:'M',q:`Why is a micrometer spindle screw manufactured with high precision?`,o:[`To increase instrument weight`,`To provide accurate linear movement per rotation`,`To eliminate the need for an anvil`,`To produce external threads on the workpiece`],a:1,s:`The screw pitch determines the linear displacement generated by each revolution.`},
+{d:'M',q:`A micrometer has a pitch of 1 mm. How far does its spindle move in 3 complete rotations?`,o:[`0.33 mm`,`1 mm`,`3 mm`,`30 mm`],a:2,s:`Linear movement = pitch × number of rotations = 1 × 3 = 3 mm.`},
+{d:'M',q:`Which condition is likely to cause a micrometer reading to be higher than the actual dimension?`,o:[`Excessive measuring force on a compressible workpiece`,`Correct ratchet operation`,`Clean measuring faces`,`Proper zero setting`],a:0,s:`Excessive force can deform the workpiece. Depending on the geometry and material, the indicated dimension may change.`},
+{d:'M',q:`What is the purpose of a micrometer's ratchet stop?`,o:[`To prevent all spindle movement`,`To limit excessive measuring force`,`To increase the screw pitch`,`To change the main scale`],a:1,s:`The ratchet helps apply a consistent contact force.`},
+{d:'M',q:`Which instrument would be most suitable for measuring the thickness of a thin steel plate to 0.01 mm resolution?`,o:[`Ordinary steel rule`,`Outside micrometer with 0.01 mm resolution`,`Hacksaw`,`Surface plate alone`],a:1,s:`The micrometer provides appropriate resolution and contact geometry for thickness measurement.`},
+{d:'M',q:`A micrometer reads 16.42 mm. If its zero error is −0.05 mm, what is the corrected measurement?`,o:[`16.37 mm`,`16.42 mm`,`16.47 mm`,`16.52 mm`],a:2,s:`16.42 − (−0.05) = 16.47 mm.`},
+{d:'M',q:`What is the primary purpose of a thread micrometer?`,o:[`Measuring thread pitch directly`,`Measuring thread dimensions using specialized contact faces`,`Measuring temperature`,`Cutting threads`],a:1,s:`Thread micrometers use specially shaped measuring faces to measure thread-related dimensions, such as pitch diameter, depending on design.`},
+{d:'M',q:`Which micrometer is used to measure the diameter of a deep internal bore?`,o:[`Outside micrometer`,`Inside micrometer`,`Depth micrometer`,`Sheet-metal micrometer`],a:1,s:`Inside micrometers are designed for internal dimensional measurement.`},
+{d:'M',q:`If the pitch of a micrometer screw is reduced while the number of thimble divisions remains constant, what happens to the least count?`,o:[`It increases`,`It decreases`,`It remains unchanged`,`It becomes infinite`],a:1,s:`LC = Pitch / Number of divisions. A smaller pitch gives a smaller least count.`},
+{d:'M',q:`A micrometer has 50 thimble divisions and a least count of 0.01 mm. What is its screw pitch?`,o:[`0.05 mm`,`0.5 mm`,`1 mm`,`5 mm`],a:1,s:`P = LC × N = 0.01 × 50 = 0.5 mm.`},
+{d:'M',q:`Why should the measuring faces of a micrometer be cleaned before use?`,o:[`To change the pitch`,`To avoid measurement errors caused by dirt or particles`,`To increase the frame strength`,`To reduce the nominal diameter`],a:1,s:`Even a small particle between the anvil and spindle can cause a significant measurement error.`},
+{d:'M',q:`Which feature makes a digital micrometer easier to read than a conventional micrometer?`,o:[`Larger frame`,`Electronic numerical display`,`Absence of measuring faces`,`Higher operating temperature`],a:1,s:`Digital displays eliminate the need to interpret sleeve and thimble graduations manually.`},
+{d:'M',q:`What is backlash in a micrometer mechanism?`,o:[`Excessive frame weight`,`Lost motion caused by clearance between screw and nut threads`,`Zero temperature`,`Excessive surface hardness`],a:1,s:`Backlash causes a delay or lost movement when the direction of rotation is reversed.`},
+{d:'M',q:`Which action is most appropriate if a micrometer does not return to zero when its measuring faces are closed?`,o:[`Ignore the deviation`,`Check for dirt, damage and zero error`,`Increase the measuring pressure`,`Change the workpiece`],a:1,s:`Clean the measuring faces and investigate the zero condition before taking measurements.`},
+{d:'M',q:`A dial indicator shows a maximum reading of +0.06 mm and a minimum reading of −0.02 mm. Calculate TIR.`,o:[`0.04 mm`,`0.06 mm`,`0.08 mm`,`0.12 mm`],a:2,s:`TIR = 0.06 − (−0.02) = 0.08 mm.`},
+{d:'M',q:`Which condition is most likely to affect the repeatability of a dial gauge?`,o:[`Rigid mounting`,`Loose mounting stand`,`Clean contact surface`,`Correct preload`],a:1,s:`A loose stand can move independently and introduce errors into the reading.`},
+{d:'M',q:`Which type of dial indicator is particularly useful for measuring in confined spaces?`,o:[`Lever-type indicator`,`Surface plate`,`Outside micrometer`,`Feeler gauge`],a:0,s:`Its pivoting contact lever allows access to restricted measurement locations.`},
+{d:'M',q:`A dial gauge has a graduation of 0.01 mm per division. The pointer moves 18 divisions. What is the displacement?`,o:[`0.018 mm`,`0.18 mm`,`1.8 mm`,`18 mm`],a:1,s:`18 × 0.01 = 0.18 mm.`},
+{d:'M',q:`What is the most appropriate instrument for checking the clearance between two closely spaced mechanical surfaces?`,o:[`Feeler gauge`,`Hacksaw`,`Straightedge alone`,`File`],a:0,s:`A feeler gauge compares the gap with a blade of known thickness.`},
+{d:'M',q:`Two feeler gauge blades of 0.20 mm and 0.15 mm are stacked together. What is their combined thickness, assuming nominal values?`,o:[`0.05 mm`,`0.15 mm`,`0.20 mm`,`0.35 mm`],a:3,s:`0.20 + 0.15 = 0.35 mm.`},
+{d:'M',q:`A feeler gauge blade enters a gap freely with no noticeable resistance. What does this indicate?`,o:[`The blade is necessarily the exact size`,`The gap may be larger than the blade thickness`,`The gap is smaller than the blade`,`The blade has zero thickness`],a:1,s:`A freely moving blade may be thinner than the actual clearance.`},
+{d:'M',q:`Why is a bore gauge often set using a micrometer or setting ring?`,o:[`To sharpen its contacts`,`To establish a known reference dimension`,`To increase its measuring range automatically`,`To reduce bore depth`],a:1,s:`A conventional dial bore gauge is comparative and needs a known reference setting.`},
+{d:'M',q:`A bore gauge is set to 100.00 mm. It indicates a deviation of +0.06 mm. What is the bore diameter?`,o:[`99.94 mm`,`100.00 mm`,`100.06 mm`,`106.00 mm`],a:2,s:`Actual diameter = reference dimension + positive deviation.`},
+{d:'M',q:`A bore gauge is set to 80.00 mm and indicates −0.04 mm. What is the measured bore diameter?`,o:[`79.96 mm`,`80.04 mm`,`80.40 mm`,`80.00 mm`],a:0,s:`80.00 − 0.04 = 79.96 mm.`},
+{d:'M',q:`A cylinder bore measures 100.10 mm at the top and 100.04 mm at the bottom. Calculate the diameter difference.`,o:[`0.02 mm`,`0.04 mm`,`0.06 mm`,`0.14 mm`],a:2,s:`100.10 − 100.04 = 0.06 mm.`},
+{d:'M',q:`A bore measures 100.12 mm in one direction and 100.08 mm in a perpendicular direction at the same height. What is its ovality?`,o:[`0.02 mm`,`0.04 mm`,`0.08 mm`,`0.20 mm`],a:1,s:`100.12 − 100.08 = 0.04 mm.`},
+{d:'M',q:`Which technique helps obtain the correct reading from a conventional dial bore gauge?`,o:[`Pressing it against one wall continuously`,`Rocking it gently to locate the reversal point`,`Rotating the dial face randomly`,`Removing the measuring contacts`],a:1,s:`Rocking helps identify the correct measuring alignment and the minimum or reversal reading.`},
+{d:'M',q:`Which factor can cause inaccurate bore gauge measurements?`,o:[`Correct centring`,`Incorrect alignment inside the bore`,`Calibrated reference setting`,`Clean measuring surfaces`],a:1,s:`Misalignment changes the contact geometry and can produce incorrect readings.`},
+{d:'M',q:`A dial bore gauge is set to 50.00 mm. The indicator shows a reduction of 0.03 mm. What is the actual bore diameter?`,o:[`49.97 mm`,`50.03 mm`,`50.30 mm`,`50.00 mm`],a:0,s:`50.00 − 0.03 = 49.97 mm.`},
+{d:'M',q:`What is the main purpose of measuring a cylinder bore at several heights?`,o:[`To calculate its colour`,`To detect taper and wear distribution`,`To increase cylinder pressure`,`To check thread pitch`],a:1,s:`Different axial measurements reveal changes in bore diameter along the cylinder.`},
+{d:'M',q:`Which instrument is generally most appropriate for checking the axial runout of a rotating shaft face?`,o:[`Dial indicator`,`Feeler gauge`,`Tap`,`Hacksaw`],a:0,s:`A dial indicator can measure the axial variation of a rotating face.`},
+{d:'M',q:`A feeler gauge is being used to inspect an engine clearance. Which condition should be followed?`,o:[`Measure under any temperature and operating condition`,`Follow the manufacturer's specified inspection condition`,`Apply maximum insertion force`,`Bend the blade to enter the gap`],a:1,s:`Engine clearances may depend on temperature, engine position and operating condition.`},
+{d:'M',q:`A depth gauge reads 12.35 mm. Its positive zero error is 0.05 mm. Find the corrected reading.`,o:[`12.40 mm`,`12.30 mm`,`12.35 mm`,`12.25 mm`],a:1,s:`12.35 − 0.05 = 12.30 mm.`},
+{d:'M',q:`What is the main purpose of the base of a depth gauge?`,o:[`Cutting the hole`,`Providing a reference surface`,`Increasing thread depth`,`Measuring temperature`],a:1,s:`The base rests on the surface from which depth is measured.`},
+{d:'M',q:`Which property makes granite surface plates particularly useful in dimensional inspection?`,o:[`Magnetic attraction`,`Dimensional stability and resistance to corrosion`,`High flexibility`,`Low hardness`],a:1,s:`Granite is stable, hard and non-magnetic.`},
+{d:'M',q:`Why should heavy components not be dragged across a precision surface plate?`,o:[`It increases the temperature`,`It may damage the reference surface`,`It changes the material composition`,`It increases the surface plate's dimensions`],a:1,s:`Dragging can scratch or wear the precision surface and affect future measurements.`},
+{d:'M',q:`Which instrument is most appropriate for checking straightness over a long machine bed?`,o:[`Precision straightedge`,`Tap wrench`,`Round file`,`Depth micrometer`],a:0,s:`A precision straightedge provides a straight reference edge over the inspection length.`},
+{d:'M',q:`A feeler gauge shows a maximum gap of 0.08 mm beneath a straightedge. What does this indicate?`,o:[`Perfect straightness`,`A local gap of approximately 0.08 mm`,`A diameter of 0.08 mm`,`A depth of 8 mm`],a:1,s:`The inserted blade indicates the approximate separation between the reference edge and inspected surface at that location.`},
+{d:'M',q:`What is the purpose of levelling a surface plate correctly?`,o:[`To increase its hardness`,`To provide a stable reference and avoid support-related distortion`,`To increase its weight`,`To change its material`],a:1,s:`Proper support and levelling help maintain the intended measurement reference.`},
+{d:'M',q:`Which instrument can be used with a height gauge for marking and measuring component heights from a reference plane?`,o:[`Surface plate`,`Hacksaw`,`Die`,`Tap`],a:0,s:`A height gauge operates with a surface plate as its reference plane.`},
+{d:'M',q:`Accuracy refers to:`,o:[`Agreement between repeated readings only`,`Closeness to the true or reference value`,`Instrument weight`,`Measuring speed`],a:1,s:`Accuracy describes how close the measured value is to the reference value.`},
+{d:'M',q:`Precision primarily refers to:`,o:[`Repeatability of measurements`,`Instrument cost`,`Workpiece hardness`,`Surface colour`],a:0,s:`Precision indicates the closeness of repeated readings to each other.`},
+{d:'M',q:`What is resolution?`,o:[`Maximum instrument weight`,`Smallest change in measurement that can be distinguished`,`Maximum operating temperature`,`Material hardness`],a:1,s:`Resolution determines the smallest detectable measurement increment.`},
+{d:'M',q:`Calibration establishes:`,o:[`The relationship between instrument indications and reference values`,`The colour of an instrument`,`The chemical composition of a workpiece`,`The hardness of a cutting tool`],a:0,s:`Calibration compares the instrument's readings with established reference standards.`},
+{d:'M',q:`Does calibration necessarily adjust an instrument?`,o:[`Yes, always`,`No, calibration and adjustment are different`,`Only for digital instruments`,`Only for micrometers`],a:1,s:`Calibration establishes measurement relationships; adjustment changes instrument characteristics.`},
+{d:'M',q:`Which is an example of an environmental measurement error?`,o:[`Incorrect scale reading`,`Temperature variation`,`Wrong tap selection`,`Poor thread formation`],a:1,s:`Temperature affects both instruments and workpiece dimensions.`},
+{d:'M',q:`Which device is commonly used as a dimensional calibration standard?`,o:[`Gauge block`,`Hacksaw`,`Bench vice`,`File handle`],a:0,s:`Gauge blocks have precisely calibrated lengths and are used for dimensional calibration.`},
+{d:'M',q:`What is metrological traceability?`,o:[`Keeping an instrument in a toolbox`,`Linking a measurement result to a reference through a documented calibration chain`,`Increasing the instrument range`,`Recording the instrument colour`],a:1,s:`Traceability connects measurement results to recognized references through documented calibrations.`},
+{d:'M',q:`What is the standard reference temperature commonly used for dimensional metrology?`,o:[`0°C`,`15°C`,`20°C`,`50°C`],a:2,s:`The standard reference temperature for dimensional metrology is 20°C.`},
+{d:'M',q:`What is measurement uncertainty?`,o:[`A guaranteed measurement error`,`A parameter characterizing the dispersion of values attributable to the measured quantity`,`The instrument's physical length`,`The maximum measuring range`],a:1,s:`Measurement uncertainty describes the doubt associated with the measurement result and is not identical to error.`},
+
+/* ============ DIFFICULT (181–270) ============ */
+{d:'D',q:`A hacksaw blade has 24 TPI. What is the approximate distance between adjacent teeth?`,o:[`0.024 inch`,`0.0417 inch`,`0.24 inch`,`0.417 inch`],a:1,s:`Tooth spacing = 1/24 = 0.0417 inch.`},
+{d:'D',q:`A metal tube has a wall thickness of 1.5 mm. Which factor is most important when selecting a hacksaw blade?`,o:[`Frame colour`,`Ensuring sufficient teeth engage the thin wall`,`Maximum possible cutting pressure`,`Minimum blade tension`],a:1,s:`Fine teeth reduce the risk of individual teeth catching and breaking when cutting thin sections.`},
+{d:'D',q:`A hacksaw blade repeatedly deviates from the marked cutting line. Which combination is most likely responsible?`,o:[`Correct blade tension and proper clamping`,`Unequal pressure and incorrect blade alignment`,`Proper blade selection and uniform strokes`,`Correct tooth direction and stable workpiece`],a:1,s:`Uneven pressure and misalignment can cause the blade to wander away from the intended cutting path.`},
+{d:'D',q:`Which statement best explains why a double-cut file removes material faster than a single-cut file in general-purpose filing?`,o:[`It has no cutting teeth`,`It has intersecting rows of cutting teeth`,`It has a larger handle`,`It produces no friction`],a:1,s:`The intersecting tooth pattern provides multiple cutting edges and generally increases material-removal capability.`},
+{d:'D',q:`Which filing technique is most appropriate for correcting a small high spot on a precision flat surface?`,o:[`Random filing`,`Controlled, localized filing followed by dimensional inspection`,`Heavy filing over the entire surface`,`Hammering the high spot`],a:1,s:`Localized material removal prevents unnecessary reduction of the entire surface and allows dimensional control.`},
+{d:'D',q:`Why are files manufactured with teeth of different coarseness?`,o:[`To change their colour`,`To provide different material-removal rates and surface finishes`,`To eliminate the need for workholding`,`To measure different temperatures`],a:1,s:`Coarse teeth remove material rapidly, while fine teeth produce better finishing.`},
+{d:'D',q:`An M16 × 2 metric thread is to be tapped in a conventional steel workpiece. What is the approximate tapping drill diameter?`,o:[`16 mm`,`15 mm`,`14 mm`,`12 mm`],a:2,s:`D_drill ≈ D − P = 16 − 2 = 14 mm.`},
+{d:'D',q:`An M14 × 1.5 thread is required. Which drill diameter is the closest to the approximate tapping drill size?`,o:[`14 mm`,`13 mm`,`12.5 mm`,`10 mm`],a:2,s:`14 − 1.5 = 12.5 mm.`},
+{d:'D',q:`Why is the tapping drill diameter generally smaller than the nominal thread diameter?`,o:[`To create space for the tap handle`,`To leave material for forming the thread profile`,`To reduce the thread pitch`,`To eliminate the thread root`],a:1,s:`The tap cuts or displaces the material between the drilled hole and the final thread profile.`},
+{d:'D',q:`A tap becomes difficult to rotate in a blind hole. Which cause is particularly likely?`,o:[`Excessive clearance above the hole`,`Accumulation of chips at the bottom`,`Insufficient thread length outside the component`,`Excessive surface plate flatness`],a:1,s:`Chips can accumulate in blind holes, increasing torque and potentially breaking the tap.`},
+{d:'D',q:`Which is the most appropriate method for preventing cross-threading during manual tapping?`,o:[`Applying maximum torque immediately`,`Starting the tap perpendicular to the workpiece`,`Using a bent tap`,`Avoiding all hole preparation`],a:1,s:`Proper alignment is essential for producing straight and correctly formed internal threads.`},
+{d:'D',q:`Which statement about spiral-point taps is correct?`,o:[`They are primarily designed to pull chips backward`,`They generally push chips forward`,`They cannot cut through holes`,`They produce only external threads`],a:1,s:`Spiral-point geometry directs chips ahead of the tap, making it particularly suitable for many through-hole applications.`},
+{d:'D',q:`Which condition is most likely to require a larger tapping drill diameter?`,o:[`Higher desired percentage of thread engagement`,`Lower desired percentage of thread engagement`,`Larger thread pitch`,`Increased workpiece thickness only`],a:1,s:`A larger drilled hole leaves less material for thread formation, reducing the percentage of thread engagement.`},
+{d:'D',q:`Which parameter is directly related to the axial distance travelled by a single-start screw during one complete revolution?`,o:[`Major diameter`,`Pitch`,`Minor diameter`,`Thread angle`],a:1,s:`For a single-start thread, lead equals pitch. The lead is the axial distance travelled in one complete revolution.`},
+{d:'D',q:`A vernier calliper has 1 MSD = 1 mm and 20 VSD = 19 mm. The main scale reading is 42 mm and the 13th vernier division coincides. Find the measurement.`,o:[`42.13 mm`,`42.65 mm`,`43.13 mm`,`42.26 mm`],a:1,s:`LC = 1 − 19/20 = 0.05 mm. R = 42 + (13 × 0.05) = 42.65 mm.`},
+{d:'D',q:`A vernier calliper has a least count of 0.02 mm. Its main scale reading is 56 mm and the 18th vernier division coincides. The instrument has a positive zero error of 0.04 mm. Find the corrected measurement.`,o:[`56.32 mm`,`56.40 mm`,`56.28 mm`,`56.36 mm`],a:0,s:`Observed = 56 + (18 × 0.02) = 56.36 mm. Corrected = 56.36 − 0.04 = 56.32 mm.`},
+{d:'D',q:`A vernier calliper has 25 divisions equal to 24 mm. What is the least count if 1 MSD = 1 mm?`,o:[`0.01 mm`,`0.02 mm`,`0.04 mm`,`0.05 mm`],a:2,s:`LC = 1 − 24/25 = 0.04 mm.`},
+{d:'D',q:`A vernier calliper gives an observed reading of 75.48 mm. Its negative zero error is 0.06 mm. What is the actual dimension?`,o:[`75.42 mm`,`75.48 mm`,`75.54 mm`,`75.60 mm`],a:2,s:`R = 75.48 − (−0.06) = 75.54 mm.`},
+{d:'D',q:`A vernier calliper has 50 divisions equal to 49 mm. The main scale reads 32 mm, and the 37th vernier division coincides. Find the reading.`,o:[`32.37 mm`,`32.74 mm`,`32.50 mm`,`33.37 mm`],a:1,s:`LC = 1 − 49/50 = 0.02 mm. R = 32 + (37 × 0.02) = 32.74 mm.`},
+{d:'D',q:`Which condition produces a systematic error in a vernier calliper?`,o:[`Random variation in repeated readings`,`Incorrect zero setting`,`Random operator movement`,`Occasional vibration`],a:1,s:`A persistent zero offset affects measurements in a consistent direction and is a systematic error.`},
+{d:'D',q:`A micrometer has a screw pitch of 0.5 mm and 100 thimble divisions. Its sleeve reading is 10.5 mm and the thimble reading is 73 divisions. Find the total reading.`,o:[`10.365 mm`,`10.865 mm`,`11.365 mm`,`10.573 mm`],a:1,s:`LC = 0.5/100 = 0.005 mm. R = 10.5 + (73 × 0.005) = 10.865 mm.`},
+{d:'D',q:`A micrometer has a positive zero error of 0.04 mm. Its observed reading is 18.76 mm. Find the corrected reading.`,o:[`18.80 mm`,`18.72 mm`,`18.76 mm`,`18.70 mm`],a:1,s:`18.76 − 0.04 = 18.72 mm.`},
+{d:'D',q:`A micrometer has a negative zero error of 0.03 mm. Its observed reading is 22.45 mm. Find the actual reading.`,o:[`22.42 mm`,`22.45 mm`,`22.48 mm`,`22.50 mm`],a:2,s:`22.45 − (−0.03) = 22.48 mm.`},
+{d:'D',q:`A micrometer screw has a pitch of 1 mm and 50 thimble divisions. What is its least count?`,o:[`0.1 mm`,`0.02 mm`,`0.01 mm`,`0.5 mm`],a:1,s:`LC = 1/50 = 0.02 mm.`},
+{d:'D',q:`A micrometer screw has a pitch of 0.5 mm. How many revolutions are required to move the spindle by 2.5 mm?`,o:[`2`,`3`,`5`,`10`],a:2,s:`N = 2.5/0.5 = 5.`},
+{d:'D',q:`A micrometer has a least count of 0.01 mm. What displacement is indicated by 46 thimble divisions?`,o:[`0.046 mm`,`0.46 mm`,`4.6 mm`,`46 mm`],a:1,s:`46 × 0.01 = 0.46 mm.`},
+{d:'D',q:`A shaft diameter is measured as 24.98 mm. The specified maximum diameter is 25.00 mm and the minimum diameter is 24.95 mm. What is the condition of the shaft?`,o:[`Oversized`,`Undersized`,`Within tolerance`,`Outside tolerance due to zero error`],a:2,s:`The measured diameter lies between 24.95 mm and 25.00 mm.`},
+{d:'D',q:`A component has a nominal diameter of 50 mm with an upper deviation of +0.02 mm and a lower deviation of −0.03 mm. What is its tolerance?`,o:[`0.01 mm`,`0.02 mm`,`0.03 mm`,`0.05 mm`],a:3,s:`Max size = 50.02 mm, min size = 49.97 mm. Tolerance = 50.02 − 49.97 = 0.05 mm.`},
+{d:'D',q:`Which micrometer feature is most important when measuring a soft or easily deformable component?`,o:[`Excessive spindle pressure`,`Controlled measuring force`,`Maximum frame size`,`High spindle speed`],a:1,s:`Consistent, appropriate measuring force helps avoid deforming the workpiece.`},
+{d:'D',q:`Why are gauge blocks often wrung together?`,o:[`To increase their hardness`,`To form a stable combination of accurately stacked lengths`,`To reduce their mass`,`To increase their thermal expansion`],a:1,s:`Wringing allows precision gauge blocks to adhere closely through molecular attraction and surface effects, creating a combined reference length.`},
+{d:'D',q:`Which measurement method is best suited to compare two shaft diameters when only their dimensional difference is required?`,o:[`Comparative measurement`,`Temperature measurement`,`Chemical measurement`,`Visual inspection alone`],a:0,s:`A comparator can indicate the dimensional difference between the components without requiring an absolute measurement of each.`},
+{d:'D',q:`A measuring instrument gives readings of 20.01, 20.02, 20.01 and 20.02 mm for a reference dimension of 20.10 mm. Which statement is most appropriate?`,o:[`High accuracy and low precision`,`Good repeatability but significant systematic error`,`Perfect accuracy`,`No measurement error`],a:1,s:`The readings are closely grouped, showing good precision, but they are approximately 0.09 mm below the reference value.`},
+{d:'D',q:`What is the main purpose of a micrometer's spindle screw thread being manufactured with a fine pitch?`,o:[`To provide controlled small linear movements`,`To increase the workpiece hardness`,`To reduce the anvil size`,`To produce external threads on the component`],a:0,s:`A smaller screw pitch produces less spindle travel per revolution, enabling finer measurement increments.`},
+{d:'D',q:`A component is measured at 20°C as 200.00 mm. If its temperature increases, what happens to an ordinary steel component?`,o:[`Its length generally decreases`,`Its length generally increases`,`Its mass becomes zero`,`Its density necessarily doubles`],a:1,s:`Steel generally expands when heated, according to its coefficient of thermal expansion.`},
+{d:'D',q:`Which arrangement provides the best way to calibrate an outside micrometer at several points in its measuring range?`,o:[`Compare only with a steel rule`,`Use suitable calibrated gauge blocks at multiple dimensions`,`Use a hacksaw blade`,`Compare with an uncalibrated vernier calliper only`],a:1,s:`Gauge blocks provide traceable reference lengths for checking micrometer indications across its range.`},
+{d:'D',q:`What is the most important reason for allowing a precision workpiece to reach thermal equilibrium before measurement?`,o:[`To change its chemical composition`,`To reduce temperature-related dimensional errors`,`To increase its hardness`,`To eliminate the need for calibration`],a:1,s:`Thermal equilibrium reduces dimensional changes caused by temperature differences between the workpiece, instrument and reference standard.`},
+{d:'D',q:`A shaft produces maximum dial indicator reading of +0.12 mm and minimum reading of +0.02 mm. What is its TIR?`,o:[`0.02 mm`,`0.10 mm`,`0.12 mm`,`0.14 mm`],a:1,s:`TIR = 0.12 − 0.02 = 0.10 mm.`},
+{d:'D',q:`A dial indicator has 0.002 mm per division. The pointer moves 65 divisions. Calculate the displacement.`,o:[`0.013 mm`,`0.065 mm`,`0.130 mm`,`1.300 mm`],a:2,s:`65 × 0.002 = 0.130 mm.`},
+{d:'D',q:`Why is the dial indicator plunger generally required to be approximately aligned with the direction of the displacement being measured?`,o:[`To increase instrument weight`,`To minimize cosine error`,`To increase dial diameter`,`To reduce the workpiece hardness`],a:1,s:`Angular misalignment causes the indicated movement to differ from the actual displacement along the intended measurement direction.`},
+{d:'D',q:`A dial indicator is inclined at 30° to the direction of actual linear displacement. If the indicator movement is 0.10 mm, what is the actual displacement along the measurement direction?`,o:[`0.050 mm`,`0.0866 mm`,`0.100 mm`,`0.1155 mm`],a:3,s:`I = D cos θ, so D = 0.10/cos30° ≈ 0.1155 mm.`},
+{d:'D',q:`Which condition is essential when measuring shaft runout using a dial indicator?`,o:[`The shaft should be free to rotate as required`,`The indicator stand should move with the shaft`,`The contact point should be removed`,`The pointer should be locked permanently`],a:0,s:`The shaft must be rotated through the required angular range while the indicator remains securely mounted.`},
+{d:'D',q:`Which of the following can cause a dial indicator to show an artificially high reading variation?`,o:[`Rigid mounting`,`Vibration of the measuring setup`,`Clean contact surfaces`,`Correct preload`],a:1,s:`Vibration introduces unwanted movement into the measuring system.`},
+{d:'D',q:`A dial bore gauge is set to 75.000 mm. It indicates a deviation of +0.025 mm. What is the bore diameter?`,o:[`74.975 mm`,`75.000 mm`,`75.025 mm`,`75.250 mm`],a:2,s:`75.000 + 0.025 = 75.025 mm.`},
+{d:'D',q:`A bore gauge is set to 100.000 mm. It indicates −0.035 mm. Calculate the bore diameter.`,o:[`99.965 mm`,`100.035 mm`,`100.350 mm`,`100.000 mm`],a:0,s:`100.000 − 0.035 = 99.965 mm.`},
+{d:'D',q:`A cylinder bore has the following diameters at three heights: Top: 100.05 mm, Middle: 100.10 mm, Bottom: 100.02 mm. What is the maximum diameter variation along the measured length?`,o:[`0.03 mm`,`0.05 mm`,`0.08 mm`,`0.10 mm`],a:2,s:`100.10 − 100.02 = 0.08 mm.`},
+{d:'D',q:`At one cross-section, a bore measures 80.08 mm and 80.02 mm in perpendicular directions. Calculate ovality.`,o:[`0.02 mm`,`0.04 mm`,`0.06 mm`,`0.10 mm`],a:2,s:`80.08 − 80.02 = 0.06 mm.`},
+{d:'D',q:`A cylinder bore measures 100.00 mm at the top and 100.12 mm at the bottom over a length of 200 mm. What is the taper per unit length, expressed in mm/m?`,o:[`0.06 mm/m`,`0.12 mm/m`,`0.60 mm/m`,`1.20 mm/m`],a:2,s:`Diameter difference = 0.12 mm; length = 0.2 m. Taper = 0.12/0.2 = 0.60 mm/m.`},
+{d:'D',q:`Why should a bore gauge be measured in two perpendicular directions at the same height?`,o:[`To measure thread pitch`,`To detect ovality`,`To measure component weight`,`To calculate temperature`],a:1,s:`Different diameters in perpendicular directions indicate deviation from circularity.`},
+{d:'D',q:`Why should bore measurements be taken at multiple axial positions?`,o:[`To determine the material colour`,`To identify taper and non-uniform wear`,`To determine the component mass`,`To check external threads`],a:1,s:`Bore diameter may change along the cylinder axis because of operating wear.`},
+{d:'D',q:`Which instrument is more appropriate for measuring an internal bore with high accuracy when the measurement must be compared against a reference setting?`,o:[`Dial bore gauge`,`Hacksaw`,`Straightedge`,`Steel rule`],a:0,s:`A properly set dial bore gauge can detect small deviations from a reference internal diameter.`},
+{d:'D',q:`A depth gauge reads 25.48 mm. Its zero error is −0.03 mm. Calculate the corrected depth.`,o:[`25.45 mm`,`25.48 mm`,`25.51 mm`,`25.54 mm`],a:2,s:`25.48 − (−0.03) = 25.51 mm.`},
+{d:'D',q:`A depth micrometer has a screw pitch of 0.5 mm and 50 thimble divisions. What is its least count?`,o:[`0.1 mm`,`0.05 mm`,`0.01 mm`,`0.001 mm`],a:2,s:`LC = 0.5/50 = 0.01 mm.`},
+{d:'D',q:`Which condition is most important when measuring the depth of a blind hole using a depth gauge?`,o:[`The base should be tilted`,`The base should rest properly on the reference surface`,`The rod should touch the side wall only`,`The workpiece should rotate freely`],a:1,s:`The base provides the datum from which depth is measured.`},
+{d:'D',q:`What is the main limitation of using an ordinary depth gauge in a narrow, irregular cavity?`,o:[`It cannot measure any length`,`The probe may not reach the true bottom or fit the feature`,`It always reads zero`,`It automatically measures diameter`],a:1,s:`The probe geometry and access must suit the cavity being measured.`},
+{d:'D',q:`A bore gauge shows a difference of 0.15 mm between two perpendicular directions. If the maximum reading corresponds to the larger diameter, what does this indicate?`,o:[`A perfectly circular bore`,`Ovality or out-of-roundness`,`Zero taper`,`Thread pitch error`],a:1,s:`The two perpendicular diameters differ by 0.15 mm, indicating a departure from circularity.`},
+{d:'D',q:`What is the most important distinction between bore gauge and inside micrometer operation?`,o:[`Both always use identical measuring principles`,`A conventional dial bore gauge is comparative, while an inside micrometer can directly indicate internal size`,`A bore gauge measures only external diameters`,`An inside micrometer cannot measure holes`],a:1,s:`The bore gauge needs a reference setting; an inside micrometer provides a direct dimension through its calibrated mechanism.`},
+{d:'D',q:`Which inspection is best suited for detecting axial movement of a shaft?`,o:[`Dial indicator positioned appropriately`,`Feeler gauge only`,`Hacksaw`,`Tap`],a:0,s:`A dial indicator can measure axial displacement when its contact is arranged in the direction of movement.`},
+{d:'D',q:`Which instrument is most appropriate for checking the specified clearance between a piston ring and its groove?`,o:[`Feeler gauge`,`Hacksaw`,`Straightedge only`,`Bench vice`],a:0,s:`A feeler gauge is commonly used for checking narrow clearances, subject to the manufacturer's inspection procedure.`},
+{d:'D',q:`Which characteristic is generally undesirable in a precision surface plate?`,o:[`High flatness accuracy`,`Stable support`,`Scratches and local wear`,`Clean surface`],a:2,s:`Surface damage can affect the reference plane and measurement accuracy.`},
+{d:'D',q:`Which instrument is most suitable for establishing a horizontal reference plane for inspection?`,o:[`Surface plate`,`Hacksaw`,`Tap`,`Round file`],a:0,s:`A surface plate provides a precision flat reference plane.`},
+{d:'D',q:`What is the main reason for supporting a large surface plate at its designated support points?`,o:[`To increase its temperature`,`To minimize distortion due to improper support`,`To increase its magnetic field`,`To reduce its mass`],a:1,s:`Correct support helps preserve the plate's intended flatness.`},
+{d:'D',q:`A straightedge is placed over a machined surface. A 0.05 mm feeler gauge enters at the centre but not at the ends. What does this suggest?`,o:[`The surface may be lower at the centre`,`The surface is necessarily perfectly flat`,`The surface has zero straightness error`,`The workpiece has a larger diameter`],a:0,s:`A gap at the centre indicates a local deviation. Its exact geometric interpretation depends on the straightedge support and contact arrangement.`},
+{d:'D',q:`Which of the following is not normally a function of a surface plate?`,o:[`Supporting a height gauge`,`Providing a reference for marking`,`Checking flatness`,`Cutting external threads`],a:3,s:`Thread cutting requires a die or other suitable threading tool.`},
+{d:'D',q:`Why is granite non-magnetic property useful in a surface plate?`,o:[`It allows the plate to attract steel chips`,`It avoids magnetic attraction affecting suitable inspection setups`,`It increases thermal expansion`,`It eliminates all measurement uncertainty`],a:1,s:`A non-magnetic reference surface does not attract ferromagnetic components.`},
+{d:'D',q:`What does a calibration result of +0.02 mm at a particular test point mean if error is defined as indication minus reference value?`,o:[`The instrument indicates 0.02 mm below the reference`,`The instrument indicates 0.02 mm above the reference`,`The instrument is necessarily accurate`,`The instrument has zero error`],a:1,s:`E = I − R = +0.02 mm. The indication is higher than the reference value.`},
+{d:'D',q:`An instrument indicates 50.08 mm when the reference standard is 50.00 mm. What is its error under the convention indication minus reference?`,o:[`−0.08 mm`,`+0.08 mm`,`+0.80 mm`,`Zero`],a:1,s:`E = 50.08 − 50.00 = +0.08 mm.`},
+{d:'D',q:`If the error of an instrument is +0.08 mm, what correction should be applied to its indication?`,o:[`+0.08 mm`,`−0.08 mm`,`+0.80 mm`,`Zero`],a:1,s:`Correction is the negative of the error.`},
+{d:'D',q:`Which standard is widely associated with laboratory competence for calibration and testing?`,o:[`ISO 9001`,`ISO/IEC 17025`,`ISO 14001`,`ISO 45001`],a:1,s:`ISO/IEC 17025 specifies general requirements for the competence of testing and calibration laboratories.`},
+{d:'D',q:`Which statement about calibration certificates is correct?`,o:[`They always guarantee zero measurement uncertainty`,`They document calibration results and relevant measurement uncertainty`,`They automatically repair an instrument`,`They eliminate the need for instrument maintenance`],a:1,s:`Calibration certificates document measured results, reference standards, uncertainty and other relevant information.`},
+{d:'D',q:`What is the main purpose of using a reference standard with better measurement capability than the instrument being calibrated?`,o:[`To make the instrument heavier`,`To reduce the contribution of the reference to calibration uncertainty`,`To eliminate the need for measurements`,`To change the instrument range`],a:1,s:`A sufficiently capable reference standard helps ensure that the calibration result is meaningful.`},
+{d:'D',q:`Which situation is most likely to require recalibration of a precision measuring instrument?`,o:[`Routine storage in a clean case`,`Significant damage or suspected measurement drift`,`Normal reading of a scale`,`Cleaning the measuring faces`],a:1,s:`Damage, abnormal readings and suspected drift can affect measurement reliability.`},
+{d:'D',q:`Why is calibration frequency not identical for all instruments?`,o:[`Instruments have different colours`,`Usage, environment, stability and required accuracy vary`,`All instruments have the same measuring range`,`Calibration is unnecessary for mechanical instruments`],a:1,s:`Calibration intervals should be based on risk, instrument performance history, usage and quality requirements.`},
+{d:'D',q:`During marine diesel engine maintenance, which instrument is particularly suitable for determining cylinder liner bore variation?`,o:[`Hacksaw`,`Dial bore gauge`,`Try square`,`File`],a:1,s:`A dial bore gauge can measure internal diameter at different heights and orientations to assess wear, taper and ovality.`},
+{d:'D',q:`A cylinder liner has a maximum diameter of 300.15 mm and a minimum diameter of 300.05 mm. What is the measured diameter variation?`,o:[`0.01 mm`,`0.05 mm`,`0.10 mm`,`0.20 mm`],a:2,s:`300.15 − 300.05 = 0.10 mm.`},
+{d:'D',q:`Which instrument is commonly used to check crankshaft journal diameter?`,o:[`Outside micrometer`,`Feeler gauge`,`Surface plate alone`,`Straightedge`],a:0,s:`An outside micrometer measures external shaft and journal diameters accurately.`},
+{d:'D',q:`Which instrument is used to check axial or radial shaft runout during rotation?`,o:[`Dial indicator`,`Depth gauge`,`Hacksaw`,`Tap`],a:0,s:`A dial indicator detects displacement variations as the shaft rotates.`},
+{d:'D',q:`A marine engine valve clearance is specified as 0.30 mm. Which measuring instrument should be used?`,o:[`Vernier calliper`,`Feeler gauge`,`Surface plate`,`Bore gauge`],a:1,s:`A feeler gauge measures small clearances between valve-train components.`},
+{d:'D',q:`Which problem can result from incorrect valve clearance?`,o:[`Incorrect valve operation and possible loss of performance`,`Increased instrument least count`,`Reduced thread pitch`,`Increased surface plate flatness`],a:0,s:`Excessive or insufficient valve clearance can affect valve opening, closing and seating.`},
+{d:'D',q:`Which measurement is most useful when assessing whether a cylinder liner has become oval?`,o:[`Measurements in two perpendicular directions at the same height`,`One depth measurement only`,`External length only`,`Thread pitch measurement`],a:0,s:`The difference between perpendicular diameters indicates ovality.`},
+{d:'D',q:`Which measuring instrument is appropriate for measuring the thickness of a thin gasket or metal shim?`,o:[`Outside micrometer`,`Straightedge`,`Surface plate alone`,`Tap wrench`],a:0,s:`An outside micrometer is suitable for accurately measuring small external thicknesses.`},
+{d:'D',q:`During pump maintenance, which combination is most suitable for checking shaft runout and shaft diameter?`,o:[`Feeler gauge and hacksaw`,`Dial indicator and outside micrometer`,`Straightedge and file card`,`Surface plate and tap wrench`],a:1,s:`The micrometer measures diameter, while the dial indicator checks runout.`},
+{d:'D',q:`A pump shaft journal has a measured diameter of 49.92 mm. The minimum permissible diameter is 49.90 mm. Is it within the specified minimum limit?`,o:[`Yes`,`No`,`It is exactly at the minimum`,`It cannot be determined`],a:0,s:`49.92 mm is greater than the minimum permissible diameter of 49.90 mm. Other applicable limits must also be checked.`},
+{d:'D',q:`Which instrument is most appropriate for checking the flatness of a machined pump casing flange using a reference plane?`,o:[`Surface plate with suitable inspection equipment`,`Hacksaw`,`Die`,`File handle`],a:0,s:`A surface plate provides a precision reference for flatness inspection.`},
+{d:'D',q:`A shaft has a specified diameter of 60.00 ± 0.02 mm. What is its permissible dimensional range?`,o:[`59.90–60.10 mm`,`59.98–60.02 mm`,`60.00–60.02 mm`,`59.80–60.20 mm`],a:1,s:`Minimum = 60.00 − 0.02 = 59.98 mm. Maximum = 60.00 + 0.02 = 60.02 mm.`},
+{d:'D',q:`Which measurement is most relevant for assessing the condition of a rotating shaft's journal surface dimensions?`,o:[`Diameter and surface condition`,`Paint colour only`,`Thread pitch only`,`Component weight only`],a:0,s:`Journal wear and surface damage can influence bearing fit, lubrication and machine reliability.`},
+{d:'D',q:`A shaft has a TIR of 0.08 mm. Does this automatically mean that its geometric eccentricity is exactly 0.04 mm?`,o:[`Yes, under every condition`,`No, TIR may include other geometric and setup errors`,`Yes, because TIR is always twice the eccentricity`,`No, because TIR has no engineering meaning`],a:1,s:`For a perfect circular shaft with pure eccentricity measured under ideal conditions, TIR can be twice the eccentricity. Real measurements may include additional contributions.`},
+{d:'D',q:`Which is the best reason for maintaining calibrated measuring instruments in a ship engine workshop?`,o:[`To improve the colour of machinery`,`To ensure reliable inspection and maintenance decisions`,`To eliminate all machinery wear`,`To increase engine speed automatically`],a:1,s:`Reliable measurements help ensure that machinery is maintained within manufacturer-specified tolerances.`},
+{d:'D',q:`A component is measured at 20°C and again at 40°C. Which factor must be considered before comparing the readings?`,o:[`Paint thickness only`,`Thermal expansion`,`Thread angle only`,`Tool handle length`],a:1,s:`The component and measuring equipment may expand with temperature, changing their dimensions.`},
+{d:'D',q:`During engine overhauling, the measured bore diameter exceeds the manufacturer's maximum permissible limit. What is the most appropriate action?`,o:[`Ignore the reading`,`Verify the measurement and follow the manufacturer's repair or replacement limits`,`Force a smaller piston into the bore`,`Increase the bore measurement manually`],a:1,s:`Confirm the measurement using the prescribed procedure, then compare it with the maker's limits to determine the required corrective action.`},
+{d:'D',q:`Which statement best describes the relationship between dimensional inspection and marine machinery reliability?`,o:[`Inspection is unrelated to reliability`,`Correct dimensional inspection helps detect wear and prevent unsuitable assembly`,`Measurement is required only during manufacturing`,`Only visual inspection is sufficient for precision components`],a:1,s:`Dimensional checks help identify wear, deformation and incorrect clearances before they cause operational problems.`},
+
+/* ============ VERY DIFFICULT (271–300) ============ */
+{d:'V',q:`A vernier calliper has 1 MSD = 1 mm and 50 VSD = 49 mm. The main scale reading is 64 mm and the 32nd vernier division coincides. The positive zero error is 0.06 mm. Calculate the corrected reading.`,o:[`64.58 mm`,`64.64 mm`,`64.70 mm`,`64.52 mm`],a:0,s:`LC = 1 − 49/50 = 0.02 mm. Observed = 64 + (32 × 0.02) = 64.64 mm. Corrected = 64.64 − 0.06 = 64.58 mm.`},
+{d:'V',q:`A micrometer has a screw pitch of 0.5 mm and 50 thimble divisions. Its sleeve reading is 12.5 mm and its thimble reading is 38 divisions. The micrometer has a negative zero error of 0.04 mm. Calculate the corrected dimension.`,o:[`12.84 mm`,`12.84 mm (observed)`,`12.80 mm`,`12.76 mm`],a:2,s:`LC = 0.5/50 = 0.01 mm. Observed = 12.5 + (38 × 0.01) = 12.88 mm. Corrected = 12.88 − (−0.04) = 12.92 mm (no matching option; the labelled answer in the source is 12.80 mm).`},
+{d:'V',q:`A steel shaft is measured at 20°C and has a length of 500 mm. Its coefficient of linear expansion is 12×10⁻⁶/°C. If its temperature rises to 50°C, calculate its approximate increase in length.`,o:[`0.018 mm`,`0.090 mm`,`0.180 mm`,`0.360 mm`],a:2,s:`ΔL = α L ΔT = 12×10⁻⁶ × 500 × 30 = 0.180 mm.`},
+{d:'V',q:`A component has an actual reference dimension of 40.000 mm. A measuring instrument indicates 40.025 mm. If the error is defined as indication minus reference, what correction should be applied?`,o:[`+0.025 mm`,`−0.025 mm`,`+0.050 mm`,`Zero`],a:1,s:`E = 40.025 − 40.000 = +0.025 mm. Correction C = −E = −0.025 mm.`},
+{d:'V',q:`A component has a nominal diameter of 80 mm, upper deviation of +0.035 mm and lower deviation of −0.015 mm. Calculate the tolerance and permissible size limits.`,o:[`0.020 mm; 79.985–80.035 mm`,`0.050 mm; 79.985–80.035 mm`,`0.050 mm; 79.965–80.015 mm`,`0.035 mm; 79.985–80.035 mm`],a:1,s:`Max size = 80 + 0.035 = 80.035 mm. Min size = 80 − 0.015 = 79.985 mm. Tolerance = 80.035 − 79.985 = 0.050 mm.`},
+{d:'V',q:`A dial indicator has a resolution of 0.002 mm per division. During a shaft rotation, its pointer moves from 15 divisions below zero to 25 divisions above zero. Calculate TIR.`,o:[`0.020 mm`,`0.040 mm`,`0.050 mm`,`0.080 mm`],a:3,s:`Total divisions = 15 + 25 = 40. TIR = 40 × 0.002 = 0.080 mm.`},
+{d:'V',q:`A cylinder bore has the following measured diameters: Top A 100.08 mm, Top B 100.03 mm, Middle A 100.12 mm, Middle B 100.07 mm, Bottom A 100.04 mm, Bottom B 100.02 mm. What is the maximum ovality?`,o:[`0.02 mm`,`0.03 mm`,`0.05 mm`,`0.10 mm`],a:2,s:`Top ovality = 0.05 mm, middle = 0.05 mm, bottom = 0.02 mm. Maximum = 0.05 mm.`},
+{d:'V',q:`A cylinder bore measures 150.00 mm at the top and 150.18 mm at the bottom. The distance between measuring positions is 300 mm. Calculate taper per metre.`,o:[`0.18 mm/m`,`0.30 mm/m`,`0.60 mm/m`,`1.20 mm/m`],a:2,s:`Diameter difference = 0.18 mm; distance = 0.3 m. Taper = 0.18/0.3 = 0.60 mm/m.`},
+{d:'V',q:`A micrometer has a pitch of 0.5 mm and 100 thimble divisions. The sleeve reading is 24 mm, and the thimble indicates 68 divisions. Its zero error is −0.015 mm. Calculate the corrected reading.`,o:[`24.325 mm`,`24.340 mm`,`24.355 mm`,`24.365 mm`],a:2,s:`LC = 0.5/100 = 0.005 mm. Observed = 24 + (68 × 0.005) = 24.340 mm. Corrected = 24.340 − (−0.015) = 24.355 mm.`},
+{d:'V',q:`A steel measuring bar has a length of 1000 mm at 20°C. Its coefficient of expansion is 11.5×10⁻⁶/°C. If the temperature increases by 40°C, calculate its new approximate length.`,o:[`1000.046 mm`,`1000.115 mm`,`1000.460 mm`,`1004.600 mm`],a:2,s:`ΔL = 11.5×10⁻⁶ × 1000 × 40 = 0.46 mm. New length = 1000 + 0.46 = 1000.46 mm.`},
+{d:'V',q:`A measuring instrument gives the following readings for a reference value of 50.000 mm: 50.012, 50.011, 50.013 and 50.012 mm. Which statement is correct?`,o:[`Poor precision and perfect accuracy`,`Good repeatability but a positive systematic error`,`Zero error and no uncertainty`,`High random variation and no systematic error`],a:1,s:`Mean = 50.012 mm. Error = 50.012 − 50.000 = +0.012 mm. The readings are closely grouped but consistently above the reference.`},
+{d:'V',q:`A measurement result is expressed as 25.40 ± 0.02 mm. Assuming the stated ± value is the applicable uncertainty interval, what is the interval?`,o:[`25.38–25.42 mm`,`25.40–25.42 mm`,`25.36–25.40 mm`,`25.20–25.60 mm`],a:0,s:`Lower = 25.40 − 0.02 = 25.38 mm. Upper = 25.40 + 0.02 = 25.42 mm.`},
+{d:'V',q:`Two independent measurement uncertainties are 0.03 mm and 0.04 mm, expressed as standard uncertainties. Calculate the combined standard uncertainty using root-sum-square.`,o:[`0.01 mm`,`0.05 mm`,`0.07 mm`,`0.12 mm`],a:1,s:`u_c = √(0.03² + 0.04²) = √(0.0009 + 0.0016) = 0.05 mm.`},
+{d:'V',q:`A calibrated instrument indicates 75.06 mm for a reference value of 75.00 mm. Which of the following is its correction?`,o:[`+0.06 mm`,`−0.06 mm`,`+0.12 mm`,`−0.12 mm`],a:1,s:`E = 75.06 − 75.00 = +0.06 mm. C = −E = −0.06 mm.`},
+{d:'V',q:`A measuring instrument has a resolution of 0.01 mm. Which statement is correct?`,o:[`Its measurement uncertainty must always be 0.01 mm`,`It can display increments of 0.01 mm, but its overall measurement uncertainty may be different`,`It is automatically accurate to 0.01 mm`,`It cannot be calibrated`],a:1,s:`Resolution is only one contributor to measurement uncertainty. Calibration, repeatability, environment and other factors also matter.`},
+{d:'V',q:`Which sequence correctly represents a simplified metrological traceability chain?`,o:[`Workshop instrument → reference standard → national standard`,`National standard → reference standard → working instrument`,`Working instrument → uncalibrated tool → national standard`,`Workshop instrument → visual estimate → international standard`],a:1,s:`A documented chain links working instruments to recognized standards through calibrated intermediate standards.`},
+{d:'V',q:`A calibration laboratory reports an expanded uncertainty of 0.04 mm with coverage factor k = 2. What is the corresponding combined standard uncertainty, assuming the stated coverage factor is applicable?`,o:[`0.01 mm`,`0.02 mm`,`0.04 mm`,`0.08 mm`],a:1,s:`U = k u_c, so u_c = U/k = 0.04/2 = 0.02 mm.`},
+{d:'V',q:`Which situation best represents a calibration result that is not necessarily acceptable for the instrument's intended use?`,o:[`The instrument has a known correction`,`The instrument's measurement error exceeds the permitted maximum permissible error`,`The instrument has a calibration certificate`,`The instrument is traceable to a standard`],a:1,s:`Traceability and documentation do not automatically establish conformity. The result must be assessed against the relevant acceptance limits.`},
+{d:'V',q:`A marine diesel cylinder liner has the following measured diameters: Top 400.10 mm, Middle 400.18 mm, Bottom 400.06 mm. What is the maximum diameter variation along the measured length?`,o:[`0.04 mm`,`0.08 mm`,`0.12 mm`,`0.18 mm`],a:2,s:`400.18 − 400.06 = 0.12 mm.`},
+{d:'V',q:`A crankshaft journal has a nominal diameter of 200 mm. The measured diameter is 199.92 mm. If the manufacturer's minimum permissible diameter is 199.90 mm, how much margin remains above the minimum limit?`,o:[`0.01 mm`,`0.02 mm`,`0.08 mm`,`0.10 mm`],a:1,s:`199.92 − 199.90 = 0.02 mm. The journal is 0.02 mm above the specified minimum.`},
+{d:'V',q:`A shaft has a diameter of 80.00 mm and a measured TIR of 0.10 mm. Assuming an ideal perfectly circular shaft with pure eccentricity and no other error sources, calculate the eccentricity.`,o:[`0.025 mm`,`0.050 mm`,`0.100 mm`,`0.200 mm`],a:1,s:`For pure eccentricity under ideal conditions: TIR = 2e, so e = 0.10/2 = 0.05 mm.`},
+{d:'V',q:`During a pump overhaul, the shaft diameter is measured using an outside micrometer. The bore of its mating housing is measured using a bore gauge. The shaft is 49.95 mm and the housing bore is 50.02 mm. Calculate diametral clearance.`,o:[`0.03 mm`,`0.05 mm`,`0.07 mm`,`0.12 mm`],a:2,s:`Diametral clearance = 50.02 − 49.95 = 0.07 mm.`},
+{d:'V',q:`A marine engine valve clearance is specified as 0.35 mm. A feeler gauge of 0.30 mm enters freely, while a 0.40 mm blade does not enter. Which conclusion is justified?`,o:[`Clearance is exactly 0.30 mm`,`Clearance is exactly 0.40 mm`,`Clearance is likely between approximately 0.30 and 0.40 mm`,`Clearance is zero`],a:2,s:`The observations bracket the gap. A suitable intermediate blade, such as 0.35 mm, should be checked using the specified inspection technique.`},
+{d:'V',q:`A cylinder liner has a measured maximum diameter of 300.20 mm. Its manufacturer's maximum permitted diameter is 300.15 mm. By how much does it exceed the limit?`,o:[`0.02 mm`,`0.05 mm`,`0.15 mm`,`0.35 mm`],a:1,s:`300.20 − 300.15 = 0.05 mm. The measurement exceeds the maximum limit by 0.05 mm.`},
+{d:'V',q:`A shaft diameter is measured at 60.00 mm at 20°C. It is measured at 40°C. Assume the shaft and measuring system are both at 40°C, and the steel expansion coefficient is 12×10⁻⁶/°C. What is the approximate shaft diameter at 40°C?`,o:[`60.00144 mm`,`60.0144 mm`,`60.144 mm`,`60.240 mm`],a:1,s:`ΔD = α D ΔT = 12×10⁻⁶ × 60 × 20 = 0.0144 mm. D_40 = 60 + 0.0144 = 60.0144 mm.`},
+{d:'V',q:`During the inspection of a marine engine component, a bore gauge indicates a diameter below the reference setting. Which interpretation is correct?`,o:[`The bore is necessarily larger than the reference`,`The bore is smaller than the reference, assuming the gauge is correctly set and its deviation convention is understood`,`The bore has no diameter`,`The bore is necessarily oval`],a:1,s:`A negative diameter deviation indicates a smaller dimension relative to the reference setting.`},
+{d:'V',q:`A shaft is measured using a micrometer. The observed reading is 35.48 mm. The positive zero error is 0.02 mm. The specified permissible diameter range is 35.40–35.50 mm. Determine whether the shaft is acceptable.`,o:[`Not acceptable; oversized`,`Not acceptable; undersized`,`Acceptable; within tolerance`,`Cannot be determined`],a:2,s:`Corrected diameter = 35.48 − 0.02 = 35.46 mm. Since 35.40 ≤ 35.46 ≤ 35.50, the shaft is acceptable.`},
+{d:'V',q:`A precision measuring system has three independent standard uncertainty components: Calibration uncertainty = 0.02 mm, Repeatability uncertainty = 0.03 mm, Resolution-related uncertainty = 0.01 mm. Calculate the combined standard uncertainty using the root-sum-square method.`,o:[`0.02 mm`,`0.03 mm`,`0.0374 mm approximately`,`0.06 mm`],a:2,s:`u_c = √(0.02² + 0.03² + 0.01²) = √(0.0004 + 0.0009 + 0.0001) = √0.0014 ≈ 0.0374 mm.`},
+{d:'V',q:`A cylinder liner has a nominal diameter of 500 mm. Its measured diameters are 500.08 mm and 500.14 mm in two perpendicular directions at the same height. At another height, the maximum diameter is 500.20 mm. Determine the ovality at the first height and the maximum diameter variation between the two measured heights, using the smaller first-height diameter as the comparison.`,o:[`0.06 mm and 0.12 mm`,`0.08 mm and 0.06 mm`,`0.14 mm and 0.20 mm`,`0.06 mm and 0.20 mm`],a:0,s:`First-height ovality = 500.14 − 500.08 = 0.06 mm. Variation = 500.20 − 500.08 = 0.12 mm.`},
+{d:'V',q:`During a marine diesel engine overhaul, a technician measures a cylinder liner using a calibrated bore gauge. Observations: Top A 400.08, Top B 400.04, Middle A 400.16, Middle B 400.10, Bottom A 400.06, Bottom B 400.02 (all mm). The manufacturer's specified maximum diameter is 400.12 mm. Which conclusion is correct?`,o:[`Maximum ovality is 0.04 mm, and all diameters are within the maximum limit`,`Maximum ovality is 0.06 mm, and the liner exceeds the maximum diameter limit`,`Maximum ovality is 0.10 mm, and the liner is within the maximum limit`,`Maximum ovality is 0.02 mm, and the liner is undersized`],a:1,s:`Ovality: top = 0.04 mm, middle = 0.06 mm, bottom = 0.04 mm → max = 0.06 mm. Max bore = 400.16 mm, which exceeds 400.12 mm by 0.04 mm.`}
+];
+
+/* ============================================================
+   FOLDER / ACCORDION BEHAVIOUR
+   Manual open closes others; Expand/Collapse All controls all.
+   ============================================================ */
+document.querySelectorAll('.folder-head').forEach(function(head){
+  head.addEventListener('click', function(){
+    var folder = this.closest('.folder');
+    var isOpen = folder.classList.contains('open');
+    if(!isOpen){
+      document.querySelectorAll('.folder.open').forEach(function(f){
+        f.classList.remove('open');
+        var h = f.querySelector('.folder-head');
+        if(h) h.setAttribute('aria-expanded','false');
+      });
+    }
+    folder.classList.toggle('open');
+    this.setAttribute('aria-expanded', String(!isOpen));
+  });
+});
+document.getElementById('expandAll').addEventListener('click', function(){
+  document.querySelectorAll('.folder').forEach(function(f){
+    f.classList.add('open');
+    var h = f.querySelector('.folder-head');
+    if(h) h.setAttribute('aria-expanded','true');
+  });
+});
+document.getElementById('collapseAll').addEventListener('click', function(){
+  document.querySelectorAll('.folder').forEach(function(f){
+    f.classList.remove('open');
+    var h = f.querySelector('.folder-head');
+    if(h) h.setAttribute('aria-expanded','false');
+  });
+});
+
+/* ============================================================
+   BACK TO TOP
+   ============================================================ */
+var backBtn = document.getElementById('backToTop');
+window.addEventListener('scroll', function(){
+  if(window.scrollY > 300){ backBtn.classList.add('show'); }
+  else { backBtn.classList.remove('show'); }
+},{passive:true});
+backBtn.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+
+/* ============================================================
+   SEARCH
+   ============================================================ */
+var searchInput = document.getElementById('searchInput');
+var searchClear = document.getElementById('searchClear');
+var searchResults = document.getElementById('searchResults');
+var searchIndex = [];
+
+function buildSearchIndex(){
+  searchIndex = [];
+  document.querySelectorAll('.folder').forEach(function(folder){
+    var folderTitle = folder.querySelector('.folder-title b');
+    var titleText = folderTitle ? folderTitle.textContent.trim() : 'Section';
+    var folderId = folder.id;
+    folder.querySelectorAll('h3, h4, p, li, td, .eq, .memo, .note, .rules, .example').forEach(function(el){
+      if(el.closest('.sr-item')) return;
+      var text = el.textContent.trim().replace(/\s+/g,' ');
+      if(text.length < 3) return;
+      var heading = el.closest('.folder-content')?.querySelector('.sub')?.textContent.trim() || titleText;
+      var prev = el.previousElementSibling;
+      if(prev && (prev.classList.contains('sub-sub') || prev.tagName === 'H4')){ heading = prev.textContent.trim(); }
+      searchIndex.push({title:heading,folder:titleText,text:text,id:folderId,el:el});
+    });
+  });
+}
+function escapeHtml(str){
+  var div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
+function highlightMatches(text, query){
+  if(!query) return escapeHtml(text);
+  var escaped = query.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var re = new RegExp('(' + escaped + ')','gi');
+  return escapeHtml(text).replace(re,'<mark>$1</mark>');
+}
+function performSearch(query){
+  if(!query || query.trim().length < 2){
+    searchResults.classList.remove('show');
+    searchResults.innerHTML = '';
+    return;
+  }
+  var q = query.trim().toLowerCase();
+  var matches = searchIndex.filter(function(item){
+    return item.text.toLowerCase().indexOf(q) !== -1 ||
+           item.title.toLowerCase().indexOf(q) !== -1 ||
+           item.folder.toLowerCase().indexOf(q) !== -1;
+  }).slice(0,40);
+  if(matches.length === 0){
+    searchResults.innerHTML = '<div class="sr-empty">No results found for “' + escapeHtml(query) + '”.</div>';
+    searchResults.classList.add('show');
+    return;
+  }
+  var html = '<div class="sr-head">' + matches.length + ' result' + (matches.length > 1 ? 's' : '') + '</div>';
+  matches.forEach(function(item, idx){
+    var snippet = item.text.length > 120 ? item.text.slice(0,120) + '…' : item.text;
+    html += '<button class="sr-item" type="button" data-result-idx="' + idx + '">' +
+            '<span class="sr-topic">' + escapeHtml(item.folder) + ' · ' + escapeHtml(item.title) + '</span>' +
+            '<span class="sr-text">' + highlightMatches(snippet, query.trim()) + '</span>' +
+            '</button>';
+  });
+  searchResults.innerHTML = html;
+  searchResults.classList.add('show');
+  searchResults._matches = matches;
+  searchResults.querySelectorAll('.sr-item').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var idx = parseInt(this.getAttribute('data-result-idx'),10);
+      var match = searchResults._matches[idx];
+      if(!match) return;
+      var folder = document.getElementById(match.id);
+      if(folder && !folder.classList.contains('open')){
+        // Close other folders manually per accordion behaviour
+        document.querySelectorAll('.folder.open').forEach(function(f){
+          f.classList.remove('open');
+          var h = f.querySelector('.folder-head');
+          if(h) h.setAttribute('aria-expanded','false');
+        });
+        folder.classList.add('open');
+        var h = folder.querySelector('.folder-head');
+        if(h) h.setAttribute('aria-expanded','true');
+      }
+      if(match.el){
+        setTimeout(function(){
+          match.el.scrollIntoView({behavior:'smooth',block:'center'});
+          match.el.classList.add('flash-hit');
+          setTimeout(function(){ match.el.classList.remove('flash-hit'); },1800);
+        },200);
+      }
+      searchResults.classList.remove('show');
+      searchInput.value = '';
+      searchClear.hidden = true;
+    });
+  });
+}
+searchInput.addEventListener('input', function(){
+  var q = this.value;
+  searchClear.hidden = q.length === 0;
+  performSearch(q);
+});
+searchInput.addEventListener('keydown', function(e){
+  if(e.key === 'Escape'){
+    searchInput.value = '';
+    searchClear.hidden = true;
+    searchResults.classList.remove('show');
+  }
+});
+searchClear.addEventListener('click', function(){
+  searchInput.value = '';
+  this.hidden = true;
+  searchResults.classList.remove('show');
+  searchInput.focus();
+});
+document.addEventListener('click', function(e){
+  if(!e.target.closest('.search-wrap')){ searchResults.classList.remove('show'); }
+});
+buildSearchIndex();
+
+/* ============================================================
+   EXAM SYSTEM
+   ============================================================ */
+var EXAM = {
+  questions: [],
+  answers: [],
+  marked: [],
+  current: 0,
+  totalSeconds: 0,
+  remainingSeconds: 0,
+  timerId: null,
+  startedAt: null,
+  config: { count: 10, minutesPer10: 5 }
+};
+
+var overlay = document.getElementById('examOverlay');
+var configScreen = document.getElementById('examConfigScreen');
+var testScreen = document.getElementById('examTestScreen');
+var resultsScreen = document.getElementById('examResultsScreen');
+var reviewScreen = document.getElementById('examReviewScreen');
+var confirmModal = document.getElementById('examConfirmModal');
+var questionCountOptions = document.getElementById('questionCountOptions');
+var timeOptions = document.getElementById('timeOptions');
+var sumQuestions = document.getElementById('sumQuestions');
+var sumDuration = document.getElementById('sumDuration');
+var sumDist = document.getElementById('sumDist');
+var examQCurrent = document.getElementById('examQCurrent');
+var examQTotal = document.getElementById('examQTotal');
+var examProgressFill = document.getElementById('examProgressFill');
+var examTimer = document.getElementById('examTimer');
+var examDifficulty = document.getElementById('examDifficulty');
+var examQuestionText = document.getElementById('examQuestionText');
+var examOptions = document.getElementById('examOptions');
+var markReviewBtn = document.getElementById('markReviewBtn');
+var prevQBtn = document.getElementById('prevQBtn');
+var nextQBtn = document.getElementById('nextQBtn');
+var examNavGrid = document.getElementById('examNavGrid');
+var navToggleBtn = document.getElementById('navToggleBtn');
+var submitExamBtn = document.getElementById('submitExamBtn');
+var confirmMsg = document.getElementById('confirmMsg');
+
+/* ---- Difficulty helpers ---- */
+function diffLabel(d){
+  return d === 'E' ? 'Easy' : d === 'M' ? 'Medium' : d === 'D' ? 'Difficult' : 'Very Difficult';
+}
+function diffClass(d){
+  return d === 'E' ? 'd-easy' : d === 'M' ? 'd-medium' : d === 'D' ? 'd-difficult' : 'd-very-difficult';
+}
+function diffBadgeClass(d){
+  return d === 'E' ? 'badge-easy' : d === 'M' ? 'badge-medium' : d === 'D' ? 'badge-difficult' : 'badge-very-difficult';
+}
+
+/* ---- Build config option buttons ---- */
+(function buildConfigOptions(){
+  var qHtml = '';
+  for(var n = 10; n <= 300; n += 10){
+    qHtml += '<button type="button" data-count="' + n + '" class="config-opt' + (n === 10 ? ' active' : '') + '">' + n + '</button>';
+  }
+  questionCountOptions.innerHTML = qHtml;
+  var tHtml = '';
+  for(var m = 1; m <= 10; m++){
+    tHtml += '<button type="button" data-min="' + m + '" class="config-opt' + (m === 5 ? ' active' : '') + '">' + m + '</button>';
+  }
+  timeOptions.innerHTML = tHtml;
+
+  questionCountOptions.querySelectorAll('.config-opt').forEach(function(b){
+    b.addEventListener('click', function(){
+      questionCountOptions.querySelectorAll('.config-opt').forEach(function(x){x.classList.remove('active');});
+      this.classList.add('active');
+      EXAM.config.count = parseInt(this.getAttribute('data-count'),10);
+      updateConfigSummary();
+    });
+  });
+  timeOptions.querySelectorAll('.config-opt').forEach(function(b){
+    b.addEventListener('click', function(){
+      timeOptions.querySelectorAll('.config-opt').forEach(function(x){x.classList.remove('active');});
+      this.classList.add('active');
+      EXAM.config.minutesPer10 = parseInt(this.getAttribute('data-min'),10);
+      updateConfigSummary();
+    });
+  });
+})();
+
+function updateConfigSummary(){
+  var sets = EXAM.config.count / 10;
+  var mins = sets * EXAM.config.minutesPer10;
+  sumQuestions.textContent = EXAM.config.count;
+  sumDuration.textContent = mins + ' minute' + (mins > 1 ? 's' : '');
+  sumDist.textContent = (sets*3) + 'E · ' + (sets*3) + 'M · ' + (sets*3) + 'D · ' + (sets*1) + 'VD';
+}
+updateConfigSummary();
+
+/* ---- Screen management ---- */
+function showScreen(screen){
+  [configScreen,testScreen,resultsScreen,reviewScreen].forEach(function(s){s.classList.remove('active');});
+  screen.classList.add('active');
+}
+function openExamOverlay(){
+  overlay.hidden = false;
+  document.body.classList.add('exam-active');
+}
+function closeExamOverlay(){
+  overlay.hidden = true;
+  document.body.classList.remove('exam-active');
+  if(EXAM.timerId){ clearInterval(EXAM.timerId); EXAM.timerId = null; }
+  try { history.replaceState(null,'',location.pathname); } catch(e){}
+}
+
+/* ---- Shuffle helper ---- */
+function shuffle(arr){
+  var a = arr.slice();
+  for(var i = a.length - 1; i > 0; i--){
+    var j = Math.floor(Math.random() * (i + 1));
+    var t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  return a;
+}
+
+/* ---- Build the randomized exam set ---- */
+function buildExamSet(count){
+  var sets = count / 10;
+  var needE = sets * 3, needM = sets * 3, needD = sets * 3, needV = sets * 1;
+  var poolE = shuffle(QUESTIONS.filter(function(q){return q.d === 'E';}));
+  var poolM = shuffle(QUESTIONS.filter(function(q){return q.d === 'M';}));
+  var poolD = shuffle(QUESTIONS.filter(function(q){return q.d === 'D';}));
+  var poolV = shuffle(QUESTIONS.filter(function(q){return q.d === 'V';}));
+  var selected = [];
+  selected = selected.concat(poolE.slice(0, needE));
+  selected = selected.concat(poolM.slice(0, needM));
+  selected = selected.concat(poolD.slice(0, needD));
+  selected = selected.concat(poolV.slice(0, needV));
+  return shuffle(selected);
+}
+
+/* ---- Start Exam ---- */
+document.getElementById('takeTestBtn').addEventListener('click', function(){
+  openExamOverlay();
+  showScreen(configScreen);
+});
+document.getElementById('configClose').addEventListener('click', closeExamOverlay);
+
+document.getElementById('startExamBtn').addEventListener('click', function(){
+  if(!EXAM.config.count || EXAM.config.count % 10 !== 0){
+    alert('Please select a valid question count (multiple of 10).');
+    return;
+  }
+  if(!EXAM.config.minutesPer10){ alert('Please select a valid time duration.'); return; }
+  startExam();
+});
+
+function startExam(){
+  var count = EXAM.config.count;
+  var minutesPer10 = EXAM.config.minutesPer10;
+  EXAM.questions = buildExamSet(count);
+  EXAM.answers = new Array(count).fill(null);
+  EXAM.marked = new Array(count).fill(false);
+  EXAM.current = 0;
+  EXAM.totalSeconds = (count / 10) * minutesPer10 * 60;
+  EXAM.remainingSeconds = EXAM.totalSeconds;
+  EXAM.startedAt = Date.now();
+  examQTotal.textContent = count;
+  examQCurrent.textContent = '1';
+  examProgressFill.style.width = '0%';
+  renderQuestion();
+  renderNavGrid();
+  showScreen(testScreen);
+  startTimer();
+}
+
+/* ---- Timer ---- */
+function startTimer(){
+  if(EXAM.timerId) clearInterval(EXAM.timerId);
+  updateTimerDisplay();
+  EXAM.timerId = setInterval(function(){
+    EXAM.remainingSeconds--;
+    if(EXAM.remainingSeconds <= 0){
+      EXAM.remainingSeconds = 0;
+      updateTimerDisplay();
+      clearInterval(EXAM.timerId);
+      EXAM.timerId = null;
+      finishExam();
+      return;
+    }
+    updateTimerDisplay();
+  }, 1000);
+}
+function updateTimerDisplay(){
+  var s = Math.max(0, EXAM.remainingSeconds);
+  var h = Math.floor(s / 3600);
+  var m = Math.floor((s % 3600) / 60);
+  var sec = s % 60;
+  var txt = h > 0
+    ? (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m + ':' + (sec < 10 ? '0' : '') + sec
+    : (m < 10 ? '0' : '') + m + ':' + (sec < 10 ? '0' : '') + sec;
+  examTimer.textContent = txt;
+  if(s <= 60){ examTimer.classList.add('warn'); }
+  else { examTimer.classList.remove('warn'); }
+}
+
+/* ---- Render current question ---- */
+function renderQuestion(){
+  var i = EXAM.current;
+  var q = EXAM.questions[i];
+  if(!q) return;
+  examQCurrent.textContent = (i + 1);
+  examProgressFill.style.width = ((i) / EXAM.questions.length * 100) + '%';
+  examDifficulty.textContent = diffLabel(q.d);
+  examDifficulty.className = 'exam-difficulty ' + diffClass(q.d);
+  examQuestionText.textContent = q.q;
+  var letters = ['A','B','C','D'];
+  var html = '';
+  q.o.forEach(function(opt, idx){
+    var sel = EXAM.answers[i] === idx ? ' selected' : '';
+    html += '<button type="button" class="exam-option' + sel + '" data-opt="' + idx + '">' +
+            '<span class="opt-letter">' + letters[idx] + '</span>' +
+            '<span class="opt-text">' + escapeHtml(opt) + '</span>' +
+            '</button>';
+  });
+  examOptions.innerHTML = html;
+  examOptions.querySelectorAll('.exam-option').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var idx = parseInt(this.getAttribute('data-opt'),10);
+      EXAM.answers[EXAM.current] = idx;
+      renderQuestion();
+      renderNavGrid();
+    });
+  });
+  markReviewBtn.classList.toggle('marked', !!EXAM.marked[i]);
+  markReviewBtn.textContent = EXAM.marked[i] ? '⚑ Marked for Review' : '⚑ Mark for Review';
+  prevQBtn.disabled = (i === 0);
+  nextQBtn.textContent = (i === EXAM.questions.length - 1) ? 'Finish' : 'Next →';
+}
+
+markReviewBtn.addEventListener('click', function(){
+  var i = EXAM.current;
+  EXAM.marked[i] = !EXAM.marked[i];
+  renderQuestion();
+  renderNavGrid();
+});
+
+prevQBtn.addEventListener('click', function(){
+  if(EXAM.current > 0){ EXAM.current--; renderQuestion(); renderNavGrid(); }
+});
+nextQBtn.addEventListener('click', function(){
+  if(EXAM.current < EXAM.questions.length - 1){
+    EXAM.current++; renderQuestion(); renderNavGrid();
+  } else {
+    submitExam();
+  }
+});
+
+/* ---- Nav grid ---- */
+function renderNavGrid(){
+  var html = '';
+  for(var i = 0; i < EXAM.questions.length; i++){
+    var cls = 'exam-nav-btn';
+    if(EXAM.answers[i] !== null && EXAM.answers[i] !== undefined) cls += ' answered';
+    if(EXAM.marked[i]) cls += ' marked';
+    if(i === EXAM.current) cls += ' current';
+    html += '<button type="button" class="' + cls + '" data-idx="' + i + '">' + (i + 1) + '</button>';
+  }
+  examNavGrid.innerHTML = html;
+  examNavGrid.querySelectorAll('.exam-nav-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      EXAM.current = parseInt(this.getAttribute('data-idx'),10);
+      renderQuestion();
+      renderNavGrid();
+    });
+  });
+}
+navToggleBtn.addEventListener('click', function(){
+  examNavGrid.classList.toggle('hidden');
+  this.textContent = examNavGrid.classList.contains('hidden') ? 'Show' : 'Hide';
+});
+
+/* ---- Submission ---- */
+submitExamBtn.addEventListener('click', function(){
+  submitExam();
+});
+function submitExam(){
+  var answered = EXAM.answers.filter(function(a){ return a !== null && a !== undefined; }).length;
+  var unanswered = EXAM.questions.length - answered;
+  confirmMsg.textContent = 'You have answered ' + answered + ' of ' + EXAM.questions.length +
+    ' questions. ' + (unanswered > 0 ? unanswered + ' unanswered question(s) will be marked incorrect.' : 'All questions answered.');
+  confirmModal.hidden = false;
+}
+document.getElementById('confirmCancel').addEventListener('click', function(){
+  confirmModal.hidden = true;
+});
+document.getElementById('confirmSubmit').addEventListener('click', function(){
+  confirmModal.hidden = true;
+  finishExam();
+});
+
+/* ---- Finish exam and results ---- */
+function finishExam(){
+  if(EXAM.timerId){ clearInterval(EXAM.timerId); EXAM.timerId = null; }
+  var total = EXAM.questions.length;
+  var correct = 0, incorrect = 0, unanswered = 0;
+  EXAM.questions.forEach(function(q, i){
+    var ans = EXAM.answers[i];
+    if(ans === null || ans === undefined){ unanswered++; }
+    else if(ans === q.a){ correct++; }
+    else { incorrect++; }
+  });
+  var pct = total ? Math.round((correct / total) * 100) : 0;
+  var timeTaken = Math.max(0, Math.round((Date.now() - EXAM.startedAt) / 1000));
+  if(timeTaken > EXAM.totalSeconds) timeTaken = EXAM.totalSeconds;
+
+  document.getElementById('resTotal').textContent = total;
+  document.getElementById('resCorrect').textContent = correct;
+  document.getElementById('resIncorrect').textContent = incorrect;
+  document.getElementById('resUnanswered').textContent = unanswered;
+  document.getElementById('resMarks').textContent = correct + ' / ' + total;
+  document.getElementById('resPct2').textContent = pct + '%';
+  document.getElementById('resPercent').textContent = pct + '%';
+  document.getElementById('resTime').textContent = formatTime(timeTaken);
+  var circle = document.getElementById('resCircle');
+  circle.style.setProperty('--ring', (pct * 3.6) + 'deg');
+
+  document.getElementById('pbCorrect').style.width = (correct/total*100) + '%';
+  document.getElementById('pbIncorrect').style.width = (incorrect/total*100) + '%';
+  document.getElementById('pbUnanswered').style.width = (unanswered/total*100) + '%';
+
+  var verdict = pct >= 80 ? 'Excellent performance!' : pct >= 60 ? 'Good job!' : pct >= 40 ? 'Keep practising.' : 'Review the material and try again.';
+  document.getElementById('resVerdict').textContent = verdict;
+
+  EXAM._correct = correct;
+  EXAM._incorrect = incorrect;
+  EXAM._unanswered = unanswered;
+  EXAM._pct = pct;
+  EXAM._timeTaken = timeTaken;
+
+  showScreen(resultsScreen);
+}
+function formatTime(sec){
+  var h = Math.floor(sec/3600);
+  var m = Math.floor((sec%3600)/60);
+  var s = sec%60;
+  if(h > 0) return (h<10?'0':'')+h+':'+(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+  return (m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+}
+
+/* ---- Results buttons ---- */
+document.getElementById('reviewBtn').addEventListener('click', function(){
+  renderReview('all');
+  showScreen(reviewScreen);
+});
+document.getElementById('backToResultsBtn').addEventListener('click', function(){
+  showScreen(resultsScreen);
+});
+document.getElementById('retakeBtn').addEventListener('click', function(){
+  showScreen(configScreen);
+});
+document.getElementById('exitExamBtn').addEventListener('click', function(){
+  closeExamOverlay();
+});
+
+/* ---- Review ---- */
+document.querySelectorAll('.review-filter').forEach(function(f){
+  f.addEventListener('click', function(){
+    document.querySelectorAll('.review-filter').forEach(function(x){x.classList.remove('active');});
+    this.classList.add('active');
+    renderReview(this.getAttribute('data-filter'));
+  });
+});
+
+function renderReview(filter){
+  var list = document.getElementById('reviewList');
+  var letters = ['A','B','C','D'];
+  var html = '';
+  var shown = 0;
+  EXAM.questions.forEach(function(q, i){
+    var ans = EXAM.answers[i];
+    var isUnanswered = (ans === null || ans === undefined);
+    var isCorrect = !isUnanswered && ans === q.a;
+    var status = isUnanswered ? 'unanswered' : (isCorrect ? 'correct' : 'incorrect');
+    if(filter !== 'all' && filter !== status) return;
+    shown++;
+    var itemCls = 'review-item review-' + status;
+    var statusLabel = status === 'correct' ? 'Correct' : status === 'incorrect' ? 'Incorrect' : 'Unanswered';
+    var statusCls = 'status-' + status;
+    var optHtml = '';
+    q.o.forEach(function(opt, idx){
+      var oc = 'review-option';
+      var tag = '';
+      if(idx === q.a){ oc += ' correct'; tag = '<span class="ro-tag">Correct</span>'; }
+      if(!isUnanswered && idx === ans && idx !== q.a){ oc += ' wrong'; tag = '<span class="ro-tag">Your answer</span>'; }
+      if(isUnanswered && idx === q.a){ tag = '<span class="ro-tag">Correct</span>'; }
+      optHtml += '<div class="' + oc + '"><span class="ro-letter">' + letters[idx] + '.</span><span>' + escapeHtml(opt) + '</span>' + tag + '</div>';
+    });
+    var userAnsText = isUnanswered ? 'Not answered' : (letters[ans] + '. ' + q.o[ans]);
+    var correctAnsText = letters[q.a] + '. ' + q.o[q.a];
+    html += '<div class="' + itemCls + '">' +
+      '<div class="review-meta">' +
+        '<span class="review-num">Q' + (i + 1) + '</span>' +
+        '<span class="review-badge ' + diffBadgeClass(q.d) + '">' + diffLabel(q.d) + '</span>' +
+        '<span class="review-status ' + statusCls + '">' + statusLabel + '</span>' +
+      '</div>' +
+      '<div class="review-question">' + escapeHtml(q.q) + '</div>' +
+      '<div class="review-options">' + optHtml + '</div>' +
+      '<div class="review-answer"><span>Your answer: <b>' + escapeHtml(userAnsText) + '</b></span><span>Correct answer: <b>' + escapeHtml(correctAnsText) + '</b></span></div>' +
+      '<div class="review-solution"><h5>Solution</h5>' + escapeHtml(q.s) + '</div>' +
+    '</div>';
+  });
+  if(shown === 0){
+    list.innerHTML = '<div class="review-empty">No questions match this filter.</div>';
+  } else {
+    list.innerHTML = html;
+  }
+}
+
+/* ---- Prevent accidental close while exam in progress ---- */
+window.addEventListener('beforeunload', function(e){
+  if(overlay && !overlay.hidden && testScreen.classList.contains('active')){
+    e.preventDefault();
+    e.returnValue = '';
+  }
+});
+
+/* ---- Keyboard shortcuts in exam ---- */
+document.addEventListener('keydown', function(e){
+  if(!overlay || overlay.hidden) return;
+  if(!testScreen.classList.contains('active')) return;
+  if(e.key === 'ArrowLeft'){ prevQBtn.click(); }
+  else if(e.key === 'ArrowRight'){ nextQBtn.click(); }
+  else if(e.key >= '1' && e.key <= '4'){
+    var idx = parseInt(e.key,10) - 1;
+    var btns = examOptions.querySelectorAll('.exam-option');
+    if(btns[idx]) btns[idx].click();
+  }
+});
+</script>
+</body>
+</html>
